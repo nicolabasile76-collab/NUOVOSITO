@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>POST — wAIt | AI per il Bene Comune</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Public+Sans:wght@400;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+tailwind.config={theme:{extend:{
+  colors:{"primary-fixed-dim":"#88d1e5","surface-container":"#e7eeff","surface-container-low":"#f0f3ff","surface-container-lowest":"#fff","primary":"#006172","primary-fixed":"#acedff","on-primary":"#fff","on-surface-variant":"#3f484b","primary-container":"#2b7a8c","on-primary-container":"#e7f9ff","secondary-fixed":"#b9eafb","on-secondary-fixed-variant":"#184d5b","surface-variant":"#d9e3f9","inverse-primary":"#88d1e5","surface":"#f9f9ff","outline":"#6f797c","surface-container-high":"#dee8ff","on-surface":"#121c2c","inverse-on-surface":"#ebf1ff","inverse-surface":"#273141","on-primary-fixed":"#001f26","outline-variant":"#bec8cb","surface-container-highest":"#d9e3f9","tertiary":"#016171","on-secondary":"#fff","secondary":"#346573","tertiary-container":"#2d7a8a"},
+  borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},
+  fontFamily:{headline:["Public Sans"],atkinson:["Atkinson Hyperlegible"]}
+}}}
+</script>
+<style>
+  .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
+  body{font-family:'Atkinson Hyperlegible',sans-serif;background:#f9f9ff;color:#121c2c}
+  h1,h2,h3{font-family:'Public Sans',sans-serif}
+  html{scroll-behavior:smooth}
+  .reveal{opacity:0;transform:translateY(40px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+  .reveal-left{opacity:0;transform:translateX(-60px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+  .reveal-left.visible{opacity:1;transform:translateX(0)}
+  .reveal-right{opacity:0;transform:translateX(60px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+  .reveal-right.visible{opacity:1;transform:translateX(0)}
+  .stagger>*{transition-delay:calc(var(--i,0)*120ms)}
+</style>
+</head>
+<body class="flex flex-col min-h-screen antialiased">
+
+<!-- NAVBAR -->
+<header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm">
+  <nav class="flex justify-between items-center px-8 py-3 max-w-7xl mx-auto text-lg">
+    <a href="./index7.html" class="block flex-shrink-0">
+      <img src="./logo-post.png" alt="POST" class="h-[65px] w-auto object-contain" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'text-primary font-extrabold text-3xl\'>POST</span>')"/>
+    </a>
+    <div class="hidden md:flex items-center gap-7">
+      <a class="text-slate-600 hover:text-primary transition-colors" href="./index7.html#pilastri">Cosa facciamo</a>
+      <a class="text-slate-600 hover:text-primary transition-colors" href="./piani-di-zona.html">Piani di Zona</a>
+      <a class="text-slate-600 hover:text-primary transition-colors" href="./index7.html#esperienze">Dal campo</a>
+      <a class="text-primary border-b-2 border-primary pb-0.5" href="./wait.html"><span class="material-symbols-outlined text-base align-middle mr-1">neurology</span>AI per il Bene Comune</a>
+      <a class="text-slate-600 hover:text-primary transition-colors" href="./index7.html#chi-siamo">Chi siamo</a>
+    </div>
+    <a href="./index7.html#contatti" class="bg-primary-container text-on-primary-container px-6 py-2 rounded-lg font-bold hover:opacity-90 transition-all">Contatti</a>
+  </nav>
+</header>
+
+<main class="flex-grow pt-28">
+
+<!-- Breadcrumb -->
+<div class="max-w-7xl mx-auto px-8 mb-8 reveal">
+  <a href="./index7.html" class="text-sm text-on-surface-variant hover:text-primary">Home</a>
+  <span class="text-sm text-outline-variant mx-2">/</span>
+  <span class="text-sm text-primary font-bold">AI per il Bene Comune</span>
+</div>
+
+<!-- HERO wAIt -->
+<section class="px-8 pb-24 max-w-7xl mx-auto">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center mb-20">
+    <div class="lg:col-span-7 reveal-left">
+      <div class="inline-block px-4 py-1.5 mb-6 rounded-full bg-inverse-surface text-inverse-on-surface text-sm font-bold tracking-wide">AI PER IL BENE COMUNE</div>
+      <h1 class="text-5xl md:text-7xl font-extrabold text-primary leading-[1.05] mb-8 tracking-tight">
+        w<span class="text-primary-container">AI</span>t.<br/>
+        <span class="text-on-surface-variant text-3xl md:text-4xl font-bold">Welfare &amp; Artificial Intelligence Toolkit</span>
+      </h1>
+      <p class="text-xl text-on-surface leading-relaxed max-w-2xl mb-8">
+        L'intelligenza artificiale sta cambiando il modo in cui lavoriamo, progettiamo servizi, analizziamo i bisogni. wAIt è il nostro modo di portare l'AI dentro il welfare e la pubblica amministrazione — con lo stesso approccio artigianale che ci caratterizza.
+      </p>
+      <p class="text-lg text-on-surface-variant leading-relaxed max-w-2xl">
+        Non vendiamo software. Accompagniamo le organizzazioni a capire dove e come l'AI può davvero fare la differenza: nell'analisi dei dati sociali, nella progettazione dei servizi, nella valutazione d'impatto, nella gestione della conoscenza organizzativa.
+      </p>
+    </div>
+    <div class="lg:col-span-5 reveal-right">
+      <div class="bg-inverse-surface text-inverse-on-surface p-10 rounded-xl shadow-2xl">
+        <span class="material-symbols-outlined text-5xl text-primary-fixed-dim mb-6">neurology</span>
+        <h3 class="text-2xl font-bold mb-6 text-primary-fixed-dim">Il modello wAIt</h3>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary-fixed-dim mt-0.5">arrow_right</span><span><strong>Formazione</strong> — Percorsi pratici per operatori sociali, dirigenti PA e Terzo Settore</span></li>
+          <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary-fixed-dim mt-0.5">arrow_right</span><span><strong>Sperimentazione</strong> — Progetti pilota per integrare l'AI nei processi di lavoro</span></li>
+          <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary-fixed-dim mt-0.5">arrow_right</span><span><strong>Consulenza</strong> — Orientamento strategico su cosa automatizzare e cosa no</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Principi -->
+<section class="bg-surface-container-low py-20 px-8">
+  <div class="max-w-7xl mx-auto">
+    <h2 class="text-3xl font-bold text-primary mb-12 reveal">I nostri principi</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 stagger">
+      <div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm reveal" style="--i:0">
+        <span class="material-symbols-outlined text-3xl text-primary mb-3">balance</span>
+        <h4 class="text-lg font-bold text-primary mb-2">Etica prima di tutto</h4>
+        <p class="text-on-surface leading-relaxed">L'AI nel sociale deve essere trasparente, equa e al servizio delle persone. Non è un optional, è il punto di partenza.</p>
+      </div>
+      <div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm reveal" style="--i:1">
+        <span class="material-symbols-outlined text-3xl text-primary mb-3">precision_manufacturing</span>
+        <h4 class="text-lg font-bold text-primary mb-2">Artigianale, non industriale</h4>
+        <p class="text-on-surface leading-relaxed">Non calcoliamo soluzioni standard. Ogni organizzazione ha i suoi processi, la sua cultura, i suoi dati. Partiamo da lì.</p>
+      </div>
+      <div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm reveal" style="--i:2">
+        <span class="material-symbols-outlined text-3xl text-primary mb-3">diversity_3</span>
+        <h4 class="text-lg font-bold text-primary mb-2">Competenze diffuse</h4>
+        <p class="text-on-surface leading-relaxed">L'obiettivo non è creare dipendenza tecnologica, ma costruire competenze interne. Chi lavora nei servizi deve capire gli strumenti che usa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Cosa facciamo con l'AI -->
+<section class="py-20 px-8 max-w-7xl mx-auto">
+  <h2 class="text-3xl font-bold text-primary mb-12 reveal">Dove l'AI fa la differenza</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="bg-surface-container-high p-8 rounded-xl reveal" style="--i:0">
+      <span class="material-symbols-outlined text-3xl text-primary mb-4">analytics</span>
+      <h4 class="text-xl font-bold text-primary mb-3">Programmazione data driven</h4>
+      <p class="text-on-surface leading-relaxed">Analisi dei dati sociali potenziata dall'AI per costruire Piani di Zona, programmi di intervento e strategie territoriali basate su evidenze, non su intuizioni.</p>
+    </div>
+    <div class="bg-surface-container-high p-8 rounded-xl reveal" style="--i:1">
+      <span class="material-symbols-outlined text-3xl text-primary mb-4">summarize</span>
+      <h4 class="text-xl font-bold text-primary mb-3">Sintesi dei processi partecipativi</h4>
+      <p class="text-on-surface leading-relaxed">Strumenti di AI generativa per analizzare i contributi dei tavoli territoriali e restituire sintesi utilizzabili dai decisori. Più partecipazione, meno rumore.</p>
+    </div>
+    <div class="bg-surface-container-high p-8 rounded-xl reveal" style="--i:2">
+      <span class="material-symbols-outlined text-3xl text-primary mb-4">monitoring</span>
+      <h4 class="text-xl font-bold text-primary mb-3">Valutazione d'impatto</h4>
+      <p class="text-on-surface leading-relaxed">Pattern recognition sui dati di monitoraggio per identificare tendenze, criticità e opportunità prima che diventino evidenti con i metodi tradizionali.</p>
+    </div>
+    <div class="bg-surface-container-high p-8 rounded-xl reveal" style="--i:3">
+      <span class="material-symbols-outlined text-3xl text-primary mb-4">school</span>
+      <h4 class="text-xl font-bold text-primary mb-3">Formazione e capacity building</h4>
+      <p class="text-on-surface leading-relaxed">Percorsi pratici per dirigenti PA, operatori sociali e professionisti del Terzo Settore. Non teoria: strumenti concreti da usare il giorno dopo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="bg-inverse-surface py-16 px-8">
+  <div class="max-w-7xl mx-auto text-center reveal">
+    <h2 class="text-3xl font-bold text-white mb-4">Volete capire come l'AI può aiutare il vostro lavoro?</h2>
+    <p class="text-lg text-inverse-on-surface/70 mb-8 max-w-xl mx-auto">Non serve un progetto già definito. Partiamo da una conversazione.</p>
+    <a href="./index7.html#contatti" class="inline-flex items-center gap-2 px-10 py-4 bg-primary-container text-on-primary-container font-bold rounded-lg text-lg hover:brightness-110 transition-all">
+      Parliamone <span class="material-symbols-outlined">arrow_forward</span>
+    </a>
+  </div>
+</section>
+
+<!-- Blog correlato -->
+<section class="py-20 px-8 max-w-7xl mx-auto reveal">
+  <h2 class="text-3xl font-bold text-primary mb-8">Dal campo: AI e sociale</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <a href="./articolo.html?slug=ai-e-coprogrammazione-un-primo-bilancio" class="flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden hover:shadow-lg transition-all cursor-pointer">
+      <div class="h-44 w-full"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80" alt="" class="w-full h-full object-cover"/></div>
+      <div class="p-6"><span class="px-3 py-1 bg-secondary-fixed text-on-secondary-fixed-variant rounded-full text-xs font-bold uppercase">AI</span><h4 class="text-xl font-bold text-primary mt-3 mb-2">AI e coprogrammazione: un primo bilancio</h4><p class="text-on-surface text-sm">Come abbiamo usato strumenti di AI generativa per analizzare i contributi dei tavoli territoriali.</p></div>
+    </a>
+    <a href="./articolo.html?slug=valutazione-d-impatto-generazionale-legge-167-2025" class="flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden hover:shadow-lg transition-all cursor-pointer">
+      <div class="h-44 w-full"><img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&q=80" alt="" class="w-full h-full object-cover"/></div>
+      <div class="p-6"><span class="px-3 py-1 bg-secondary-fixed text-on-secondary-fixed-variant rounded-full text-xs font-bold uppercase">Normativa</span><h4 class="text-xl font-bold text-primary mt-3 mb-2">Valutazione d'Impatto Generazionale — Legge 167/2025</h4><p class="text-on-surface text-sm">La VIG introduce un nuovo paradigma: misurare gli effetti delle politiche sulle generazioni future.</p></div>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="w-full bg-slate-50 mt-auto">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-12 py-12 max-w-7xl mx-auto">
+    <div><img src="./logo-post.png" alt="POST" class="h-[50px] w-auto object-contain self-start mb-2" onerror="this.outerHTML='<span class=\'text-primary font-extrabold text-2xl\'>POST</span>'"/><p class="text-sm text-slate-600">&copy; 2025 POST Società Benefit S.r.l. — Milano</p></div>
+    <div class="flex flex-col gap-2"><span class="text-sm text-slate-600">info@postsb.it</span><span class="text-sm text-slate-600">+39 3939993731</span></div>
+    <div><a href="https://www.linkedin.com/company/105770276" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-[#0077b5] font-bold text-sm"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a></div>
+  </div>
+</footer>
+
+<script>
+const rObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');rObs.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>rObs.observe(el));
+</script>
+</body>
+</html>

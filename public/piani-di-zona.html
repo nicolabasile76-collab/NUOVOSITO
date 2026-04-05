@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>POST — Piani di Zona</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Public+Sans:wght@400;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+tailwind.config={theme:{extend:{
+  colors:{"primary-fixed-dim":"#88d1e5","surface-container":"#e7eeff","surface-container-low":"#f0f3ff","surface-container-lowest":"#fff","primary":"#006172","primary-fixed":"#acedff","on-primary":"#fff","on-surface-variant":"#3f484b","primary-container":"#2b7a8c","on-primary-container":"#e7f9ff","secondary-fixed":"#b9eafb","on-secondary-fixed-variant":"#184d5b","surface-variant":"#d9e3f9","inverse-primary":"#88d1e5","surface":"#f9f9ff","outline":"#6f797c","surface-container-high":"#dee8ff","on-surface":"#121c2c","inverse-on-surface":"#ebf1ff","inverse-surface":"#273141","on-primary-fixed":"#001f26","outline-variant":"#bec8cb","surface-container-highest":"#d9e3f9","tertiary":"#016171","on-secondary":"#fff","secondary":"#346573","tertiary-container":"#2d7a8a"},
+  borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},
+  fontFamily:{headline:["Public Sans"],atkinson:["Atkinson Hyperlegible"]}
+}}}
+</script>
+<style>
+  .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
+  body{font-family:'Atkinson Hyperlegible',sans-serif;background:#f9f9ff;color:#121c2c}
+  h1,h2,h3{font-family:'Public Sans',sans-serif}
+  html{scroll-behavior:smooth}
+  .reveal{opacity:0;transform:translateY(40px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+  .reveal-left{opacity:0;transform:translateX(-60px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+  .reveal-left.visible{opacity:1;transform:translateX(0)}
+  .reveal-right{opacity:0;transform:translateX(60px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+  .reveal-right.visible{opacity:1;transform:translateX(0)}
+  .stagger>*{transition-delay:calc(var(--i,0)*120ms)}
+</style>
+</head>
+<body class="flex flex-col min-h-screen antialiased">
+
+<!-- NAVBAR -->
+<header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm">
+  <nav class="flex justify-between items-center px-8 py-3 max-w-7xl mx-auto text-lg">
+    <a href="./index7.html" class="block flex-shrink-0">
+      <img src="./logo-post.png" alt="POST" class="h-[65px] w-auto object-contain" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'text-primary font-extrabold text-3xl\'>POST</span>')"/>
+    </a>
+    <div class="hidden md:flex items-center gap-7">
+      <a class="text-slate-600 hover:text-primary transition-colors" href="./index7.html#pilastri">Cosa facciamo</a>
+      <a class="text-primary border-b-2 border-primary pb-0.5" href="./piani-di-zona.html">Piani di Zona</a>
+      <a class="text-slate-600 hover:text-primary transition-colors" href="./index7.html#esperienze">Dal campo</a>
+      <a class="text-slate-600 hover:text-primary transition-colors" href="./wait.html"><span class="material-symbols-outlined text-base align-middle mr-1">neurology</span>AI per il Bene Comune</a>
+      <a class="text-slate-600 hover:text-primary transition-colors" href="./index7.html#chi-siamo">Chi siamo</a>
+    </div>
+    <a href="./index7.html#contatti" class="bg-primary-container text-on-primary-container px-6 py-2 rounded-lg font-bold hover:opacity-90 transition-all">Contatti</a>
+  </nav>
+</header>
+
+<main class="flex-grow pt-24">
+
+<!-- HERO PdZ -->
+<section class="py-24 px-8 bg-inverse-surface text-inverse-on-surface">
+  <div class="max-w-7xl mx-auto">
+    <!-- Breadcrumb -->
+    <nav class="mb-8 reveal">
+      <a href="./index7.html" class="text-sm text-inverse-on-surface/60 hover:text-primary-fixed-dim transition-colors">Home</a>
+      <span class="text-sm text-inverse-on-surface/30 mx-2">/</span>
+      <span class="text-sm text-primary-fixed-dim font-bold">Piani di Zona</span>
+    </nav>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start mb-20">
+      <div class="lg:col-span-7 reveal-left">
+        <div class="inline-block px-4 py-1.5 mb-6 rounded-full bg-primary-container text-on-primary-container text-sm font-bold tracking-wide">ASSISTENZA TECNICA PER AMBITI TERRITORIALI</div>
+        <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-[1.1] mb-8 tracking-tight">
+          Piani di Zona.<br/><span class="text-primary-fixed-dim">Si parte dalla valutazione.</span>
+        </h1>
+        <p class="text-xl text-inverse-on-surface/90 leading-relaxed max-w-2xl mb-8">
+          I Piani di Zona sono in atto. Non si ricomincia da zero: si parte da quello che c'è, da quello che ha funzionato e da quello che va ripensato. La valutazione costruisce le basi per una programmazione solida e pone le condizioni per aprire in maniera adeguata la coprogrammazione.
+        </p>
+        <p class="text-lg text-inverse-on-surface/70 leading-relaxed max-w-2xl">A fianco del vostro Ufficio di Piano, non al suo posto.</p>
+      </div>
+      <div class="lg:col-span-5 reveal-right">
+        <div class="bg-white/10 backdrop-blur-md rounded-xl p-8 border border-white/10">
+          <h3 class="text-2xl font-bold text-primary-fixed-dim mb-6">Il nostro percorso</h3>
+          <div class="flex gap-4 mb-8">
+            <div class="flex flex-col items-center"><div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-lg">1</div><div class="w-0.5 h-full bg-primary-container/30 mt-2"></div></div>
+            <div><h4 class="text-xl font-bold text-white mb-2">Valutazione e Monitoraggio</h4><p class="text-inverse-on-surface/80 leading-relaxed">Indicatori di esito e processo, analisi di ciò che ha funzionato, report per Regione e Assemblea dei Sindaci.</p><span class="inline-block mt-2 text-sm font-bold text-primary-fixed-dim">Il punto di partenza</span></div>
+          </div>
+          <div class="flex gap-4 mb-8">
+            <div class="flex flex-col items-center"><div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-lg">2</div><div class="w-0.5 h-full bg-primary-container/30 mt-2"></div></div>
+            <div><h4 class="text-xl font-bold text-white mb-2">Programmazione e Redazione</h4><p class="text-inverse-on-surface/80 leading-relaxed">Dalla valutazione emergono le priorità. Analisi dei bisogni, obiettivi misurabili, raccordo con i POAS delle ATS.</p><span class="inline-block mt-2 text-sm font-bold text-primary-fixed-dim">Le basi solide</span></div>
+          </div>
+          <div class="flex gap-4 mb-8">
+            <div class="flex flex-col items-center"><div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-lg">3</div><div class="w-0.5 h-full bg-primary-container/30 mt-2"></div></div>
+            <div><h4 class="text-xl font-bold text-white mb-2">Coprogrammazione</h4><p class="text-inverse-on-surface/80 leading-relaxed">Solo con basi solide si apre al Terzo Settore. Facilitazione con metodi strutturati: world café, focus group, raccolta contributi.</p><span class="inline-block mt-2 text-sm font-bold text-primary-fixed-dim">L'apertura consapevole</span></div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex flex-col items-center"><div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-lg">4</div></div>
+            <div><h4 class="text-xl font-bold text-white mb-2">Supporto Normativo</h4><p class="text-inverse-on-surface/80 leading-relaxed">L.R. 3/2008, Codice del Terzo Settore, DGR, circolari ATS. Traduzione in azioni concrete.</p><span class="inline-block mt-2 text-sm font-bold text-primary-fixed-dim">Trasversale a tutto</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sfide -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 stagger">
+      <div class="bg-white/5 border border-white/10 p-6 rounded-xl reveal" style="--i:0"><span class="material-symbols-outlined text-primary-fixed-dim text-2xl mb-3">gavel</span><h4 class="font-bold text-white mb-2">Normativa in evoluzione</h4><p class="text-sm text-inverse-on-surface/70">Il quadro si aggiorna costantemente. Stare al passo richiede tempo che spesso manca.</p></div>
+      <div class="bg-white/5 border border-white/10 p-6 rounded-xl reveal" style="--i:1"><span class="material-symbols-outlined text-primary-fixed-dim text-2xl mb-3">groups</span><h4 class="font-bold text-white mb-2">Tavoli difficili</h4><p class="text-sm text-inverse-on-surface/70">Senza facilitazione professionale, i tavoli diventano arene sterili o validazioni formali.</p></div>
+      <div class="bg-white/5 border border-white/10 p-6 rounded-xl reveal" style="--i:2"><span class="material-symbols-outlined text-primary-fixed-dim text-2xl mb-3">description</span><h4 class="font-bold text-white mb-2">Documenti che non reggono</h4><p class="text-sm text-inverse-on-surface/70">Senza metodologie rigorose, il Piano rischia la non conformità ai requisiti regionali.</p></div>
+      <div class="bg-white/5 border border-white/10 p-6 rounded-xl reveal" style="--i:3"><span class="material-symbols-outlined text-primary-fixed-dim text-2xl mb-3">monitoring</span><h4 class="font-bold text-white mb-2">Nessun sistema di risultati</h4><p class="text-sm text-inverse-on-surface/70">Regione chiede evidenza dell'impatto. Senza valutazione, il dialogo resta sull'adempimento.</p></div>
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-16 text-center reveal">
+      <a href="./index7.html#contatti" class="inline-flex items-center gap-2 px-10 py-4 bg-primary-container text-on-primary-container font-bold rounded-lg text-lg hover:brightness-110 transition-all">Parliamo del vostro Piano di Zona <span class="material-symbols-outlined">arrow_forward</span></a>
+      <p class="mt-4 text-sm text-inverse-on-surface/40">Per Dirigenti di Ambito &middot; Responsabili Uffici di Piano &middot; Assessori al Welfare</p>
+    </div>
+  </div>
+</section>
+
+<!-- Esperienze correlate -->
+<section class="py-20 px-8 max-w-7xl mx-auto reveal">
+  <h2 class="text-3xl font-bold text-primary mb-8">Esperienze sui Piani di Zona</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <a href="./articolo.html?slug=piano-di-zona-ambito-di-crema" class="flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden hover:shadow-lg transition-all cursor-pointer">
+      <div class="h-44 w-full"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80" alt="" class="w-full h-full object-cover"/></div>
+      <div class="p-6"><span class="px-3 py-1 bg-secondary-fixed text-on-secondary-fixed-variant rounded-full text-xs font-bold uppercase">Welfare territoriale</span><h4 class="text-xl font-bold text-primary mt-3 mb-2">Piano di Zona — Ambito di Crema</h4><p class="text-on-surface text-sm">Coprogrammazione e redazione del Piano con istituzioni, associazioni e cittadini.</p></div>
+    </a>
+    <a href="./articolo.html?slug=regolamento-co-programmazione-usl-verona" class="flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden hover:shadow-lg transition-all cursor-pointer">
+      <div class="h-44 w-full"><img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&q=80" alt="" class="w-full h-full object-cover"/></div>
+      <div class="p-6"><span class="px-3 py-1 bg-secondary-fixed text-on-secondary-fixed-variant rounded-full text-xs font-bold uppercase">Governance sanitaria</span><h4 class="text-xl font-bold text-primary mt-3 mb-2">Regolamento Co-Programmazione — USL Verona</h4><p class="text-on-surface text-sm">Strumento strategico per la collaborazione tra sanità e Terzo Settore.</p></div>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="w-full bg-slate-50 mt-auto">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-12 py-12 max-w-7xl mx-auto">
+    <div><img src="./logo-post.png" alt="POST" class="h-[50px] w-auto object-contain self-start mb-2" onerror="this.outerHTML='<span class=\'text-primary font-extrabold text-2xl\'>POST</span>'"/><p class="text-sm text-slate-600">&copy; 2025 POST Società Benefit S.r.l. — Milano</p></div>
+    <div class="flex flex-col gap-2"><span class="text-sm text-slate-600">info@postsb.it</span><span class="text-sm text-slate-600">+39 3939993731</span></div>
+    <div><a href="https://www.linkedin.com/company/105770276" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-[#0077b5] font-bold text-sm"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a></div>
+  </div>
+</footer>
+
+<script>
+const rObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');rObs.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>rObs.observe(el));
+</script>
+</body>
+</html>
