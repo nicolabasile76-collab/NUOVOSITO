@@ -1,5 +1,17 @@
 [
   {
+    "title": "Dati e progettazione: da intuizione a metodo",
+    "excerpt": "Come i dati trasformano la coprogettazione sociale. Dai profili di comunità ai cruscotti condivisi, dall'analisi AI dei contributi partecipativi alla valutazione d'impatto: un approccio che rende i processi più trasparenti, verificabili e democratici.",
+    "cat": "metodo",
+    "catLabel": "Metodo",
+    "date": "2026-04-05",
+    "author": "Nicola Basile",
+    "img": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80",
+    "tags": ["Data-driven", "Progettazione sociale"],
+    "highlight": true,
+    "url": "./articolo-dati-progettazione.html"
+  },
+  {
     "title": "Palazzo Bocca Trezza",
     "excerpt": "Coprogrammazione e coprogettazione per uno spazio di comunità a Verona. Abbiamo facilitato il processo che ha trasformato un edificio in un luogo dove le persone si incontrano e costruiscono risposte condivise ai bisogni del quartiere.",
     "cat": "case-study",
