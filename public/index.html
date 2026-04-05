@@ -70,9 +70,9 @@ tailwind.config = {
     </a>
     <div class="hidden md:flex items-center gap-7">
       <a class="text-slate-600 hover:text-primary transition-colors" href="#pilastri">Cosa facciamo</a>
-      <a class="text-primary border-b-2 border-primary pb-0.5" href="#piani-di-zona">Piani di Zona</a>
+      <a class="text-primary border-b-2 border-primary pb-0.5" href="./piani-di-zona.html">Piani di Zona</a>
       <a class="text-slate-600 hover:text-primary transition-colors" href="#esperienze">Dal campo</a>
-      <a class="text-slate-600 hover:text-primary transition-colors" href="#wait"><span class="material-symbols-outlined text-base align-middle mr-1">neurology</span>AI per il Bene Comune</a>
+      <a class="text-slate-600 hover:text-primary transition-colors" href="./wait.html"><span class="material-symbols-outlined text-base align-middle mr-1">neurology</span>AI per il Bene Comune</a>
       <a class="text-slate-600 hover:text-primary transition-colors" href="#chi-siamo">Chi siamo</a>
     </div>
     <div class="flex items-center gap-4">
@@ -84,9 +84,9 @@ tailwind.config = {
   </nav>
   <div id="mobile-menu" class="hidden md:hidden px-8 pb-4 space-y-2 bg-white/95 backdrop-blur-md">
     <a class="block py-2 text-slate-600" href="#pilastri">Cosa facciamo</a>
-    <a class="block py-2 font-bold text-primary" href="#piani-di-zona">Piani di Zona</a>
+    <a class="block py-2 font-bold text-primary" href="./piani-di-zona.html">Piani di Zona</a>
     <a class="block py-2 text-slate-600" href="#esperienze">Dal campo</a>
-    <a class="block py-2 text-slate-600" href="#wait">AI per il Bene Comune</a>
+    <a class="block py-2 text-slate-600" href="./wait.html">AI per il Bene Comune</a>
     <a class="block py-2 text-slate-600" href="#chi-siamo">Chi siamo</a>
     <a class="block py-2 text-primary font-bold" href="#contatti">Contatti</a>
   </div>
@@ -109,7 +109,7 @@ tailwind.config = {
         Un gruppo di professionisti con un approccio artigianale: fianco a fianco con enti pubblici, cooperative e Terzo Settore.
       </p>
       <div class="flex flex-col sm:flex-row gap-4">
-        <a href="#piani-di-zona" class="px-8 py-4 bg-primary-container text-on-primary-container font-bold rounded-lg shadow-sm hover:brightness-110 transition-all flex items-center justify-center gap-2">
+        <a href="./piani-di-zona.html" class="px-8 py-4 bg-primary-container text-on-primary-container font-bold rounded-lg shadow-sm hover:brightness-110 transition-all flex items-center justify-center gap-2">
           Piani di Zona <span class="material-symbols-outlined">arrow_forward</span>
         </a>
         <a href="#pilastri" class="px-8 py-4 bg-surface-container-highest text-primary font-bold rounded-lg hover:bg-surface-container-high transition-all flex items-center justify-center">
@@ -143,83 +143,63 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- ═══ 3. I QUATTRO PILASTRI ═══ -->
-<section id="pilastri" class="px-8 py-24 max-w-7xl mx-auto">
-  <div class="mb-16 reveal">
-    <span class="inline-block py-1 px-3 mb-6 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant text-sm font-bold tracking-wide">IL NOSTRO APPROCCIO</span>
-    <h2 class="text-4xl md:text-5xl font-bold text-primary leading-tight tracking-tight mb-6">Quattro pilastri. Un metodo.</h2>
-    <p class="text-lg text-on-surface leading-relaxed max-w-2xl">Non siamo generalisti. Lavoriamo su quattro dimensioni che si alimentano a vicenda: ogni progetto ne attraversa almeno due.</p>
+<!-- ═══ 3. CHI SIAMO (intro) + QUATTRO PILASTRI ═══ -->
+<section class="px-8 pt-24 pb-8 max-w-7xl mx-auto reveal">
+  <div class="max-w-3xl">
+    <h2 class="text-4xl md:text-5xl font-bold text-primary mb-6">Non vendiamo soluzioni preconfezionate.</h2>
+    <p class="text-xl text-on-surface leading-relaxed mb-4">POST è una piccola società benefit che lavora nel campo della consulenza per il welfare, le politiche pubbliche e lo sviluppo territoriale.</p>
+    <p class="text-xl text-on-surface-variant leading-relaxed">Non siamo una grande società di consulenza: siamo professionisti che si sporcano le mani, fianco a fianco con chi opera ogni giorno nei servizi e nelle comunità.</p>
+  </div>
+</section>
+
+<section id="pilastri" class="px-8 pt-8 pb-24 max-w-7xl mx-auto">
+  <div class="mb-12 reveal">
+    <h3 class="text-3xl font-bold text-primary mb-4">Quattro pilastri. Un metodo.</h3>
   </div>
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
     <!-- PILASTRO 1: Valutazione d'Impatto -->
-    <div class="pillar-card bg-surface-container-low p-10 rounded-xl reveal-left min-h-[380px] flex flex-col justify-between border-l-4 border-primary">
+    <div class="pillar-card bg-surface-container-low p-10 rounded-xl reveal-left flex flex-col justify-between border-l-4 border-primary">
       <div>
         <span class="material-symbols-outlined text-primary text-4xl mb-4" style="font-variation-settings:'FILL' 1">monitoring</span>
-        <h3 class="text-2xl font-bold text-primary mb-4">Valutazione d'Impatto</h3>
-        <p class="text-on-surface leading-relaxed mb-6">Trasformiamo i dati in conoscenza utile per chi decide. Non è un adempimento: è lo strumento che rende i processi apprendibili e i risultati dimostrabili.</p>
-        <ul class="space-y-3">
-          <li class="flex items-start gap-2 text-on-surface-variant text-sm"><span class="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>Indicatori di esito e di processo</li>
-          <li class="flex items-start gap-2 text-on-surface-variant text-sm"><span class="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>Ricerca sociale e accountability</li>
-          <li class="flex items-start gap-2 text-on-surface-variant text-sm"><span class="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>Report per Regione e Assemblea dei Sindaci</li>
-        </ul>
+        <h3 class="text-2xl font-bold text-primary mb-3">Valutazione d'Impatto</h3>
+        <p class="text-lg text-on-surface leading-relaxed mb-4">Dati in conoscenza utile. Indicatori di esito e processo, ricerca sociale, accountability.</p>
       </div>
-      <div class="mt-8 bg-primary/5 p-4 rounded-lg">
-        <div class="flex items-center gap-2 mb-2">
-          <span class="material-symbols-outlined text-primary text-lg">new_releases</span>
-          <span class="text-sm font-bold text-primary uppercase tracking-wide">Novità 2025</span>
-        </div>
-        <p class="text-sm text-on-surface leading-relaxed"><strong>Valutazione d'Impatto Generazionale</strong> — accompagnamento all'applicazione della Legge 167/2025 per misurare gli effetti delle politiche sulle generazioni future.</p>
+      <div class="mt-6 bg-primary/5 p-4 rounded-lg">
+        <p class="text-sm text-on-surface"><span class="font-bold text-primary">Novità 2025</span> — Valutazione d'Impatto Generazionale (Legge 167/2025)</p>
       </div>
     </div>
 
     <!-- PILASTRO 2: Amministrazione Condivisa -->
-    <div class="pillar-card bg-primary text-on-primary p-10 rounded-xl reveal-right min-h-[380px] flex flex-col justify-between">
+    <div class="pillar-card bg-primary text-on-primary p-10 rounded-xl reveal-right flex flex-col justify-between">
       <div>
         <span class="material-symbols-outlined text-primary-fixed text-4xl mb-4">handshake</span>
-        <h3 class="text-2xl font-bold mb-4">Amministrazione Condivisa</h3>
-        <p class="leading-relaxed opacity-90 mb-6">Coprogrammazione e coprogettazione tra PA e Terzo Settore. Non è burocrazia: è costruire insieme le risposte ai bisogni, con metodo e trasparenza.</p>
-        <ul class="space-y-3">
-          <li class="flex items-start gap-2 opacity-80 text-sm"><span class="material-symbols-outlined text-primary-fixed text-sm mt-0.5">check_circle</span>Facilitazione tavoli tematici e territoriali</li>
-          <li class="flex items-start gap-2 opacity-80 text-sm"><span class="material-symbols-outlined text-primary-fixed text-sm mt-0.5">check_circle</span>Innovazione istituzionale e governance</li>
-          <li class="flex items-start gap-2 opacity-80 text-sm"><span class="material-symbols-outlined text-primary-fixed text-sm mt-0.5">check_circle</span>Progettazione partecipata dei servizi</li>
-        </ul>
+        <h3 class="text-2xl font-bold mb-3">Amministrazione Condivisa</h3>
+        <p class="text-lg leading-relaxed opacity-90">Coprogrammazione e coprogettazione tra PA e Terzo Settore. Facilitazione tavoli, governance, progettazione partecipata.</p>
       </div>
-      <div class="mt-8 bg-white/10 p-4 rounded-lg">
-        <p class="text-sm italic opacity-90">"L'amministrazione condivisa non è un adempimento. È il modo in cui si costruiscono le politiche che funzionano."</p>
-      </div>
+      <a href="./piani-di-zona.html" class="mt-6 inline-flex items-center gap-2 px-6 py-3 bg-white/20 backdrop-blur-sm text-on-primary font-bold rounded-lg hover:bg-white/30 transition-all">
+        Piani di Zona <span class="material-symbols-outlined">arrow_forward</span>
+      </a>
     </div>
 
     <!-- PILASTRO 3: Consulenza Organizzativa -->
-    <div class="pillar-card bg-surface-container-highest p-10 rounded-xl reveal-left min-h-[380px] flex flex-col justify-between border-b-4 border-primary">
+    <div class="pillar-card bg-surface-container-highest p-10 rounded-xl reveal-left flex flex-col justify-between border-b-4 border-primary">
       <div>
         <span class="material-symbols-outlined text-primary text-4xl mb-4">hub</span>
-        <h3 class="text-2xl font-bold text-primary mb-4">Consulenza Organizzativa</h3>
-        <p class="text-on-surface leading-relaxed mb-6">Accompagniamo le organizzazioni attraverso le trasformazioni, lavorando sulle culture organizzative — quelle cose che non stanno negli organigrammi ma fanno la differenza.</p>
-        <ul class="space-y-3">
-          <li class="flex items-start gap-2 text-on-surface-variant text-sm"><span class="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>Piani di impresa e sviluppo strategico</li>
-          <li class="flex items-start gap-2 text-on-surface-variant text-sm"><span class="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>Passaggio intergenerazionale</li>
-          <li class="flex items-start gap-2 text-on-surface-variant text-sm"><span class="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>Sviluppo competenze e formazione</li>
-          <li class="flex items-start gap-2 text-on-surface-variant text-sm"><span class="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>Riorganizzazione dei processi</li>
-        </ul>
+        <h3 class="text-2xl font-bold text-primary mb-3">Consulenza Organizzativa</h3>
+        <p class="text-lg text-on-surface leading-relaxed">Piani di impresa, passaggio intergenerazionale, sviluppo competenze, riorganizzazione dei processi.</p>
       </div>
     </div>
 
     <!-- PILASTRO 4: Intelligenza Artificiale -->
-    <div class="pillar-card bg-inverse-surface text-inverse-on-surface p-10 rounded-xl reveal-right min-h-[380px] flex flex-col justify-between">
+    <div class="pillar-card bg-inverse-surface text-inverse-on-surface p-10 rounded-xl reveal-right flex flex-col justify-between">
       <div>
         <span class="material-symbols-outlined text-primary-fixed-dim text-4xl mb-4">neurology</span>
-        <h3 class="text-2xl font-bold text-primary-fixed-dim mb-4">Intelligenza Artificiale</h3>
-        <p class="leading-relaxed opacity-90 mb-6">L'AI come strumento al servizio dei processi sociali e collaborativi. Non vendiamo software: accompagniamo le organizzazioni a capire dove e come l'AI fa davvero la differenza.</p>
-        <ul class="space-y-3">
-          <li class="flex items-start gap-2 opacity-80 text-sm"><span class="material-symbols-outlined text-primary-fixed-dim text-sm mt-0.5">check_circle</span>Programmazione e progettazione data driven</li>
-          <li class="flex items-start gap-2 opacity-80 text-sm"><span class="material-symbols-outlined text-primary-fixed-dim text-sm mt-0.5">check_circle</span>Analisi dati sociali potenziata dall'AI</li>
-          <li class="flex items-start gap-2 opacity-80 text-sm"><span class="material-symbols-outlined text-primary-fixed-dim text-sm mt-0.5">check_circle</span>Formazione per operatori e dirigenti PA</li>
-          <li class="flex items-start gap-2 opacity-80 text-sm"><span class="material-symbols-outlined text-primary-fixed-dim text-sm mt-0.5">check_circle</span>Sperimentazioni pilota nei servizi</li>
-        </ul>
+        <h3 class="text-2xl font-bold text-primary-fixed-dim mb-3">Intelligenza Artificiale</h3>
+        <p class="text-lg leading-relaxed opacity-90">Programmazione data driven, analisi dati sociali, formazione per PA e Terzo Settore, sperimentazioni pilota.</p>
       </div>
-      <a href="#wait" class="mt-8 inline-flex items-center gap-2 text-primary-fixed-dim font-bold hover:gap-4 transition-all">
+      <a href="./wait.html" class="mt-6 inline-flex items-center gap-2 text-primary-fixed-dim font-bold hover:gap-4 transition-all">
         Scopri w<span class="font-extrabold">AI</span>t <span class="material-symbols-outlined">arrow_forward</span>
       </a>
     </div>
@@ -227,88 +207,7 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- ═══ 4. PIANI DI ZONA ═══ -->
-<section id="piani-di-zona" class="py-24 px-8 bg-inverse-surface text-inverse-on-surface">
-  <div class="max-w-7xl mx-auto">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start mb-20">
-      <div class="lg:col-span-7 reveal-left">
-        <div class="inline-block px-4 py-1.5 mb-6 rounded-full bg-primary-container text-on-primary-container text-sm font-bold tracking-wide">ASSISTENZA TECNICA PER AMBITI TERRITORIALI</div>
-        <h2 class="text-5xl md:text-6xl font-extrabold text-white leading-[1.1] mb-8 tracking-tight">
-          Piani di Zona.<br/><span class="text-primary-fixed-dim">Si parte dalla valutazione.</span>
-        </h2>
-        <p class="text-xl text-inverse-on-surface/90 leading-relaxed max-w-2xl mb-8">
-          I Piani di Zona sono in atto. Non si ricomincia da zero: si parte da quello che c'è, da quello che ha funzionato e da quello che va ripensato. La valutazione costruisce le basi per una programmazione solida e pone le condizioni per aprire in maniera adeguata la coprogrammazione.
-        </p>
-        <p class="text-lg text-inverse-on-surface/70 leading-relaxed max-w-2xl">A fianco del vostro Ufficio di Piano, non al suo posto.</p>
-      </div>
-      <div class="lg:col-span-5 reveal-right">
-        <div class="bg-white/10 backdrop-blur-md rounded-xl p-8 border border-white/10">
-          <h3 class="text-2xl font-bold text-primary-fixed-dim mb-6">Il nostro percorso</h3>
-          <div class="flex gap-4 mb-8">
-            <div class="flex flex-col items-center"><div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-lg">1</div><div class="w-0.5 h-full bg-primary-container/30 mt-2"></div></div>
-            <div><h4 class="text-xl font-bold text-white mb-2">Valutazione e Monitoraggio</h4><p class="text-inverse-on-surface/80 leading-relaxed">Indicatori di esito e processo, analisi di ciò che ha funzionato, report per Regione e Assemblea dei Sindaci.</p><span class="inline-block mt-2 text-sm font-bold text-primary-fixed-dim">Il punto di partenza</span></div>
-          </div>
-          <div class="flex gap-4 mb-8">
-            <div class="flex flex-col items-center"><div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-lg">2</div><div class="w-0.5 h-full bg-primary-container/30 mt-2"></div></div>
-            <div><h4 class="text-xl font-bold text-white mb-2">Programmazione e Redazione</h4><p class="text-inverse-on-surface/80 leading-relaxed">Dalla valutazione emergono le priorità. Analisi dei bisogni, obiettivi misurabili, raccordo con i POAS delle ATS.</p><span class="inline-block mt-2 text-sm font-bold text-primary-fixed-dim">Le basi solide</span></div>
-          </div>
-          <div class="flex gap-4 mb-8">
-            <div class="flex flex-col items-center"><div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-lg">3</div><div class="w-0.5 h-full bg-primary-container/30 mt-2"></div></div>
-            <div><h4 class="text-xl font-bold text-white mb-2">Coprogrammazione</h4><p class="text-inverse-on-surface/80 leading-relaxed">Solo con basi solide si apre al Terzo Settore. Facilitazione con metodi strutturati: world café, focus group, raccolta contributi.</p><span class="inline-block mt-2 text-sm font-bold text-primary-fixed-dim">L'apertura consapevole</span></div>
-          </div>
-          <div class="flex gap-4">
-            <div class="flex flex-col items-center"><div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-lg">4</div></div>
-            <div><h4 class="text-xl font-bold text-white mb-2">Supporto Normativo</h4><p class="text-inverse-on-surface/80 leading-relaxed">L.R. 3/2008, Codice del Terzo Settore, DGR, circolari ATS. Traduzione in azioni concrete.</p><span class="inline-block mt-2 text-sm font-bold text-primary-fixed-dim">Trasversale a tutto</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 stagger">
-      <div class="bg-white/5 border border-white/10 p-6 rounded-xl reveal" style="--i:0"><span class="material-symbols-outlined text-primary-fixed-dim text-2xl mb-3">gavel</span><h4 class="font-bold text-white mb-2">Normativa in evoluzione</h4><p class="text-sm text-inverse-on-surface/70">Il quadro si aggiorna costantemente. Stare al passo richiede tempo che spesso manca.</p></div>
-      <div class="bg-white/5 border border-white/10 p-6 rounded-xl reveal" style="--i:1"><span class="material-symbols-outlined text-primary-fixed-dim text-2xl mb-3">groups</span><h4 class="font-bold text-white mb-2">Tavoli difficili</h4><p class="text-sm text-inverse-on-surface/70">Senza facilitazione professionale, i tavoli diventano arene sterili o validazioni formali.</p></div>
-      <div class="bg-white/5 border border-white/10 p-6 rounded-xl reveal" style="--i:2"><span class="material-symbols-outlined text-primary-fixed-dim text-2xl mb-3">description</span><h4 class="font-bold text-white mb-2">Documenti che non reggono</h4><p class="text-sm text-inverse-on-surface/70">Senza metodologie rigorose, il Piano rischia la non conformità ai requisiti regionali.</p></div>
-      <div class="bg-white/5 border border-white/10 p-6 rounded-xl reveal" style="--i:3"><span class="material-symbols-outlined text-primary-fixed-dim text-2xl mb-3">monitoring</span><h4 class="font-bold text-white mb-2">Nessun sistema di risultati</h4><p class="text-sm text-inverse-on-surface/70">Regione chiede evidenza dell'impatto. Senza valutazione, il dialogo resta sull'adempimento.</p></div>
-    </div>
-    <div class="mt-16 text-center reveal">
-      <a href="#contatti" class="inline-flex items-center gap-2 px-10 py-4 bg-primary-container text-on-primary-container font-bold rounded-lg text-lg hover:brightness-110 transition-all">Parliamo del vostro Piano di Zona <span class="material-symbols-outlined">arrow_forward</span></a>
-      <p class="mt-4 text-sm text-inverse-on-surface/40">Per Dirigenti di Ambito &middot; Responsabili Uffici di Piano &middot; Assessori al Welfare</p>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ 5. wAIt ═══ -->
-<section id="wait" class="py-24 px-8">
-  <div class="max-w-7xl mx-auto">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center mb-20">
-      <div class="lg:col-span-7 reveal-left">
-        <div class="inline-block px-4 py-1.5 mb-6 rounded-full bg-inverse-surface text-inverse-on-surface text-sm font-bold tracking-wide">AI PER IL BENE COMUNE</div>
-        <h2 class="text-5xl md:text-7xl font-extrabold text-primary leading-[1.05] mb-8 tracking-tight">
-          w<span class="text-primary-container">AI</span>t.<br/>
-          <span class="text-on-surface-variant text-3xl md:text-4xl font-bold">Welfare &amp; Artificial Intelligence Toolkit</span>
-        </h2>
-        <p class="text-xl text-on-surface leading-relaxed max-w-2xl mb-8">
-          wAIt è il nostro modo di portare l'AI dentro il welfare e la pubblica amministrazione — con lo stesso approccio artigianale che ci caratterizza. Non per rincorrere la tecnologia, ma per metterla al servizio dei processi sociali.
-        </p>
-      </div>
-      <div class="lg:col-span-5 reveal-right">
-        <div class="bg-inverse-surface text-inverse-on-surface p-10 rounded-xl shadow-2xl">
-          <span class="material-symbols-outlined text-5xl text-primary-fixed-dim mb-6">neurology</span>
-          <h3 class="text-2xl font-bold mb-6 text-primary-fixed-dim">Il modello wAIt</h3>
-          <ul class="space-y-4">
-            <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary-fixed-dim mt-0.5">arrow_right</span><span><strong>Formazione</strong> — Percorsi pratici per operatori sociali, dirigenti PA e Terzo Settore</span></li>
-            <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary-fixed-dim mt-0.5">arrow_right</span><span><strong>Sperimentazione</strong> — Progetti pilota per integrare l'AI nei processi di lavoro</span></li>
-            <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary-fixed-dim mt-0.5">arrow_right</span><span><strong>Consulenza</strong> — Orientamento strategico su cosa automatizzare e cosa no</span></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 stagger">
-      <div class="bg-surface-container-high p-8 rounded-xl reveal" style="--i:0"><span class="material-symbols-outlined text-3xl text-primary mb-3">balance</span><h4 class="text-lg font-bold text-primary mb-2">Etica prima di tutto</h4><p class="text-on-surface leading-relaxed text-sm">Trasparente, equa, al servizio delle persone.</p></div>
-      <div class="bg-surface-container-high p-8 rounded-xl reveal" style="--i:1"><span class="material-symbols-outlined text-3xl text-primary mb-3">precision_manufacturing</span><h4 class="text-lg font-bold text-primary mb-2">Artigianale, non industriale</h4><p class="text-on-surface leading-relaxed text-sm">Ogni organizzazione ha i suoi processi. Partiamo da lì.</p></div>
-      <div class="bg-surface-container-high p-8 rounded-xl reveal" style="--i:2"><span class="material-symbols-outlined text-3xl text-primary mb-3">diversity_3</span><h4 class="text-lg font-bold text-primary mb-2">Competenze diffuse</h4><p class="text-on-surface leading-relaxed text-sm">Costruire competenze interne, non dipendenza tecnologica.</p></div>
-    </div>
-  </div>
-</section>
+<!-- PdZ e wAIt sono ora pagine separate: piani-di-zona.html e wait.html -->
 
 <!-- ═══ 6. BLOG / ESPERIENZE ═══ -->
 <section id="esperienze" class="bg-surface-container-low py-24 px-8">
@@ -339,11 +238,6 @@ tailwind.config = {
 <!-- ═══ 7. CHI SIAMO + TEAM ═══ -->
 <section id="chi-siamo" class="bg-surface-container-low py-24">
   <div class="max-w-7xl mx-auto px-8">
-    <div class="max-w-3xl mb-20 reveal">
-      <h2 class="text-4xl font-bold text-primary mb-6">Non vendiamo soluzioni preconfezionate.</h2>
-      <p class="text-lg text-on-surface leading-relaxed mb-4">POST è una piccola società benefit che lavora nel campo della consulenza per il welfare, le politiche pubbliche e lo sviluppo territoriale.</p>
-      <p class="text-lg text-on-surface-variant leading-relaxed">Non siamo una grande società di consulenza: siamo professionisti che si sporcano le mani, fianco a fianco con chi opera ogni giorno nei servizi e nelle comunità.</p>
-    </div>
     <div class="reveal">
       <h3 class="text-3xl font-bold text-primary mb-4">Le persone di POST.</h3>
       <p class="text-lg text-on-surface-variant max-w-xl mb-12">Competenze diverse unite dalla voglia di fare bene.</p>
@@ -401,9 +295,9 @@ tailwind.config = {
     <div class="flex flex-col gap-3">
       <h4 class="font-bold text-primary text-sm">Navigazione</h4>
       <a class="text-slate-600 hover:text-primary text-sm" href="#pilastri">Cosa facciamo</a>
-      <a class="text-slate-600 hover:text-primary text-sm font-bold" href="#piani-di-zona">Piani di Zona</a>
+      <a class="text-slate-600 hover:text-primary text-sm font-bold" href="./piani-di-zona.html">Piani di Zona</a>
       <a class="text-slate-600 hover:text-primary text-sm" href="#esperienze">Dal campo</a>
-      <a class="text-slate-600 hover:text-primary text-sm" href="#wait">wAIt</a>
+      <a class="text-slate-600 hover:text-primary text-sm" href="./wait.html">wAIt</a>
       <a class="text-slate-600 hover:text-primary text-sm" href="#chi-siamo">Chi siamo</a>
     </div>
     <div class="flex flex-col gap-3">
