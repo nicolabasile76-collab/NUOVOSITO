@@ -64,10 +64,13 @@ app.get('/api/images', (req, res) => {
   res.json(result);
 });
 
-app.listen(PORT, () => {
-  console.log(`\n  POST Societa Benefit - Sito attivo!`);
-  console.log(`  http://localhost:${PORT}\n`);
-  console.log(`  Cartella immagini: ${IMAGES_DIR}`);
-  console.log(`  Sottocartelle: hero, team, projects, services, contact\n`);
-  console.log(`  Aggiungi foto nelle sottocartelle e ricarica la pagina!\n`);
-});
+// Local dev: listen on port
+if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`\n  POST Societa Benefit - Sito attivo!`);
+    console.log(`  http://localhost:${PORT}\n`);
+  });
+}
+
+// Export for Vercel
+module.exports = app;
