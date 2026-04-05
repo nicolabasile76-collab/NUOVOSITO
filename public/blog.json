@@ -1,0 +1,83 @@
+[
+  {
+    "title": "Palazzo Bocca Trezza",
+    "excerpt": "Coprogrammazione e coprogettazione per uno spazio di comunità a Verona. Abbiamo facilitato il processo che ha trasformato un edificio in un luogo dove le persone si incontrano e costruiscono risposte condivise ai bisogni del quartiere.",
+    "cat": "case-study",
+    "catLabel": "Case study",
+    "date": "2024-11-15",
+    "author": "Nicola Basile",
+    "img": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80",
+    "tags": ["Amministrazione condivisa", "Terzo Settore"]
+  },
+  {
+    "title": "Piano di Zona — Ambito di Crema",
+    "excerpt": "POST ha facilitato il processo di coprogrammazione e redazione del Piano di Zona, coinvolgendo istituzioni, associazioni e cittadini per definire strategie di welfare inclusivo e flessibile per l'intero ambito territoriale.",
+    "cat": "case-study",
+    "catLabel": "Case study",
+    "date": "2024-09-20",
+    "author": "Nicola Basile",
+    "img": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80",
+    "tags": ["Politiche pubbliche", "Welfare territoriale"]
+  },
+  {
+    "title": "Cooperativa Il Torpedone",
+    "excerpt": "Percorso di accompagnamento attraverso coprogettazione, formazione e consulenza strategica. Abbiamo lavorato fianco a fianco con la cooperativa per costruire modelli organizzativi che tengano insieme qualità del servizio e sostenibilità economica.",
+    "cat": "case-study",
+    "catLabel": "Case study",
+    "date": "2024-06-10",
+    "author": "Pierluca Borali",
+    "img": "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=600&q=80",
+    "tags": ["Organizzazione", "Cooperazione"]
+  },
+  {
+    "title": "Regolamento Co-Programmazione — USL Verona",
+    "excerpt": "Abbiamo sviluppato lo strumento strategico per la collaborazione tra sistema sanitario e Terzo Settore, attraverso un processo partecipativo che ha coinvolto tutti gli attori del territorio per garantire trasparenza, efficienza e inclusività nei servizi.",
+    "cat": "case-study",
+    "catLabel": "Case study",
+    "date": "2024-03-05",
+    "author": "Giuseppe Imbrogno",
+    "img": "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&q=80",
+    "tags": ["Sanità", "Amministrazione condivisa"]
+  },
+  {
+    "title": "Progetto Legami — Ricerca-azione",
+    "excerpt": "Una ricerca-azione per analizzare l'impatto del Registro Unico Nazionale del Terzo Settore sui processi di coprogettazione. Laboratori, interviste e confronti con gli stakeholder per capire cosa funziona e cosa migliorare nell'amministrazione condivisa.",
+    "cat": "metodo",
+    "catLabel": "Metodo",
+    "date": "2024-01-18",
+    "author": "Nicol Mondin",
+    "img": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80",
+    "tags": ["Ricerca sociale", "Terzo Settore"],
+    "highlight": true
+  },
+  {
+    "title": "Valutazione d'Impatto Generazionale — Legge 167/2025",
+    "excerpt": "La VIG introduce un nuovo paradigma nella programmazione sociale: misurare gli effetti delle politiche sulle generazioni future. Cosa cambia per gli ambiti territoriali e come prepararsi all'applicazione della nuova normativa.",
+    "cat": "normativa",
+    "catLabel": "Normativa",
+    "date": "2025-03-28",
+    "author": "Nicola Basile",
+    "img": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&q=80",
+    "tags": ["VIG", "Legge 167/2025"]
+  },
+  {
+    "title": "AI e coprogrammazione: un primo bilancio",
+    "excerpt": "Come abbiamo usato strumenti di AI generativa per analizzare i contributi dei tavoli territoriali e restituire sintesi utilizzabili dai decisori. Un'esperienza concreta di programmazione data driven applicata ai processi partecipativi.",
+    "cat": "ai",
+    "catLabel": "AI",
+    "date": "2025-02-10",
+    "author": "Nicola Basile",
+    "img": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80",
+    "tags": ["Intelligenza Artificiale", "Coprogrammazione"]
+  },
+  {
+    "title": "Governance Area Omogenea Crema",
+    "excerpt": "Riflessione e analisi sui processi di governance territoriale nell'area omogenea, con attenzione alle dinamiche organizzative e alla gestione delle risorse umane nelle trasformazioni istituzionali in corso.",
+    "cat": "case-study",
+    "catLabel": "Case study",
+    "date": "2024-07-12",
+    "author": "Daniele Restelli",
+    "img": "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=600&q=80",
+    "tags": ["Governance", "Organizzazione"]
+  }
+]

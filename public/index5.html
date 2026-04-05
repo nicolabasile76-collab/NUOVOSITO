@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>POST Società Benefit — Consulenza per il bene comune</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Public+Sans:wght@400;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "primary-fixed-dim":"#88d1e5","surface-container":"#e7eeff","surface-bright":"#f9f9ff",
+        "on-error":"#ffffff","surface-container-low":"#f0f3ff","surface-container-lowest":"#ffffff",
+        "secondary-fixed-dim":"#9dcedf","background":"#f9f9ff","primary":"#006172",
+        "primary-fixed":"#acedff","on-background":"#121c2c","on-primary":"#ffffff",
+        "on-surface-variant":"#3f484b","primary-container":"#2b7a8c",
+        "on-primary-container":"#e7f9ff","secondary-fixed":"#b9eafb",
+        "secondary-container":"#b6e7f8","on-secondary-fixed-variant":"#184d5b",
+        "surface-variant":"#d9e3f9","inverse-primary":"#88d1e5","surface-tint":"#0c6779",
+        "surface-dim":"#d0daf0","surface":"#f9f9ff","outline":"#6f797c",
+        "surface-container-high":"#dee8ff","on-surface":"#121c2c",
+        "tertiary-fixed-dim":"#8ad1e3","inverse-on-surface":"#ebf1ff",
+        "inverse-surface":"#273141","on-primary-fixed":"#001f26",
+        "on-tertiary-container":"#e6f9ff","outline-variant":"#bec8cb",
+        "surface-container-highest":"#d9e3f9","tertiary":"#016171",
+        "on-secondary":"#ffffff","secondary":"#346573","tertiary-container":"#2d7a8a"
+      },
+      borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},
+      fontFamily:{headline:["Public Sans"],body:["Public Sans"],atkinson:["Atkinson Hyperlegible"]}
+    },
+  },
+}
+</script>
+<style>
+  .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
+  body{font-family:'Atkinson Hyperlegible',sans-serif;background:#f9f9ff;color:#121c2c}
+  h1,h2,h3{font-family:'Public Sans',sans-serif}
+  html{scroll-behavior:smooth}
+
+  /* Scroll animations */
+  .reveal{opacity:0;transform:translateY(40px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+  .reveal-left{opacity:0;transform:translateX(-60px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+  .reveal-left.visible{opacity:1;transform:translateX(0)}
+  .reveal-right{opacity:0;transform:translateX(60px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+  .reveal-right.visible{opacity:1;transform:translateX(0)}
+  .reveal-scale{opacity:0;transform:scale(.9);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+  .reveal-scale.visible{opacity:1;transform:scale(1)}
+  .stagger>*{transition-delay:calc(var(--i,0)*120ms)}
+
+  /* Hero carousel */
+  .hero-carousel{position:relative;width:100%;height:100%}
+  .hero-carousel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease-in-out}
+  .hero-carousel img.active{opacity:1}
+  .hero-dots{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:10}
+  .hero-dots button{width:10px;height:10px;border-radius:50%;border:2px solid white;background:transparent;cursor:pointer;transition:background .3s}
+  .hero-dots button.active{background:white}
+
+  /* Counter animation */
+  .counter{display:inline-block}
+
+  .img-placeholder{background:linear-gradient(135deg,#dee8ff 0%,#b9eafb 100%);display:flex;align-items:center;justify-content:center;color:#006172;font-size:.875rem;font-weight:700}
+</style>
+</head>
+<body class="flex flex-col min-h-screen antialiased">
+
+<!-- ═══════════ NAVBAR ═══════════ -->
+<header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm">
+  <nav class="flex justify-between items-center px-8 py-3 max-w-7xl mx-auto text-lg">
+    <a href="#hero" class="block flex-shrink-0">
+      <img src="./logo-post.png" alt="POST Società Benefit" class="h-[65px] w-auto object-contain" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'text-primary font-extrabold text-3xl\'>POST</span>')"/>
+    </a>
+    <div class="hidden md:flex items-center gap-7">
+      <a class="text-slate-600 hover:text-primary transition-colors" href="#servizi">Servizi</a>
+      <a class="text-primary border-b-2 border-primary pb-0.5 hover:brightness-110 transition-colors" href="#piani-di-zona">Piani di Zona</a>
+      <a class="text-slate-600 hover:text-primary transition-colors" href="#esperienze">Esperienze</a>
+      <a class="text-slate-600 hover:text-primary transition-colors" href="#wait"><span class="text-on-surface">w</span><span class="font-extrabold text-primary">AI</span><span class="text-on-surface">t</span></a>
+      <a class="text-slate-600 hover:text-primary transition-colors" href="#chi-siamo">Chi siamo</a>
+    </div>
+    <div class="flex items-center gap-4">
+      <a href="#contatti" class="bg-primary-container text-on-primary-container px-6 py-2 rounded-lg font-bold hover:opacity-90 transition-all active:scale-95">Contatti</a>
+      <button class="md:hidden text-primary" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </div>
+  </nav>
+  <div id="mobile-menu" class="hidden md:hidden px-8 pb-4 space-y-2 bg-white/95 backdrop-blur-md">
+    <a class="block py-2 text-slate-600" href="#servizi">Servizi</a>
+    <a class="block py-2 font-bold text-primary" href="#piani-di-zona">Piani di Zona</a>
+    <a class="block py-2 text-slate-600" href="#esperienze">Esperienze</a>
+    <a class="block py-2 text-slate-600" href="#wait">wAIt — AI per il bene comune</a>
+    <a class="block py-2 text-slate-600" href="#chi-siamo">Chi siamo</a>
+    <a class="block py-2 text-primary font-bold" href="#contatti">Contatti</a>
+  </div>
+</header>
+
+<main class="flex-grow pt-24">
+
+<!-- ═══════════ 1. HERO ═══════════ -->
+<section id="hero" class="relative overflow-hidden px-8 py-16 md:py-28 max-w-7xl mx-auto">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <div class="lg:col-span-7 z-10 reveal-left">
+      <div class="inline-block px-4 py-1.5 mb-6 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant text-sm font-bold tracking-wide">
+        SOCIETÀ BENEFIT
+      </div>
+      <h1 class="text-5xl md:text-7xl font-extrabold text-primary leading-[1.1] mb-6 tracking-tight">
+        Lavoriamo con chi costruisce il bene comune.
+      </h1>
+      <p class="text-xl md:text-2xl text-on-surface leading-relaxed mb-6 max-w-2xl font-atkinson">
+        Consulenza per il welfare, le politiche pubbliche e lo sviluppo territoriale. Integriamo l'intelligenza artificiale nei processi sociali e collaborativi.
+      </p>
+      <p class="text-lg text-on-surface-variant leading-relaxed mb-10 max-w-xl font-atkinson">
+        Un gruppo di professionisti con un approccio artigianale: fianco a fianco con enti pubblici, cooperative e Terzo Settore.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="#piani-di-zona" class="px-8 py-4 bg-primary-container text-on-primary-container font-bold rounded-lg shadow-sm hover:brightness-110 transition-all flex items-center justify-center gap-2">
+          Piani di Zona <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
+        <a href="#servizi" class="px-8 py-4 bg-surface-container-highest text-primary font-bold rounded-lg hover:bg-surface-container-high transition-all flex items-center justify-center">
+          Tutti i servizi
+        </a>
+      </div>
+    </div>
+    <div class="lg:col-span-5 relative reveal-right">
+      <div class="relative w-full aspect-[4/5] rounded-xl overflow-hidden shadow-2xl">
+        <div id="hero-carousel" class="hero-carousel w-full h-full bg-surface-container-low">
+          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80" alt="Consulenza collaborativa" class="active"/>
+          <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&q=80" alt="Team di lavoro"/>
+          <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80" alt="Workshop strategico"/>
+          <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&q=80" alt="Comunità e territorio"/>
+        </div>
+        <div class="hero-dots" id="hero-dots"></div>
+      </div>
+      <div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-surface-container-low rounded-full opacity-50 blur-3xl"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 2. CONTATORI SOCIAL PROOF ═══════════ -->
+<section class="bg-primary py-14 px-8 reveal">
+  <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 text-center">
+    <div>
+      <p class="text-4xl md:text-5xl font-extrabold text-on-primary"><span class="counter" data-target="4">0</span></p>
+      <p class="text-sm text-primary-fixed font-bold mt-1 uppercase tracking-wider">Regioni</p>
+    </div>
+    <div>
+      <p class="text-4xl md:text-5xl font-extrabold text-on-primary"><span class="counter" data-target="12">0</span></p>
+      <p class="text-sm text-primary-fixed font-bold mt-1 uppercase tracking-wider">Territori</p>
+    </div>
+    <div>
+      <p class="text-4xl md:text-5xl font-extrabold text-on-primary"><span class="counter" data-target="35">0</span>+</p>
+      <p class="text-sm text-primary-fixed font-bold mt-1 uppercase tracking-wider">Enti Terzo Settore</p>
+    </div>
+    <div>
+      <p class="text-4xl md:text-5xl font-extrabold text-on-primary"><span class="counter" data-target="20">0</span>+</p>
+      <p class="text-sm text-primary-fixed font-bold mt-1 uppercase tracking-wider">Pubbliche Amministrazioni</p>
+    </div>
+    <div>
+      <p class="text-4xl md:text-5xl font-extrabold text-on-primary"><span class="counter" data-target="40">0</span>+</p>
+      <p class="text-sm text-primary-fixed font-bold mt-1 uppercase tracking-wider">Processi collaborativi</p>
+    </div>
+    <div>
+      <p class="text-4xl md:text-5xl font-extrabold text-on-primary"><span class="counter" data-target="15">0</span>+</p>
+      <p class="text-sm text-primary-fixed font-bold mt-1 uppercase tracking-wider">Valutazioni d'impatto</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 3. PIANI DI ZONA (in evidenza, subito) ═══════════ -->
+<section id="piani-di-zona" class="py-24 px-8 bg-inverse-surface text-inverse-on-surface">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start mb-20">
+      <div class="lg:col-span-7 reveal-left">
+        <div class="inline-block px-4 py-1.5 mb-6 rounded-full bg-primary-container text-on-primary-container text-sm font-bold tracking-wide">
+          ASSISTENZA TECNICA PER AMBITI TERRITORIALI
+        </div>
+        <h2 class="text-5xl md:text-6xl font-extrabold text-white leading-[1.1] mb-8 tracking-tight">
+          Piani di Zona.<br/>
+          <span class="text-primary-fixed-dim">Si parte dalla valutazione.</span>
+        </h2>
+        <p class="text-xl text-inverse-on-surface/90 leading-relaxed max-w-2xl mb-8">
+          I Piani di Zona sono in atto. Non si ricomincia da zero: si parte da quello che c'è, da quello che ha funzionato e da quello che va ripensato. La valutazione costruisce le basi per una programmazione solida e pone le condizioni per aprire in maniera adeguata la coprogrammazione.
+        </p>
+        <p class="text-lg text-inverse-on-surface/70 leading-relaxed max-w-2xl">
+          A fianco del vostro Ufficio di Piano, non al suo posto.
+        </p>
+      </div>
+      <div class="lg:col-span-5 reveal-right">
+        <div class="bg-white/10 backdrop-blur-md rounded-xl p-8 border border-white/10">
+          <h3 class="text-2xl font-bold text-primary-fixed-dim mb-6">Il nostro percorso</h3>
+          <div class="flex gap-4 mb-8">
+            <div class="flex flex-col items-center">
+              <div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-lg">1</div>
+              <div class="w-0.5 h-full bg-primary-container/30 mt-2"></div>
+            </div>
+            <div>
+              <h4 class="text-xl font-bold text-white mb-2">Valutazione e Monitoraggio</h4>
+              <p class="text-inverse-on-surface/80 leading-relaxed">Indicatori di esito e processo, analisi di ciò che ha funzionato, report per Regione e Assemblea dei Sindaci.</p>
+              <span class="inline-block mt-2 text-sm font-bold text-primary-fixed-dim">Il punto di partenza</span>
+            </div>
+          </div>
+          <div class="flex gap-4 mb-8">
+            <div class="flex flex-col items-center">
+              <div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-lg">2</div>
+              <div class="w-0.5 h-full bg-primary-container/30 mt-2"></div>
+            </div>
+            <div>
+              <h4 class="text-xl font-bold text-white mb-2">Programmazione e Redazione</h4>
+              <p class="text-inverse-on-surface/80 leading-relaxed">Dalla valutazione emergono le priorità. Analisi dei bisogni, obiettivi misurabili, raccordo con i POAS delle ATS.</p>
+              <span class="inline-block mt-2 text-sm font-bold text-primary-fixed-dim">Le basi solide</span>
+            </div>
+          </div>
+          <div class="flex gap-4 mb-8">
+            <div class="flex flex-col items-center">
+              <div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-lg">3</div>
+              <div class="w-0.5 h-full bg-primary-container/30 mt-2"></div>
+            </div>
+            <div>
+              <h4 class="text-xl font-bold text-white mb-2">Coprogrammazione</h4>
+              <p class="text-inverse-on-surface/80 leading-relaxed">Solo con basi solide si apre al Terzo Settore in modo adeguato. Facilitazione con metodi strutturati: world café, focus group, raccolta contributi.</p>
+              <span class="inline-block mt-2 text-sm font-bold text-primary-fixed-dim">L'apertura consapevole</span>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex flex-col items-center">
+              <div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-lg">4</div>
+            </div>
+            <div>
+              <h4 class="text-xl font-bold text-white mb-2">Supporto Normativo</h4>
+              <p class="text-inverse-on-surface/80 leading-relaxed">L.R. 3/2008, Codice del Terzo Settore, DGR, circolari ATS. Traduzione delle indicazioni regionali in azioni concrete.</p>
+              <span class="inline-block mt-2 text-sm font-bold text-primary-fixed-dim">Trasversale a tutto il percorso</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 stagger">
+      <div class="bg-white/5 border border-white/10 p-6 rounded-xl reveal" style="--i:0">
+        <span class="material-symbols-outlined text-primary-fixed-dim text-2xl mb-3">gavel</span>
+        <h4 class="font-bold text-white mb-2">Normativa in evoluzione</h4>
+        <p class="text-sm text-inverse-on-surface/70">Il quadro si aggiorna costantemente. Stare al passo richiede tempo che spesso manca.</p>
+      </div>
+      <div class="bg-white/5 border border-white/10 p-6 rounded-xl reveal" style="--i:1">
+        <span class="material-symbols-outlined text-primary-fixed-dim text-2xl mb-3">groups</span>
+        <h4 class="font-bold text-white mb-2">Tavoli difficili</h4>
+        <p class="text-sm text-inverse-on-surface/70">Senza facilitazione professionale, i tavoli diventano arene sterili o validazioni formali.</p>
+      </div>
+      <div class="bg-white/5 border border-white/10 p-6 rounded-xl reveal" style="--i:2">
+        <span class="material-symbols-outlined text-primary-fixed-dim text-2xl mb-3">description</span>
+        <h4 class="font-bold text-white mb-2">Documenti che non reggono</h4>
+        <p class="text-sm text-inverse-on-surface/70">Senza metodologie rigorose, il Piano rischia la non conformità ai requisiti regionali.</p>
+      </div>
+      <div class="bg-white/5 border border-white/10 p-6 rounded-xl reveal" style="--i:3">
+        <span class="material-symbols-outlined text-primary-fixed-dim text-2xl mb-3">monitoring</span>
+        <h4 class="font-bold text-white mb-2">Nessun sistema di risultati</h4>
+        <p class="text-sm text-inverse-on-surface/70">Regione chiede evidenza dell'impatto. Senza valutazione, il dialogo resta sull'adempimento.</p>
+      </div>
+    </div>
+
+    <div class="mt-16 text-center reveal">
+      <a href="#contatti" class="inline-flex items-center gap-2 px-10 py-4 bg-primary-container text-on-primary-container font-bold rounded-lg text-lg hover:brightness-110 transition-all">
+        Parliamo del vostro Piano di Zona <span class="material-symbols-outlined">arrow_forward</span>
+      </a>
+      <p class="mt-4 text-sm text-inverse-on-surface/40">Per Dirigenti di Ambito &middot; Responsabili Uffici di Piano &middot; Assessori al Welfare</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 4. SERVIZI (compattati) ═══════════ -->
+<section id="servizi" class="px-8 py-24 max-w-7xl mx-auto">
+  <div class="max-w-3xl mb-16 reveal">
+    <span class="inline-block py-1 px-3 mb-6 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant text-sm font-bold tracking-wide">
+      I NOSTRI SERVIZI
+    </span>
+    <h2 class="text-4xl md:text-5xl font-bold text-primary leading-tight tracking-tight mb-6">
+      Sei aree di lavoro, un unico obiettivo.
+    </h2>
+    <p class="text-lg text-on-surface leading-relaxed opacity-90">
+      Ogni servizio nasce dalla pratica. Le soluzioni migliori si costruiscono insieme, mai dall'alto.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+    <!-- Innovazione Istituzionale — large -->
+    <div class="md:col-span-7 bg-surface-container-low p-10 rounded-lg flex flex-col justify-between min-h-[320px] relative overflow-hidden group reveal-left">
+      <div class="relative z-10">
+        <span class="material-symbols-outlined text-primary text-3xl mb-4">account_balance</span>
+        <h3 class="text-2xl font-bold text-primary mb-3">Innovazione Istituzionale e Amministrazione Condivisa</h3>
+        <p class="text-on-surface leading-relaxed max-w-md">Facilitiamo processi di coprogrammazione e coprogettazione tra PA e Terzo Settore. Contesti collaborativi dove le politiche nascono dal dialogo.</p>
+      </div>
+    </div>
+    <!-- Strategia — dark -->
+    <div class="md:col-span-5 bg-primary text-on-primary p-10 rounded-lg flex flex-col justify-between reveal-right">
+      <div>
+        <span class="material-symbols-outlined text-primary-fixed text-3xl mb-4">hub</span>
+        <h3 class="text-2xl font-bold mb-3">Strategia e Organizzazione</h3>
+        <p class="leading-relaxed opacity-90">Accompagniamo le organizzazioni attraverso le incertezze, lavorando sulle culture organizzative — quelle che non stanno negli organigrammi.</p>
+      </div>
+    </div>
+    <!-- Valutazione -->
+    <div class="md:col-span-4 bg-surface-container-highest p-8 rounded-lg border-b-4 border-primary reveal" style="--i:0">
+      <span class="material-symbols-outlined text-primary text-3xl mb-4" style="font-variation-settings:'FILL' 1">monitoring</span>
+      <h3 class="text-xl font-bold text-primary mb-2">Valutazione d'Impatto e Ricerca</h3>
+      <p class="text-on-surface leading-relaxed text-sm">Approccio data driven: dati in conoscenza utile. Ricerca sociale, valutazione, accountability come strumenti di apprendimento.</p>
+    </div>
+    <!-- Progettazione -->
+    <div class="md:col-span-4 bg-surface-container-lowest p-8 rounded-lg shadow-sm reveal" style="--i:1">
+      <span class="material-symbols-outlined text-primary text-3xl mb-4">design_services</span>
+      <h3 class="text-xl font-bold text-primary mb-2">Progettazione e Gestione Servizi</h3>
+      <p class="text-on-surface leading-relaxed text-sm">Sviluppo di progetti e soluzioni gestionali, valorizzando tutti gli stakeholder e integrando tecnologie digitali dove servono.</p>
+    </div>
+    <!-- Apprendimento -->
+    <div class="md:col-span-2 bg-surface-container-low p-6 rounded-lg reveal" style="--i:2">
+      <span class="material-symbols-outlined text-primary text-3xl mb-3">school</span>
+      <h3 class="text-lg font-bold text-primary mb-1">Formazione</h3>
+      <p class="text-on-surface-variant text-sm">Percorsi che partono dall'ascolto.</p>
+    </div>
+    <!-- Processi -->
+    <div class="md:col-span-2 bg-surface-container-low p-6 rounded-lg reveal" style="--i:3">
+      <span class="material-symbols-outlined text-primary text-3xl mb-3">build</span>
+      <h3 class="text-lg font-bold text-primary mb-1">Strumenti</h3>
+      <p class="text-on-surface-variant text-sm">Metodologie per risultati misurabili.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 5. ESPERIENZE ═══════════ -->
+<section id="esperienze" class="bg-surface-container-low py-24 px-8">
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-16 reveal">
+      <span class="inline-block px-4 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant text-sm font-bold uppercase tracking-wider mb-6">
+        LE NOSTRE ESPERIENZE
+      </span>
+      <h2 class="text-4xl md:text-5xl font-bold text-primary leading-tight mb-6">
+        Storie di lavoro fatto bene.
+      </h2>
+      <p class="text-lg text-on-surface max-w-2xl">
+        Ogni progetto è un pezzo di strada percorsa insieme a chi ci ha dato fiducia.
+      </p>
+    </div>
+
+    <div id="esperienze-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+      <div class="flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden group hover:shadow-lg transition-all reveal" style="--i:0">
+        <div class="h-48 w-full"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80" alt="Palazzo Bocca Trezza" class="w-full h-full object-cover"/></div>
+        <div class="p-8 flex-grow flex flex-col justify-between">
+          <div>
+            <span class="px-3 py-1 bg-secondary-fixed text-on-secondary-fixed-variant rounded-full text-xs font-bold uppercase">Coprogrammazione</span>
+            <h4 class="text-2xl font-bold text-primary mb-3 mt-4">Palazzo Bocca Trezza</h4>
+            <p class="text-on-surface leading-relaxed">Coprogrammazione e coprogettazione per uno spazio di comunità a Verona.</p>
+          </div>
+          <div class="mt-6 pt-6 border-t border-outline-variant/20">
+            <span class="text-sm text-on-surface-variant font-bold">Amministrazione condivisa &middot; Terzo Settore</span>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden group hover:shadow-lg transition-all reveal" style="--i:1">
+        <div class="h-48 w-full"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80" alt="Piano di Zona Crema" class="w-full h-full object-cover"/></div>
+        <div class="p-8 flex-grow flex flex-col justify-between">
+          <div>
+            <span class="px-3 py-1 bg-secondary-fixed text-on-secondary-fixed-variant rounded-full text-xs font-bold uppercase">Welfare territoriale</span>
+            <h4 class="text-2xl font-bold text-primary mb-3 mt-4">Piano di Zona — Ambito di Crema</h4>
+            <p class="text-on-surface leading-relaxed">Coprogrammazione e redazione del Piano coinvolgendo istituzioni, associazioni e cittadini.</p>
+          </div>
+          <div class="mt-6 pt-6 border-t border-outline-variant/20">
+            <span class="text-sm text-on-surface-variant font-bold">Politiche pubbliche &middot; Programmazione sociale</span>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden group hover:shadow-lg transition-all reveal" style="--i:0">
+        <div class="h-48 w-full"><img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=600&q=80" alt="Cooperativa Il Torpedone" class="w-full h-full object-cover"/></div>
+        <div class="p-8 flex-grow flex flex-col justify-between">
+          <div>
+            <span class="px-3 py-1 bg-secondary-fixed text-on-secondary-fixed-variant rounded-full text-xs font-bold uppercase">Sviluppo organizzativo</span>
+            <h4 class="text-2xl font-bold text-primary mb-3 mt-4">Cooperativa Il Torpedone</h4>
+            <p class="text-on-surface leading-relaxed">Accompagnamento con coprogettazione, formazione e consulenza strategica.</p>
+          </div>
+          <div class="mt-6 pt-6 border-t border-outline-variant/20">
+            <span class="text-sm text-on-surface-variant font-bold">Organizzazione &middot; Cooperazione</span>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden group hover:shadow-lg transition-all reveal" style="--i:1">
+        <div class="h-48 w-full"><img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&q=80" alt="USL Verona" class="w-full h-full object-cover"/></div>
+        <div class="p-8 flex-grow flex flex-col justify-between">
+          <div>
+            <span class="px-3 py-1 bg-secondary-fixed text-on-secondary-fixed-variant rounded-full text-xs font-bold uppercase">Governance sanitaria</span>
+            <h4 class="text-2xl font-bold text-primary mb-3 mt-4">Regolamento Co-Programmazione — USL Verona</h4>
+            <p class="text-on-surface leading-relaxed">Strumento strategico per la collaborazione tra sistema sanitario e Terzo Settore.</p>
+          </div>
+          <div class="mt-6 pt-6 border-t border-outline-variant/20">
+            <span class="text-sm text-on-surface-variant font-bold">Sanità &middot; Amministrazione condivisa</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Progetto Legami highlight -->
+    <div class="bg-primary-container rounded-xl p-10 md:p-12 text-on-primary-container reveal-scale">
+      <div class="max-w-3xl">
+        <span class="px-3 py-1 bg-white/20 rounded-full text-xs font-bold uppercase">Ricerca-azione</span>
+        <h3 class="text-3xl font-bold mt-4 mb-4">Progetto Legami</h3>
+        <p class="text-xl opacity-90 leading-relaxed">
+          Ricerca-azione sull'impatto del Registro Unico Nazionale del Terzo Settore sui processi di coprogettazione. Laboratori, interviste e confronti con gli stakeholder.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 6. wAIt — INTELLIGENZA ARTIFICIALE ═══════════ -->
+<section id="wait" class="py-24 px-8">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center mb-20">
+      <div class="lg:col-span-7 reveal-left">
+        <div class="inline-block px-4 py-1.5 mb-6 rounded-full bg-inverse-surface text-inverse-on-surface text-sm font-bold tracking-wide">
+          AI PER IL BENE COMUNE
+        </div>
+        <h2 class="text-5xl md:text-7xl font-extrabold text-primary leading-[1.05] mb-8 tracking-tight">
+          w<span class="text-primary-container">AI</span>t.<br/>
+          <span class="text-on-surface-variant text-3xl md:text-4xl font-bold">Welfare &amp; Artificial Intelligence Toolkit</span>
+        </h2>
+        <p class="text-xl text-on-surface leading-relaxed max-w-2xl mb-8">
+          L'intelligenza artificiale sta cambiando il modo in cui lavoriamo, progettiamo servizi, analizziamo i bisogni. wAIt è il nostro modo di portare l'AI dentro il welfare e la pubblica amministrazione — con lo stesso approccio artigianale che ci caratterizza.
+        </p>
+        <p class="text-lg text-on-surface-variant leading-relaxed max-w-2xl">
+          Non vendiamo software. Accompagniamo le organizzazioni a capire dove e come l'AI può davvero fare la differenza.
+        </p>
+      </div>
+      <div class="lg:col-span-5 reveal-right">
+        <div class="bg-inverse-surface text-inverse-on-surface p-10 rounded-xl shadow-2xl">
+          <span class="material-symbols-outlined text-5xl text-primary-fixed-dim mb-6">neurology</span>
+          <h3 class="text-2xl font-bold mb-6 text-primary-fixed-dim">Cosa facciamo con wAIt</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-primary-fixed-dim mt-0.5">arrow_right</span>
+              <span><strong>Formazione</strong> — Percorsi pratici sull'AI per operatori sociali, dirigenti PA e Terzo Settore</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-primary-fixed-dim mt-0.5">arrow_right</span>
+              <span><strong>Sperimentazione</strong> — Progetti pilota per integrare strumenti AI nei processi di lavoro</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-primary-fixed-dim mt-0.5">arrow_right</span>
+              <span><strong>Analisi dati</strong> — Approcci data driven potenziati dall'AI per ricerca sociale e valutazione</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-primary-fixed-dim mt-0.5">arrow_right</span>
+              <span><strong>Consulenza</strong> — Orientamento strategico su cosa ha senso automatizzare e cosa no</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 stagger">
+      <div class="bg-surface-container-high p-8 rounded-xl reveal" style="--i:0">
+        <span class="material-symbols-outlined text-3xl text-primary mb-3">balance</span>
+        <h4 class="text-lg font-bold text-primary mb-2">Etica prima di tutto</h4>
+        <p class="text-on-surface leading-relaxed text-sm">L'AI nel sociale deve essere trasparente, equa e al servizio delle persone.</p>
+      </div>
+      <div class="bg-surface-container-high p-8 rounded-xl reveal" style="--i:1">
+        <span class="material-symbols-outlined text-3xl text-primary mb-3">precision_manufacturing</span>
+        <h4 class="text-lg font-bold text-primary mb-2">Artigianale, non industriale</h4>
+        <p class="text-on-surface leading-relaxed text-sm">Ogni organizzazione ha i suoi processi, la sua cultura, i suoi dati. Partiamo da lì.</p>
+      </div>
+      <div class="bg-surface-container-high p-8 rounded-xl reveal" style="--i:2">
+        <span class="material-symbols-outlined text-3xl text-primary mb-3">diversity_3</span>
+        <h4 class="text-lg font-bold text-primary mb-2">Competenze diffuse</h4>
+        <p class="text-on-surface leading-relaxed text-sm">L'obiettivo è costruire competenze interne, non creare dipendenza tecnologica.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 7. CHI SIAMO + TEAM (uniti) ═══════════ -->
+<section id="chi-siamo" class="bg-surface-container-low py-24">
+  <div class="max-w-7xl mx-auto px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-20">
+      <div class="lg:col-span-5 reveal-left">
+        <h2 class="text-4xl font-bold text-primary mb-6">Non vendiamo soluzioni preconfezionate.</h2>
+        <p class="text-lg text-on-surface leading-relaxed mb-6">
+          POST è una piccola società benefit. Ci occupiamo di amministrazione condivisa, progettazione sociale, innovazione istituzionale e future studies.
+        </p>
+        <p class="text-lg text-on-surface-variant leading-relaxed">
+          Non siamo una grande società di consulenza: siamo professionisti che si sporcano le mani, fianco a fianco con chi opera ogni giorno nei servizi e nelle comunità.
+        </p>
+      </div>
+      <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6 stagger">
+        <div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm reveal" style="--i:0">
+          <span class="material-symbols-outlined text-primary text-2xl mb-3">handshake</span>
+          <h3 class="font-bold mb-2 text-on-surface">Amministrazione condivisa</h3>
+          <p class="text-on-surface-variant text-sm leading-relaxed">Coprogrammazione e coprogettazione tra PA e Terzo Settore.</p>
+        </div>
+        <div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm reveal" style="--i:1">
+          <span class="material-symbols-outlined text-primary text-2xl mb-3">psychology</span>
+          <h3 class="font-bold mb-2 text-on-surface">Innovazione sociale</h3>
+          <p class="text-on-surface-variant text-sm leading-relaxed">Frontiera tra ricerca e pratica, metodo e rigore sul territorio.</p>
+        </div>
+        <div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm reveal" style="--i:2">
+          <span class="material-symbols-outlined text-primary text-2xl mb-3">query_stats</span>
+          <h3 class="font-bold mb-2 text-on-surface">Data driven</h3>
+          <p class="text-on-surface-variant text-sm leading-relaxed">Dati per orientare le decisioni, non per sostituire il confronto.</p>
+        </div>
+        <div class="bg-inverse-surface p-6 rounded-xl shadow-sm reveal" style="--i:3">
+          <span class="material-symbols-outlined text-primary-fixed-dim text-2xl mb-3">neurology</span>
+          <h3 class="font-bold mb-2 text-inverse-on-surface">AI nei processi sociali</h3>
+          <p class="text-inverse-on-surface/70 text-sm leading-relaxed">Intelligenza artificiale al servizio delle comunità. <a href="#wait" class="text-primary-fixed-dim underline font-bold">wAIt →</a></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Team -->
+    <div class="reveal">
+      <h3 class="text-3xl font-bold text-primary mb-4">Le persone di POST.</h3>
+      <p class="text-lg text-on-surface-variant max-w-xl mb-12">Siamo un gruppo piccolo, e ci piace così. Competenze diverse unite dalla voglia di fare bene.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 stagger">
+      <div class="bg-surface-container-lowest rounded-lg overflow-hidden hover:shadow-lg transition-all reveal" style="--i:0">
+        <div class="h-2 bg-primary"></div>
+        <div class="p-6">
+          <div class="w-20 h-20 rounded-full overflow-hidden mb-4 border-2 border-primary-container p-0.5">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&q=80" alt="Nicola Basile" class="w-full h-full rounded-full object-cover" id="team-photo-1"/>
+          </div>
+          <h4 class="text-lg font-bold text-primary">Nicola Basile</h4>
+          <span class="text-xs font-bold uppercase tracking-widest text-primary-container block mb-3">Fondatore</span>
+          <p class="text-on-surface text-sm leading-relaxed">Amministrazione condivisa, innovazione sociale, future studies. Docente alla Cattolica di Milano.</p>
+          <a href="https://www.linkedin.com/company/105770276" target="_blank" rel="noopener" class="inline-block mt-3 text-primary hover:opacity-70"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+        </div>
+      </div>
+      <div class="bg-surface-container-lowest rounded-lg overflow-hidden hover:shadow-lg transition-all reveal" style="--i:1">
+        <div class="h-2 bg-primary"></div>
+        <div class="p-6">
+          <div class="w-20 h-20 rounded-full overflow-hidden mb-4 border-2 border-primary-container p-0.5">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80" alt="Pierluca Borali" class="w-full h-full rounded-full object-cover" id="team-photo-2"/>
+          </div>
+          <h4 class="text-lg font-bold text-primary">Pierluca Borali</h4>
+          <span class="text-xs font-bold uppercase tracking-widest text-primary-container block mb-3">Consulente organizzativo</span>
+          <p class="text-on-surface text-sm leading-relaxed">30+ anni di consulenza organizzativa. Progettazione sociale e reti collaborative territoriali.</p>
+        </div>
+      </div>
+      <div class="bg-surface-container-lowest rounded-lg overflow-hidden hover:shadow-lg transition-all reveal" style="--i:2">
+        <div class="h-2 bg-primary"></div>
+        <div class="p-6">
+          <div class="w-20 h-20 rounded-full overflow-hidden mb-4 border-2 border-primary-container p-0.5">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80" alt="Giuseppe Imbrogno" class="w-full h-full rounded-full object-cover" id="team-photo-3"/>
+          </div>
+          <h4 class="text-lg font-bold text-primary">Giuseppe Imbrogno</h4>
+          <span class="text-xs font-bold uppercase tracking-widest text-primary-container block mb-3">Progettista sociale</span>
+          <p class="text-on-surface text-sm leading-relaxed">Service design, valutazione d'impatto. Coordina OVeR, Osservatorio Vulnerabilità e Resilienza.</p>
+        </div>
+      </div>
+      <div class="bg-surface-container-lowest rounded-lg overflow-hidden hover:shadow-lg transition-all reveal" style="--i:3">
+        <div class="h-2 bg-primary"></div>
+        <div class="p-6">
+          <div class="w-20 h-20 rounded-full overflow-hidden mb-4 border-2 border-primary-container p-0.5">
+            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&q=80" alt="Nicol Mondin" class="w-full h-full rounded-full object-cover" id="team-photo-4"/>
+          </div>
+          <h4 class="text-lg font-bold text-primary">Nicol Mondin</h4>
+          <span class="text-xs font-bold uppercase tracking-widest text-primary-container block mb-3">Psicologa e consulente</span>
+          <p class="text-on-surface text-sm leading-relaxed">Welfare e politiche pubbliche. Lavoro di comunità con PA, Terzo Settore e Università dell'Insubria.</p>
+        </div>
+      </div>
+      <div class="bg-surface-container-lowest rounded-lg overflow-hidden hover:shadow-lg transition-all reveal" style="--i:4">
+        <div class="h-2 bg-primary"></div>
+        <div class="p-6">
+          <div class="w-20 h-20 rounded-full overflow-hidden mb-4 border-2 border-primary-container p-0.5">
+            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&q=80" alt="Daniele Restelli" class="w-full h-full rounded-full object-cover" id="team-photo-5"/>
+          </div>
+          <h4 class="text-lg font-bold text-primary">Daniele Restelli</h4>
+          <span class="text-xs font-bold uppercase tracking-widest text-primary-container block mb-3">Economista</span>
+          <p class="text-on-surface text-sm leading-relaxed">Gestione servizi tra profit e cooperazione. Coordinamento servizi sociali e governance territoriale.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 8. CONTATTI ═══════════ -->
+<section id="contatti" class="px-8 py-24 max-w-7xl mx-auto">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+    <div class="lg:col-span-4 reveal-left">
+      <h2 class="text-4xl font-bold text-primary mb-6">Parliamone.</h2>
+      <p class="text-lg text-on-surface leading-relaxed mb-8">
+        Se avete un progetto, un'idea o anche solo una domanda, scriveteci. Rispondiamo noi, non un chatbot.
+      </p>
+      <div class="space-y-4 mb-8">
+        <div class="flex items-center space-x-3 text-primary">
+          <span class="material-symbols-outlined">mail</span>
+          <span class="font-bold">info@postsb.it</span>
+        </div>
+        <div class="flex items-center space-x-3 text-primary">
+          <span class="material-symbols-outlined">call</span>
+          <span class="font-bold">+39 3939993731</span>
+        </div>
+        <div class="flex items-center space-x-3 text-on-surface-variant">
+          <span class="material-symbols-outlined text-primary">schedule</span>
+          <span>Lun — Ven, 9:00 — 18:00</span>
+        </div>
+        <div class="flex items-center space-x-3 text-on-surface-variant">
+          <span class="material-symbols-outlined text-primary">location_on</span>
+          <span>Milano</span>
+        </div>
+      </div>
+      <!-- LinkedIn big -->
+      <a href="https://www.linkedin.com/company/105770276" target="_blank" rel="noopener" class="inline-flex items-center gap-3 px-6 py-3 bg-[#0077b5] text-white rounded-lg font-bold hover:opacity-90 transition-all">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        Seguici su LinkedIn
+      </a>
+    </div>
+    <div class="lg:col-span-8 bg-surface-container-lowest p-8 lg:p-12 rounded-xl shadow-sm reveal-right">
+      <h3 class="text-2xl font-bold text-primary mb-8">Scriveteci.</h3>
+      <form class="space-y-8" onsubmit="event.preventDefault(); alert('Messaggio inviato! (demo)');">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="space-y-2">
+            <label class="text-sm font-bold text-on-surface-variant uppercase tracking-wider">Nome</label>
+            <input class="w-full bg-surface-container-high border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 px-0 py-3 text-lg transition-colors" placeholder="Il vostro nome" type="text"/>
+          </div>
+          <div class="space-y-2">
+            <label class="text-sm font-bold text-on-surface-variant uppercase tracking-wider">Email</label>
+            <input class="w-full bg-surface-container-high border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 px-0 py-3 text-lg transition-colors" placeholder="email@organizzazione.it" type="email"/>
+          </div>
+        </div>
+        <div class="space-y-2">
+          <label class="text-sm font-bold text-on-surface-variant uppercase tracking-wider">Organizzazione</label>
+          <input class="w-full bg-surface-container-high border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 px-0 py-3 text-lg transition-colors" placeholder="Ente, cooperativa, associazione..." type="text"/>
+        </div>
+        <div class="space-y-2">
+          <label class="text-sm font-bold text-on-surface-variant uppercase tracking-wider">Di cosa avete bisogno?</label>
+          <textarea class="w-full bg-surface-container-high border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 px-0 py-3 text-lg transition-colors" placeholder="Raccontateci il vostro progetto o la vostra esigenza..." rows="4"></textarea>
+        </div>
+        <button type="submit" class="bg-primary-container text-on-primary-container px-12 py-4 rounded font-bold text-lg hover:brightness-105 transition-all shadow-md active:scale-95 flex items-center gap-3">
+          Invia <span class="material-symbols-outlined">send</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="w-full bg-slate-50 mt-auto">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-12 py-16 w-full max-w-7xl mx-auto">
+    <div class="flex flex-col gap-4">
+      <img src="./logo-post.png" alt="POST" class="h-[55px] w-auto object-contain self-start" onerror="this.outerHTML='<span class=\'text-primary font-extrabold text-2xl\'>POST</span>'"/>
+      <p class="text-sm text-slate-600 max-w-xs">&copy; 2025 POST Società Benefit S.r.l. — Milano</p>
+    </div>
+    <div class="flex flex-col gap-3">
+      <h4 class="font-bold text-primary text-sm">Navigazione</h4>
+      <a class="text-slate-600 hover:text-primary transition-colors text-sm" href="#servizi">Servizi</a>
+      <a class="text-slate-600 hover:text-primary transition-colors text-sm font-bold" href="#piani-di-zona">Piani di Zona</a>
+      <a class="text-slate-600 hover:text-primary transition-colors text-sm" href="#esperienze">Esperienze</a>
+      <a class="text-slate-600 hover:text-primary transition-colors text-sm" href="#wait">wAIt</a>
+      <a class="text-slate-600 hover:text-primary transition-colors text-sm" href="#chi-siamo">Chi siamo</a>
+    </div>
+    <div class="flex flex-col gap-3">
+      <h4 class="font-bold text-primary text-sm">Contatti</h4>
+      <span class="text-slate-600 text-sm">info@postsb.it</span>
+      <span class="text-slate-600 text-sm">+39 3939993731</span>
+      <span class="text-slate-600 text-sm">Milano</span>
+      <a href="https://www.linkedin.com/company/105770276" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-[#0077b5] font-bold text-sm hover:opacity-70 mt-2">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+      <div class="flex gap-4 mt-2">
+        <a class="text-slate-500 hover:text-primary underline text-xs" href="#">Privacy Policy</a>
+        <a class="text-slate-500 hover:text-primary underline text-xs" href="#">Cookie Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════ SCRIPTS ═══════════ -->
+<script>
+// Hero Carousel with dots
+(function() {
+  const carousel = document.getElementById('hero-carousel');
+  const dotsContainer = document.getElementById('hero-dots');
+  if (!carousel || !dotsContainer) return;
+  const imgs = carousel.querySelectorAll('img');
+  if (imgs.length <= 1) return;
+  let current = 0;
+  let interval;
+
+  imgs.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.setAttribute('aria-label', `Foto ${i+1}`);
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => goTo(i));
+    dotsContainer.appendChild(dot);
+  });
+  const dots = dotsContainer.querySelectorAll('button');
+
+  function goTo(n) {
+    imgs[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = n;
+    imgs[current].classList.add('active');
+    dots[current].classList.add('active');
+    clearInterval(interval);
+    startInterval();
+  }
+  function next() { goTo((current + 1) % imgs.length); }
+  function startInterval() { interval = setInterval(next, 4500); }
+  startInterval();
+})();
+
+// Counter animation
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.dataset.target);
+      let current = 0;
+      const step = Math.max(1, Math.floor(target / 40));
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= target) { current = target; clearInterval(timer); }
+        el.textContent = current;
+      }, 30);
+      counterObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
+// Scroll reveal
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(el => revealObserver.observe(el));
+
+// Auto-load images from folder (overrides placeholders when real photos exist)
+async function loadImages() {
+  try {
+    const res = await fetch('/api/images');
+    const data = await res.json();
+    function setImg(id, url) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      if (el.tagName === 'IMG') { el.src = url; }
+      else { el.innerHTML=''; el.style.backgroundImage=`url(${url})`; el.style.backgroundSize='cover'; el.style.backgroundPosition='center'; el.classList.remove('img-placeholder'); }
+    }
+    if (data.hero?.length) { /* carousel handled by static imgs or folder override */ }
+    if (data.team) data.team.forEach((img,i) => setImg(`team-photo-${i+1}`, img.url));
+    if (data.contact?.length) setImg('contact-map-image', data.contact[0].url);
+  } catch(e) {}
+}
+document.addEventListener('DOMContentLoaded', loadImages);
+</script>
+</body>
+</html>

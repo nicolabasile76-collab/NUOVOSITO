@@ -1,0 +1,78 @@
+[
+  {
+    "id": "nicola-basile",
+    "name": "Nicola Basile",
+    "role": "Co-founder",
+    "photo": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80",
+    "intro": "Amministrazione condivisa, innovazione sociale, future studies.",
+    "bio": [
+      "Si occupa di amministrazione condivisa, progettazione sociale, innovazione istituzionale e future studies. Il suo lavoro si muove all'incrocio tra consulenza organizzativa, ricerca e accompagnamento delle istituzioni pubbliche verso modelli di governance più aperti e collaborativi.",
+      "Ha costruito la sua esperienza lavorando fianco a fianco con enti del Terzo Settore, Pubbliche Amministrazioni e Fondazioni, sviluppando una competenza specifica nella facilitazione di processi di coprogrammazione e coprogettazione. Non è un teorico che scende sul campo: è un professionista del campo che porta rigore metodologico nei processi partecipativi.",
+      "Docente a contratto all'Università Cattolica di Milano e assegnista di ricerca all'Università dell'Insubria, tiene insieme pratica consulenziale e ricerca accademica — una combinazione rara che gli permette di portare nei progetti evidenze scientifiche e nei paper accademici la concretezza del lavoro sul territorio.",
+      "Fa parte del comitato editoriale di Animazione Sociale e Prospettive Socio Sanitarie, due delle riviste di riferimento per chi lavora nel welfare italiano. Attraverso queste collaborazioni editoriali contribuisce al dibattito nazionale sulle politiche sociali, l'innovazione istituzionale e il futuro dei servizi alla persona.",
+      "All'interno di POST guida la visione strategica e l'integrazione dell'intelligenza artificiale nei processi sociali e collaborativi. È convinto che l'AI possa essere uno strumento straordinario per il bene comune — a patto che venga usata con consapevolezza, etica e competenza. Ha ideato wAIt, il Welfare & Artificial Intelligence Toolkit, per portare questa visione nella pratica quotidiana del welfare e della pubblica amministrazione."
+    ],
+    "tags": ["Amministrazione condivisa", "Future studies", "AI per il sociale", "Ricerca"],
+    "linkedin": "https://www.linkedin.com/company/105770276"
+  },
+  {
+    "id": "pierluca-borali",
+    "name": "Pierluca Borali",
+    "role": "Co-founder",
+    "photo": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80",
+    "intro": "Oltre trent'anni di consulenza organizzativa e formazione.",
+    "bio": [
+      "Porta in POST oltre trent'anni di esperienza nella consulenza organizzativa e nella formazione. Non è un percorso lineare: ha attraversato settori molto diversi — welfare, banche, assicurazioni, fiere, trasporti — e questa varietà è diventata il suo punto di forza. Quando guarda un'organizzazione, la vede con occhi che hanno già visto molte trasformazioni.",
+      "Il suo lavoro oggi si concentra sulla progettazione sociale e sullo sviluppo di reti collaborative nei contesti di welfare territoriale. Significa entrare nelle organizzazioni, capire come funzionano davvero (non come dicono di funzionare), e accompagnarle in percorsi di cambiamento che tengano insieme le esigenze del servizio e il benessere delle persone che ci lavorano.",
+      "Ha una capacità particolare nel leggere le dinamiche organizzative implicite — quelle che non stanno negli organigrammi ma determinano come le cose succedono realmente. Lavora sulle culture organizzative, sui processi di apprendimento collettivo e sulla costruzione di significato condiviso all'interno dei team.",
+      "Nelle reti collaborative che contribuisce a costruire, il suo ruolo è spesso quello di traduttore: aiuta soggetti diversi (cooperative, enti pubblici, associazioni) a trovare un linguaggio comune e obiettivi condivisi, trasformando la complessità del lavoro di rete da ostacolo a risorsa.",
+      "Il suo contributo è particolarmente prezioso nei percorsi di passaggio intergenerazionale delle cooperative e nelle riorganizzazioni che richiedono di ripensare i processi senza perdere l'identità e i valori che l'organizzazione ha costruito nel tempo."
+    ],
+    "tags": ["Consulenza organizzativa", "Reti collaborative", "Welfare territoriale", "Formazione"]
+  },
+  {
+    "id": "giuseppe-imbrogno",
+    "name": "Giuseppe Imbrogno",
+    "role": "Co-founder",
+    "photo": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80",
+    "intro": "Progettista sociale e consulente organizzativo. Coordina OVeR.",
+    "bio": [
+      "Progettista sociale e consulente organizzativo, è la persona di POST che tiene insieme la visione d'insieme e il dettaglio operativo. Le sue competenze attraversano il service design, il business modeling, la facilitazione dei processi e la valutazione d'impatto — un profilo raro che gli permette di seguire un progetto dalla concezione alla misurazione dei risultati.",
+      "Coordina OVeR, l'Osservatorio Vulnerabilità e Resilienza, uno strumento di ricerca e monitoraggio che studia le condizioni di fragilità nei territori e le risposte che il sistema dei servizi riesce (o non riesce) a mettere in campo. Non è un osservatorio che produce report da scaffale: è uno strumento operativo che alimenta direttamente la progettazione dei servizi.",
+      "Fa parte del comitato editoriale di Prospettive Socio Sanitarie e pubblica regolarmente articoli sulle politiche per le fragilità, i servizi per la non autosufficienza e i modelli di welfare territoriale. I suoi scritti hanno la stessa qualità del suo lavoro consulenziale: partono dai dati, arrivano alle persone.",
+      "Nel lavoro quotidiano è spesso il primo a sedersi al tavolo con i committenti per trasformare un bisogno vago in un progetto con obiettivi misurabili, budget sostenibile e indicatori di impatto credibili. La sua capacità di tradurre la complessità sociale in modelli operativi è uno degli asset più preziosi di POST.",
+      "La sua esperienza nella valutazione d'impatto lo rende particolarmente efficace nell'accompagnamento all'applicazione della nuova Legge 167/2025 sulla Valutazione d'Impatto Generazionale, dove la capacità di costruire indicatori rigorosi ma comprensibili è fondamentale."
+    ],
+    "tags": ["Service design", "Valutazione d'impatto", "OVeR", "Business modeling"]
+  },
+  {
+    "id": "nicol-mondin",
+    "name": "Nicol Mondin",
+    "role": "Co-founder",
+    "photo": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80",
+    "intro": "Psicologa e consulente. Welfare e lavoro di comunità.",
+    "bio": [
+      "Psicologa di formazione, nel lavoro di POST porta una sensibilità particolare verso le dinamiche relazionali e comunitarie che stanno alla base di ogni processo partecipativo. Il suo campo è il welfare e le politiche pubbliche, con un'attenzione specifica al lavoro di comunità — quella dimensione del sociale che non si esaurisce nei servizi ma si gioca nelle relazioni tra le persone.",
+      "Lavora con enti del Terzo Settore, Pubbliche Amministrazioni e Fondazioni, con un approccio che mette al centro il dialogo e la costruzione di fiducia tra attori diversi. Quando facilita un tavolo di coprogrammazione, non si limita a gestire i turni di parola: legge il gruppo, coglie le resistenze non dette, crea le condizioni perché le persone si sentano davvero ascoltate.",
+      "Collabora con l'Università dell'Insubria come assegnista di ricerca nel Dipartimento di Scienze Umane e dell'Innovazione per il Territorio. Questa collocazione non è casuale: tiene insieme la dimensione umanistica (le persone, le comunità, i significati) con quella dell'innovazione territoriale (i processi, le politiche, gli strumenti).",
+      "Nella pratica quotidiana, il suo contributo è fondamentale nei processi dove la componente relazionale è decisiva: passaggi intergenerazionali nelle cooperative, percorsi di sviluppo di comunità, tavoli dove il conflitto tra portatori di interesse rischia di bloccare il processo.",
+      "La sua formazione psicologica diventa uno strumento operativo al servizio dell'innovazione sociale. Non porta la psicologia come disciplina separata: la integra nel metodo di lavoro di POST, arricchendo ogni processo partecipativo di una lettura delle dinamiche di gruppo che fa la differenza tra un tavolo che produce documenti e un tavolo che produce cambiamento."
+    ],
+    "tags": ["Psicologia", "Lavoro di comunità", "Coprogrammazione", "Ricerca"]
+  },
+  {
+    "id": "daniele-restelli",
+    "name": "Daniele Restelli",
+    "role": "Co-founder",
+    "photo": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&q=80",
+    "intro": "Economista. Gestione servizi tra profit e cooperazione.",
+    "bio": [
+      "Economista, porta in POST la prospettiva di chi ha attraversato sia il mondo profit che quello cooperativo, costruendo un'esperienza consolidata nella gestione dei servizi sociali e nella governance territoriale. Non è un economista da modelli astratti: è un professionista che sa leggere un bilancio e tradurlo in scelte operative per chi gestisce servizi alla persona.",
+      "La sua esperienza nel coordinamento di servizi sociali gli ha dato una comprensione profonda delle dinamiche operative del welfare: sa cosa significa far quadrare i conti di una cooperativa che gestisce servizi per la non autosufficienza, conosce le tensioni tra qualità del servizio e sostenibilità economica, capisce le logiche degli uffici di piano e delle ATS.",
+      "Ha ricoperto il ruolo di presidente di Distretto, un'esperienza che gli ha dato una visione diretta della governance territoriale dal punto di vista istituzionale. Questa prospettiva privilegiata gli permette di capire le esigenze di chi siede dall'altra parte del tavolo — amministratori, dirigenti, responsabili di servizio — e di costruire proposte che parlano il loro linguaggio.",
+      "Nel lavoro di POST, il suo contributo è decisivo nella costruzione di piani di impresa per le cooperative, nell'analisi di sostenibilità dei servizi e nella consulenza economico-finanziaria per i processi di riorganizzazione. Quando un progetto ha bisogno di numeri solidi per stare in piedi, Daniele è la persona che li costruisce.",
+      "La sua capacità di parlare con uguale competenza il linguaggio dell'economia e quello del sociale lo rende un interlocutore efficace sia con i direttori finanziari che con i coordinatori dei servizi. Sa spiegare i numeri anche a chi i numeri preferisce non guardarli — e sa tradurre le esigenze del sociale in modelli economici che convincono chi deve allocare le risorse."
+    ],
+    "tags": ["Economia", "Piani di impresa", "Governance", "Cooperazione"]
+  }
+]
