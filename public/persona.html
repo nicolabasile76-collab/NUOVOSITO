@@ -27,17 +27,17 @@ tailwind.config={theme:{extend:{
 <!-- NAVBAR -->
 <header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm">
   <nav class="flex justify-between items-center px-8 py-3 max-w-7xl mx-auto text-lg">
-    <a href="./index6_Blog.html" class="block flex-shrink-0">
+    <a href="./index.html" class="block flex-shrink-0">
       <img src="./logo-post.png" alt="POST" class="h-[65px] w-auto object-contain" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'text-primary font-extrabold text-3xl\'>POST</span>')"/>
     </a>
     <div class="hidden md:flex items-center gap-7">
-      <a class="text-slate-600 hover:text-primary transition-colors" href="./index6_Blog.html#pilastri">Cosa facciamo</a>
-      <a class="text-primary border-b-2 border-primary pb-0.5" href="./index6_Blog.html#piani-di-zona">Piani di Zona</a>
-      <a class="text-slate-600 hover:text-primary transition-colors" href="./index6_Blog.html#esperienze">Dal campo</a>
-      <a class="text-slate-600 hover:text-primary transition-colors" href="./index6_Blog.html#wait"><span class="material-symbols-outlined text-base align-middle mr-1">neurology</span>AI per il Bene Comune</a>
-      <a class="text-slate-600 hover:text-primary transition-colors" href="./index6_Blog.html#chi-siamo">Chi siamo</a>
+      <a class="text-slate-600 hover:text-primary transition-colors" href="./index.html#pilastri">Cosa facciamo</a>
+      <a class="text-primary border-b-2 border-primary pb-0.5" href="./index.html#piani-di-zona">Piani di Zona</a>
+      <a class="text-slate-600 hover:text-primary transition-colors" href="./index.html#esperienze">Dal campo</a>
+      <a class="text-slate-600 hover:text-primary transition-colors" href="./index.html#wait"><span class="material-symbols-outlined text-base align-middle mr-1">neurology</span>AI per il Bene Comune</a>
+      <a class="text-slate-600 hover:text-primary transition-colors" href="./index.html#chi-siamo">Chi siamo</a>
     </div>
-    <a href="./index6_Blog.html#contatti" class="bg-primary-container text-on-primary-container px-6 py-2 rounded-lg font-bold hover:opacity-90 transition-all">Contatti</a>
+    <a href="./index.html#contatti" class="bg-primary-container text-on-primary-container px-6 py-2 rounded-lg font-bold hover:opacity-90 transition-all">Contatti</a>
   </nav>
 </header>
 
@@ -46,9 +46,9 @@ tailwind.config={theme:{extend:{
 
     <!-- Breadcrumb -->
     <nav class="mb-8 fade-in">
-      <a href="./index6_Blog.html" class="text-sm text-on-surface-variant hover:text-primary">Home</a>
+      <a href="./index.html" class="text-sm text-on-surface-variant hover:text-primary">Home</a>
       <span class="text-sm text-outline-variant mx-2">/</span>
-      <a href="./index6_Blog.html#chi-siamo" class="text-sm text-on-surface-variant hover:text-primary">Chi siamo</a>
+      <a href="./index.html#chi-siamo" class="text-sm text-on-surface-variant hover:text-primary">Chi siamo</a>
       <span class="text-sm text-outline-variant mx-2">/</span>
       <span class="text-sm text-primary font-bold" id="breadcrumb-name">...</span>
     </nav>
@@ -91,7 +91,7 @@ tailwind.config={theme:{extend:{
     <div class="mt-16 bg-surface-container-low rounded-xl p-10 text-center fade-in" style="animation-delay:.4s">
       <h3 class="text-2xl font-bold text-primary mb-4">Vuoi lavorare con noi?</h3>
       <p class="text-on-surface-variant mb-6">Se avete un progetto o un'esigenza, parliamone.</p>
-      <a href="./index6_Blog.html#contatti" class="inline-flex items-center gap-2 px-8 py-3 bg-primary-container text-on-primary-container font-bold rounded-lg hover:brightness-110 transition-all">
+      <a href="./index.html#contatti" class="inline-flex items-center gap-2 px-8 py-3 bg-primary-container text-on-primary-container font-bold rounded-lg hover:brightness-110 transition-all">
         Contattaci <span class="material-symbols-outlined">arrow_forward</span>
       </a>
     </div>
@@ -111,13 +111,13 @@ tailwind.config={theme:{extend:{
 <script>
 async function loadPerson() {
   const id = new URLSearchParams(location.search).get('id');
-  if (!id) { location.href = './index6_Blog.html#chi-siamo'; return; }
+  if (!id) { location.href = './index.html#chi-siamo'; return; }
 
   let team;
   try { const r = await fetch('/team.json'); team = await r.json(); } catch(e) { return; }
 
   const person = team.find(p => p.id === id);
-  if (!person) { location.href = './index6_Blog.html#chi-siamo'; return; }
+  if (!person) { location.href = './index.html#chi-siamo'; return; }
 
   document.getElementById('page-title').textContent = `POST — ${person.name}`;
   document.getElementById('breadcrumb-name').textContent = person.name;

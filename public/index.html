@@ -3,703 +3,525 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>POST Società Benefit</title>
+<title>POST Società Benefit — Consulenza per il bene comune</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Public+Sans:wght@400;700;800&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script>
 tailwind.config = {
   darkMode: "class",
-  theme: {
-    extend: {
-      colors: {
-        "primary-fixed-dim": "#88d1e5",
-        "surface-container": "#e7eeff",
-        "surface-bright": "#f9f9ff",
-        "on-error": "#ffffff",
-        "surface-container-low": "#f0f3ff",
-        "on-error-container": "#93000a",
-        "surface-container-lowest": "#ffffff",
-        "secondary-fixed-dim": "#9dcedf",
-        "background": "#f9f9ff",
-        "primary": "#006172",
-        "primary-fixed": "#acedff",
-        "on-background": "#121c2c",
-        "on-primary": "#ffffff",
-        "on-surface-variant": "#3f484b",
-        "primary-container": "#2b7a8c",
-        "on-primary-container": "#e7f9ff",
-        "secondary-fixed": "#b9eafb",
-        "secondary-container": "#b6e7f8",
-        "error-container": "#ffdad6",
-        "on-primary-fixed-variant": "#004e5c",
-        "on-secondary-container": "#396978",
-        "on-secondary-fixed": "#001f27",
-        "on-tertiary-fixed-variant": "#004e5b",
-        "on-secondary-fixed-variant": "#184d5b",
-        "surface-variant": "#d9e3f9",
-        "inverse-primary": "#88d1e5",
-        "surface-tint": "#0c6779",
-        "surface-dim": "#d0daf0",
-        "error": "#ba1a1a",
-        "surface": "#f9f9ff",
-        "outline": "#6f797c",
-        "surface-container-high": "#dee8ff",
-        "on-surface": "#121c2c",
-        "tertiary-fixed-dim": "#8ad1e3",
-        "inverse-on-surface": "#ebf1ff",
-        "on-tertiary-fixed": "#001f26",
-        "tertiary-fixed": "#a8edff",
-        "on-tertiary": "#ffffff",
-        "inverse-surface": "#273141",
-        "on-primary-fixed": "#001f26",
-        "on-tertiary-container": "#e6f9ff",
-        "outline-variant": "#bec8cb",
-        "surface-container-highest": "#d9e3f9",
-        "tertiary": "#016171",
-        "on-secondary": "#ffffff",
-        "secondary": "#346573",
-        "tertiary-container": "#2d7a8a"
-      },
-      borderRadius: {
-        DEFAULT: "0.125rem",
-        lg: "0.25rem",
-        xl: "0.5rem",
-        full: "0.75rem"
-      },
-      fontFamily: {
-        headline: ["Public Sans"],
-        body: ["Public Sans"],
-        label: ["Public Sans"],
-        atkinson: ["Atkinson Hyperlegible"]
-      }
+  theme: { extend: {
+    colors: {
+      "primary-fixed-dim":"#88d1e5","surface-container":"#e7eeff","surface-bright":"#f9f9ff",
+      "on-error":"#fff","surface-container-low":"#f0f3ff","surface-container-lowest":"#fff",
+      "secondary-fixed-dim":"#9dcedf","background":"#f9f9ff","primary":"#006172",
+      "primary-fixed":"#acedff","on-background":"#121c2c","on-primary":"#fff",
+      "on-surface-variant":"#3f484b","primary-container":"#2b7a8c",
+      "on-primary-container":"#e7f9ff","secondary-fixed":"#b9eafb",
+      "secondary-container":"#b6e7f8","on-secondary-fixed-variant":"#184d5b",
+      "surface-variant":"#d9e3f9","inverse-primary":"#88d1e5","surface-tint":"#0c6779",
+      "surface-dim":"#d0daf0","surface":"#f9f9ff","outline":"#6f797c",
+      "surface-container-high":"#dee8ff","on-surface":"#121c2c",
+      "tertiary-fixed-dim":"#8ad1e3","inverse-on-surface":"#ebf1ff",
+      "inverse-surface":"#273141","on-primary-fixed":"#001f26",
+      "on-tertiary-container":"#e6f9ff","outline-variant":"#bec8cb",
+      "surface-container-highest":"#d9e3f9","tertiary":"#016171",
+      "on-secondary":"#fff","secondary":"#346573","tertiary-container":"#2d7a8a"
     },
-  },
+    borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},
+    fontFamily:{headline:["Public Sans"],body:["Public Sans"],atkinson:["Atkinson Hyperlegible"]}
+  }}
 }
 </script>
 <style>
-  .material-symbols-outlined {
-    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-  }
-  body {
-    font-family: 'Atkinson Hyperlegible', sans-serif;
-    background-color: #f9f9ff;
-    color: #121c2c;
-  }
-  h1, h2, h3 {
-    font-family: 'Public Sans', sans-serif;
-  }
-  html { scroll-behavior: smooth; }
-  /* Placeholder for missing images */
-  .img-placeholder {
-    background: linear-gradient(135deg, #dee8ff 0%, #b9eafb 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #006172;
-    font-size: 0.875rem;
-    font-weight: 700;
-  }
+  .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
+  body{font-family:'Atkinson Hyperlegible',sans-serif;background:#f9f9ff;color:#121c2c}
+  h1,h2,h3{font-family:'Public Sans',sans-serif}
+  html{scroll-behavior:smooth}
+  .reveal{opacity:0;transform:translateY(40px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+  .reveal-left{opacity:0;transform:translateX(-60px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+  .reveal-left.visible{opacity:1;transform:translateX(0)}
+  .reveal-right{opacity:0;transform:translateX(60px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+  .reveal-right.visible{opacity:1;transform:translateX(0)}
+  .reveal-scale{opacity:0;transform:scale(.9);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+  .reveal-scale.visible{opacity:1;transform:scale(1)}
+  .stagger>*{transition-delay:calc(var(--i,0)*120ms)}
+  .hero-carousel{position:relative;width:100%;height:100%}
+  .hero-carousel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease-in-out}
+  .hero-carousel img.active{opacity:1}
+  .hero-dots{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:10}
+  .hero-dots button{width:10px;height:10px;border-radius:50%;border:2px solid white;background:transparent;cursor:pointer;transition:background .3s}
+  .hero-dots button.active{background:white}
+  .counter{display:inline-block}
+  .img-placeholder{background:linear-gradient(135deg,#dee8ff,#b9eafb);display:flex;align-items:center;justify-content:center;color:#006172;font-size:.875rem;font-weight:700}
+  /* Pillar hover */
+  .pillar-card{transition:transform .3s ease,box-shadow .3s ease}
+  .pillar-card:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,31,38,.08)}
 </style>
 </head>
 <body class="flex flex-col min-h-screen antialiased">
 
-<!-- ═══════════ NAVBAR ═══════════ -->
+<!-- ═══ NAVBAR ═══ -->
 <header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm">
-  <nav class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto text-lg">
-    <div class="text-2xl font-bold tracking-tight">
-      <a href="#hero" class="block">
-        <span class="text-primary font-extrabold">POST</span>
-        <span class="text-on-surface-variant text-sm ml-1 hidden sm:inline">Società Benefit</span>
-      </a>
-    </div>
-    <div class="hidden md:flex items-center gap-8">
-      <a class="text-slate-600 hover:text-primary transition-colors" href="#impegno">Politiche</a>
-      <a class="text-slate-600 hover:text-primary transition-colors" href="#servizi">Organizzazione</a>
-      <a class="text-slate-600 hover:text-primary transition-colors" href="#esperienze">Sostenibilità</a>
-      <a class="text-slate-600 hover:text-primary transition-colors" href="#team">Territorio</a>
-      <a class="text-slate-600 hover:text-primary transition-colors" href="#team">Team</a>
+  <nav class="flex justify-between items-center px-8 py-3 max-w-7xl mx-auto text-lg">
+    <a href="#hero" class="block flex-shrink-0">
+      <img src="./logo-post.png" alt="POST Società Benefit" class="h-[65px] w-auto object-contain" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'text-primary font-extrabold text-3xl\'>POST</span>')"/>
+    </a>
+    <div class="hidden md:flex items-center gap-7">
+      <a class="text-slate-600 hover:text-primary transition-colors" href="#pilastri">Cosa facciamo</a>
+      <a class="text-primary border-b-2 border-primary pb-0.5" href="#piani-di-zona">Piani di Zona</a>
+      <a class="text-slate-600 hover:text-primary transition-colors" href="#esperienze">Dal campo</a>
+      <a class="text-slate-600 hover:text-primary transition-colors" href="#wait"><span class="material-symbols-outlined text-base align-middle mr-1">neurology</span>AI per il Bene Comune</a>
+      <a class="text-slate-600 hover:text-primary transition-colors" href="#chi-siamo">Chi siamo</a>
     </div>
     <div class="flex items-center gap-4">
-      <button class="p-2 text-primary hover:bg-slate-50 rounded-lg">
-        <span class="material-symbols-outlined">search</span>
+      <a href="#contatti" class="bg-primary-container text-on-primary-container px-6 py-2 rounded-lg font-bold hover:opacity-90 transition-all active:scale-95">Contatti</a>
+      <button class="md:hidden text-primary" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+        <span class="material-symbols-outlined">menu</span>
       </button>
-      <a href="#contatti" class="bg-primary-container text-on-primary-container px-6 py-2 rounded-lg font-bold hover:opacity-90 transition-all active:scale-95">
-        Contatti
-      </a>
     </div>
-    <!-- Mobile menu button -->
-    <button class="md:hidden text-primary" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
-      <span class="material-symbols-outlined">menu</span>
-    </button>
   </nav>
-  <!-- Mobile Menu -->
   <div id="mobile-menu" class="hidden md:hidden px-8 pb-4 space-y-2 bg-white/95 backdrop-blur-md">
-    <a class="block py-2 text-slate-600" href="#impegno">Politiche</a>
-    <a class="block py-2 text-slate-600" href="#servizi">Servizi</a>
-    <a class="block py-2 text-slate-600" href="#esperienze">Esperienze</a>
-    <a class="block py-2 text-slate-600" href="#team">Team</a>
+    <a class="block py-2 text-slate-600" href="#pilastri">Cosa facciamo</a>
+    <a class="block py-2 font-bold text-primary" href="#piani-di-zona">Piani di Zona</a>
+    <a class="block py-2 text-slate-600" href="#esperienze">Dal campo</a>
+    <a class="block py-2 text-slate-600" href="#wait">AI per il Bene Comune</a>
+    <a class="block py-2 text-slate-600" href="#chi-siamo">Chi siamo</a>
     <a class="block py-2 text-primary font-bold" href="#contatti">Contatti</a>
   </div>
 </header>
 
 <main class="flex-grow pt-24">
 
-<!-- ═══════════ SECTION 1: HERO ═══════════ -->
-<section id="hero" class="relative overflow-hidden px-8 py-20 md:py-32 max-w-7xl mx-auto">
+<!-- ═══ 1. HERO ═══ -->
+<section id="hero" class="relative overflow-hidden px-8 py-16 md:py-28 max-w-7xl mx-auto">
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-    <div class="lg:col-span-7 z-10">
-      <div class="inline-block px-4 py-1.5 mb-6 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant text-sm font-bold tracking-wide">
-        SOCIETÀ BENEFIT CERTIFICATA
-      </div>
+    <div class="lg:col-span-7 z-10 reveal-left">
+      <div class="inline-block px-4 py-1.5 mb-6 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant text-sm font-bold tracking-wide">SOCIETÀ BENEFIT</div>
       <h1 class="text-5xl md:text-7xl font-extrabold text-primary leading-[1.1] mb-6 tracking-tight">
-        Un futuro pensato nel presente.
+        Lavoriamo con chi costruisce il bene comune.
       </h1>
-      <p class="text-xl md:text-2xl text-on-surface leading-relaxed mb-10 max-w-2xl font-atkinson">
-        L'architettura istituzionale al servizio del bene comune. Promuoviamo uno sviluppo sostenibile attraverso la trasparenza e l'impatto sociale.
+      <p class="text-xl md:text-2xl text-on-surface leading-relaxed mb-6 max-w-2xl font-atkinson">
+        Consulenza per il welfare, le politiche pubbliche e lo sviluppo territoriale. Integriamo l'intelligenza artificiale nei processi sociali e collaborativi.
+      </p>
+      <p class="text-lg text-on-surface-variant leading-relaxed mb-10 max-w-xl font-atkinson">
+        Un gruppo di professionisti con un approccio artigianale: fianco a fianco con enti pubblici, cooperative e Terzo Settore.
       </p>
       <div class="flex flex-col sm:flex-row gap-4">
-        <a href="#servizi" class="px-8 py-4 bg-primary-container text-on-primary-container font-bold rounded-lg shadow-sm hover:brightness-110 transition-all flex items-center justify-center gap-2">
-          Scopri la nostra Visione
-          <span class="material-symbols-outlined">arrow_forward</span>
+        <a href="#piani-di-zona" class="px-8 py-4 bg-primary-container text-on-primary-container font-bold rounded-lg shadow-sm hover:brightness-110 transition-all flex items-center justify-center gap-2">
+          Piani di Zona <span class="material-symbols-outlined">arrow_forward</span>
         </a>
-        <a href="#esperienze" class="px-8 py-4 bg-surface-container-highest text-primary font-bold rounded-lg hover:bg-surface-container-high transition-all flex items-center justify-center">
-          I Nostri Servizi
+        <a href="#pilastri" class="px-8 py-4 bg-surface-container-highest text-primary font-bold rounded-lg hover:bg-surface-container-high transition-all flex items-center justify-center">
+          Cosa facciamo
         </a>
       </div>
     </div>
-    <div class="lg:col-span-5 relative">
-      <div class="relative w-full aspect-square md:aspect-[4/5] rounded-xl overflow-hidden shadow-2xl">
-        <!-- Auto-loaded from images/hero/ -->
-        <div id="hero-image" class="w-full h-full img-placeholder">
-          <span>Aggiungi foto in images/hero/</span>
+    <div class="lg:col-span-5 relative reveal-right">
+      <div class="relative w-full aspect-[4/5] rounded-xl overflow-hidden shadow-2xl">
+        <div id="hero-carousel" class="hero-carousel w-full h-full bg-surface-container-low">
+          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80" alt="Consulenza collaborativa" class="active"/>
+          <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&q=80" alt="Team di lavoro"/>
+          <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80" alt="Workshop strategico"/>
+          <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&q=80" alt="Comunità e territorio"/>
         </div>
-        <div class="absolute bottom-6 -left-6 md:-left-12 p-8 bg-white/80 backdrop-blur-md rounded-xl shadow-lg border border-white/20 max-w-[280px] hidden md:block">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white">
-              <span class="material-symbols-outlined">verified</span>
-            </div>
-            <span class="font-bold text-on-surface">Impatto Misurabile</span>
-          </div>
-          <p class="text-sm text-on-surface-variant font-atkinson">Rendicontazione annuale trasparente degli obiettivi di beneficio comune.</p>
-        </div>
-      </div>
-      <div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-surface-container-low rounded-full opacity-50 blur-3xl"></div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════ SECTION 2: IMPEGNO / VALORI ═══════════ -->
-<section id="impegno" class="bg-surface-container-low py-24 px-8">
-  <div class="max-w-7xl mx-auto">
-    <div class="mb-16">
-      <h2 class="text-3xl font-bold text-primary mb-4">Il nostro impegno</h2>
-      <p class="text-on-surface-variant max-w-xl">Oltre il profitto, verso un'architettura sociale che valorizza il territorio e le persone.</p>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-        <div class="text-primary mb-6"><span class="material-symbols-outlined text-4xl">diversity_3</span></div>
-        <h3 class="text-xl font-bold mb-4 text-on-surface">Coesione Sociale</h3>
-        <p class="text-on-surface-variant leading-relaxed">Sviluppiamo progetti che rafforzano il tessuto connettivo delle comunità locali.</p>
-      </div>
-      <div class="md:col-span-2 relative bg-primary-container p-8 rounded-xl overflow-hidden text-on-primary-container flex flex-col justify-end min-h-[300px]">
-        <div class="absolute top-0 right-0 w-1/2 h-full opacity-20" id="services-bg-image"></div>
-        <div class="relative z-10">
-          <h3 class="text-2xl font-bold mb-4">Valorizzazione Territoriale</h3>
-          <p class="max-w-lg leading-relaxed mb-6">La nostra missione è creare valore duraturo per il territorio attraverso interventi mirati e sostenibili nel tempo.</p>
-          <a class="inline-flex items-center gap-2 font-bold underline decoration-2 underline-offset-4" href="#esperienze">Esplora i progetti</a>
-        </div>
-      </div>
-      <div class="bg-surface-container-highest p-8 rounded-xl">
-        <div class="text-primary mb-6"><span class="material-symbols-outlined text-4xl">eco</span></div>
-        <h3 class="text-xl font-bold mb-4 text-on-surface">Sostenibilità Integrata</h3>
-        <p class="text-on-surface-variant leading-relaxed">Ogni decisione aziendale è valutata per il suo impatto ambientale e sociale a lungo termine.</p>
-      </div>
-      <div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm">
-        <div class="text-primary mb-6"><span class="material-symbols-outlined text-4xl">gavel</span></div>
-        <h3 class="text-xl font-bold mb-4 text-on-surface">Etica & Trasparenza</h3>
-        <p class="text-on-surface-variant leading-relaxed">Governo societario basato sulla massima integrità e rendicontazione aperta agli stakeholder.</p>
-      </div>
-      <div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm">
-        <div class="text-primary mb-6"><span class="material-symbols-outlined text-4xl">architecture</span></div>
-        <h3 class="text-xl font-bold mb-4 text-on-surface">Design Istituzionale</h3>
-        <p class="text-on-surface-variant leading-relaxed">Progettiamo strutture e processi per istituzioni che guardano al benessere delle generazioni future.</p>
+        <div class="hero-dots" id="hero-dots"></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ SECTION 3: SERVIZI / 4 PILASTRI ═══════════ -->
-<section id="servizi" class="px-8 py-24 max-w-7xl mx-auto">
-  <div class="max-w-3xl mb-16">
-    <span class="inline-block py-1 px-3 mb-6 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant text-sm font-bold tracking-wide">
-      OUR MISSION
-    </span>
-    <h2 class="text-5xl md:text-7xl font-bold text-primary leading-tight tracking-tight mb-8">
-      I quattro pilastri della consulenza strategica.
-    </h2>
-    <p class="text-xl text-on-surface max-w-2xl leading-relaxed opacity-90">
-      Guidiamo le organizzazioni verso un impatto positivo, integrando responsabilità sociale e innovazione territoriale nel core business aziendale.
-    </p>
+<!-- ═══ 2. CONTATORI ═══ -->
+<section class="bg-primary py-14 px-8 reveal">
+  <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 text-center">
+    <div><p class="text-4xl md:text-5xl font-extrabold text-on-primary"><span class="counter" data-target="4">0</span></p><p class="text-sm text-primary-fixed font-bold mt-1 uppercase tracking-wider">Regioni</p></div>
+    <div><p class="text-4xl md:text-5xl font-extrabold text-on-primary"><span class="counter" data-target="12">0</span></p><p class="text-sm text-primary-fixed font-bold mt-1 uppercase tracking-wider">Territori</p></div>
+    <div><p class="text-4xl md:text-5xl font-extrabold text-on-primary"><span class="counter" data-target="35">0</span>+</p><p class="text-sm text-primary-fixed font-bold mt-1 uppercase tracking-wider">Enti Terzo Settore</p></div>
+    <div><p class="text-4xl md:text-5xl font-extrabold text-on-primary"><span class="counter" data-target="20">0</span>+</p><p class="text-sm text-primary-fixed font-bold mt-1 uppercase tracking-wider">Pubbliche Amministrazioni</p></div>
+    <div><p class="text-4xl md:text-5xl font-extrabold text-on-primary"><span class="counter" data-target="40">0</span>+</p><p class="text-sm text-primary-fixed font-bold mt-1 uppercase tracking-wider">Processi collaborativi</p></div>
+    <div><p class="text-4xl md:text-5xl font-extrabold text-on-primary"><span class="counter" data-target="15">0</span>+</p><p class="text-sm text-primary-fixed font-bold mt-1 uppercase tracking-wider">Valutazioni d'impatto</p></div>
   </div>
-  <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
-    <!-- Politiche -->
-    <div class="md:col-span-7 bg-surface-container-low p-12 rounded-lg flex flex-col justify-between min-h-[450px] relative overflow-hidden group">
-      <div class="relative z-10">
-        <div class="mb-8"><span class="material-symbols-outlined text-primary text-4xl">policy</span></div>
-        <h3 class="text-3xl font-bold text-primary mb-6">Politiche</h3>
-        <p class="text-lg text-on-surface leading-relaxed max-w-md">
-          Sviluppiamo quadri normativi interni e strategie di governance che promuovono l'etica e la trasparenza, trasformando i vincoli in opportunità di crescita.
-        </p>
-      </div>
-      <div class="mt-8 relative z-10">
-        <button class="flex items-center gap-2 font-bold text-primary hover:gap-4 transition-all">
-          Scopri di più <span class="material-symbols-outlined">arrow_forward</span>
-        </button>
-      </div>
-      <div class="absolute right-0 bottom-0 w-1/2 h-full opacity-10 grayscale group-hover:grayscale-0 transition-all duration-700" id="services-politiche-bg"></div>
-    </div>
-    <!-- Organizzazione -->
-    <div class="md:col-span-5 bg-primary text-on-primary p-10 rounded-lg flex flex-col justify-between">
+</section>
+
+<!-- ═══ 3. I QUATTRO PILASTRI ═══ -->
+<section id="pilastri" class="px-8 py-24 max-w-7xl mx-auto">
+  <div class="mb-16 reveal">
+    <span class="inline-block py-1 px-3 mb-6 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant text-sm font-bold tracking-wide">IL NOSTRO APPROCCIO</span>
+    <h2 class="text-4xl md:text-5xl font-bold text-primary leading-tight tracking-tight mb-6">Quattro pilastri. Un metodo.</h2>
+    <p class="text-lg text-on-surface leading-relaxed max-w-2xl">Non siamo generalisti. Lavoriamo su quattro dimensioni che si alimentano a vicenda: ogni progetto ne attraversa almeno due.</p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+    <!-- PILASTRO 1: Valutazione d'Impatto -->
+    <div class="pillar-card bg-surface-container-low p-10 rounded-xl reveal-left min-h-[380px] flex flex-col justify-between border-l-4 border-primary">
       <div>
-        <div class="mb-6"><span class="material-symbols-outlined text-primary-fixed text-4xl">hub</span></div>
-        <h3 class="text-3xl font-bold mb-4">Organizzazione</h3>
-        <p class="text-lg leading-relaxed opacity-90">
-          Ridefiniamo i flussi di lavoro e le strutture gerarchiche per massimizzare l'agilità e il benessere dei collaboratori.
-        </p>
-      </div>
-      <div class="mt-12 bg-primary-container p-6 rounded-lg">
-        <p class="text-sm font-bold uppercase tracking-widest mb-2 opacity-80">Focus</p>
-        <p class="text-lg italic">"L'efficienza nasce dalla chiarezza dei ruoli e dalla condivisione del valore."</p>
-      </div>
-    </div>
-    <!-- Sostenibilità -->
-    <div class="md:col-span-5 bg-surface-container-highest p-10 rounded-lg flex flex-col border-b-4 border-primary">
-      <div class="mb-8"><span class="material-symbols-outlined text-primary text-5xl" style="font-variation-settings: 'FILL' 1;">eco</span></div>
-      <h3 class="text-3xl font-bold text-primary mb-6">Sostenibilità</h3>
-      <p class="text-lg text-on-surface leading-relaxed mb-8">
-        Bilanci di sostenibilità, strategie Carbon Neutral e CSR. Integriamo i parametri ESG per garantire un futuro solido all'impresa e all'ambiente.
-      </p>
-      <div class="mt-auto grid grid-cols-2 gap-4">
-        <div class="p-4 bg-white/50 rounded"><p class="text-2xl font-bold text-primary">ESG</p><p class="text-xs text-outline font-bold uppercase">Compliance</p></div>
-        <div class="p-4 bg-white/50 rounded"><p class="text-2xl font-bold text-primary">CO2</p><p class="text-xs text-outline font-bold uppercase">Reduction</p></div>
-      </div>
-    </div>
-    <!-- Territorio -->
-    <div class="md:col-span-7 bg-surface-container-low p-12 rounded-lg flex flex-col md:flex-row gap-12 items-center">
-      <div class="flex-1">
-        <div class="mb-6"><span class="material-symbols-outlined text-primary text-4xl">map</span></div>
-        <h3 class="text-3xl font-bold text-primary mb-4">Territorio</h3>
-        <p class="text-lg text-on-surface leading-relaxed">
-          Valorizziamo le radici locali attraverso progetti di rigenerazione urbana e partenariati pubblico-privati che generano valore condiviso.
-        </p>
-        <ul class="mt-8 space-y-3">
-          <li class="flex items-center gap-3 text-on-surface-variant"><span class="material-symbols-outlined text-sm">check_circle</span> Progetti di rigenerazione</li>
-          <li class="flex items-center gap-3 text-on-surface-variant"><span class="material-symbols-outlined text-sm">check_circle</span> Sviluppo di reti locali</li>
+        <span class="material-symbols-outlined text-primary text-4xl mb-4" style="font-variation-settings:'FILL' 1">monitoring</span>
+        <h3 class="text-2xl font-bold text-primary mb-4">Valutazione d'Impatto</h3>
+        <p class="text-on-surface leading-relaxed mb-6">Trasformiamo i dati in conoscenza utile per chi decide. Non è un adempimento: è lo strumento che rende i processi apprendibili e i risultati dimostrabili.</p>
+        <ul class="space-y-3">
+          <li class="flex items-start gap-2 text-on-surface-variant text-sm"><span class="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>Indicatori di esito e di processo</li>
+          <li class="flex items-start gap-2 text-on-surface-variant text-sm"><span class="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>Ricerca sociale e accountability</li>
+          <li class="flex items-start gap-2 text-on-surface-variant text-sm"><span class="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>Report per Regione e Assemblea dei Sindaci</li>
         </ul>
       </div>
-      <div class="flex-1 w-full h-64 md:h-full min-h-[300px] rounded-xl overflow-hidden shadow-xl">
-        <div id="services-territorio-image" class="w-full h-full img-placeholder">
-          <span>Aggiungi foto in images/services/</span>
+      <div class="mt-8 bg-primary/5 p-4 rounded-lg">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="material-symbols-outlined text-primary text-lg">new_releases</span>
+          <span class="text-sm font-bold text-primary uppercase tracking-wide">Novità 2025</span>
+        </div>
+        <p class="text-sm text-on-surface leading-relaxed"><strong>Valutazione d'Impatto Generazionale</strong> — accompagnamento all'applicazione della Legge 167/2025 per misurare gli effetti delle politiche sulle generazioni future.</p>
+      </div>
+    </div>
+
+    <!-- PILASTRO 2: Amministrazione Condivisa -->
+    <div class="pillar-card bg-primary text-on-primary p-10 rounded-xl reveal-right min-h-[380px] flex flex-col justify-between">
+      <div>
+        <span class="material-symbols-outlined text-primary-fixed text-4xl mb-4">handshake</span>
+        <h3 class="text-2xl font-bold mb-4">Amministrazione Condivisa</h3>
+        <p class="leading-relaxed opacity-90 mb-6">Coprogrammazione e coprogettazione tra PA e Terzo Settore. Non è burocrazia: è costruire insieme le risposte ai bisogni, con metodo e trasparenza.</p>
+        <ul class="space-y-3">
+          <li class="flex items-start gap-2 opacity-80 text-sm"><span class="material-symbols-outlined text-primary-fixed text-sm mt-0.5">check_circle</span>Facilitazione tavoli tematici e territoriali</li>
+          <li class="flex items-start gap-2 opacity-80 text-sm"><span class="material-symbols-outlined text-primary-fixed text-sm mt-0.5">check_circle</span>Innovazione istituzionale e governance</li>
+          <li class="flex items-start gap-2 opacity-80 text-sm"><span class="material-symbols-outlined text-primary-fixed text-sm mt-0.5">check_circle</span>Progettazione partecipata dei servizi</li>
+        </ul>
+      </div>
+      <div class="mt-8 bg-white/10 p-4 rounded-lg">
+        <p class="text-sm italic opacity-90">"L'amministrazione condivisa non è un adempimento. È il modo in cui si costruiscono le politiche che funzionano."</p>
+      </div>
+    </div>
+
+    <!-- PILASTRO 3: Consulenza Organizzativa -->
+    <div class="pillar-card bg-surface-container-highest p-10 rounded-xl reveal-left min-h-[380px] flex flex-col justify-between border-b-4 border-primary">
+      <div>
+        <span class="material-symbols-outlined text-primary text-4xl mb-4">hub</span>
+        <h3 class="text-2xl font-bold text-primary mb-4">Consulenza Organizzativa</h3>
+        <p class="text-on-surface leading-relaxed mb-6">Accompagniamo le organizzazioni attraverso le trasformazioni, lavorando sulle culture organizzative — quelle cose che non stanno negli organigrammi ma fanno la differenza.</p>
+        <ul class="space-y-3">
+          <li class="flex items-start gap-2 text-on-surface-variant text-sm"><span class="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>Piani di impresa e sviluppo strategico</li>
+          <li class="flex items-start gap-2 text-on-surface-variant text-sm"><span class="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>Passaggio intergenerazionale</li>
+          <li class="flex items-start gap-2 text-on-surface-variant text-sm"><span class="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>Sviluppo competenze e formazione</li>
+          <li class="flex items-start gap-2 text-on-surface-variant text-sm"><span class="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>Riorganizzazione dei processi</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PILASTRO 4: Intelligenza Artificiale -->
+    <div class="pillar-card bg-inverse-surface text-inverse-on-surface p-10 rounded-xl reveal-right min-h-[380px] flex flex-col justify-between">
+      <div>
+        <span class="material-symbols-outlined text-primary-fixed-dim text-4xl mb-4">neurology</span>
+        <h3 class="text-2xl font-bold text-primary-fixed-dim mb-4">Intelligenza Artificiale</h3>
+        <p class="leading-relaxed opacity-90 mb-6">L'AI come strumento al servizio dei processi sociali e collaborativi. Non vendiamo software: accompagniamo le organizzazioni a capire dove e come l'AI fa davvero la differenza.</p>
+        <ul class="space-y-3">
+          <li class="flex items-start gap-2 opacity-80 text-sm"><span class="material-symbols-outlined text-primary-fixed-dim text-sm mt-0.5">check_circle</span>Programmazione e progettazione data driven</li>
+          <li class="flex items-start gap-2 opacity-80 text-sm"><span class="material-symbols-outlined text-primary-fixed-dim text-sm mt-0.5">check_circle</span>Analisi dati sociali potenziata dall'AI</li>
+          <li class="flex items-start gap-2 opacity-80 text-sm"><span class="material-symbols-outlined text-primary-fixed-dim text-sm mt-0.5">check_circle</span>Formazione per operatori e dirigenti PA</li>
+          <li class="flex items-start gap-2 opacity-80 text-sm"><span class="material-symbols-outlined text-primary-fixed-dim text-sm mt-0.5">check_circle</span>Sperimentazioni pilota nei servizi</li>
+        </ul>
+      </div>
+      <a href="#wait" class="mt-8 inline-flex items-center gap-2 text-primary-fixed-dim font-bold hover:gap-4 transition-all">
+        Scopri w<span class="font-extrabold">AI</span>t <span class="material-symbols-outlined">arrow_forward</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ 4. PIANI DI ZONA ═══ -->
+<section id="piani-di-zona" class="py-24 px-8 bg-inverse-surface text-inverse-on-surface">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start mb-20">
+      <div class="lg:col-span-7 reveal-left">
+        <div class="inline-block px-4 py-1.5 mb-6 rounded-full bg-primary-container text-on-primary-container text-sm font-bold tracking-wide">ASSISTENZA TECNICA PER AMBITI TERRITORIALI</div>
+        <h2 class="text-5xl md:text-6xl font-extrabold text-white leading-[1.1] mb-8 tracking-tight">
+          Piani di Zona.<br/><span class="text-primary-fixed-dim">Si parte dalla valutazione.</span>
+        </h2>
+        <p class="text-xl text-inverse-on-surface/90 leading-relaxed max-w-2xl mb-8">
+          I Piani di Zona sono in atto. Non si ricomincia da zero: si parte da quello che c'è, da quello che ha funzionato e da quello che va ripensato. La valutazione costruisce le basi per una programmazione solida e pone le condizioni per aprire in maniera adeguata la coprogrammazione.
+        </p>
+        <p class="text-lg text-inverse-on-surface/70 leading-relaxed max-w-2xl">A fianco del vostro Ufficio di Piano, non al suo posto.</p>
+      </div>
+      <div class="lg:col-span-5 reveal-right">
+        <div class="bg-white/10 backdrop-blur-md rounded-xl p-8 border border-white/10">
+          <h3 class="text-2xl font-bold text-primary-fixed-dim mb-6">Il nostro percorso</h3>
+          <div class="flex gap-4 mb-8">
+            <div class="flex flex-col items-center"><div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-lg">1</div><div class="w-0.5 h-full bg-primary-container/30 mt-2"></div></div>
+            <div><h4 class="text-xl font-bold text-white mb-2">Valutazione e Monitoraggio</h4><p class="text-inverse-on-surface/80 leading-relaxed">Indicatori di esito e processo, analisi di ciò che ha funzionato, report per Regione e Assemblea dei Sindaci.</p><span class="inline-block mt-2 text-sm font-bold text-primary-fixed-dim">Il punto di partenza</span></div>
+          </div>
+          <div class="flex gap-4 mb-8">
+            <div class="flex flex-col items-center"><div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-lg">2</div><div class="w-0.5 h-full bg-primary-container/30 mt-2"></div></div>
+            <div><h4 class="text-xl font-bold text-white mb-2">Programmazione e Redazione</h4><p class="text-inverse-on-surface/80 leading-relaxed">Dalla valutazione emergono le priorità. Analisi dei bisogni, obiettivi misurabili, raccordo con i POAS delle ATS.</p><span class="inline-block mt-2 text-sm font-bold text-primary-fixed-dim">Le basi solide</span></div>
+          </div>
+          <div class="flex gap-4 mb-8">
+            <div class="flex flex-col items-center"><div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-lg">3</div><div class="w-0.5 h-full bg-primary-container/30 mt-2"></div></div>
+            <div><h4 class="text-xl font-bold text-white mb-2">Coprogrammazione</h4><p class="text-inverse-on-surface/80 leading-relaxed">Solo con basi solide si apre al Terzo Settore. Facilitazione con metodi strutturati: world café, focus group, raccolta contributi.</p><span class="inline-block mt-2 text-sm font-bold text-primary-fixed-dim">L'apertura consapevole</span></div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex flex-col items-center"><div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-lg">4</div></div>
+            <div><h4 class="text-xl font-bold text-white mb-2">Supporto Normativo</h4><p class="text-inverse-on-surface/80 leading-relaxed">L.R. 3/2008, Codice del Terzo Settore, DGR, circolari ATS. Traduzione in azioni concrete.</p><span class="inline-block mt-2 text-sm font-bold text-primary-fixed-dim">Trasversale a tutto</span></div>
+          </div>
         </div>
       </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 stagger">
+      <div class="bg-white/5 border border-white/10 p-6 rounded-xl reveal" style="--i:0"><span class="material-symbols-outlined text-primary-fixed-dim text-2xl mb-3">gavel</span><h4 class="font-bold text-white mb-2">Normativa in evoluzione</h4><p class="text-sm text-inverse-on-surface/70">Il quadro si aggiorna costantemente. Stare al passo richiede tempo che spesso manca.</p></div>
+      <div class="bg-white/5 border border-white/10 p-6 rounded-xl reveal" style="--i:1"><span class="material-symbols-outlined text-primary-fixed-dim text-2xl mb-3">groups</span><h4 class="font-bold text-white mb-2">Tavoli difficili</h4><p class="text-sm text-inverse-on-surface/70">Senza facilitazione professionale, i tavoli diventano arene sterili o validazioni formali.</p></div>
+      <div class="bg-white/5 border border-white/10 p-6 rounded-xl reveal" style="--i:2"><span class="material-symbols-outlined text-primary-fixed-dim text-2xl mb-3">description</span><h4 class="font-bold text-white mb-2">Documenti che non reggono</h4><p class="text-sm text-inverse-on-surface/70">Senza metodologie rigorose, il Piano rischia la non conformità ai requisiti regionali.</p></div>
+      <div class="bg-white/5 border border-white/10 p-6 rounded-xl reveal" style="--i:3"><span class="material-symbols-outlined text-primary-fixed-dim text-2xl mb-3">monitoring</span><h4 class="font-bold text-white mb-2">Nessun sistema di risultati</h4><p class="text-sm text-inverse-on-surface/70">Regione chiede evidenza dell'impatto. Senza valutazione, il dialogo resta sull'adempimento.</p></div>
+    </div>
+    <div class="mt-16 text-center reveal">
+      <a href="#contatti" class="inline-flex items-center gap-2 px-10 py-4 bg-primary-container text-on-primary-container font-bold rounded-lg text-lg hover:brightness-110 transition-all">Parliamo del vostro Piano di Zona <span class="material-symbols-outlined">arrow_forward</span></a>
+      <p class="mt-4 text-sm text-inverse-on-surface/40">Per Dirigenti di Ambito &middot; Responsabili Uffici di Piano &middot; Assessori al Welfare</p>
     </div>
   </div>
 </section>
 
-<!-- CTA Section -->
-<section class="bg-surface-container py-24">
-  <div class="max-w-7xl mx-auto px-8 text-left">
-    <h2 class="text-4xl font-bold text-primary mb-6">Pronti a trasformare la vostra visione?</h2>
-    <p class="text-xl text-on-surface max-w-2xl mb-10 leading-relaxed">
-      POST Società Benefit affianca le imprese in un percorso di evoluzione verso modelli più resilienti e umani.
-    </p>
-    <div class="flex flex-wrap gap-4">
-      <a href="#contatti" class="bg-primary-container text-on-primary-container px-8 py-4 rounded-lg font-bold text-lg hover:brightness-105 transition-all">Inizia il percorso</a>
-      <button class="bg-surface-container-highest text-primary px-8 py-4 rounded-lg font-bold text-lg hover:bg-surface-variant transition-all">Scarica la Brochure</button>
+<!-- ═══ 5. wAIt ═══ -->
+<section id="wait" class="py-24 px-8">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center mb-20">
+      <div class="lg:col-span-7 reveal-left">
+        <div class="inline-block px-4 py-1.5 mb-6 rounded-full bg-inverse-surface text-inverse-on-surface text-sm font-bold tracking-wide">AI PER IL BENE COMUNE</div>
+        <h2 class="text-5xl md:text-7xl font-extrabold text-primary leading-[1.05] mb-8 tracking-tight">
+          w<span class="text-primary-container">AI</span>t.<br/>
+          <span class="text-on-surface-variant text-3xl md:text-4xl font-bold">Welfare &amp; Artificial Intelligence Toolkit</span>
+        </h2>
+        <p class="text-xl text-on-surface leading-relaxed max-w-2xl mb-8">
+          wAIt è il nostro modo di portare l'AI dentro il welfare e la pubblica amministrazione — con lo stesso approccio artigianale che ci caratterizza. Non per rincorrere la tecnologia, ma per metterla al servizio dei processi sociali.
+        </p>
+      </div>
+      <div class="lg:col-span-5 reveal-right">
+        <div class="bg-inverse-surface text-inverse-on-surface p-10 rounded-xl shadow-2xl">
+          <span class="material-symbols-outlined text-5xl text-primary-fixed-dim mb-6">neurology</span>
+          <h3 class="text-2xl font-bold mb-6 text-primary-fixed-dim">Il modello wAIt</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary-fixed-dim mt-0.5">arrow_right</span><span><strong>Formazione</strong> — Percorsi pratici per operatori sociali, dirigenti PA e Terzo Settore</span></li>
+            <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary-fixed-dim mt-0.5">arrow_right</span><span><strong>Sperimentazione</strong> — Progetti pilota per integrare l'AI nei processi di lavoro</span></li>
+            <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary-fixed-dim mt-0.5">arrow_right</span><span><strong>Consulenza</strong> — Orientamento strategico su cosa automatizzare e cosa no</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 stagger">
+      <div class="bg-surface-container-high p-8 rounded-xl reveal" style="--i:0"><span class="material-symbols-outlined text-3xl text-primary mb-3">balance</span><h4 class="text-lg font-bold text-primary mb-2">Etica prima di tutto</h4><p class="text-on-surface leading-relaxed text-sm">Trasparente, equa, al servizio delle persone.</p></div>
+      <div class="bg-surface-container-high p-8 rounded-xl reveal" style="--i:1"><span class="material-symbols-outlined text-3xl text-primary mb-3">precision_manufacturing</span><h4 class="text-lg font-bold text-primary mb-2">Artigianale, non industriale</h4><p class="text-on-surface leading-relaxed text-sm">Ogni organizzazione ha i suoi processi. Partiamo da lì.</p></div>
+      <div class="bg-surface-container-high p-8 rounded-xl reveal" style="--i:2"><span class="material-symbols-outlined text-3xl text-primary mb-3">diversity_3</span><h4 class="text-lg font-bold text-primary mb-2">Competenze diffuse</h4><p class="text-on-surface leading-relaxed text-sm">Costruire competenze interne, non dipendenza tecnologica.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ SECTION 4: ESPERIENZE E IMPATTO ═══════════ -->
-<section id="esperienze" class="px-8 py-24 max-w-7xl mx-auto">
-  <div class="mb-16">
-    <span class="inline-block px-4 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant text-sm font-bold uppercase tracking-wider mb-6">
-      Track Record & Vision
-    </span>
-    <h2 class="text-5xl md:text-7xl font-bold text-primary leading-tight mb-8">
-      Esperienze e Impatto per il Bene Comune.
-    </h2>
-    <p class="text-xl md:text-2xl text-on-surface max-w-2xl">
-      Affianchiamo la Pubblica Amministrazione e il Terzo Settore nella costruzione di servizi inclusivi, accessibili e trasparenti.
-    </p>
-  </div>
-
-  <!-- Stats -->
-  <div class="bg-surface-container-low py-16 px-8 rounded-xl mb-16">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-16">
-      <div class="space-y-4"><p class="text-6xl font-bold text-primary">150k+</p><p class="text-lg text-on-surface-variant font-bold">Cittadini Coinvolti</p><p class="text-base text-on-surface">Processi partecipativi digitali e fisici per una democrazia più vicina.</p></div>
-      <div class="space-y-4"><p class="text-6xl font-bold text-primary">45+</p><p class="text-lg text-on-surface-variant font-bold">Enti Pubblici</p><p class="text-base text-on-surface">Consulenza strategica per l'innovazione della PA centrale e locale.</p></div>
-      <div class="space-y-4"><p class="text-6xl font-bold text-primary">100%</p><p class="text-lg text-on-surface-variant font-bold">Focus Accessibilità</p><p class="text-base text-on-surface">Tutti i nostri output rispettano i più alti standard di leggibilità.</p></div>
-    </div>
-  </div>
-
-  <!-- Case Studies Cards - auto-loaded images from images/projects/ -->
-  <div class="mb-16">
-    <h3 class="text-4xl font-bold text-primary mb-4">Case Archive</h3>
-    <p class="text-xl text-on-surface-variant max-w-xl mb-12">I nostri successi nel generare impatto misurabile attraverso il design sistemico.</p>
-  </div>
-  <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-    <!-- Card 1 -->
-    <div class="flex flex-col bg-surface-container-highest rounded-xl overflow-hidden group hover:scale-[1.02] transition-transform duration-300">
-      <div class="h-64 w-full">
-        <div id="project-image-1" class="w-full h-full img-placeholder"><span>images/projects/01-*.jpg</span></div>
+<!-- ═══ 6. BLOG / ESPERIENZE ═══ -->
+<section id="esperienze" class="bg-surface-container-low py-24 px-8">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-16 reveal">
+      <div>
+        <span class="inline-block px-4 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant text-sm font-bold uppercase tracking-wider mb-6">ESPERIENZE &amp; APPROFONDIMENTI</span>
+        <h2 class="text-4xl md:text-5xl font-bold text-primary leading-tight mb-4">Dal campo.</h2>
+        <p class="text-lg text-on-surface max-w-2xl">Progetti, riflessioni metodologiche e aggiornamenti normativi. Il nostro lavoro raccontato mentre succede.</p>
       </div>
-      <div class="p-10 space-y-6 flex-grow flex flex-col justify-between">
-        <div>
-          <span class="px-3 py-1 bg-secondary-fixed text-on-secondary-fixed-variant rounded-full text-xs font-bold uppercase">Public Admin</span>
-          <h4 class="text-3xl font-bold text-primary mb-4 mt-4">Portale Trasparenza Digitale</h4>
-          <p class="text-lg text-on-surface">Abbiamo riprogettato l'intero ecosistema informativo per un ente locale, eliminando barriere cognitive e riducendo il tempo medio di ricerca informazioni.</p>
-        </div>
-        <div class="grid grid-cols-2 gap-4 pt-8 border-t border-outline-variant/20">
-          <div><p class="text-2xl font-bold text-primary">+20%</p><p class="text-sm text-on-surface-variant">Efficienza</p></div>
-          <div><p class="text-2xl font-bold text-primary">15k</p><p class="text-sm text-on-surface-variant">Utenti attivi</p></div>
-        </div>
+      <!-- Category filter -->
+      <div class="flex flex-wrap gap-2 mt-6 md:mt-0" id="blog-filters">
+        <button class="blog-filter active px-4 py-2 rounded-full text-sm font-bold transition-all bg-primary text-on-primary" data-cat="all">Tutti</button>
+        <button class="blog-filter px-4 py-2 rounded-full text-sm font-bold transition-all bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary" data-cat="case-study">Case study</button>
+        <button class="blog-filter px-4 py-2 rounded-full text-sm font-bold transition-all bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary" data-cat="normativa">Normativa</button>
+        <button class="blog-filter px-4 py-2 rounded-full text-sm font-bold transition-all bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary" data-cat="metodo">Metodo</button>
+        <button class="blog-filter px-4 py-2 rounded-full text-sm font-bold transition-all bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary" data-cat="ai">AI</button>
       </div>
     </div>
-    <!-- Card 2 -->
-    <div class="flex flex-col bg-on-primary-fixed-variant rounded-xl overflow-hidden group hover:scale-[1.02] transition-transform duration-300">
-      <div class="h-64 w-full">
-        <div id="project-image-2" class="w-full h-full img-placeholder"><span>images/projects/02-*.jpg</span></div>
-      </div>
-      <div class="p-10 space-y-6 flex-grow flex flex-col justify-between">
-        <div>
-          <span class="px-3 py-1 bg-primary text-on-primary rounded-full text-xs font-bold uppercase">Third Sector</span>
-          <h4 class="text-3xl font-bold text-on-primary-container mb-4 mt-4">Community Resilience Hub</h4>
-          <p class="text-lg text-on-primary-container/80">Supporto alla rete del volontariato per la creazione di un hub logistico e informativo durante l'emergenza.</p>
-        </div>
-        <div class="grid grid-cols-2 gap-4 pt-8 border-t border-primary/30">
-          <div><p class="text-2xl font-bold text-secondary-fixed">80+ NGO</p><p class="text-sm text-on-primary-container/60">Connesse</p></div>
-          <div><p class="text-2xl font-bold text-secondary-fixed">€1.2M</p><p class="text-sm text-on-primary-container/60">Impatto</p></div>
-        </div>
-      </div>
+
+    <!-- Blog grid — loaded from blog.json -->
+    <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- JS populates this -->
     </div>
   </div>
 </section>
 
-<!-- ═══════════ SECTION 5: TEAM & METODOLOGIA ═══════════ -->
-<section id="team" class="bg-surface-container-low py-24">
+<!-- ═══ 7. CHI SIAMO + TEAM ═══ -->
+<section id="chi-siamo" class="bg-surface-container-low py-24">
   <div class="max-w-7xl mx-auto px-8">
-    <div class="mb-16">
-      <h2 class="text-5xl font-bold text-primary mb-8 tracking-tight">Il Nostro Approccio: Dalla Visione all'Azione.</h2>
-      <p class="text-xl text-on-surface leading-relaxed max-w-2xl">
-        Il capitale umano è il cuore pulsante di POST. Operiamo con rigore scientifico e una profonda sensibilità territoriale.
-      </p>
+    <div class="max-w-3xl mb-20 reveal">
+      <h2 class="text-4xl font-bold text-primary mb-6">Non vendiamo soluzioni preconfezionate.</h2>
+      <p class="text-lg text-on-surface leading-relaxed mb-4">POST è una piccola società benefit che lavora nel campo della consulenza per il welfare, le politiche pubbliche e lo sviluppo territoriale.</p>
+      <p class="text-lg text-on-surface-variant leading-relaxed">Non siamo una grande società di consulenza: siamo professionisti che si sporcano le mani, fianco a fianco con chi opera ogni giorno nei servizi e nelle comunità.</p>
     </div>
-
-    <!-- Team Cards - auto-loaded from images/team/ -->
-    <h3 class="text-3xl font-bold text-primary mb-4">Capitale Umano</h3>
-    <p class="text-lg text-slate-600 max-w-xl mb-12">L'eccellenza nasce dalla sinergia di competenze multidisciplinari unite da una visione comune.</p>
-    <div id="team-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-24">
-      <!-- Team cards will be auto-populated from images/team/ -->
-      <!-- Fallback static cards -->
-      <div class="team-card bg-surface-container-lowest border border-outline-variant/30 rounded-lg overflow-hidden group hover:shadow-lg transition-all">
-        <div class="h-2 bg-primary"></div>
-        <div class="p-8">
-          <div class="w-24 h-24 rounded-full overflow-hidden mb-6 border-2 border-primary-container p-1">
-            <div id="team-photo-1" class="w-full h-full rounded-full img-placeholder text-xs"><span>01-*.jpg</span></div>
-          </div>
-          <h4 class="text-2xl font-bold text-primary mb-1">Elena Rossi</h4>
-          <span class="text-sm font-bold uppercase tracking-widest text-primary-container mb-4 block">Co-Founder & CEO</span>
-          <p class="text-on-surface mb-6 leading-relaxed">Esperta in strategie di impatto sociale con oltre 15 anni di esperienza nella consulenza per il settore pubblico.</p>
-        </div>
-      </div>
-      <div class="team-card bg-surface-container-lowest border border-outline-variant/30 rounded-lg overflow-hidden group hover:shadow-lg transition-all">
-        <div class="h-2 bg-primary"></div>
-        <div class="p-8">
-          <div class="w-24 h-24 rounded-full overflow-hidden mb-6 border-2 border-primary-container p-1">
-            <div id="team-photo-2" class="w-full h-full rounded-full img-placeholder text-xs"><span>02-*.jpg</span></div>
-          </div>
-          <h4 class="text-2xl font-bold text-primary mb-1">Marco Bianchi</h4>
-          <span class="text-sm font-bold uppercase tracking-widest text-primary-container mb-4 block">Direttore Tecnico</span>
-          <p class="text-on-surface mb-6 leading-relaxed">Ingegnere ambientale specializzato in rigenerazione urbana e modelli di economia circolare applicati al territorio.</p>
-        </div>
-      </div>
-      <div class="team-card bg-surface-container-lowest border border-outline-variant/30 rounded-lg overflow-hidden group hover:shadow-lg transition-all">
-        <div class="h-2 bg-primary"></div>
-        <div class="p-8">
-          <div class="w-24 h-24 rounded-full overflow-hidden mb-6 border-2 border-primary-container p-1">
-            <div id="team-photo-3" class="w-full h-full rounded-full img-placeholder text-xs"><span>03-*.jpg</span></div>
-          </div>
-          <h4 class="text-2xl font-bold text-primary mb-1">Giulia Verdi</h4>
-          <span class="text-sm font-bold uppercase tracking-widest text-primary-container mb-4 block">Sustainability Manager</span>
-          <p class="text-on-surface mb-6 leading-relaxed">Specialista in ESG reporting e comunicazione della sostenibilità per società benefit e organizzazioni no-profit.</p>
-        </div>
-      </div>
+    <div class="reveal">
+      <h3 class="text-3xl font-bold text-primary mb-4">Le persone di POST.</h3>
+      <p class="text-lg text-on-surface-variant max-w-xl mb-12">Competenze diverse unite dalla voglia di fare bene.</p>
     </div>
-
-    <!-- Methodology -->
-    <h3 class="text-4xl font-bold text-primary mb-16">Il Nostro Metodo Operativo</h3>
-    <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-6">
-      <div class="md:col-span-4 lg:col-span-4 bg-surface-container-high p-10 rounded-xl flex flex-col justify-between min-h-[400px]">
-        <div>
-          <span class="material-symbols-outlined text-5xl text-primary mb-6">analytics</span>
-          <h4 class="text-3xl font-bold text-primary mb-4">Analisi Predittiva del Territorio</h4>
-          <p class="text-lg text-on-surface max-w-md">Utilizziamo sistemi GIS e data-modeling per anticipare le esigenze delle comunità locali.</p>
-        </div>
-        <div class="mt-8 flex gap-2">
-          <span class="bg-primary-container/10 text-primary px-4 py-2 rounded-full text-sm font-bold">Data Driven</span>
-          <span class="bg-primary-container/10 text-primary px-4 py-2 rounded-full text-sm font-bold">Scientific Rigor</span>
-        </div>
-      </div>
-      <div class="md:col-span-2 lg:col-span-2 bg-secondary-container p-8 rounded-xl flex flex-col items-center justify-center text-center">
-        <span class="material-symbols-outlined text-5xl text-on-secondary-container mb-4" style="font-variation-settings: 'FILL' 1;">handshake</span>
-        <h4 class="text-xl font-bold text-on-secondary-container">Stakeholder Engagement</h4>
-      </div>
-      <div class="md:col-span-2 lg:col-span-2 bg-surface-container-highest p-8 rounded-xl">
-        <span class="material-symbols-outlined text-4xl text-primary mb-4">verified_user</span>
-        <h4 class="text-xl font-bold text-primary mb-2">Compliance Benefit</h4>
-        <p class="text-on-surface-variant">Monitoraggio costante degli obiettivi di beneficio comune statutari.</p>
-      </div>
-      <div class="md:col-span-4 lg:col-span-4 bg-primary text-on-primary p-10 rounded-xl relative overflow-hidden group">
-        <div class="relative z-10">
-          <h4 class="text-3xl font-bold mb-4">Dalla Strategia alla Realizzazione</h4>
-          <p class="text-primary-fixed opacity-90 max-w-xl">Non forniamo solo documenti, ma guidiamo l'implementazione fisica dei progetti sul campo.</p>
-        </div>
-        <div class="absolute -right-12 -bottom-12 opacity-10 group-hover:scale-110 transition-transform duration-500">
-          <span class="material-symbols-outlined text-[240px]">architecture</span>
-        </div>
-      </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 stagger">
+      <a href="./persona.html?id=nicola-basile" class="bg-surface-container-lowest rounded-lg overflow-hidden hover:shadow-lg transition-all reveal cursor-pointer group" style="--i:0"><div class="h-2 bg-primary"></div><div class="p-6"><div class="w-20 h-20 rounded-full overflow-hidden mb-4 border-2 border-primary-container p-0.5 group-hover:border-primary transition-colors"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&q=80" alt="Nicola Basile" class="w-full h-full rounded-full object-cover" id="team-photo-1"/></div><h4 class="text-lg font-bold text-primary group-hover:underline">Nicola Basile</h4><span class="text-xs font-bold uppercase tracking-widest text-primary-container block mb-3">Co-founder</span><p class="text-on-surface text-sm leading-relaxed">Amministrazione condivisa, innovazione sociale, future studies. Docente alla Cattolica di Milano.</p></div></a>
+      <a href="./persona.html?id=pierluca-borali" class="bg-surface-container-lowest rounded-lg overflow-hidden hover:shadow-lg transition-all reveal cursor-pointer group" style="--i:1"><div class="h-2 bg-primary"></div><div class="p-6"><div class="w-20 h-20 rounded-full overflow-hidden mb-4 border-2 border-primary-container p-0.5 group-hover:border-primary transition-colors"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80" alt="Pierluca Borali" class="w-full h-full rounded-full object-cover" id="team-photo-2"/></div><h4 class="text-lg font-bold text-primary group-hover:underline">Pierluca Borali</h4><span class="text-xs font-bold uppercase tracking-widest text-primary-container block mb-3">Co-founder</span><p class="text-on-surface text-sm leading-relaxed">30+ anni di consulenza organizzativa. Progettazione sociale e reti collaborative.</p></div></a>
+      <a href="./persona.html?id=giuseppe-imbrogno" class="bg-surface-container-lowest rounded-lg overflow-hidden hover:shadow-lg transition-all reveal cursor-pointer group" style="--i:2"><div class="h-2 bg-primary"></div><div class="p-6"><div class="w-20 h-20 rounded-full overflow-hidden mb-4 border-2 border-primary-container p-0.5 group-hover:border-primary transition-colors"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80" alt="Giuseppe Imbrogno" class="w-full h-full rounded-full object-cover" id="team-photo-3"/></div><h4 class="text-lg font-bold text-primary group-hover:underline">Giuseppe Imbrogno</h4><span class="text-xs font-bold uppercase tracking-widest text-primary-container block mb-3">Co-founder</span><p class="text-on-surface text-sm leading-relaxed">Service design, valutazione d'impatto. Coordina OVeR.</p></div></a>
+      <a href="./persona.html?id=nicol-mondin" class="bg-surface-container-lowest rounded-lg overflow-hidden hover:shadow-lg transition-all reveal cursor-pointer group" style="--i:3"><div class="h-2 bg-primary"></div><div class="p-6"><div class="w-20 h-20 rounded-full overflow-hidden mb-4 border-2 border-primary-container p-0.5 group-hover:border-primary transition-colors"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&q=80" alt="Nicol Mondin" class="w-full h-full rounded-full object-cover" id="team-photo-4"/></div><h4 class="text-lg font-bold text-primary group-hover:underline">Nicol Mondin</h4><span class="text-xs font-bold uppercase tracking-widest text-primary-container block mb-3">Co-founder</span><p class="text-on-surface text-sm leading-relaxed">Welfare e politiche pubbliche. Lavoro di comunità.</p></div></a>
+      <a href="./persona.html?id=daniele-restelli" class="bg-surface-container-lowest rounded-lg overflow-hidden hover:shadow-lg transition-all reveal cursor-pointer group" style="--i:4"><div class="h-2 bg-primary"></div><div class="p-6"><div class="w-20 h-20 rounded-full overflow-hidden mb-4 border-2 border-primary-container p-0.5 group-hover:border-primary transition-colors"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&q=80" alt="Daniele Restelli" class="w-full h-full rounded-full object-cover" id="team-photo-5"/></div><h4 class="text-lg font-bold text-primary group-hover:underline">Daniele Restelli</h4><span class="text-xs font-bold uppercase tracking-widest text-primary-container block mb-3">Co-founder</span><p class="text-on-surface text-sm leading-relaxed">Gestione servizi tra profit e cooperazione.</p></div></a>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ SECTION 6: CONTATTI ═══════════ -->
+<!-- ═══ 8. CONTATTI ═══ -->
 <section id="contatti" class="px-8 py-24 max-w-7xl mx-auto">
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-20">
-    <div class="lg:col-span-7 pt-12">
-      <h2 class="text-5xl lg:text-7xl font-bold text-primary tracking-tight leading-tight mb-8 font-atkinson">
-        Iniziamo a Costruire Insieme.
-      </h2>
-      <p class="text-xl text-on-surface max-w-2xl leading-relaxed mb-12 font-atkinson">
-        Trasformiamo l'impegno sociale in valore territoriale tangibile. La nostra sede è dove batte il cuore dell'innovazione sostenibile italiana.
-      </p>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="bg-surface-container-low p-8 rounded-xl border-l-4 border-primary shadow-sm">
-          <span class="material-symbols-outlined text-primary mb-4">location_on</span>
-          <h4 class="text-2xl font-bold text-primary mb-2">Roma</h4>
-          <p class="text-on-surface leading-relaxed">Via dell'Innovazione Sociale, 12<br/>00187 Roma (RM)</p>
-        </div>
-        <div class="bg-surface-container-low p-8 rounded-xl border-l-4 border-primary shadow-sm">
-          <span class="material-symbols-outlined text-primary mb-4">location_on</span>
-          <h4 class="text-2xl font-bold text-primary mb-2">Milano</h4>
-          <p class="text-on-surface leading-relaxed">Piazza della Sostenibilità, 5<br/>20124 Milano (MI)</p>
-        </div>
-      </div>
-    </div>
-    <div class="lg:col-span-5 h-[500px] w-full rounded-xl overflow-hidden shadow-xl">
-      <div id="contact-map-image" class="w-full h-full img-placeholder">
-        <span>Aggiungi mappa in images/contact/</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Contact Form -->
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-    <div class="lg:col-span-4">
-      <h3 class="text-3xl font-bold text-primary-container mb-6">Il Tuo Futuro Step.</h3>
-      <p class="text-lg text-on-surface leading-relaxed mb-8">
-        Ogni grande progetto inizia con un dialogo. Compila il modulo per ricevere una proposta personalizzata.
-      </p>
-      <div class="space-y-4">
-        <div class="flex items-center space-x-3 text-primary">
-          <span class="material-symbols-outlined">mail</span>
-          <span class="font-bold">info@postsocietabenefit.it</span>
-        </div>
-        <div class="flex items-center space-x-3 text-primary">
-          <span class="material-symbols-outlined">call</span>
-          <span class="font-bold">+39 06 1234 5678</span>
-        </div>
+    <div class="lg:col-span-4 reveal-left">
+      <h2 class="text-4xl font-bold text-primary mb-6">Parliamone.</h2>
+      <p class="text-lg text-on-surface leading-relaxed mb-8">Se avete un progetto, un'idea o anche solo una domanda, scriveteci. Rispondiamo noi, non un chatbot.</p>
+      <div class="space-y-4 mb-8">
+        <div class="flex items-center space-x-3 text-primary"><span class="material-symbols-outlined">mail</span><span class="font-bold">info@postsb.it</span></div>
+        <div class="flex items-center space-x-3 text-primary"><span class="material-symbols-outlined">call</span><span class="font-bold">+39 3939993731</span></div>
+        <div class="flex items-center space-x-3 text-on-surface-variant"><span class="material-symbols-outlined text-primary">schedule</span><span>Lun — Ven, 9:00 — 18:00</span></div>
+        <div class="flex items-center space-x-3 text-on-surface-variant"><span class="material-symbols-outlined text-primary">location_on</span><span>Milano</span></div>
       </div>
+      <a href="https://www.linkedin.com/company/105770276" target="_blank" rel="noopener" class="inline-flex items-center gap-3 px-6 py-3 bg-[#0077b5] text-white rounded-lg font-bold hover:opacity-90 transition-all">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        Seguici su LinkedIn
+      </a>
     </div>
-    <div class="lg:col-span-8 bg-surface-container-lowest p-8 lg:p-12 rounded-xl shadow-sm">
-      <form class="space-y-8" onsubmit="event.preventDefault(); alert('Messaggio inviato! (demo)');">
+    <div class="lg:col-span-8 bg-surface-container-lowest p-8 lg:p-12 rounded-xl shadow-sm reveal-right">
+      <h3 class="text-2xl font-bold text-primary mb-8">Scriveteci.</h3>
+      <form class="space-y-8" onsubmit="event.preventDefault();alert('Messaggio inviato! (demo)');">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div class="space-y-2">
-            <label class="text-sm font-bold text-on-surface-variant uppercase tracking-wider">Nome Completo</label>
-            <input class="w-full bg-surface-container-high border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 px-0 py-3 text-lg transition-colors" placeholder="Mario Rossi" type="text"/>
-          </div>
-          <div class="space-y-2">
-            <label class="text-sm font-bold text-on-surface-variant uppercase tracking-wider">Email Professionale</label>
-            <input class="w-full bg-surface-container-high border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 px-0 py-3 text-lg transition-colors" placeholder="mario.rossi@azienda.it" type="email"/>
-          </div>
+          <div class="space-y-2"><label class="text-sm font-bold text-on-surface-variant uppercase tracking-wider">Nome</label><input class="w-full bg-surface-container-high border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 px-0 py-3 text-lg" placeholder="Il vostro nome" type="text"/></div>
+          <div class="space-y-2"><label class="text-sm font-bold text-on-surface-variant uppercase tracking-wider">Email</label><input class="w-full bg-surface-container-high border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 px-0 py-3 text-lg" placeholder="email@organizzazione.it" type="email"/></div>
         </div>
-        <div class="space-y-2">
-          <label class="text-sm font-bold text-on-surface-variant uppercase tracking-wider">Organizzazione</label>
-          <input class="w-full bg-surface-container-high border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 px-0 py-3 text-lg transition-colors" placeholder="Nome della tua Azienda o Ente" type="text"/>
-        </div>
-        <div class="space-y-2">
-          <label class="text-sm font-bold text-on-surface-variant uppercase tracking-wider">Messaggio</label>
-          <textarea class="w-full bg-surface-container-high border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 px-0 py-3 text-lg transition-colors" placeholder="Come possiamo collaborare per il territorio?" rows="4"></textarea>
-        </div>
-        <div class="pt-4">
-          <button type="submit" class="bg-primary-container text-on-primary-container px-12 py-4 rounded font-bold text-lg hover:brightness-105 transition-all shadow-md active:scale-95 flex items-center gap-3">
-            Invia Richiesta <span class="material-symbols-outlined">send</span>
-          </button>
-        </div>
+        <div class="space-y-2"><label class="text-sm font-bold text-on-surface-variant uppercase tracking-wider">Organizzazione</label><input class="w-full bg-surface-container-high border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 px-0 py-3 text-lg" placeholder="Ente, cooperativa, associazione..." type="text"/></div>
+        <div class="space-y-2"><label class="text-sm font-bold text-on-surface-variant uppercase tracking-wider">Di cosa avete bisogno?</label><textarea class="w-full bg-surface-container-high border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 px-0 py-3 text-lg" placeholder="Raccontateci il vostro progetto..." rows="4"></textarea></div>
+        <button type="submit" class="bg-primary-container text-on-primary-container px-12 py-4 rounded font-bold text-lg hover:brightness-105 transition-all shadow-md active:scale-95 flex items-center gap-3">Invia <span class="material-symbols-outlined">send</span></button>
       </form>
     </div>
   </div>
 </section>
-
-<!-- Final CTA Banner -->
-<section class="max-w-7xl mx-auto px-8 mb-20">
-  <div class="relative h-[400px] w-full rounded-xl overflow-hidden flex items-end p-12">
-    <div class="absolute inset-0 z-0">
-      <div id="cta-bg-image" class="w-full h-full img-placeholder" style="background: linear-gradient(135deg, #006172 0%, #2b7a8c 100%);"></div>
-      <div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent"></div>
-    </div>
-    <div class="relative z-10 max-w-xl text-on-primary">
-      <h2 class="text-4xl font-bold mb-4 leading-tight">Pronti per la transizione?</h2>
-      <p class="text-lg opacity-90">Insieme definiamo nuovi standard per le società benefit, unendo strategia di business e impatto sociale.</p>
-    </div>
-  </div>
-</section>
-
 </main>
 
-<!-- ═══════════ FOOTER ═══════════ -->
+<!-- ═══ FOOTER ═══ -->
 <footer class="w-full bg-slate-50 mt-auto">
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-12 py-16 w-full max-w-7xl mx-auto">
-    <div class="flex flex-col gap-6">
-      <div class="text-xl font-bold text-primary">POST <span class="text-on-surface-variant font-normal text-base">Società Benefit</span></div>
-      <p class="text-base leading-relaxed text-slate-600 max-w-md">
-        &copy; 2024 POST Società Benefit - Impegno per l'accessibilità e la sostenibilità territoriale.
-      </p>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-12 py-16 max-w-7xl mx-auto">
+    <div class="flex flex-col gap-4">
+      <img src="./logo-post.png" alt="POST" class="h-[55px] w-auto object-contain self-start" onerror="this.outerHTML='<span class=\'text-primary font-extrabold text-2xl\'>POST</span>'"/>
+      <p class="text-sm text-slate-600">&copy; 2025 POST Società Benefit S.r.l. — Milano</p>
     </div>
-    <div class="grid grid-cols-2 gap-8">
-      <div class="flex flex-col gap-4">
-        <h4 class="font-bold text-primary">Risorse</h4>
-        <a class="text-slate-600 hover:text-primary underline transition-colors" href="#">Dichiarazione di Accessibilità</a>
-        <a class="text-slate-600 hover:text-primary underline transition-colors" href="#">Privacy Policy</a>
-      </div>
-      <div class="flex flex-col gap-4">
-        <h4 class="font-bold text-primary">Legale</h4>
-        <a class="text-slate-600 hover:text-primary underline transition-colors" href="#">Termini di Servizio</a>
-        <a class="text-slate-600 hover:text-primary underline transition-colors" href="#contatti">Contatti</a>
-      </div>
+    <div class="flex flex-col gap-3">
+      <h4 class="font-bold text-primary text-sm">Navigazione</h4>
+      <a class="text-slate-600 hover:text-primary text-sm" href="#pilastri">Cosa facciamo</a>
+      <a class="text-slate-600 hover:text-primary text-sm font-bold" href="#piani-di-zona">Piani di Zona</a>
+      <a class="text-slate-600 hover:text-primary text-sm" href="#esperienze">Dal campo</a>
+      <a class="text-slate-600 hover:text-primary text-sm" href="#wait">wAIt</a>
+      <a class="text-slate-600 hover:text-primary text-sm" href="#chi-siamo">Chi siamo</a>
+    </div>
+    <div class="flex flex-col gap-3">
+      <h4 class="font-bold text-primary text-sm">Contatti</h4>
+      <span class="text-slate-600 text-sm">info@postsb.it</span>
+      <span class="text-slate-600 text-sm">+39 3939993731</span>
+      <span class="text-slate-600 text-sm">Milano</span>
+      <a href="https://www.linkedin.com/company/105770276" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-[#0077b5] font-bold text-sm hover:opacity-70 mt-1">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+      <div class="flex gap-4 mt-2"><a class="text-slate-500 hover:text-primary underline text-xs" href="#">Privacy Policy</a><a class="text-slate-500 hover:text-primary underline text-xs" href="#">Cookie Policy</a></div>
     </div>
   </div>
 </footer>
 
-<!-- ═══════════ AUTO-IMAGE LOADING SCRIPT ═══════════ -->
+<!-- ═══ SCRIPTS ═══ -->
 <script>
-// This script fetches images from the /api/images endpoint
-// and automatically populates the page sections.
-// Just add/remove photos in the images/ subfolders and reload!
+// Hero Carousel
+(function(){const c=document.getElementById('hero-carousel'),d=document.getElementById('hero-dots');if(!c||!d)return;const imgs=c.querySelectorAll('img');if(imgs.length<=1)return;let cur=0,iv;imgs.forEach((_,i)=>{const b=document.createElement('button');b.setAttribute('aria-label',`Foto ${i+1}`);if(i===0)b.classList.add('active');b.addEventListener('click',()=>goTo(i));d.appendChild(b)});const dots=d.querySelectorAll('button');function goTo(n){imgs[cur].classList.remove('active');dots[cur].classList.remove('active');cur=n;imgs[cur].classList.add('active');dots[cur].classList.add('active');clearInterval(iv);start()}function start(){iv=setInterval(()=>goTo((cur+1)%imgs.length),4500)}start()})();
+// Counters
+const cObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){const el=e.target,t=+el.dataset.target;let c=0;const s=Math.max(1,Math.floor(t/40)),tm=setInterval(()=>{c+=s;if(c>=t){c=t;clearInterval(tm)}el.textContent=c},30);cObs.unobserve(el)}})},{threshold:.5});document.querySelectorAll('.counter').forEach(el=>cObs.observe(el));
+// Scroll reveal
+const rObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');rObs.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -60px 0px'});document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(el=>rObs.observe(el));
+// Auto-load images
+async function loadImages(){try{const r=await fetch('/api/images'),d=await r.json();if(d.team)d.team.forEach((img,i)=>{const el=document.getElementById(`team-photo-${i+1}`);if(el)el.src=img.url})}catch(e){}}
+document.addEventListener('DOMContentLoaded',loadImages);
 
-async function loadImages() {
-  try {
-    const res = await fetch('/api/images');
-    const data = await res.json();
-
-    // HERO: first image from images/hero/
-    if (data.hero && data.hero.length > 0) {
-      const heroEl = document.getElementById('hero-image');
-      const img = data.hero[0];
-      heroEl.innerHTML = '';
-      heroEl.style.backgroundImage = `url(${img.url})`;
-      heroEl.style.backgroundSize = 'cover';
-      heroEl.style.backgroundPosition = 'center';
-      heroEl.classList.remove('img-placeholder');
-    }
-
-    // SERVICES: images for services section backgrounds
-    if (data.services && data.services.length > 0) {
-      // First image for the territory card
-      const terrImg = document.getElementById('services-territorio-image');
-      if (terrImg && data.services[0]) {
-        terrImg.innerHTML = '';
-        terrImg.style.backgroundImage = `url(${data.services[0].url})`;
-        terrImg.style.backgroundSize = 'cover';
-        terrImg.style.backgroundPosition = 'center';
-        terrImg.classList.remove('img-placeholder');
-      }
-      // Second image for politiche background
-      const polBg = document.getElementById('services-politiche-bg');
-      if (polBg && data.services[1]) {
-        const bgImg = document.createElement('img');
-        bgImg.src = data.services[1].url;
-        bgImg.alt = 'Services';
-        bgImg.className = 'w-full h-full object-cover';
-        polBg.appendChild(bgImg);
-      }
-      // Background image for values section
-      const svcBg = document.getElementById('services-bg-image');
-      if (svcBg && data.services[2]) {
-        const bgImg = document.createElement('img');
-        bgImg.src = data.services[2].url;
-        bgImg.alt = 'Background';
-        bgImg.className = 'w-full h-full object-cover';
-        svcBg.appendChild(bgImg);
-      }
-    }
-
-    // PROJECTS: images for case study cards
-    if (data.projects && data.projects.length > 0) {
-      data.projects.forEach((img, i) => {
-        const el = document.getElementById(`project-image-${i + 1}`);
-        if (el) {
-          el.innerHTML = '';
-          el.style.backgroundImage = `url(${img.url})`;
-          el.style.backgroundSize = 'cover';
-          el.style.backgroundPosition = 'center';
-          el.classList.remove('img-placeholder');
-        }
-      });
-    }
-
-    // TEAM: photos for team member cards
-    if (data.team && data.team.length > 0) {
-      data.team.forEach((img, i) => {
-        const el = document.getElementById(`team-photo-${i + 1}`);
-        if (el) {
-          el.innerHTML = '';
-          el.style.backgroundImage = `url(${img.url})`;
-          el.style.backgroundSize = 'cover';
-          el.style.backgroundPosition = 'center';
-          el.classList.remove('img-placeholder');
-        }
-      });
-    }
-
-    // CONTACT: map/background image
-    if (data.contact && data.contact.length > 0) {
-      const contactEl = document.getElementById('contact-map-image');
-      if (contactEl) {
-        contactEl.innerHTML = '';
-        contactEl.style.backgroundImage = `url(${data.contact[0].url})`;
-        contactEl.style.backgroundSize = 'cover';
-        contactEl.style.backgroundPosition = 'center';
-        contactEl.classList.remove('img-placeholder');
-      }
-      // Second contact image for CTA banner
-      const ctaEl = document.getElementById('cta-bg-image');
-      if (ctaEl && data.contact[1]) {
-        ctaEl.style.backgroundImage = `url(${data.contact[1].url})`;
-        ctaEl.style.backgroundSize = 'cover';
-        ctaEl.style.backgroundPosition = 'center';
-        ctaEl.classList.remove('img-placeholder');
-      }
-    }
-
-  } catch (err) {
-    console.log('Auto-image loading: API non disponibile, usando placeholder.');
+// Blog loader
+async function loadBlog(){
+  const grid=document.getElementById('blog-grid');
+  if(!grid)return;
+  let posts;
+  try{const r=await fetch('/blog.json');posts=await r.json()}catch(e){posts=null}
+  if(!posts){
+    // Fallback static
+    posts=[
+      {title:"Palazzo Bocca Trezza",excerpt:"Coprogrammazione e coprogettazione per uno spazio di comunità a Verona.",cat:"case-study",catLabel:"Case study",date:"2024-11-15",author:"Nicola Basile",img:"https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80",tags:["Amministrazione condivisa","Terzo Settore"]},
+      {title:"Piano di Zona — Ambito di Crema",excerpt:"Coprogrammazione e redazione del Piano con istituzioni, associazioni e cittadini.",cat:"case-study",catLabel:"Case study",date:"2024-09-20",author:"Nicola Basile",img:"https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80",tags:["Politiche pubbliche","Welfare territoriale"]},
+      {title:"Cooperativa Il Torpedone",excerpt:"Accompagnamento con coprogettazione, formazione e consulenza strategica.",cat:"case-study",catLabel:"Case study",date:"2024-06-10",author:"Pierluca Borali",img:"https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=600&q=80",tags:["Organizzazione","Cooperazione"]},
+      {title:"Regolamento Co-Programmazione — USL Verona",excerpt:"Strumento strategico per la collaborazione tra sanità e Terzo Settore.",cat:"case-study",catLabel:"Case study",date:"2024-03-05",author:"Giuseppe Imbrogno",img:"https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&q=80",tags:["Sanità","Amministrazione condivisa"]},
+      {title:"Progetto Legami — Ricerca-azione",excerpt:"Impatto del Registro Unico Nazionale del Terzo Settore sui processi di coprogettazione.",cat:"metodo",catLabel:"Metodo",date:"2024-01-18",author:"Nicol Mondin",img:"https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80",tags:["Ricerca sociale","Terzo Settore"],highlight:true},
+      {title:"Valutazione d'Impatto Generazionale",excerpt:"La Legge 167/2025 introduce la VIG: cosa cambia per la programmazione sociale e come prepararsi.",cat:"normativa",catLabel:"Normativa",date:"2025-03-28",author:"Nicola Basile",img:"https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&q=80",tags:["VIG","Legge 167/2025"]},
+      {title:"AI e coprogrammazione: un primo bilancio",excerpt:"Come abbiamo usato strumenti di AI generativa per analizzare i contributi dei tavoli territoriali.",cat:"ai",catLabel:"AI",date:"2025-02-10",author:"Nicola Basile",img:"https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80",tags:["Intelligenza Artificiale","Coprogrammazione"]}
+    ];
   }
+  // Sort by date desc
+  posts.sort((a,b)=>new Date(b.date)-new Date(a.date));
+  window._blogPosts=posts;
+  renderBlog(posts);
+  // Filters
+  document.querySelectorAll('.blog-filter').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('.blog-filter').forEach(b=>{b.classList.remove('active','bg-primary','text-on-primary');b.classList.add('bg-surface-container-highest','text-primary')});
+      btn.classList.add('active','bg-primary','text-on-primary');btn.classList.remove('bg-surface-container-highest','text-primary');
+      const cat=btn.dataset.cat;
+      renderBlog(cat==='all'?posts:posts.filter(p=>p.cat===cat));
+    });
+  });
 }
-
-document.addEventListener('DOMContentLoaded', loadImages);
+function renderBlog(posts){
+  const grid=document.getElementById('blog-grid');
+  grid.innerHTML='';
+  posts.forEach((p,i)=>{
+    const d=new Date(p.date);
+    const dateStr=d.toLocaleDateString('it-IT',{day:'numeric',month:'long',year:'numeric'});
+    const card=document.createElement('div');
+    const slug=p.title.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/-+$/,'');
+    const href=`./articolo.html?slug=${slug}`;
+    if(p.highlight){
+      card.className='lg:col-span-3 md:col-span-2 bg-primary-container rounded-xl overflow-hidden reveal-scale cursor-pointer';
+      card.onclick=()=>location.href=href;
+      card.innerHTML=`
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-0">
+          <div class="md:col-span-4 h-48 md:h-full"><img src="${p.img}" alt="" class="w-full h-full object-cover"/></div>
+          <div class="md:col-span-8 p-8 md:p-10 text-on-primary-container flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-3 mb-4">
+                <span class="px-3 py-1 bg-white/20 rounded-full text-xs font-bold uppercase">${p.catLabel}</span>
+                <span class="text-sm opacity-70">${dateStr}</span>
+              </div>
+              <h3 class="text-2xl font-bold mb-3">${p.title}</h3>
+              <p class="text-lg opacity-90 leading-relaxed">${p.excerpt}</p>
+            </div>
+            <div class="flex items-center justify-between mt-6 pt-4 border-t border-white/20">
+              <span class="text-sm font-bold opacity-80">${p.author}</span>
+              <span class="text-sm font-bold opacity-80 flex items-center gap-1">Leggi <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
+            </div>
+          </div>
+        </div>`;
+    } else {
+      card.className='flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden hover:shadow-lg transition-all reveal cursor-pointer';
+      card.style.setProperty('--i',i%3);
+      card.onclick=()=>location.href=href;
+      card.innerHTML=`
+        <div class="h-44 w-full relative">
+          <img src="${p.img}" alt="" class="w-full h-full object-cover"/>
+          <span class="absolute top-4 left-4 px-3 py-1 bg-white/90 backdrop-blur-sm text-primary rounded-full text-xs font-bold uppercase">${p.catLabel}</span>
+        </div>
+        <div class="p-6 flex-grow flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2 text-sm text-on-surface-variant mb-3">
+              <span>${dateStr}</span><span class="text-outline">&middot;</span><span>${p.author}</span>
+            </div>
+            <h4 class="text-xl font-bold text-primary mb-2">${p.title}</h4>
+            <p class="text-on-surface leading-relaxed text-sm">${p.excerpt}</p>
+          </div>
+          <div class="flex items-center justify-between mt-4">
+            <div class="flex flex-wrap gap-2">${p.tags.map(t=>`<span class="px-2 py-0.5 bg-surface-container-high rounded text-xs text-on-surface-variant">${t}</span>`).join('')}</div>
+            <span class="text-primary font-bold text-sm flex items-center gap-1">Leggi <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
+          </div>
+        </div>`;
+    }
+    grid.appendChild(card);
+    rObs.observe(card);
+  });
+}
+document.addEventListener('DOMContentLoaded',loadBlog);
 </script>
-
 </body>
 </html>
