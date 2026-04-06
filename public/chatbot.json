@@ -1,70 +1,24 @@
 [
-  {
-    "keywords": ["piano di zona", "piani di zona", "pdz"],
-    "answer": "I Piani di Zona sono lo strumento di programmazione locale delle politiche sociali. POST accompagna Ambiti Territoriali e Comuni nella stesura, nel monitoraggio e nella valutazione dei PdZ, facilitando i tavoli tematici e integrando l'analisi dei dati sociali."
-  },
-  {
-    "keywords": ["wait", "w ai t", "intelligenza artificiale welfare"],
-    "answer": "wAIt e' il nostro progetto dedicato all'uso dell'intelligenza artificiale nel welfare. Sperimentiamo strumenti AI per la programmazione sociale, l'analisi dei bisogni territoriali e il supporto decisionale per enti pubblici e Terzo Settore."
-  },
-  {
-    "keywords": ["servizi", "cosa fate", "cosa offrite", "cosa facciamo"],
-    "answer": "POST lavora su quattro pilastri: Valutazione d'Impatto (indicatori, ricerca sociale, VIG), Amministrazione Condivisa (coprogrammazione, coprogettazione, Piani di Zona), Consulenza Organizzativa (piani di impresa, passaggio intergenerazionale), e Uso dei dati e AI (analisi dati sociali, AI nei processi collaborativi)."
-  },
-  {
-    "keywords": ["valutazione", "impatto", "vig", "valutazione impatto generazionale"],
-    "answer": "Ci occupiamo di Valutazione d'Impatto Sociale trasformando i dati in conoscenza utile. Lavoriamo su indicatori di esito e processo, ricerca sociale e accountability. Dal 2025 supportiamo anche la Valutazione d'Impatto Generazionale (VIG) prevista dalla Legge 167/2025."
-  },
-  {
-    "keywords": ["coprogrammazione", "coprogettazione", "amministrazione condivisa", "art 55"],
-    "answer": "Facilitiamo i processi di coprogrammazione e coprogettazione tra Pubblica Amministrazione e Terzo Settore ai sensi dell'art. 55 del Codice del Terzo Settore. Supportiamo la governance partecipata, la facilitazione dei tavoli e la progettazione condivisa."
-  },
-  {
-    "keywords": ["consulenza organizzativa", "organizzazione", "passaggio generazionale", "intergenerazionale"],
-    "answer": "Offriamo consulenza organizzativa per cooperative e organizzazioni del Terzo Settore: piani di impresa, accompagnamento al passaggio intergenerazionale, sviluppo competenze e riorganizzazione dei processi interni."
-  },
-  {
-    "keywords": ["dati", "data", "analisi dati", "data driven"],
-    "answer": "Aiutiamo enti e organizzazioni ad adottare un approccio data driven: analisi dei dati sociali e territoriali, programmazione basata sulle evidenze, e integrazione dell'intelligenza artificiale nei processi collaborativi e decisionali."
-  },
-  {
-    "keywords": ["chi siete", "chi siamo", "team", "persone", "squadra"],
-    "answer": "POST e' una piccola societa' benefit di Milano. Siamo un gruppo di professionisti con competenze diverse — dalla ricerca sociale alla facilitazione, dall'analisi dati all'AI — uniti dalla voglia di fare bene il proprio lavoro, fianco a fianco con chi opera nei servizi e nelle comunita'."
-  },
-  {
-    "keywords": ["contatti", "contatto", "email", "telefono", "scrivere"],
-    "answer": "Potete contattarci via email a info@postsb.it oppure chiamando il +39 3939993731. Siamo a Milano. Trovate anche il form contatti in fondo alla homepage."
-  },
-  {
-    "keywords": ["societa benefit", "benefit", "mission"],
-    "answer": "POST e' una Societa' Benefit S.r.l. Questo significa che, oltre agli obiettivi economici, perseguiamo finalita' di beneficio comune: lavoriamo per il welfare, le politiche pubbliche e lo sviluppo territoriale con un approccio artigianale e di prossimita'."
-  },
-  {
-    "keywords": ["valutapp"],
-    "answer": "Valutapp e' il nostro strumento digitale per supportare la valutazione d'impatto. Permette di raccogliere e analizzare dati in modo strutturato, facilitando il processo di rendicontazione e accountability per enti e organizzazioni."
-  },
-  {
-    "keywords": ["lombardia", "veneto", "emilia", "piemonte", "dove lavorate", "territori"],
-    "answer": "Operiamo principalmente in Lombardia, Veneto, Emilia-Romagna e Piemonte, coprendo oltre 12 territori con piu' di 35 enti del Terzo Settore e 20 Pubbliche Amministrazioni."
-  },
-  {
-    "keywords": ["welfare", "politiche sociali", "politiche pubbliche"],
-    "answer": "Il welfare e le politiche sociali sono il cuore del nostro lavoro. Accompagniamo enti pubblici e Terzo Settore nella programmazione, progettazione e valutazione degli interventi sociali, con un approccio partecipato e basato sui dati."
-  },
-  {
-    "keywords": ["rivista", "dal campo", "blog", "articoli"],
-    "answer": "\"Dal campo\" e' la nostra rivista di pratiche: raccogliamo esperienze, riflessioni e strumenti dal lavoro quotidiano nel welfare e nelle politiche sociali. Potete consultare tutti i numeri nella sezione dedicata del sito."
-  },
-  {
-    "keywords": ["costo", "prezzo", "quanto costa", "preventivo"],
-    "answer": "Ogni progetto e' diverso e costruiamo proposte su misura. Scriveteci a info@postsb.it o compilate il form contatti raccontandoci il vostro progetto: vi risponderemo con una proposta personalizzata."
-  },
-  {
-    "keywords": ["terzo settore", "cooperative", "cooperativa", "associazione"],
-    "answer": "Lavoriamo a stretto contatto con cooperative, associazioni e organizzazioni del Terzo Settore. Li accompagniamo nella coprogettazione con la PA, nella valutazione d'impatto, nella consulenza organizzativa e nell'adozione di strumenti digitali e AI."
-  },
-  {
-    "keywords": ["linkedin"],
-    "answer": "Seguiteci su LinkedIn per restare aggiornati sulle nostre attivita', pubblicazioni e novita': https://www.linkedin.com/company/105770276"
-  }
+  {"keywords":["piano di zona","piani di zona","pdz","ambito territoriale","ufficio di piano"],"answer":"POST offre assistenza tecnica per i Piani di Zona. Il nostro percorso parte dalla valutazione di ciò che ha funzionato, costruisce le basi per la programmazione e apre alla coprogrammazione con il Terzo Settore. Lavoriamo a fianco dell'Ufficio di Piano, non al suo posto. Scopri di più nella sezione Piani di Zona."},
+  {"keywords":["valutazione","impatto","indicatori","monitoraggio","esito","processo"],"answer":"La valutazione d'impatto è uno dei nostri quattro pilastri. Trasformiamo i dati in conoscenza utile per chi decide: indicatori di esito e processo, ricerca sociale, accountability. Dal 2025 accompagniamo anche l'applicazione della Valutazione d'Impatto Generazionale (Legge 167/2025)."},
+  {"keywords":["valutapp","piattaforma","software valutazione"],"answer":"Valutapp è la nostra piattaforma per gestire l'intero processo di valutazione: dal disegno della ricerca alla raccolta dati, dall'analisi alla restituzione. Progettata nel rispetto del GDPR fin dall'architettura. Non è solo un software — ogni implementazione è accompagnata dalla consulenza di POST."},
+  {"keywords":["vig","167/2025","generazionale","legge 167"],"answer":"La Legge 167/2025 introduce la Valutazione d'Impatto Generazionale (VIG): misurare gli effetti delle politiche sulle generazioni future. POST accompagna gli ambiti territoriali nell'applicazione: costruzione degli indicatori intergenerazionali, formazione dei funzionari, integrazione con i Piani di Zona."},
+  {"keywords":["coprogrammazione","coprogettazione","amministrazione condivisa","codice terzo settore","art 55"],"answer":"L'amministrazione condivisa è il nostro core: coprogrammazione e coprogettazione tra PA e Terzo Settore nel quadro del Codice del Terzo Settore (artt. 55-57) e della sentenza della Corte Costituzionale 131/2020. Facilitiamo tavoli tematici con metodi strutturati: world café, focus group, raccolta contributi."},
+  {"keywords":["organizzazione","consulenza organizzativa","piano impresa","passaggio generazionale","intergenerazionale","riorganizzazione"],"answer":"Accompagniamo le organizzazioni attraverso le trasformazioni: piani di impresa, passaggio intergenerazionale, sviluppo competenze, riorganizzazione dei processi. Lavoriamo sulle culture organizzative — quelle che non stanno negli organigrammi ma fanno la differenza."},
+  {"keywords":["intelligenza artificiale","ai","wait","dati","data driven"],"answer":"Integriamo l'AI nei processi sociali e collaborativi. Programmazione data driven, analisi dati sociali, formazione per PA e Terzo Settore. wAIt (Welfare & Artificial Intelligence Toolkit) è il nostro modello: formazione, sperimentazione e consulenza sull'AI. Non vendiamo software — accompagniamo le organizzazioni a capire dove l'AI fa la differenza."},
+  {"keywords":["chi siete","chi sono","team","persone","soci","fondatori"],"answer":"POST è una piccola società benefit con sede a Milano. I co-founder: Nicola Basile (amministrazione condivisa, docente Cattolica Milano), Pierluca Borali (30+ anni consulenza organizzativa), Giuseppe Imbrogno (progettista sociale, coordina OVeR), Nicol Mondin (psicologa, welfare e comunità), Daniele Restelli (economista, gestione servizi)."},
+  {"keywords":["nicola","basile"],"answer":"Nicola Basile è il fondatore di POST. Si occupa di amministrazione condivisa, innovazione sociale e future studies. Docente a contratto alla Cattolica di Milano. Ha ideato wAIt, il Welfare & Artificial Intelligence Toolkit."},
+  {"keywords":["contatt","email","telefono","scrivere","chiamare"],"answer":"Potete contattarci a info@postsb.it o al +39 3939993731 (lun-ven 9-18). Siamo a Milano. Potete anche usare il form contatti qui nel sito."},
+  {"keywords":["costo","prezzo","quanto costa","preventivo","budget"],"answer":"Ogni progetto è diverso. Scriveteci a info@postsb.it o usate il form contatti per raccontarci la vostra esigenza. Vi rispondiamo noi, non un chatbot commerciale."},
+  {"keywords":["società benefit","benefit","missione"],"answer":"POST è una Società Benefit: l'impatto sociale è parte integrante dello statuto. Lavoriamo per il welfare, le politiche pubbliche e lo sviluppo territoriale con un approccio artigianale."},
+  {"keywords":["facilitazione","tavoli","tavolo","workshop","partecipazione"],"answer":"Gestiamo tavoli di coprogrammazione con metodi strutturati: world café, focus group, raccolta contributi. L'obiettivo è alta partecipazione e contributi utilizzabili, non assemblee rituali."},
+  {"keywords":["over","osservatorio","vulnerabilità","resilienza"],"answer":"OVeR è l'Osservatorio Vulnerabilità e Resilienza, coordinato da Giuseppe Imbrogno. Studia le fragilità nei territori e le risposte del sistema dei servizi."},
+  {"keywords":["lombardia","veneto","emilia","piemonte","dove lavorate"],"answer":"Lavoriamo in Lombardia, Veneto, Emilia-Romagna e Piemonte. 4 regioni, 12 territori, 35+ enti del Terzo Settore, 20+ Pubbliche Amministrazioni."},
+  {"keywords":["normativa","legge","regolamento","dgr","ats","codice"],"answer":"Siamo aggiornati su L.R. 3/2008, Codice del Terzo Settore, DGR, circolari ATS, sentenza 131/2020, Legge 167/2025 sulla VIG. Traduciamo le indicazioni normative in azioni concrete."},
+  {"keywords":["formazione","corso","corsi","competenze"],"answer":"Percorsi formativi che partono dall'ascolto. In ambito AI: formazione pratica per operatori e dirigenti. In ambito organizzativo: sviluppo competenze. Strumenti concreti da usare il giorno dopo."},
+  {"keywords":["ciao","salve","buongiorno","buonasera"],"answer":"Ciao! Sono l'assistente di POST. Posso aiutarti sui nostri servizi: Piani di Zona, valutazione d'impatto, consulenza organizzativa, AI per il sociale. Cosa ti interessa?"},
+  {"keywords":["grazie","arrivederci","ok"],"answer":"Grazie a te! Se hai altre domande sono qui, oppure scrivi a info@postsb.it. A presto!"},
+  {"keywords":["servizi","cosa fate","cosa facciamo","offrite"],"answer":"POST lavora su quattro pilastri: 1) Valutazione d'Impatto (con Valutapp e VIG), 2) Amministrazione Condivisa (coprogrammazione, Piani di Zona), 3) Consulenza Organizzativa (piani impresa, passaggio generazionale), 4) Uso dei dati e AI (programmazione data driven, wAIt). Quale ti interessa?"},
+  {"keywords":["bocca trezza","palazzo","verona"],"answer":"Palazzo Bocca Trezza è uno dei nostri progetti a Verona: coprogrammazione e coprogettazione per trasformare un palazzo storico in uno spazio di comunità. Abbiamo facilitato il processo con il Comune, le associazioni e i cittadini del quartiere Veronetta."},
+  {"keywords":["crema","torpedone","usl","legami"],"answer":"Tra le nostre esperienze: Piano di Zona dell'Ambito di Crema, accompagnamento della Cooperativa Il Torpedone, Regolamento Co-Programmazione della USL Verona, e il Progetto Legami (ricerca-azione sul Registro Unico del Terzo Settore). Trovi i dettagli nella sezione Dal campo."}
 ]
