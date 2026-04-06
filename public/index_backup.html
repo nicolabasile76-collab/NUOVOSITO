@@ -24,6 +24,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;overflow-x:hidden}
 body{font-family:'Atkinson Hyperlegible',sans-serif;background:var(--cream);color:var(--charcoal);line-height:1.6;overflow-x:hidden}
+/* Grain overlay */
 body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")}
 h1,h2,.display{font-family:'Public Sans','Atkinson Hyperlegible',sans-serif}
 h3,h4,.sans{font-family:'Public Sans','Atkinson Hyperlegible',sans-serif}
@@ -51,11 +52,14 @@ a{color:inherit;text-decoration:none}
 .pillar{position:relative;padding:2.5rem;border-radius:12px;transition:transform .4s cubic-bezier(.19,1,.22,1),box-shadow .4s ease;overflow:hidden}
 .pillar:hover{transform:translateY(-6px);box-shadow:0 24px 48px rgba(0,61,74,.08)}
 .pillar::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--ink);border-radius:4px 0 0 4px}
+/* Pillar buttons — subtle by default, pop on hover */
 .pbtn{display:inline-flex;align-items:center;gap:.4rem;padding:.6rem 1.4rem;border-radius:8px;font-weight:700;font-size:.85rem;cursor:pointer;transition:all .25s ease;opacity:.7;transform:scale(.97)}
 .pillar:hover .pbtn{opacity:1;transform:scale(1)}
 .pbtn:hover{transform:scale(1.05)!important;box-shadow:0 4px 16px rgba(0,0,0,.12)}
+/* Light pillar buttons */
 .pbtn-light{background:var(--ink);color:white}.pbtn-light:hover{background:var(--ink-deep)}
 .pbtn-outline{background:transparent;border:1.5px solid var(--ink);color:var(--ink)}.pbtn-outline:hover{background:var(--ink);color:white}
+/* Dark pillar buttons */
 .pbtn-dark{background:rgba(255,255,255,.15);color:white}.pbtn-dark:hover{background:rgba(255,255,255,.3)}
 .pbtn-glow{background:var(--teal-glow);color:var(--charcoal-90);font-weight:800}.pbtn-glow:hover{background:white;color:var(--ink)}
 
@@ -74,74 +78,17 @@ a{color:inherit;text-decoration:none}
 .team-card{transition:transform .35s cubic-bezier(.19,1,.22,1)}.team-card:hover{transform:translateY(-3px)}
 .team-card .photo{border:3px solid var(--stone);transition:border-color .3s}.team-card:hover .photo{border-color:var(--ink)}
 
-/* Mobile hamburger */
-.hamburger{display:none;background:none;border:none;cursor:pointer;padding:.5rem;z-index:201}
-.hamburger span{display:block;width:24px;height:2px;background:var(--ink);margin:5px 0;transition:all .3s ease}
-.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
-.hamburger.open span:nth-child(2){opacity:0}
-.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
-.mobile-menu{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(247,245,240,.98);backdrop-filter:blur(20px);z-index:200;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;padding:2rem}
-.mobile-menu.open{display:flex}
-.mobile-menu a{font-family:'Public Sans','Atkinson Hyperlegible',sans-serif;font-size:1.2rem;font-weight:700;color:var(--ink);padding:.75rem 1.5rem;border-radius:8px;transition:background .2s}
-.mobile-menu a:hover{background:var(--teal-wash)}
-.mobile-menu .sub{font-size:1rem;font-weight:500;color:var(--slate);padding:.5rem 1.5rem .5rem 2.5rem}
-
-/* Role personalization bar */
-.role-bar{background:var(--teal-wash);border-bottom:1px solid var(--stone);padding:.5rem 2rem;font-family:'Public Sans',sans-serif;font-size:.8rem;color:var(--slate);display:flex;align-items:center;justify-content:center;gap:.75rem;flex-wrap:wrap}
-.role-bar button{background:transparent;border:1.5px solid var(--stone);color:var(--slate);padding:.3rem .75rem;border-radius:100px;font-family:'Public Sans',sans-serif;font-size:.75rem;font-weight:600;cursor:pointer;transition:all .2s}
-.role-bar button.active{background:var(--ink);color:white;border-color:var(--ink)}
-.role-bar button:hover:not(.active){border-color:var(--ink);color:var(--ink)}
-.role-bar .dismiss{background:none;border:none;color:var(--slate);cursor:pointer;font-size:1rem;padding:0 .25rem;margin-left:.5rem}
-
-/* Chatbot */
-.chat-fab{position:fixed;bottom:2rem;right:2rem;width:56px;height:56px;border-radius:50%;background:var(--ink);color:white;border:none;cursor:pointer;box-shadow:0 8px 24px rgba(0,61,74,.25);display:flex;align-items:center;justify-content:center;z-index:500;transition:transform .2s,box-shadow .2s}
-.chat-fab:hover{transform:scale(1.08);box-shadow:0 12px 32px rgba(0,61,74,.35)}
-.chat-panel{position:fixed;bottom:6rem;right:2rem;width:380px;max-height:520px;background:var(--charcoal-90);border-radius:16px;box-shadow:0 24px 64px rgba(0,0,0,.25);z-index:500;display:none;flex-direction:column;overflow:hidden;border:1px solid rgba(255,255,255,.1)}
-.chat-panel.open{display:flex}
-.chat-header{padding:1.25rem 1.5rem;border-bottom:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;align-items:center}
-.chat-header h4{color:var(--teal-glow);font-family:'Public Sans',sans-serif;font-size:1rem;font-weight:700}
-.chat-close{background:none;border:none;color:rgba(255,255,255,.5);font-size:1.2rem;cursor:pointer;padding:.25rem}
-.chat-close:hover{color:white}
-.chat-body{flex:1;overflow-y:auto;padding:1.25rem 1.5rem;display:flex;flex-direction:column;gap:1rem;max-height:320px}
-.chat-msg{padding:.75rem 1rem;border-radius:12px;font-size:.9rem;line-height:1.6;max-width:90%}
-.chat-msg.bot{background:rgba(255,255,255,.08);color:rgba(255,255,255,.9);align-self:flex-start;border-bottom-left-radius:4px}
-.chat-msg.user{background:var(--ink);color:white;align-self:flex-end;border-bottom-right-radius:4px}
-.chat-quick{display:flex;flex-wrap:wrap;gap:.5rem;padding:0 1.5rem .75rem}
-.chat-quick button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:var(--teal-glow);padding:.4rem .75rem;border-radius:100px;font-size:.75rem;font-family:'Public Sans',sans-serif;cursor:pointer;transition:all .2s}
-.chat-quick button:hover{background:rgba(255,255,255,.15);border-color:var(--teal-glow)}
-.chat-input{display:flex;padding:.75rem 1rem;border-top:1px solid rgba(255,255,255,.1);gap:.5rem}
-.chat-input input{flex:1;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:.6rem .75rem;color:white;font-family:'Atkinson Hyperlegible';font-size:.9rem;outline:none}
-.chat-input input:focus{border-color:var(--teal-glow)}
-.chat-input button{background:var(--ink);color:white;border:none;border-radius:8px;padding:.6rem .75rem;cursor:pointer;transition:background .2s}
-.chat-input button:hover{background:var(--ink-deep)}
-
-/* Form success */
-.form-success{display:none;text-align:center;padding:3rem 2rem}
-.form-success.show{display:block}
-
 /* Responsive */
 @media(max-width:768px){
   .hide-sm{display:none!important}
   .col-sm{grid-template-columns:1fr!important}
-  .hamburger{display:block}
-  .chat-panel{right:.5rem;left:.5rem;width:auto;bottom:5rem}
-  .role-bar{font-size:.7rem;padding:.4rem 1rem}
 }
 </style>
 </head>
 <body>
 
-<!-- === ROLE PERSONALIZATION BAR === -->
-<div class="role-bar" id="role-bar" style="position:fixed;top:0;width:100%;z-index:101;display:none">
-  <span>Stai navigando come:</span>
-  <button onclick="setRole('pa')" id="role-pa">Funzionario PA</button>
-  <button onclick="setRole('coop')" id="role-coop">Cooperatore</button>
-  <button onclick="setRole('all')" id="role-all" class="active">Tutti</button>
-  <button class="dismiss" onclick="dismissRoleBar()" title="Chiudi">&times;</button>
-</div>
-
-<!-- === NAV === -->
-<header id="main-header" style="position:fixed;top:0;width:100%;z-index:100;background:rgba(247,245,240,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--stone)">
+<!-- ═══ NAV ═══ -->
+<header style="position:fixed;top:0;width:100%;z-index:100;background:rgba(247,245,240,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--stone)">
   <nav style="max-width:1200px;margin:0 auto;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center">
     <a href="#hero" style="display:block">
       <img src="./logo-post.png" alt="POST" style="height:60px;width:auto" onerror="this.outerHTML='<span style=\'font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-size:2rem;color:var(--ink)\'>POST</span>'"/>
@@ -165,54 +112,31 @@ a{color:inherit;text-decoration:none}
       <a href="./dati-intelligenza-artificiale.html" style="color:var(--slate);transition:all .2s;display:flex;align-items:center;gap:.3rem;border-bottom:2px solid transparent;padding-bottom:2px" onmouseover="this.style.color='var(--ink)';this.style.fontWeight='700';this.style.borderBottomColor='var(--ink)'" onmouseout="this.style.color='var(--slate)';this.style.fontWeight='500';this.style.borderBottomColor='transparent'"><span class="material-symbols-outlined" style="font-size:18px">neurology</span>AI per il Bene Comune</a>
       <a href="#chi-siamo" style="color:var(--slate);transition:all .2s;border-bottom:2px solid transparent;padding-bottom:2px" onmouseover="this.style.color='var(--ink)';this.style.fontWeight='700';this.style.borderBottomColor='var(--ink)'" onmouseout="this.style.color='var(--slate)';this.style.fontWeight='500';this.style.borderBottomColor='transparent'">Chi siamo</a>
     </div>
-    <div style="display:flex;align-items:center;gap:1rem">
-      <a href="#contatti" class="hide-sm" style="background:var(--ink);color:white;padding:.6rem 1.5rem;border-radius:8px;font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-weight:700;font-size:.85rem;transition:opacity .2s" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">Contatti</a>
-      <button class="hamburger" id="hamburger-btn" onclick="toggleMobileMenu()">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
+    <a href="#contatti" style="background:var(--ink);color:white;padding:.6rem 1.5rem;border-radius:8px;font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-weight:700;font-size:.85rem;transition:opacity .2s" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">Contatti</a>
   </nav>
 </header>
 
-<!-- Mobile menu -->
-<div class="mobile-menu" id="mobile-menu">
-  <a href="#hero" onclick="closeMobileMenu()">Home</a>
-  <a href="#pilastri" onclick="closeMobileMenu()">Cosa facciamo</a>
-  <a href="./valutazione-impatto.html" class="sub">Valutazione d'Impatto</a>
-  <a href="./amministrazione-condivisa.html" class="sub">Amministrazione Condivisa</a>
-  <a href="./consulenza-organizzativa.html" class="sub">Consulenza Organizzativa</a>
-  <a href="./dati-intelligenza-artificiale.html" class="sub">Uso dei dati e AI</a>
-  <a href="./piani-di-zona.html" class="sub">Piani di Zona</a>
-  <a href="#blog" onclick="closeMobileMenu()">Dal campo</a>
-  <a href="#chi-siamo" onclick="closeMobileMenu()">Chi siamo</a>
-  <a href="#contatti" onclick="closeMobileMenu()" style="background:var(--ink);color:white;border-radius:8px;padding:.75rem 2rem">Contatti</a>
-</div>
-
-<!-- === 1. HERO === -->
+<!-- ═══ 1. HERO ═══ -->
 <section id="hero" style="padding:8rem 2rem 4rem;max-width:1200px;margin:0 auto">
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center" class="col-sm">
     <div class="rl">
-      <div class="marker" style="margin-bottom:1.5rem">Societa Benefit</div>
+      <div class="marker" style="margin-bottom:1.5rem">Società Benefit</div>
       <h1 style="font-size:clamp(3rem,6vw,5.5rem);color:var(--ink);line-height:1.05;letter-spacing:-.03em;margin-bottom:1.5rem">
         Lavoriamo con chi costruisce il bene comune.
       </h1>
-      <p id="hero-subtitle" style="font-size:1.25rem;color:var(--charcoal);line-height:1.7;max-width:520px;margin-bottom:1rem">
+      <p style="font-size:1.25rem;color:var(--charcoal);line-height:1.7;max-width:520px;margin-bottom:1rem">
         Consulenza per il welfare, le politiche pubbliche e lo sviluppo territoriale. Integriamo l'intelligenza artificiale nei processi sociali e collaborativi.
       </p>
       <p style="font-size:1.05rem;color:var(--slate);line-height:1.7;max-width:480px;margin-bottom:2.5rem">
         Un gruppo di professionisti con un approccio artigianale: fianco a fianco con enti pubblici, cooperative e Terzo Settore.
       </p>
-      <!-- Single primary CTA -->
-      <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap;margin-bottom:2rem">
-        <a href="#pilastri" style="background:var(--ink);color:white;padding:.95rem 2.5rem;border-radius:8px;font-weight:700;display:inline-flex;align-items:center;gap:.5rem;transition:all .2s;font-size:1.05rem" onmouseover="this.style.background='var(--ink-deep)'" onmouseout="this.style.background='var(--ink)'">Cosa facciamo</a>
-        <a href="./brochure-post.pdf" target="_blank" style="background:transparent;color:var(--ink);padding:.85rem 1.5rem;border-radius:8px;border:1.5px solid var(--ink);font-weight:700;display:inline-flex;align-items:center;gap:.5rem;transition:all .2s;font-size:.9rem" onmouseover="this.style.background='var(--teal-wash)'" onmouseout="this.style.background='transparent'"><span class="material-symbols-outlined" style="font-size:16px">download</span>Scarica la brochure</a>
-      </div>
-      <!-- Problem-oriented links -->
-      <p style="font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:.75rem">Hai bisogno di...</p>
-      <div style="display:flex;flex-direction:column;gap:.5rem" id="hero-needs">
-        <a href="./piani-di-zona.html" style="display:flex;align-items:center;gap:.5rem;padding:.6rem 1rem;border-radius:8px;border:1px solid var(--stone);color:var(--charcoal);font-size:.9rem;transition:all .2s;background:var(--warm-white)" onmouseover="this.style.borderColor='var(--ink)';this.style.background='var(--teal-wash)'" onmouseout="this.style.borderColor='var(--stone)';this.style.background='var(--warm-white)'"><span class="material-symbols-outlined" style="font-size:16px;color:var(--ink)">description</span>Devo fare il Piano di Zona</a>
-        <a href="./valutazione-impatto.html" style="display:flex;align-items:center;gap:.5rem;padding:.6rem 1rem;border-radius:8px;border:1px solid var(--stone);color:var(--charcoal);font-size:.9rem;transition:all .2s;background:var(--warm-white)" onmouseover="this.style.borderColor='var(--ink)';this.style.background='var(--teal-wash)'" onmouseout="this.style.borderColor='var(--stone)';this.style.background='var(--warm-white)'"><span class="material-symbols-outlined" style="font-size:16px;color:var(--ink)">monitoring</span>La Regione mi chiede la valutazione</a>
-        <a href="./dati-intelligenza-artificiale.html" style="display:flex;align-items:center;gap:.5rem;padding:.6rem 1rem;border-radius:8px;border:1px solid var(--stone);color:var(--charcoal);font-size:.9rem;transition:all .2s;background:var(--warm-white)" onmouseover="this.style.borderColor='var(--ink)';this.style.background='var(--teal-wash)'" onmouseout="this.style.borderColor='var(--stone)';this.style.background='var(--warm-white)'"><span class="material-symbols-outlined" style="font-size:16px;color:var(--ink)">neurology</span>Voglio integrare l'AI nei processi</a>
+      <!-- CTA principale -->
+      <a href="#pilastri" style="background:var(--ink);color:white;padding:.95rem 2.5rem;border-radius:8px;font-weight:700;display:inline-flex;align-items:center;gap:.5rem;transition:all .2s;font-size:1.05rem;margin-bottom:1.5rem" onmouseover="this.style.background='var(--ink-deep)'" onmouseout="this.style.background='var(--ink)'">Cosa facciamo <span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span></a>
+      <!-- Oggi in evidenza -->
+      <p style="font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:.75rem">Oggi in evidenza</p>
+      <div style="display:flex;gap:.75rem;flex-wrap:wrap">
+        <a href="./piani-di-zona.html" style="background:transparent;color:var(--ink);padding:.75rem 1.5rem;border-radius:8px;border:1.5px solid var(--ink);font-weight:700;display:inline-flex;align-items:center;gap:.5rem;transition:all .2s;font-size:.9rem" onmouseover="this.style.background='var(--teal-wash)'" onmouseout="this.style.background='transparent'"><span class="material-symbols-outlined" style="font-size:16px">description</span>Piani di Zona</a>
+        <a href="./dati-intelligenza-artificiale.html" style="background:var(--charcoal-90);color:var(--teal-glow);padding:.75rem 1.5rem;border-radius:8px;font-weight:700;display:inline-flex;align-items:center;gap:.5rem;transition:all .2s;font-size:.9rem" onmouseover="this.style.background='var(--charcoal)'" onmouseout="this.style.background='var(--charcoal-90)'"><span class="material-symbols-outlined" style="font-size:16px">neurology</span>AI per il Bene Comune</a>
       </div>
     </div>
     <div class="rr" style="position:relative">
@@ -225,14 +149,15 @@ a{color:inherit;text-decoration:none}
         </div>
         <div class="dots" id="hero-dots"></div>
       </div>
+      <!-- Decorative offset block -->
       <div style="position:absolute;top:-16px;right:-16px;width:100%;height:100%;border:2px solid var(--ink);border-radius:16px;z-index:-1;opacity:.15"></div>
     </div>
   </div>
 </section>
 
-<!-- === 2. COUNTERS === -->
+<!-- ═══ 2. COUNTERS ═══ -->
 <section style="background:var(--charcoal-90);padding:3.5rem 2rem" class="r">
-  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(6,1fr);gap:2rem;text-align:center" class="col-sm stag">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(6,1fr);gap:2rem;text-align:center" class="col-sm stag" style="grid-template-columns:repeat(3,1fr)">
     <div><p class="num"><span class="counter" data-target="4">0</span></p><p style="font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-size:.75rem;color:var(--teal-glow);letter-spacing:.1em;text-transform:uppercase;font-weight:700;margin-top:.25rem">Regioni</p></div>
     <div><p class="num"><span class="counter" data-target="12">0</span></p><p style="font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-size:.75rem;color:var(--teal-glow);letter-spacing:.1em;text-transform:uppercase;font-weight:700;margin-top:.25rem">Territori</p></div>
     <div><p class="num"><span class="counter" data-target="35">0</span>+</p><p style="font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-size:.75rem;color:var(--teal-glow);letter-spacing:.1em;text-transform:uppercase;font-weight:700;margin-top:.25rem">Enti Terzo Settore</p></div>
@@ -240,15 +165,14 @@ a{color:inherit;text-decoration:none}
     <div><p class="num"><span class="counter" data-target="40">0</span>+</p><p style="font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-size:.75rem;color:var(--teal-glow);letter-spacing:.1em;text-transform:uppercase;font-weight:700;margin-top:.25rem">Processi collaborativi</p></div>
     <div><p class="num"><span class="counter" data-target="15">0</span>+</p><p style="font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-size:.75rem;color:var(--teal-glow);letter-spacing:.1em;text-transform:uppercase;font-weight:700;margin-top:.25rem">Valutazioni d'impatto</p></div>
   </div>
-  <p style="text-align:center;font-family:Public Sans,sans-serif;font-size:.8rem;color:rgba(255,255,255,.4);margin-top:1.5rem">in Lombardia, Veneto, Emilia-Romagna e Piemonte</p>
 </section>
 
-<!-- === 3. INTRO + PILLARS === -->
+<!-- ═══ 3. INTRO + PILLARS ═══ -->
 <section style="padding:6rem 2rem 2rem;max-width:1200px;margin:0 auto">
   <div class="r" style="max-width:700px;margin-bottom:4rem">
     <h2 style="font-size:clamp(2rem,4vw,3.2rem);color:var(--ink);line-height:1.15;margin-bottom:1.5rem;letter-spacing:-.02em">Non vendiamo soluzioni preconfezionate.</h2>
-    <p style="font-size:1.15rem;color:var(--charcoal);line-height:1.8">POST e una piccola societa benefit che lavora nel campo della consulenza per il welfare, le politiche pubbliche e lo sviluppo territoriale.</p>
-    <p style="font-size:1.15rem;color:var(--slate);line-height:1.8;margin-top:.75rem">Non siamo una grande societa di consulenza: siamo professionisti che si sporcano le mani, fianco a fianco con chi opera ogni giorno nei servizi e nelle comunita.</p>
+    <p style="font-size:1.15rem;color:var(--charcoal);line-height:1.8">POST è una piccola società benefit che lavora nel campo della consulenza per il welfare, le politiche pubbliche e lo sviluppo territoriale.</p>
+    <p style="font-size:1.15rem;color:var(--slate);line-height:1.8;margin-top:.75rem">Non siamo una grande società di consulenza: siamo professionisti che si sporcano le mani, fianco a fianco con chi opera ogni giorno nei servizi e nelle comunità.</p>
   </div>
 </section>
 
@@ -266,7 +190,7 @@ a{color:inherit;text-decoration:none}
       <h3 style="font-size:1.5rem;color:var(--ink);margin-bottom:.75rem">Valutazione d'Impatto</h3>
       <p style="font-size:1.05rem;color:var(--charcoal);line-height:1.7">Dati in conoscenza utile. Indicatori di esito e processo, ricerca sociale, accountability.</p>
       <div style="margin-top:1.5rem;padding:1rem 1.25rem;background:var(--teal-wash);border-radius:8px;border-left:3px solid var(--ink)">
-        <p style="font-size:.85rem;color:var(--charcoal)"><strong style="color:var(--ink)">Novita 2025</strong> — Valutazione d'Impatto Generazionale (Legge 167/2025)</p>
+        <p style="font-size:.85rem;color:var(--charcoal)"><strong style="color:var(--ink)">Novità 2025</strong> — Valutazione d'Impatto Generazionale (Legge 167/2025)</p>
       </div>
       <div style="display:flex;gap:.75rem;margin-top:1.5rem;flex-wrap:wrap">
         <span class="pbtn pbtn-outline">Approfondisci</span>
@@ -294,7 +218,7 @@ a{color:inherit;text-decoration:none}
       <span class="pbtn pbtn-outline" style="margin-top:1.5rem">Approfondisci</span>
     </a>
 
-    <!-- AI -->
+    <!-- AI — bottone WAIT più evidente -->
     <a href="./dati-intelligenza-artificiale.html" class="pillar r" style="background:var(--charcoal-90);color:white;display:block;text-decoration:none;cursor:pointer">
       <div style="position:absolute;top:0;left:0;width:4px;height:100%;background:var(--teal-glow);border-radius:4px 0 0 4px"></div>
       <span class="material-symbols-outlined" style="font-size:2rem;color:var(--teal-glow);margin-bottom:1rem">neurology</span>
@@ -309,7 +233,7 @@ a{color:inherit;text-decoration:none}
   </div>
 </section>
 
-<!-- === 4. TEAM === -->
+<!-- ═══ 4. TEAM ═══ -->
 <section id="chi-siamo" style="padding:6rem 2rem;max-width:1200px;margin:0 auto">
   <div class="r" style="margin-bottom:3rem">
     <hr class="rule" style="margin-bottom:1.5rem"/>
@@ -319,9 +243,10 @@ a{color:inherit;text-decoration:none}
   <div id="team-grid" style="display:grid;grid-template-columns:repeat(5,1fr);gap:1.25rem" class="col-sm stag"></div>
 </section>
 
-<!-- === 5. RIVISTA (compact) === -->
+<!-- ═══ 5. RIVISTA ═══ -->
 <section id="blog" style="background:var(--warm-white);padding:6rem 2rem;border-top:1px solid var(--stone);border-bottom:1px solid var(--stone)">
   <div style="max-width:1200px;margin:0 auto">
+    <!-- Testata -->
     <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:3.5rem" class="r">
       <div>
         <div style="font-family:Public Sans,sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--slate);margin-bottom:.5rem">Rivista di pratiche</div>
@@ -330,12 +255,14 @@ a{color:inherit;text-decoration:none}
       <a href="./blog.html" style="font-family:Public Sans,sans-serif;font-size:.85rem;font-weight:700;color:var(--ink);display:flex;align-items:center;gap:.3rem;margin-top:1.5rem;padding:.5rem 1.25rem;border:1.5px solid var(--ink);border-radius:100px;transition:all .2s" onmouseover="this.style.background='var(--ink)';this.style.color='white'" onmouseout="this.style.background='transparent';this.style.color='var(--ink)'">Tutti i numeri <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span></a>
     </div>
     <hr style="border:none;border-top:2px solid var(--ink);margin-bottom:3rem"/>
+    <!-- Copertina: ultimo articolo highlight -->
     <div id="cover-article" style="margin-bottom:3rem"></div>
+    <!-- Sommario: altri articoli -->
     <div id="sommario" style="margin-bottom:2rem"></div>
   </div>
 </section>
 
-<!-- === 6. CONTATTI (with Brevo) === -->
+<!-- ═══ 6. CONTATTI ═══ -->
 <section id="contatti" style="background:var(--charcoal-90);color:white;padding:6rem 2rem">
   <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1.5fr;gap:4rem;align-items:start" class="col-sm">
     <div class="rl">
@@ -353,43 +280,25 @@ a{color:inherit;text-decoration:none}
     </div>
     <div class="rr" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:2.5rem">
       <h3 style="font-size:1.3rem;color:var(--teal-glow);margin-bottom:2rem;font-weight:700">Scriveteci.</h3>
-      <!-- Brevo hidden iframe fallback -->
-      <iframe name="brevo-fallback" style="display:none"></iframe>
-      <form id="contact-form" onsubmit="handleContactSubmit(event)" style="display:flex;flex-direction:column;gap:1.5rem">
+      <form onsubmit="event.preventDefault();alert('Messaggio inviato! (demo)');" style="display:flex;flex-direction:column;gap:1.5rem">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem" class="col-sm">
-          <div><label style="font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5);display:block;margin-bottom:.5rem">Nome</label><input type="text" name="nome" required placeholder="Il vostro nome" style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:.75rem 1rem;color:white;font-family:Atkinson Hyperlegible;font-size:1rem;outline:none;transition:border-color .2s" onfocus="this.style.borderColor='var(--teal-glow)'" onblur="this.style.borderColor='rgba(255,255,255,.15)'"/></div>
-          <div><label style="font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5);display:block;margin-bottom:.5rem">Email</label><input type="email" name="email" required placeholder="email@org.it" style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:.75rem 1rem;color:white;font-family:Atkinson Hyperlegible;font-size:1rem;outline:none;transition:border-color .2s" onfocus="this.style.borderColor='var(--teal-glow)'" onblur="this.style.borderColor='rgba(255,255,255,.15)'"/></div>
+          <div><label style="font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5);display:block;margin-bottom:.5rem">Nome</label><input type="text" placeholder="Il vostro nome" style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:.75rem 1rem;color:white;font-family:Atkinson Hyperlegible;font-size:1rem;outline:none;transition:border-color .2s" onfocus="this.style.borderColor='var(--teal-glow)'" onblur="this.style.borderColor='rgba(255,255,255,.15)'"/></div>
+          <div><label style="font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5);display:block;margin-bottom:.5rem">Email</label><input type="email" placeholder="email@org.it" style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:.75rem 1rem;color:white;font-family:Atkinson Hyperlegible;font-size:1rem;outline:none;transition:border-color .2s" onfocus="this.style.borderColor='var(--teal-glow)'" onblur="this.style.borderColor='rgba(255,255,255,.15)'"/></div>
         </div>
-        <div><label style="font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5);display:block;margin-bottom:.5rem">Organizzazione</label><input type="text" name="organizzazione" placeholder="Ente, cooperativa, associazione..." style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:.75rem 1rem;color:white;font-family:Atkinson Hyperlegible;font-size:1rem;outline:none;transition:border-color .2s" onfocus="this.style.borderColor='var(--teal-glow)'" onblur="this.style.borderColor='rgba(255,255,255,.15)'"/></div>
-        <!-- Role selector -->
-        <div><label style="font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5);display:block;margin-bottom:.5rem">Sono un...</label>
-          <select name="ruolo" id="form-ruolo" onchange="updatePlaceholder()" style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:.75rem 1rem;color:white;font-family:Atkinson Hyperlegible;font-size:1rem;outline:none;transition:border-color .2s;appearance:none;-webkit-appearance:none;background-image:url('data:image/svg+xml;utf8,<svg fill=\'white\' viewBox=\'0 0 24 24\' xmlns=\'http://www.w3.org/2000/svg\'><path d=\'M7 10l5 5 5-5z\'/></svg>');background-repeat:no-repeat;background-position:right 1rem center;background-size:1.2rem" onfocus="this.style.borderColor='var(--teal-glow)'" onblur="this.style.borderColor='rgba(255,255,255,.15)'">
-            <option value="" style="background:var(--charcoal-90)">Seleziona il tuo ruolo...</option>
-            <option value="pa" style="background:var(--charcoal-90)">Funzionario/Dirigente PA</option>
-            <option value="coop" style="background:var(--charcoal-90)">Cooperatore / Terzo Settore</option>
-            <option value="fondazione" style="background:var(--charcoal-90)">Fondazione</option>
-            <option value="altro" style="background:var(--charcoal-90)">Altro</option>
-          </select>
-        </div>
-        <div><label style="font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5);display:block;margin-bottom:.5rem">Messaggio</label><textarea rows="4" name="messaggio" id="form-messaggio" placeholder="Raccontateci il vostro progetto..." style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:.75rem 1rem;color:white;font-family:Atkinson Hyperlegible;font-size:1rem;outline:none;resize:vertical;transition:border-color .2s" onfocus="this.style.borderColor='var(--teal-glow)'" onblur="this.style.borderColor='rgba(255,255,255,.15)'"></textarea></div>
-        <button type="submit" id="contact-submit-btn" style="align-self:flex-start;background:var(--ink-light);color:white;border:none;padding:.85rem 2.5rem;border-radius:8px;font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-weight:700;font-size:1rem;cursor:pointer;display:flex;align-items:center;gap:.5rem;transition:background .2s" onmouseover="this.style.background='var(--ink)'" onmouseout="this.style.background='var(--ink-light)'">Invia <span class="material-symbols-outlined" style="font-size:18px">send</span></button>
+        <div><label style="font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5);display:block;margin-bottom:.5rem">Organizzazione</label><input type="text" placeholder="Ente, cooperativa, associazione..." style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:.75rem 1rem;color:white;font-family:Atkinson Hyperlegible;font-size:1rem;outline:none;transition:border-color .2s" onfocus="this.style.borderColor='var(--teal-glow)'" onblur="this.style.borderColor='rgba(255,255,255,.15)'"/></div>
+        <div><label style="font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5);display:block;margin-bottom:.5rem">Messaggio</label><textarea rows="4" placeholder="Raccontateci il vostro progetto..." style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:.75rem 1rem;color:white;font-family:Atkinson Hyperlegible;font-size:1rem;outline:none;resize:vertical;transition:border-color .2s" onfocus="this.style.borderColor='var(--teal-glow)'" onblur="this.style.borderColor='rgba(255,255,255,.15)'"></textarea></div>
+        <button type="submit" style="align-self:flex-start;background:var(--ink-light);color:white;border:none;padding:.85rem 2.5rem;border-radius:8px;font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-weight:700;font-size:1rem;cursor:pointer;display:flex;align-items:center;gap:.5rem;transition:background .2s" onmouseover="this.style.background='var(--ink)'" onmouseout="this.style.background='var(--ink-light)'">Invia <span class="material-symbols-outlined" style="font-size:18px">send</span></button>
       </form>
-      <!-- Success message -->
-      <div id="form-success" class="form-success">
-        <span class="material-symbols-outlined" style="font-size:3rem;color:var(--teal-glow);margin-bottom:1rem">check_circle</span>
-        <h3 style="color:var(--teal-glow);font-size:1.3rem;margin-bottom:.5rem">Messaggio inviato!</h3>
-        <p style="color:rgba(255,255,255,.7);font-size:1rem">Vi rispondiamo al piu presto. Grazie per averci scritto.</p>
-      </div>
     </div>
   </div>
 </section>
 
-<!-- === FOOTER === -->
+<!-- ═══ FOOTER ═══ -->
 <footer style="background:var(--charcoal);padding:3rem 2rem;border-top:1px solid rgba(255,255,255,.08)">
   <div style="max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem">
     <div style="display:flex;align-items:center;gap:2rem">
       <img src="./logo-post.png" alt="POST" style="height:40px;width:auto;filter:brightness(0) invert(1);opacity:.6" onerror="this.outerHTML='<span style=\'font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-size:1.5rem;color:rgba(255,255,255,.6)\'>POST</span>'"/>
-      <span style="font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-size:.8rem;color:rgba(255,255,255,.4)">&copy; 2025 POST Societa Benefit S.r.l. — Milano</span>
+      <span style="font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-size:.8rem;color:rgba(255,255,255,.4)">&copy; 2025 POST Società Benefit S.r.l. — Milano</span>
     </div>
     <div style="display:flex;gap:2rem;font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-size:.8rem">
       <a href="#" style="color:rgba(255,255,255,.4);transition:color .2s" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,.4)'">Privacy</a>
@@ -399,137 +308,20 @@ a{color:inherit;text-decoration:none}
   </div>
 </footer>
 
-<!-- === CHATBOT === -->
-<button class="chat-fab" id="chat-fab" onclick="toggleChat()">
-  <span class="material-symbols-outlined" style="font-size:28px">chat</span>
-</button>
-<div class="chat-panel" id="chat-panel">
-  <div class="chat-header">
-    <h4>Come posso aiutarti?</h4>
-    <button class="chat-close" onclick="toggleChat()">&times;</button>
-  </div>
-  <div class="chat-body" id="chat-body">
-    <div class="chat-msg bot">Ciao! Sono l'assistente di POST. Chiedimi dei nostri servizi, Piani di Zona, wAIt o altro.</div>
-  </div>
-  <div class="chat-quick" id="chat-quick">
-    <button onclick="sendChat('Come funzionano i Piani di Zona?')">Piani di Zona</button>
-    <button onclick="sendChat('Cos\'e wAIt?')">Cos'e wAIt?</button>
-    <button onclick="sendChat('Quali servizi offrite?')">Servizi</button>
-  </div>
-  <div class="chat-input">
-    <input type="text" id="chat-input-field" placeholder="Scrivi una domanda..." onkeydown="if(event.key==='Enter')sendChatFromInput()"/>
-    <button onclick="sendChatFromInput()"><span class="material-symbols-outlined" style="font-size:20px">send</span></button>
-  </div>
-</div>
-
-<!-- === SCRIPTS === -->
+<!-- ═══ SCRIPTS ═══ -->
 <script>
-// === Mobile menu ===
-function toggleMobileMenu(){
-  const m=document.getElementById('mobile-menu');
-  const b=document.getElementById('hamburger-btn');
-  m.classList.toggle('open');
-  b.classList.toggle('open');
-}
-function closeMobileMenu(){
-  document.getElementById('mobile-menu').classList.remove('open');
-  document.getElementById('hamburger-btn').classList.remove('open');
-}
-
-// === Role personalization ===
-const roleSubtitles={
-  all:"Consulenza per il welfare, le politiche pubbliche e lo sviluppo territoriale. Integriamo l'intelligenza artificiale nei processi sociali e collaborativi.",
-  pa:"Accompagniamo Pubbliche Amministrazioni nella programmazione sociale: Piani di Zona, Valutazione d'Impatto Generazionale e governance partecipata.",
-  coop:"Supportiamo cooperative e Terzo Settore con consulenza organizzativa, passaggio intergenerazionale e coprogettazione con la PA."
-};
-function setRole(role){
-  document.querySelectorAll('.role-bar button:not(.dismiss)').forEach(b=>b.classList.remove('active'));
-  document.getElementById('role-'+role).classList.add('active');
-  document.getElementById('hero-subtitle').textContent=roleSubtitles[role]||roleSubtitles.all;
-  localStorage.setItem('post-role',role);
-}
-function dismissRoleBar(){
-  document.getElementById('role-bar').style.display='none';
-  localStorage.setItem('post-role-bar-dismissed','1');
-  updateHeaderTop();
-}
-function updateHeaderTop(){
-  const bar=document.getElementById('role-bar');
-  const header=document.getElementById('main-header');
-  if(bar.style.display!=='none'&&bar.style.display!==''){
-    const h=bar.offsetHeight;
-    header.style.top=h+'px';
-  } else {
-    header.style.top='0';
-  }
-}
-(function initRole(){
-  const dismissed=localStorage.getItem('post-role-bar-dismissed');
-  if(!dismissed){
-    document.getElementById('role-bar').style.display='flex';
-  }
-  const saved=localStorage.getItem('post-role');
-  if(saved) setRole(saved);
-  setTimeout(updateHeaderTop,50);
-})();
-
-// === Carousel ===
+// Carousel
 (function(){const c=document.getElementById('hero-carousel'),d=document.getElementById('hero-dots');if(!c)return;const imgs=[...c.querySelectorAll('img')];let cur=0,iv;imgs.forEach((_,i)=>{const b=document.createElement('button');if(!i)b.classList.add('on');b.onclick=()=>go(i);d.appendChild(b)});const dots=[...d.querySelectorAll('button')];function go(n){imgs[cur].classList.remove('on');dots[cur].classList.remove('on');cur=n;imgs[cur].classList.add('on');dots[cur].classList.add('on');clearInterval(iv);run()}function run(){iv=setInterval(()=>go((cur+1)%imgs.length),5000)}run()})();
 
-// === Counter ===
+// Counter
 const cO=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){const el=e.target,t=+el.dataset.target;let c=0;const s=Math.max(1,Math.floor(t/35));const tm=setInterval(()=>{c+=s;if(c>=t){c=t;clearInterval(tm)}el.textContent=c},35);cO.unobserve(el)}})},{threshold:.5});
 document.querySelectorAll('.counter').forEach(el=>cO.observe(el));
 
-// === Reveal ===
+// Reveal
 const rO=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');rO.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.r,.rl,.rr').forEach(el=>rO.observe(el));
 
-// === Form placeholder update ===
-function updatePlaceholder(){
-  const sel=document.getElementById('form-ruolo').value;
-  const ta=document.getElementById('form-messaggio');
-  const placeholders={
-    '':'Raccontateci il vostro progetto...',
-    'pa':'Qual e la vostra esigenza? Piano di Zona, valutazione, governance...',
-    'coop':'Di cosa ha bisogno la vostra organizzazione? Coprogettazione, riorganizzazione, sviluppo...',
-    'fondazione':'Come possiamo supportare la vostra fondazione? Valutazione, strategia, AI...',
-    'altro':'Raccontateci come possiamo aiutarvi...'
-  };
-  ta.placeholder=placeholders[sel]||placeholders[''];
-}
-
-// === Brevo contact form ===
-async function handleContactSubmit(e){
-  e.preventDefault();
-  const form=document.getElementById('contact-form');
-  const btn=document.getElementById('contact-submit-btn');
-  const fd=new FormData(form);
-  const data={nome:fd.get('nome'),email:fd.get('email'),organizzazione:fd.get('organizzazione'),ruolo:fd.get('ruolo'),messaggio:fd.get('messaggio')};
-
-  btn.disabled=true;
-  btn.innerHTML='Invio in corso...';
-
-  try{
-    const resp=await fetch('/api/contact',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify(data)
-    });
-    const result=await resp.json();
-    if(result.success){
-      form.style.display='none';
-      document.getElementById('form-success').classList.add('show');
-    } else {
-      throw new Error(result.error||'Errore invio');
-    }
-  } catch(err){
-    alert('Errore nell\'invio. Prova a scrivere direttamente a info@postsb.it');
-    btn.disabled=false;
-    btn.innerHTML='Invia <span class="material-symbols-outlined" style="font-size:18px">send</span>';
-  }
-}
-
-// === Rivista (compact: cover + 3 titles) ===
+// Rivista
 async function loadRivista(){
   let posts;
   try{const r=await fetch('/blog.json');posts=await r.json()}catch(e){return}
@@ -537,6 +329,7 @@ async function loadRivista(){
   function sl(p){return p.url||`./articolo.html?slug=${p.title.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/-+$/,'')}`}
   function fd(d){return new Date(d).toLocaleDateString('it-IT',{day:'numeric',month:'long',year:'numeric'})}
 
+  // Copertina: primo articolo
   const c=posts[0];
   const ce=document.getElementById('cover-article');
   if(c){
@@ -554,8 +347,8 @@ async function loadRivista(){
     </a>`;
   }
 
-  // Compact sommario: only 3 titles
-  const rest=posts.slice(1,4);
+  // Sommario editoriale
+  const rest=posts.slice(1,7);
   const se=document.getElementById('sommario');
   if(rest.length){
     let h='<div style="font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin-bottom:1rem">Sommario</div>';
@@ -567,13 +360,29 @@ async function loadRivista(){
         <span class="material-symbols-outlined hide-sm" style="font-size:18px;color:var(--ink)">arrow_forward</span>
       </a>`;
     });
-    h+=`<div style="margin-top:2rem;text-align:center"><a href="./blog.html" style="display:inline-flex;align-items:center;gap:.4rem;font-size:.9rem;font-weight:700;color:var(--ink);padding:.7rem 2rem;border:1.5px solid var(--ink);border-radius:100px;transition:all .2s" onmouseover="this.style.background='var(--ink)';this.style.color='white'" onmouseout="this.style.background='transparent';this.style.color='var(--ink)'">Tutti i numeri <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span></a></div>`;
+    // 3 card visive dopo il sommario
+    const cards=posts.slice(1,4);
+    if(cards.length){
+      h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem" class="col-sm">`;
+      cards.forEach(p=>{
+        h+=`<a href="${sl(p)}" style="border-radius:12px;overflow:hidden;background:var(--cream);border:1px solid var(--stone);text-decoration:none;transition:transform .35s cubic-bezier(.19,1,.22,1),box-shadow .35s ease;display:block" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,.06)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+          <div style="height:180px;overflow:hidden"><img src="${p.img}" alt="" style="width:100%;height:100%;object-fit:cover;transition:transform .6s" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='none'"/></div>
+          <div style="padding:1.25rem">
+            <div style="display:flex;gap:.5rem;align-items:center;margin-bottom:.5rem"><span class="marker" style="font-size:.65rem;padding:.2rem .5rem">${p.catLabel}</span><span style="font-size:.75rem;color:var(--slate)">${fd(p.date)}</span></div>
+            <h4 style="font-size:1.05rem;color:var(--ink);font-weight:700;line-height:1.3;margin-bottom:.3rem">${p.title}</h4>
+            <span style="font-size:.8rem;color:var(--slate)">${p.author}</span>
+          </div>
+        </a>`;
+      });
+      h+=`</div>`;
+    }
+    h+=`<div style="margin-top:2.5rem;text-align:center"><a href="./blog.html" style="display:inline-flex;align-items:center;gap:.4rem;font-size:.9rem;font-weight:700;color:var(--ink);padding:.7rem 2rem;border:1.5px solid var(--ink);border-radius:100px;transition:all .2s" onmouseover="this.style.background='var(--ink)';this.style.color='white'" onmouseout="this.style.background='transparent';this.style.color='var(--ink)'">Tutti i numeri <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span></a></div>`;
     se.innerHTML=h;
   }
 }
 loadRivista();
 
-// === Team ===
+// Team
 async function loadTeam(){
   let team;
   try{const r=await fetch('/team.json');team=await r.json()}catch(e){return}
@@ -594,62 +403,6 @@ async function loadTeam(){
   });
 }
 loadTeam();
-
-// === Chatbot ===
-let chatbotData=[];
-fetch('/chatbot.json').then(r=>r.json()).then(d=>{chatbotData=d}).catch(()=>{});
-
-function toggleChat(){
-  document.getElementById('chat-panel').classList.toggle('open');
-}
-function sendChatFromInput(){
-  const inp=document.getElementById('chat-input-field');
-  const q=inp.value.trim();
-  if(!q)return;
-  inp.value='';
-  sendChat(q);
-}
-async function sendChat(q){
-  const body=document.getElementById('chat-body');
-  document.getElementById('chat-quick').style.display='none';
-  const um=document.createElement('div');
-  um.className='chat-msg user';um.textContent=q;
-  body.appendChild(um);
-  body.scrollTop=body.scrollHeight;
-
-  // Show typing indicator
-  const typing=document.createElement('div');
-  typing.className='chat-msg bot';typing.innerHTML='<span style="opacity:.5">Sto pensando...</span>';
-  body.appendChild(typing);
-  body.scrollTop=body.scrollHeight;
-
-  let answer;
-  try{
-    const resp=await fetch('/api/chat',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({message:q})
-    });
-    const data=await resp.json();
-    answer=data.reply;
-  } catch(e){
-    // Fallback to local keyword matching
-    const ql=q.toLowerCase();
-    for(const entry of chatbotData){
-      if(entry.keywords.some(k=>ql.includes(k.toLowerCase()))){
-        answer=entry.answer;break;
-      }
-    }
-    if(!answer) answer="Non ho una risposta pronta. Scrivi a info@postsb.it o usa il form contatti.";
-  }
-
-  typing.remove();
-  const bm=document.createElement('div');
-  bm.className='chat-msg bot';bm.textContent=answer;
-  body.appendChild(bm);
-  body.scrollTop=body.scrollHeight;
-  body.scrollTop=body.scrollHeight;
-}
 </script>
 </body>
 </html>
