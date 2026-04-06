@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
-const { put, list, del } = require('@vercel/blob');
+const { put, list, del, getDownloadUrl } = require('@vercel/blob');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -76,7 +76,8 @@ app.get('/data/:file', async (req, res) => {
   try {
     const { blobs } = await list({ prefix: file });
     if (blobs.length > 0) {
-      const r = await fetch(blobs[0].url);
+      const dlUrl = await getDownloadUrl(blobs[0].url);
+      const r = await fetch(dlUrl);
       const data = await r.text();
       res.setHeader('Content-Type', 'application/json');
       return res.send(data);
@@ -103,7 +104,8 @@ async function readData(file) {
   try {
     const { blobs } = await list({ prefix: file });
     if (blobs.length > 0) {
-      const r = await fetch(blobs[0].url);
+      const dlUrl = await getDownloadUrl(blobs[0].url);
+      const r = await fetch(dlUrl);
       return await r.text();
     }
   } catch (e) { /* blob not available, use local */ }
@@ -120,7 +122,7 @@ async function saveData(file, content) {
     for (const b of blobs) await del(b.url);
   } catch (e) { /* ok */ }
   // Save new
-  await put(file, content, { access: 'public', addRandomSuffix: false });
+  await put(file, content, { access: 'private', addRandomSuffix: false });
 }
 
 // GET any JSON file
