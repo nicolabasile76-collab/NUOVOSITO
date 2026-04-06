@@ -197,10 +197,9 @@ app.post('/api/chat', async (req, res) => {
 
 ISTRUZIONI:
 - Rispondi SOLO in italiano
-- NON usare MAI formattazione markdown: no asterischi, no trattini per elenchi, no simboli. Scrivi in testo piano, come un messaggio WhatsApp a un collega
-- Se devi elencare cose, usa virgole o "punto e virgola" in una frase, non liste puntate
-- Tono: artigianale, concreto, diretto, anti-corporate — come parlerebbe un consulente esperto a un collega
-- Risposte brevi: 2-5 frasi massimo, a meno che la domanda non richieda più dettaglio
+- Formattazione: usa SOLO testo piano con questi simboli per gli elenchi: "• " (pallino). No asterischi, no markdown, no grassetti. Esempio: "• Piani di Zona\n• Valutazione d'impatto\n• Consulenza organizzativa"
+- Tono: artigianale, concreto, diretto, anti-corporate
+- Risposte MOLTO sintetiche: 1-3 frasi + eventuale elenco puntato. Mai più di 5 righe totali
 - Basa le tue risposte ESCLUSIVAMENTE sui contenuti del sito riportati sotto
 - NON inventare servizi, progetti, numeri o informazioni che non trovi nel contesto
 - Se non trovi la risposta nel contesto, suggerisci di contattare info@postsb.it o +39 3939993731
@@ -220,7 +219,7 @@ ${siteContext}`;
       },
       body: JSON.stringify({
         model: 'claude-haiku-4-5-20251001',
-        max_tokens: 500,
+        max_tokens: 250,
         system: systemPrompt,
         messages: [{ role: 'user', content: message }]
       })
