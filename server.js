@@ -75,10 +75,37 @@ function authAdmin(req, res, next) {
   next();
 }
 
-// ═══ ADMIN API: Read/Write data files ═══
+// ═══ ADMIN API: Read/Write data files via GitHub ═══
 const PUBLIC_DIR = path.join(__dirname, 'public');
+const GITHUB_REPO = 'nicolabasile76-collab/NUOVOSITO';
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 
-// GET any JSON file
+async function githubGetFile(filePath) {
+  const url = `https://api.github.com/repos/${GITHUB_REPO}/contents/public/${filePath}`;
+  const r = await fetch(url, { headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json' } });
+  if (!r.ok) return null;
+  return await r.json();
+}
+
+async function githubSaveFile(filePath, content, message) {
+  const url = `https://api.github.com/repos/${GITHUB_REPO}/contents/public/${filePath}`;
+  const existing = await githubGetFile(filePath);
+  const body = {
+    message: message || `Aggiornamento ${filePath} da admin`,
+    content: Buffer.from(content).toString('base64'),
+    committer: { name: 'POST Admin', email: 'admin@postsb.it' }
+  };
+  if (existing && existing.sha) body.sha = existing.sha;
+  const r = await fetch(url, {
+    method: 'PUT',
+    headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Content-Type': 'application/json', 'Accept': 'application/vnd.github.v3+json' },
+    body: JSON.stringify(body)
+  });
+  if (!r.ok) { const err = await r.text(); throw new Error(err); }
+  return await r.json();
+}
+
+// GET any JSON file (from local fs — works on Vercel read-only)
 app.get('/api/admin/data/:file', authAdmin, (req, res) => {
   const allowed = ['blog.json', 'team.json', 'chatbot.json'];
   const file = req.params.file;
@@ -91,32 +118,22 @@ app.get('/api/admin/data/:file', authAdmin, (req, res) => {
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
-// SAVE any JSON file
-app.post('/api/admin/data/:file', authAdmin, (req, res) => {
+// SAVE any JSON file (via GitHub API → triggers Vercel redeploy)
+app.post('/api/admin/data/:file', authAdmin, async (req, res) => {
   const allowed = ['blog.json', 'team.json', 'chatbot.json'];
   const file = req.params.file;
   if (!allowed.includes(file)) return res.status(400).json({ error: 'File non consentito' });
-  const filePath = path.join(PUBLIC_DIR, file);
   try {
-    fs.writeFileSync(filePath, JSON.stringify(req.body, null, 2), 'utf8');
-    // Reload site context for chatbot
-    if (typeof loadSiteContext === 'function') loadSiteContext();
-    res.json({ success: true });
+    const content = JSON.stringify(req.body, null, 2);
+    await githubSaveFile(file, content, `Admin: aggiornamento ${file}`);
+    res.json({ success: true, message: 'Salvato su GitHub. Il sito si aggiorna in ~30 secondi.' });
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
-// GET contesto-post.txt
-app.get('/api/admin/contesto', authAdmin, (req, res) => {
-  const filePath = path.join(PUBLIC_DIR, 'contesto-post.txt');
-  if (!fs.existsSync(filePath)) return res.json({ text: '' });
-  res.json({ text: fs.readFileSync(filePath, 'utf8') });
-});
-
-// SAVE contesto-post.txt
-app.post('/api/admin/contesto', authAdmin, (req, res) => {
-  const filePath = path.join(PUBLIC_DIR, 'contesto-post.txt');
+// SAVE contesto-post.txt (via GitHub API)
+app.post('/api/admin/contesto', authAdmin, async (req, res) => {
   try {
-    fs.writeFileSync(filePath, req.body.text, 'utf8');
+    await githubSaveFile('contesto-post.txt', req.body.text, 'Admin: aggiornamento contesto chatbot');
     if (typeof loadSiteContext === 'function') loadSiteContext();
     res.json({ success: true });
   } catch (e) { res.status(500).json({ error: e.message }); }

@@ -289,7 +289,7 @@ function saveArticle(){
   if(url)obj.url=url;
   if(!obj.title){toast('Titolo obbligatorio','error');return}
   if(editIdx>=0){blogData[editIdx]=obj}else{blogData.unshift(obj)}
-  api('/api/admin/data/blog.json',{method:'POST',body:JSON.stringify(blogData)}).then(()=>{toast('Articolo salvato');renderArticles();hideArticleForm()});
+  api('/api/admin/data/blog.json',{method:'POST',body:JSON.stringify(blogData)}).then(()=>{toast('Articolo salvato! Il sito si aggiorna in ~30 secondi.');renderArticles();hideArticleForm()});
 }
 
 // ═══ TEAM ═══
