@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>POST — Uso dei dati e Intelligenza Artificiale</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Public+Sans:wght@400;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+:root{--ink:#006172;--ink-deep:#003d4a;--ink-light:#2b7a8c;--cream:#f7f5f0;--warm-white:#fefcf8;--stone:#e8e4dd;--slate:#6b7280;--charcoal:#1a1a1a;--charcoal-90:#273141;--teal-glow:#88d1e5;--teal-wash:rgba(0,97,114,.04)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Atkinson Hyperlegible',sans-serif;background:var(--cream);color:var(--charcoal);line-height:1.6}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+h1,h2,h3,h4{font-family:'Public Sans','Atkinson Hyperlegible',sans-serif}
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
+a{color:inherit;text-decoration:none}
+.r{opacity:0;transform:translateY(32px);transition:opacity .9s cubic-bezier(.19,1,.22,1),transform .9s cubic-bezier(.19,1,.22,1)}.r.v{opacity:1;transform:none}
+.rl{opacity:0;transform:translateX(-48px);transition:opacity .9s cubic-bezier(.19,1,.22,1),transform .9s cubic-bezier(.19,1,.22,1)}.rl.v{opacity:1;transform:none}
+.rr{opacity:0;transform:translateX(48px);transition:opacity .9s cubic-bezier(.19,1,.22,1),transform .9s cubic-bezier(.19,1,.22,1)}.rr.v{opacity:1;transform:none}
+@media(max-width:768px){.hide-sm{display:none!important}.col-sm{grid-template-columns:1fr!important}}
+</style>
+</head>
+<body>
+<header style="position:fixed;top:0;width:100%;z-index:100;background:rgba(247,245,240,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--stone)">
+  <nav style="max-width:1200px;margin:0 auto;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center">
+    <a href="./index.html"><img src="./logo-post.png" alt="POST" style="height:60px;width:auto" onerror="this.outerHTML='<span style=\'font-size:2rem;color:var(--ink);font-weight:800\'>POST</span>'"/></a>
+    <div class="hide-sm" style="display:flex;align-items:center;gap:2rem;font-size:.9rem;font-weight:500">
+      <a href="./index.html#pilastri" style="color:var(--slate)">Cosa facciamo</a>
+      <a href="./index.html#blog" style="color:var(--ink);font-weight:700;border-bottom:2px solid var(--ink);padding-bottom:2px">Dal campo</a>
+      <a href="./piani-di-zona.html" style="color:var(--ink);font-weight:700;border-bottom:2px solid var(--ink);padding-bottom:2px">Piani di Zona</a>
+      <a href="./dati-intelligenza-artificiale.html" style="color:var(--ink);font-weight:700;border-bottom:2px solid var(--ink);padding-bottom:2px;display:flex;align-items:center;gap:.3rem"><span class="material-symbols-outlined" style="font-size:18px">neurology</span>AI per il Bene Comune</a>
+      <a href="./index.html#chi-siamo" style="color:var(--ink);font-weight:700;border-bottom:2px solid var(--ink);padding-bottom:2px">Chi siamo</a>
+    </div>
+    <a href="./index.html#contatti" style="background:var(--ink);color:white;padding:.6rem 1.5rem;border-radius:8px;font-weight:700;font-size:.85rem">Contatti</a>
+  </nav>
+</header>
+
+<main style="padding:7rem 2rem 4rem;max-width:1000px;margin:0 auto">
+  <nav style="margin-bottom:2rem" class="r">
+    <a href="./index.html" style="font-size:.85rem;color:var(--slate)">Home</a><span style="font-size:.85rem;color:var(--stone);margin:0 .5rem">/</span>
+    <a href="./index.html#pilastri" style="font-size:.85rem;color:var(--slate)">Cosa facciamo</a><span style="font-size:.85rem;color:var(--stone);margin:0 .5rem">/</span>
+    <span style="font-size:.85rem;color:var(--ink);font-weight:700">Uso dei dati e Intelligenza Artificiale</span>
+  </nav>
+
+  <div class="rl" style="margin-bottom:4rem">
+    <span class="material-symbols-outlined" style="font-size:3rem;color:var(--ink);margin-bottom:1rem">neurology</span>
+    <h1 style="font-size:clamp(2.5rem,5vw,3.5rem);color:var(--ink);letter-spacing:-.03em;line-height:1.1;margin-bottom:1.5rem">Uso dei dati e<br/><a href="./wait.html" style="text-decoration:underline;text-decoration-color:var(--teal-glow);text-underline-offset:4px;transition:text-decoration-color .2s" onmouseover="this.style.textDecorationColor='var(--ink)'" onmouseout="this.style.textDecorationColor='var(--teal-glow)'">Intelligenza Artificiale</a></h1>
+    <p style="font-size:1.25rem;color:var(--charcoal);line-height:1.7;max-width:700px">La programmazione e la progettazione dei servizi sociali non possono più basarsi solo sull'intuizione e l'esperienza. I dati — raccolti, analizzati, restituiti — sono lo strumento che rende i processi trasparenti, verificabili e democratici. L'intelligenza artificiale potenzia questa capacità.</p>
+  </div>
+
+  <!-- Sezione 1: Progettazione Data Driven -->
+  <div class="r" style="margin-bottom:4rem">
+    <div style="border-left:4px solid var(--ink);padding-left:1.5rem;margin-bottom:2rem">
+      <h2 style="font-size:1.8rem;color:var(--ink);margin-bottom:.5rem">Progettazione e programmazione data driven</h2>
+      <p style="font-size:1.1rem;color:var(--slate)">Dai dati alle decisioni. Non il contrario.</p>
+    </div>
+    <p style="font-size:1.1rem;color:var(--charcoal);line-height:1.8;margin-bottom:1.5rem">Lavoriamo con enti pubblici e organizzazioni del Terzo Settore per costruire processi di programmazione fondati su evidenze. Questo significa partire dai dati di contesto — demografici, sociali, epidemiologici — per definire priorità, allocare risorse e misurare risultati.</p>
+    <p style="font-size:1.1rem;color:var(--charcoal);line-height:1.8;margin-bottom:2rem">Non si tratta di sostituire il giudizio professionale con un algoritmo. Si tratta di dare al giudizio professionale una base più solida: informazioni aggiornate, tendenze visibili, confronti tra territori, indicatori che permettono di dire "sta funzionando" oppure "dobbiamo cambiare".</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem" class="col-sm">
+      <div style="background:var(--warm-white);padding:1.75rem;border-radius:12px;border-left:4px solid var(--ink)">
+        <span class="material-symbols-outlined" style="color:var(--ink);margin-bottom:.5rem">analytics</span>
+        <h3 style="color:var(--ink);font-size:1.1rem;margin-bottom:.5rem">Profili di comunità</h3>
+        <p style="color:var(--charcoal);line-height:1.7;font-size:.95rem">Costruiamo profili di comunità data driven che integrano fonti diverse — ISTAT, ATS, servizi sociali, scuole — per restituire un quadro leggibile del territorio.</p>
+      </div>
+      <div style="background:var(--warm-white);padding:1.75rem;border-radius:12px;border-left:4px solid var(--ink)">
+        <span class="material-symbols-outlined" style="color:var(--ink);margin-bottom:.5rem">dashboard</span>
+        <h3 style="color:var(--ink);font-size:1.1rem;margin-bottom:.5rem">Cruscotti condivisi</h3>
+        <p style="color:var(--charcoal);line-height:1.7;font-size:.95rem">Strumenti di visualizzazione accessibili a tutti gli attori del processo — dall'Ufficio di Piano al Terzo Settore — per leggere insieme i dati e prendere decisioni informate.</p>
+      </div>
+      <div style="background:var(--warm-white);padding:1.75rem;border-radius:12px;border-left:4px solid var(--ink)">
+        <span class="material-symbols-outlined" style="color:var(--ink);margin-bottom:.5rem">query_stats</span>
+        <h3 style="color:var(--ink);font-size:1.1rem;margin-bottom:.5rem">Indicatori di programmazione</h3>
+        <p style="color:var(--charcoal);line-height:1.7;font-size:.95rem">Sistemi di indicatori che collegano i bisogni rilevati agli obiettivi del Piano, e gli obiettivi ai risultati misurabili. La programmazione diventa verificabile.</p>
+      </div>
+      <div style="background:var(--warm-white);padding:1.75rem;border-radius:12px;border-left:4px solid var(--ink)">
+        <span class="material-symbols-outlined" style="color:var(--ink);margin-bottom:.5rem">monitoring</span>
+        <h3 style="color:var(--ink);font-size:1.1rem;margin-bottom:.5rem">Monitoraggio continuo</h3>
+        <p style="color:var(--charcoal);line-height:1.7;font-size:.95rem">Non valutiamo solo alla fine: costruiamo sistemi di monitoraggio che permettono di correggere il percorso mentre è in corso, non quando è troppo tardi.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sezione 2: AI nei processi sociali -->
+  <div class="r" style="margin-bottom:4rem">
+    <div style="border-left:4px solid var(--teal-glow);padding-left:1.5rem;margin-bottom:2rem">
+      <h2 style="font-size:1.8rem;color:var(--ink);margin-bottom:.5rem"><a href="./wait.html" style="text-decoration:underline;text-decoration-color:var(--teal-glow);text-underline-offset:4px;transition:text-decoration-color .2s" onmouseover="this.style.textDecorationColor='var(--ink)'" onmouseout="this.style.textDecorationColor='var(--teal-glow)'">Intelligenza Artificiale</a> nei processi sociali</h2>
+      <p style="font-size:1.1rem;color:var(--slate)">Non per rincorrere la tecnologia. Per metterla al servizio delle comunità.</p>
+    </div>
+    <p style="font-size:1.1rem;color:var(--charcoal);line-height:1.8;margin-bottom:1.5rem">L'AI sta cambiando il modo in cui si analizzano i bisogni, si progettano i servizi, si valutano i risultati. Non vogliamo stare a guardare e non vogliamo nemmeno rincorrere le mode. Vogliamo portare l'AI dentro i processi che conosciamo — la coprogrammazione, la valutazione d'impatto, la gestione dei servizi — con lo stesso rigore artigianale che ci caratterizza.</p>
+    <p style="font-size:1.1rem;color:var(--charcoal);line-height:1.8;margin-bottom:2rem">Concretamente, questo significa usare strumenti di AI generativa per analizzare i contributi dei tavoli partecipativi e restituire sintesi utilizzabili. Significa applicare il pattern recognition ai dati di monitoraggio per identificare tendenze prima che diventino crisi. Significa formare gli operatori e i dirigenti perché capiscano gli strumenti che usano.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2rem" class="col-sm">
+      <div style="background:var(--charcoal-90);color:white;padding:1.75rem;border-radius:12px">
+        <span class="material-symbols-outlined" style="color:var(--teal-glow);margin-bottom:.5rem">summarize</span>
+        <h3 style="color:var(--teal-glow);font-size:1.1rem;margin-bottom:.5rem">Sintesi partecipativa</h3>
+        <p style="line-height:1.7;font-size:.95rem;opacity:.85">AI generativa per trasformare centinaia di contributi da tavoli e focus group in sintesi strutturate, temi ricorrenti, proposte azionabili. Più partecipazione, meno rumore.</p>
+      </div>
+      <div style="background:var(--charcoal-90);color:white;padding:1.75rem;border-radius:12px">
+        <span class="material-symbols-outlined" style="color:var(--teal-glow);margin-bottom:.5rem">pattern</span>
+        <h3 style="color:var(--teal-glow);font-size:1.1rem;margin-bottom:.5rem">Pattern recognition</h3>
+        <p style="line-height:1.7;font-size:.95rem;opacity:.85">Algoritmi di riconoscimento pattern sui dati di monitoraggio per individuare tendenze, criticità emergenti e opportunità prima che diventino evidenti con i metodi tradizionali.</p>
+      </div>
+      <div style="background:var(--charcoal-90);color:white;padding:1.75rem;border-radius:12px">
+        <span class="material-symbols-outlined" style="color:var(--teal-glow);margin-bottom:.5rem">school</span>
+        <h3 style="color:var(--teal-glow);font-size:1.1rem;margin-bottom:.5rem">Formazione operativa</h3>
+        <p style="line-height:1.7;font-size:.95rem;opacity:.85">Percorsi pratici per operatori sociali, dirigenti PA e professionisti del Terzo Settore. Non teoria: strumenti concreti da usare il giorno dopo.</p>
+      </div>
+      <div style="background:var(--charcoal-90);color:white;padding:1.75rem;border-radius:12px">
+        <span class="material-symbols-outlined" style="color:var(--teal-glow);margin-bottom:.5rem">science</span>
+        <h3 style="color:var(--teal-glow);font-size:1.1rem;margin-bottom:.5rem">Sperimentazioni pilota</h3>
+        <p style="line-height:1.7;font-size:.95rem;opacity:.85">Partiamo da un problema reale, testiamo uno strumento AI, misuriamo se funziona. Poi decidiamo insieme se scalare. Zero hype, solo risultati.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Principi -->
+  <div class="r" style="background:var(--teal-wash);padding:2.5rem;border-radius:12px;margin-bottom:4rem">
+    <h3 style="color:var(--ink);margin-bottom:1.5rem;font-size:1.3rem">I nostri principi</h3>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem" class="col-sm">
+      <div style="text-align:center">
+        <span class="material-symbols-outlined" style="color:var(--ink);font-size:2rem;margin-bottom:.5rem">balance</span>
+        <h4 style="color:var(--ink);margin-bottom:.25rem;font-size:1rem">Etica prima di tutto</h4>
+        <p style="font-size:.9rem;color:var(--slate)">Trasparente, equa, al servizio delle persone</p>
+      </div>
+      <div style="text-align:center">
+        <span class="material-symbols-outlined" style="color:var(--ink);font-size:2rem;margin-bottom:.5rem">precision_manufacturing</span>
+        <h4 style="color:var(--ink);margin-bottom:.25rem;font-size:1rem">Artigianale, non industriale</h4>
+        <p style="font-size:.9rem;color:var(--slate)">Ogni organizzazione ha i suoi processi</p>
+      </div>
+      <div style="text-align:center">
+        <span class="material-symbols-outlined" style="color:var(--ink);font-size:2rem;margin-bottom:.5rem">diversity_3</span>
+        <h4 style="color:var(--ink);margin-bottom:.25rem;font-size:1rem">Competenze diffuse</h4>
+        <p style="font-size:.9rem;color:var(--slate)">Costruire autonomia, non dipendenza</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- WAIT CTA grande -->
+  <div class="r" style="background:var(--charcoal-90);color:white;padding:3.5rem;border-radius:16px;margin-bottom:4rem;position:relative;overflow:hidden">
+    <div style="position:absolute;top:-30px;right:-30px;opacity:.06"><span class="material-symbols-outlined" style="font-size:200px">neurology</span></div>
+    <div style="position:relative;z-index:1">
+      <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem">
+        <span class="material-symbols-outlined" style="font-size:2.5rem;color:var(--teal-glow)">neurology</span>
+        <div>
+          <h2 style="font-size:2rem;line-height:1.1">w<span style="color:var(--teal-glow)">AI</span>t</h2>
+          <p style="font-size:.85rem;opacity:.6;margin-top:.2rem">Welfare & Artificial Intelligence Toolkit</p>
+        </div>
+      </div>
+      <p style="font-size:1.15rem;line-height:1.7;opacity:.9;max-width:600px;margin-bottom:1rem">Il nostro modello strutturato per portare l'<a href="./wait.html" style="color:var(--teal-glow);text-decoration:underline;text-underline-offset:3px">Intelligenza Artificiale</a> dentro il welfare e la pubblica amministrazione. Formazione, sperimentazione e consulenza — con lo stesso approccio artigianale che ci caratterizza.</p>
+      <p style="font-size:1rem;line-height:1.7;opacity:.7;max-width:600px;margin-bottom:2rem">wAIt non è un prodotto: è un percorso. Partiamo da dove siete, capiamo insieme dove l'AI può fare la differenza, e costruiamo le competenze interne perché il cambiamento resti.</p>
+      <a href="./wait.html" style="display:inline-flex;align-items:center;gap:.5rem;padding:1rem 2.5rem;background:var(--teal-glow);color:var(--charcoal-90);border-radius:8px;font-weight:800;font-size:1.1rem;transition:all .2s" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(136,209,229,.3)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+        Scopri wAIt <span class="material-symbols-outlined" style="font-size:20px">arrow_forward</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- CTA contatti -->
+  <div class="r" style="text-align:center;padding:3rem 0">
+    <h3 style="color:var(--ink);font-size:1.5rem;margin-bottom:1rem">Volete capire come i dati e l'AI possono aiutare il vostro lavoro?</h3>
+    <p style="color:var(--slate);margin-bottom:2rem;max-width:500px;margin-left:auto;margin-right:auto">Non serve un progetto già definito. Partiamo da una conversazione.</p>
+    <a href="./index.html#contatti" style="display:inline-flex;align-items:center;gap:.4rem;background:var(--ink);color:white;padding:.9rem 2rem;border-radius:8px;font-weight:700;transition:background .2s" onmouseover="this.style.background='var(--ink-deep)'" onmouseout="this.style.background='var(--ink)'">Parliamone <span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span></a>
+  </div>
+</main>
+
+<footer style="background:var(--charcoal);padding:2.5rem 2rem"><div style="max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem"><span style="font-size:.8rem;color:rgba(255,255,255,.4)">&copy; 2025 POST Società Benefit S.r.l. — Milano</span><div style="display:flex;gap:1.5rem;font-size:.8rem"><a href="./index.html" style="color:rgba(255,255,255,.4)">Home</a><a href="https://www.linkedin.com/company/105770276" target="_blank" style="color:rgba(255,255,255,.4)">LinkedIn</a></div></div></footer>
+<script>const o=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');o.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.r,.rl,.rr').forEach(el=>o.observe(el));</script>
+</body>
+</html>

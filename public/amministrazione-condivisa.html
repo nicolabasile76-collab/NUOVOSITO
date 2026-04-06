@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>POST — Amministrazione Condivisa</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Public+Sans:wght@400;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+:root{--ink:#006172;--ink-deep:#003d4a;--ink-light:#2b7a8c;--cream:#f7f5f0;--warm-white:#fefcf8;--stone:#e8e4dd;--slate:#6b7280;--charcoal:#1a1a1a;--charcoal-90:#273141;--teal-glow:#88d1e5;--teal-wash:rgba(0,97,114,.04)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Atkinson Hyperlegible',sans-serif;background:var(--cream);color:var(--charcoal);line-height:1.6}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+h1,h2,h3,h4{font-family:'Public Sans','Atkinson Hyperlegible',sans-serif}
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
+a{color:inherit;text-decoration:none}
+.marker{display:inline-flex;align-items:center;gap:.5rem;font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);padding:.35rem .75rem;border:1.5px solid var(--ink);border-radius:100px}
+.r{opacity:0;transform:translateY(32px);transition:opacity .9s cubic-bezier(.19,1,.22,1),transform .9s cubic-bezier(.19,1,.22,1)}.r.v{opacity:1;transform:none}
+.rl{opacity:0;transform:translateX(-48px);transition:opacity .9s cubic-bezier(.19,1,.22,1),transform .9s cubic-bezier(.19,1,.22,1)}.rl.v{opacity:1;transform:none}
+.rr{opacity:0;transform:translateX(48px);transition:opacity .9s cubic-bezier(.19,1,.22,1),transform .9s cubic-bezier(.19,1,.22,1)}.rr.v{opacity:1;transform:none}
+@media(max-width:768px){.hide-sm{display:none!important}.col-sm{grid-template-columns:1fr!important}}
+</style>
+</head>
+<body>
+<header style="position:fixed;top:0;width:100%;z-index:100;background:rgba(247,245,240,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--stone)">
+  <nav style="max-width:1200px;margin:0 auto;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center">
+    <a href="./index.html"><img src="./logo-post.png" alt="POST" style="height:60px;width:auto" onerror="this.outerHTML='<span style=\'font-size:2rem;color:var(--ink);font-weight:800\'>POST</span>'"/></a>
+    <div class="hide-sm" style="display:flex;align-items:center;gap:2rem;font-size:.9rem;font-weight:500">
+      <a href="./index.html#pilastri" style="color:var(--ink);font-weight:700;border-bottom:2px solid var(--ink);padding-bottom:2px">Cosa facciamo</a>
+      <a href="./piani-di-zona.html" style="color:var(--slate)">Piani di Zona</a>
+      <a href="./index.html#blog" style="color:var(--slate)">Dal campo</a>
+      <a href="./wait.html" style="color:var(--slate)"><span class="material-symbols-outlined" style="font-size:18px;vertical-align:middle;margin-right:2px">neurology</span>AI per il Bene Comune</a>
+      <a href="./index.html#chi-siamo" style="color:var(--slate)">Chi siamo</a>
+    </div>
+    <a href="./index.html#contatti" style="background:var(--ink);color:white;padding:.6rem 1.5rem;border-radius:8px;font-weight:700;font-size:.85rem">Contatti</a>
+  </nav>
+</header>
+
+<main style="padding:7rem 2rem 4rem;max-width:1000px;margin:0 auto">
+  <nav style="margin-bottom:2rem" class="r">
+    <a href="./index.html" style="font-size:.85rem;color:var(--slate)">Home</a><span style="font-size:.85rem;color:var(--stone);margin:0 .5rem">/</span>
+    <a href="./index.html#pilastri" style="font-size:.85rem;color:var(--slate)">Cosa facciamo</a><span style="font-size:.85rem;color:var(--stone);margin:0 .5rem">/</span>
+    <span style="font-size:.85rem;color:var(--ink);font-weight:700">Amministrazione Condivisa</span>
+  </nav>
+
+  <div class="rl" style="margin-bottom:4rem">
+    <span class="material-symbols-outlined" style="font-size:3rem;color:var(--ink);margin-bottom:1rem">handshake</span>
+    <h1 style="font-size:clamp(2.5rem,5vw,4rem);color:var(--ink);letter-spacing:-.03em;line-height:1.1;margin-bottom:1.5rem">Amministrazione Condivisa</h1>
+    <p style="font-size:1.25rem;color:var(--charcoal);line-height:1.7;max-width:700px">Coprogrammazione e coprogettazione tra PA e Terzo Settore. Non è burocrazia: è costruire insieme le risposte ai bisogni, con metodo e trasparenza.</p>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:4rem" class="col-sm">
+    <div class="r" style="background:var(--warm-white);padding:2rem;border-radius:12px;border-left:4px solid var(--ink)">
+      <h3 style="color:var(--ink);margin-bottom:.75rem;font-size:1.2rem">Facilitazione tavoli tematici</h3>
+      <p style="color:var(--charcoal);line-height:1.7">Gestiamo tavoli di coprogrammazione con metodi strutturati: world café, focus group, raccolta contributi. L'obiettivo è alta partecipazione e contributi utilizzabili, non assemblee rituali.</p>
+    </div>
+    <div class="r" style="background:var(--warm-white);padding:2rem;border-radius:12px;border-left:4px solid var(--ink)">
+      <h3 style="color:var(--ink);margin-bottom:.75rem;font-size:1.2rem">Innovazione istituzionale</h3>
+      <p style="color:var(--charcoal);line-height:1.7">Lavoriamo sulla frontiera dell'amministrazione condivisa: regolamenti, patti di collaborazione, strumenti che traducono i principi del Codice del Terzo Settore in pratiche quotidiane.</p>
+    </div>
+    <div class="r" style="background:var(--warm-white);padding:2rem;border-radius:12px;border-left:4px solid var(--ink)">
+      <h3 style="color:var(--ink);margin-bottom:.75rem;font-size:1.2rem">Governance partecipata</h3>
+      <p style="color:var(--charcoal);line-height:1.7">Accompagniamo gli enti nella costruzione di modelli di governance che includano davvero il Terzo Settore. Non come ospite, ma come co-protagonista delle politiche.</p>
+    </div>
+    <div class="r" style="background:var(--warm-white);padding:2rem;border-radius:12px;border-left:4px solid var(--ink)">
+      <h3 style="color:var(--ink);margin-bottom:.75rem;font-size:1.2rem">Progettazione partecipata</h3>
+      <p style="color:var(--charcoal);line-height:1.7">Dalla coprogrammazione alla coprogettazione: costruiamo insieme i servizi, con processi che valorizzano le competenze di tutti gli attori coinvolti.</p>
+    </div>
+  </div>
+
+  <!-- Normativa -->
+  <div class="r" style="background:var(--teal-wash);padding:2.5rem;border-radius:12px;border-left:4px solid var(--ink);margin-bottom:4rem">
+    <h3 style="color:var(--ink);margin-bottom:1rem;font-size:1.3rem">Il quadro normativo</h3>
+    <p style="color:var(--charcoal);line-height:1.8;margin-bottom:1rem">Lavoriamo nel quadro del Codice del Terzo Settore (D.Lgs. 117/2017, artt. 55-57) e della sentenza della Corte Costituzionale n. 131/2020, che ha sancito la coprogrammazione e coprogettazione come modalità ordinaria di rapporto tra PA e Terzo Settore.</p>
+    <p style="color:var(--slate);line-height:1.8">Per la Lombardia: L.R. 3/2008, DGR e circolari ATS. Siamo costantemente aggiornati sul quadro in evoluzione e traduciamo le indicazioni regionali in azioni concrete per il vostro territorio.</p>
+  </div>
+
+  <!-- Link PdZ -->
+  <div class="r" style="background:var(--ink);color:white;padding:3rem;border-radius:16px;margin-bottom:4rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center" class="col-sm">
+    <div>
+      <h3 style="font-size:1.5rem;margin-bottom:.75rem">Piani di Zona</h3>
+      <p style="opacity:.85;line-height:1.7">L'amministrazione condivisa trova la sua applicazione più completa nei Piani di Zona. Abbiamo un servizio dedicato di assistenza tecnica per gli ambiti territoriali.</p>
+    </div>
+    <a href="./piani-di-zona.html" style="display:inline-flex;align-items:center;gap:.4rem;padding:.9rem 2rem;background:rgba(255,255,255,.15);border-radius:8px;font-weight:700;white-space:nowrap;transition:background .2s" onmouseover="this.style.background='rgba(255,255,255,.25)'" onmouseout="this.style.background='rgba(255,255,255,.15)'">Scopri di più <span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span></a>
+  </div>
+
+  <div class="r" style="text-align:center;padding:3rem 0">
+    <h3 style="color:var(--ink);font-size:1.5rem;margin-bottom:1rem">State avviando un percorso di coprogrammazione?</h3>
+    <a href="./index.html#contatti" style="display:inline-flex;align-items:center;gap:.4rem;background:var(--ink);color:white;padding:.9rem 2rem;border-radius:8px;font-weight:700;transition:background .2s" onmouseover="this.style.background='var(--ink-deep)'" onmouseout="this.style.background='var(--ink)'">Parliamone <span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span></a>
+  </div>
+</main>
+
+<footer style="background:var(--charcoal);padding:2.5rem 2rem"><div style="max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem"><span style="font-size:.8rem;color:rgba(255,255,255,.4)">&copy; 2025 POST Società Benefit S.r.l. — Milano</span><div style="display:flex;gap:1.5rem;font-size:.8rem"><a href="./index.html" style="color:rgba(255,255,255,.4)">Home</a><a href="https://www.linkedin.com/company/105770276" target="_blank" style="color:rgba(255,255,255,.4)">LinkedIn</a></div></div></footer>
+<script>const o=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');o.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.r,.rl,.rr').forEach(el=>o.observe(el));</script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>POST — Valutapp | Piattaforma per la Valutazione</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Public+Sans:wght@400;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+:root{--ink:#006172;--ink-deep:#003d4a;--ink-light:#2b7a8c;--cream:#f7f5f0;--warm-white:#fefcf8;--stone:#e8e4dd;--slate:#6b7280;--charcoal:#1a1a1a;--charcoal-90:#273141;--teal-glow:#88d1e5;--teal-wash:rgba(0,97,114,.04)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Atkinson Hyperlegible',sans-serif;background:var(--cream);color:var(--charcoal);line-height:1.6}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+h1,h2,h3,h4{font-family:'Public Sans','Atkinson Hyperlegible',sans-serif}
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
+a{color:inherit;text-decoration:none}
+.r{opacity:0;transform:translateY(32px);transition:opacity .9s cubic-bezier(.19,1,.22,1),transform .9s cubic-bezier(.19,1,.22,1)}.r.v{opacity:1;transform:none}
+.rl{opacity:0;transform:translateX(-48px);transition:opacity .9s cubic-bezier(.19,1,.22,1),transform .9s cubic-bezier(.19,1,.22,1)}.rl.v{opacity:1;transform:none}
+.rr{opacity:0;transform:translateX(48px);transition:opacity .9s cubic-bezier(.19,1,.22,1),transform .9s cubic-bezier(.19,1,.22,1)}.rr.v{opacity:1;transform:none}
+@media(max-width:768px){.hide-sm{display:none!important}.col-sm{grid-template-columns:1fr!important}}
+</style>
+</head>
+<body>
+<header style="position:fixed;top:0;width:100%;z-index:100;background:rgba(247,245,240,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--stone)">
+  <nav style="max-width:1200px;margin:0 auto;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center">
+    <a href="./index.html"><img src="./logo-post.png" alt="POST" style="height:60px;width:auto" onerror="this.outerHTML='<span style=\'font-size:2rem;color:var(--ink);font-weight:800\'>POST</span>'"/></a>
+    <div class="hide-sm" style="display:flex;align-items:center;gap:2rem;font-size:.9rem;font-weight:500">
+      <a href="./index.html#pilastri" style="color:var(--slate)">Cosa facciamo</a>
+      <a href="./index.html#blog" style="color:var(--slate)">Dal campo</a>
+      <a href="./piani-di-zona.html" style="color:var(--slate)">Piani di Zona</a>
+      <a href="./dati-intelligenza-artificiale.html" style="color:var(--slate);display:flex;align-items:center;gap:.3rem"><span class="material-symbols-outlined" style="font-size:18px">neurology</span>AI per il Bene Comune</a>
+      <a href="./index.html#chi-siamo" style="color:var(--slate)">Chi siamo</a>
+    </div>
+    <a href="./index.html#contatti" style="background:var(--ink);color:white;padding:.6rem 1.5rem;border-radius:8px;font-weight:700;font-size:.85rem">Contatti</a>
+  </nav>
+</header>
+
+<main style="padding:7rem 2rem 4rem;max-width:1000px;margin:0 auto">
+  <nav style="margin-bottom:2rem" class="r">
+    <a href="./index.html" style="font-size:.85rem;color:var(--slate)">Home</a><span style="font-size:.85rem;color:var(--stone);margin:0 .5rem">/</span>
+    <a href="./valutazione-impatto.html" style="font-size:.85rem;color:var(--slate)">Valutazione d'Impatto</a><span style="font-size:.85rem;color:var(--stone);margin:0 .5rem">/</span>
+    <span style="font-size:.85rem;color:var(--ink);font-weight:700">Valutapp</span>
+  </nav>
+
+  <!-- Hero -->
+  <div class="rl" style="margin-bottom:4rem">
+    <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem">
+      <span class="material-symbols-outlined" style="font-size:3rem;color:var(--ink);font-variation-settings:'FILL' 1">assessment</span>
+      <div>
+        <h1 style="font-size:clamp(2.5rem,5vw,3.5rem);color:var(--ink);letter-spacing:-.03em;line-height:1.1">Valutapp</h1>
+        <p style="font-size:.9rem;color:var(--slate);margin-top:.2rem">La piattaforma POST per la valutazione d'impatto</p>
+      </div>
+    </div>
+    <p style="font-size:1.25rem;color:var(--charcoal);line-height:1.7;max-width:700px">Una piattaforma progettata per gestire l'intero processo di valutazione d'impatto: dal disegno della ricerca alla raccolta dei dati, dall'analisi alla restituzione dei risultati. Uno strumento che nasce dalla pratica, non da un laboratorio software.</p>
+  </div>
+
+  <!-- Il processo -->
+  <div class="r" style="margin-bottom:4rem">
+    <h2 style="font-size:1.8rem;color:var(--ink);margin-bottom:2rem;border-left:4px solid var(--ink);padding-left:1.5rem">Un processo completo, in un unico strumento</h2>
+
+    <div style="display:grid;grid-template-columns:1fr;gap:0">
+      <!-- Step 1 -->
+      <div style="display:grid;grid-template-columns:60px 1fr;gap:1.5rem;padding:2rem 0;border-bottom:1px solid var(--stone)">
+        <div style="display:flex;flex-direction:column;align-items:center">
+          <div style="width:48px;height:48px;border-radius:50%;background:var(--ink);color:white;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.2rem">1</div>
+          <div style="width:2px;flex:1;background:var(--stone);margin-top:.5rem"></div>
+        </div>
+        <div>
+          <h3 style="color:var(--ink);font-size:1.3rem;margin-bottom:.5rem">Disegno della valutazione</h3>
+          <p style="color:var(--charcoal);line-height:1.7">Definizione degli obiettivi, costruzione del framework valutativo, scelta degli indicatori. La piattaforma guida il processo con template strutturati che si adattano al tipo di intervento: servizi alla persona, progetti comunitari, politiche pubbliche.</p>
+        </div>
+      </div>
+      <!-- Step 2 -->
+      <div style="display:grid;grid-template-columns:60px 1fr;gap:1.5rem;padding:2rem 0;border-bottom:1px solid var(--stone)">
+        <div style="display:flex;flex-direction:column;align-items:center">
+          <div style="width:48px;height:48px;border-radius:50%;background:var(--ink);color:white;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.2rem">2</div>
+          <div style="width:2px;flex:1;background:var(--stone);margin-top:.5rem"></div>
+        </div>
+        <div>
+          <h3 style="color:var(--ink);font-size:1.3rem;margin-bottom:.5rem">Raccolta dei dati</h3>
+          <p style="color:var(--charcoal);line-height:1.7">Questionari, interviste strutturate, griglie di osservazione — tutti configurabili e somministrabili direttamente dalla piattaforma. Raccolta multicanale: online, in presenza con tablet, cartacea con digitalizzazione. I dati confluiscono in un unico repository organizzato.</p>
+        </div>
+      </div>
+      <!-- Step 3 -->
+      <div style="display:grid;grid-template-columns:60px 1fr;gap:1.5rem;padding:2rem 0;border-bottom:1px solid var(--stone)">
+        <div style="display:flex;flex-direction:column;align-items:center">
+          <div style="width:48px;height:48px;border-radius:50%;background:var(--ink);color:white;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.2rem">3</div>
+          <div style="width:2px;flex:1;background:var(--stone);margin-top:.5rem"></div>
+        </div>
+        <div>
+          <h3 style="color:var(--ink);font-size:1.3rem;margin-bottom:.5rem">Analisi e monitoraggio</h3>
+          <p style="color:var(--charcoal);line-height:1.7">Dashboard in tempo reale con indicatori di esito e di processo. Analisi comparative tra periodi, tra servizi, tra territori. Visualizzazioni chiare pensate per chi deve prendere decisioni, non per chi sa leggere i grafici.</p>
+        </div>
+      </div>
+      <!-- Step 4 -->
+      <div style="display:grid;grid-template-columns:60px 1fr;gap:1.5rem;padding:2rem 0">
+        <div style="display:flex;flex-direction:column;align-items:center">
+          <div style="width:48px;height:48px;border-radius:50%;background:var(--ink);color:white;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.2rem">4</div>
+        </div>
+        <div>
+          <h3 style="color:var(--ink);font-size:1.3rem;margin-bottom:.5rem">Restituzione e report</h3>
+          <p style="color:var(--charcoal);line-height:1.7">Generazione automatica di report per Regione, Assemblea dei Sindaci, Comitati di Distretto, stakeholder. Formati personalizzabili, dati sempre aggiornati, pronti per la rendicontazione.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Privacy e GDPR -->
+  <div class="r" style="background:var(--ink);color:white;padding:3rem;border-radius:16px;margin-bottom:4rem">
+    <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem">
+      <span class="material-symbols-outlined" style="font-size:2.5rem;color:var(--teal-glow)">shield</span>
+      <h2 style="font-size:1.8rem">Privacy e GDPR by design</h2>
+    </div>
+    <p style="font-size:1.1rem;line-height:1.7;opacity:.9;max-width:700px;margin-bottom:2rem">Valutapp è progettata nel rispetto della privacy e del GDPR fin dalla sua architettura. Non è un adeguamento a posteriori: la protezione dei dati è parte del disegno stesso della piattaforma.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem" class="col-sm">
+      <div style="background:rgba(255,255,255,.1);padding:1.5rem;border-radius:12px">
+        <span class="material-symbols-outlined" style="color:var(--teal-glow);margin-bottom:.5rem">encrypted</span>
+        <h4 style="color:var(--teal-glow);margin-bottom:.5rem;font-size:1rem">Dati crittografati</h4>
+        <p style="font-size:.9rem;opacity:.8;line-height:1.6">Crittografia end-to-end per tutti i dati personali. I dati sensibili non transitano mai in chiaro.</p>
+      </div>
+      <div style="background:rgba(255,255,255,.1);padding:1.5rem;border-radius:12px">
+        <span class="material-symbols-outlined" style="color:var(--teal-glow);margin-bottom:.5rem">visibility_off</span>
+        <h4 style="color:var(--teal-glow);margin-bottom:.5rem;font-size:1rem">Anonimizzazione</h4>
+        <p style="font-size:.9rem;opacity:.8;line-height:1.6">Separazione tra dati identificativi e dati di ricerca. Analisi aggregate che non permettono la re-identificazione.</p>
+      </div>
+      <div style="background:rgba(255,255,255,.1);padding:1.5rem;border-radius:12px">
+        <span class="material-symbols-outlined" style="color:var(--teal-glow);margin-bottom:.5rem">admin_panel_settings</span>
+        <h4 style="color:var(--teal-glow);margin-bottom:.5rem;font-size:1rem">Accessi controllati</h4>
+        <p style="font-size:.9rem;opacity:.8;line-height:1.6">Gestione granulare dei permessi. Ogni utente vede solo i dati che gli competono. Log completo degli accessi.</p>
+      </div>
+    </div>
+    <div style="margin-top:2rem;padding:1.25rem;background:rgba(255,255,255,.05);border-radius:8px;border-left:3px solid var(--teal-glow)">
+      <p style="font-size:.95rem;opacity:.85;line-height:1.6"><strong style="color:var(--teal-glow)">Conformità documentata</strong> — DPIA (Data Protection Impact Assessment) disponibile, registro dei trattamenti, informative personalizzabili per ogni progetto di ricerca, gestione del consenso integrata nel flusso di raccolta dati.</p>
+    </div>
+  </div>
+
+  <!-- Per chi -->
+  <div class="r" style="margin-bottom:4rem">
+    <h2 style="font-size:1.5rem;color:var(--ink);margin-bottom:1.5rem">Per chi è pensata</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem" class="col-sm">
+      <div style="background:linear-gradient(135deg,var(--warm-white),#eef6f8);padding:1.75rem;border-radius:12px;border-left:4px solid var(--ink)">
+        <h3 style="color:var(--ink);font-size:1.1rem;margin-bottom:.5rem">Ambiti territoriali</h3>
+        <p style="color:var(--charcoal);line-height:1.7;font-size:.95rem">Valutazione dei Piani di Zona, monitoraggio dei servizi, report per la Regione. Valutapp si integra con il processo di programmazione sociale.</p>
+      </div>
+      <div style="background:linear-gradient(135deg,var(--warm-white),#eef6f8);padding:1.75rem;border-radius:12px;border-left:4px solid var(--ink)">
+        <h3 style="color:var(--ink);font-size:1.1rem;margin-bottom:.5rem">Cooperative e Terzo Settore</h3>
+        <p style="color:var(--charcoal);line-height:1.7;font-size:.95rem">Valutazione d'impatto sociale per bilanci sociali, rendicontazione ai finanziatori, miglioramento continuo dei servizi.</p>
+      </div>
+      <div style="background:linear-gradient(135deg,var(--warm-white),#eef6f8);padding:1.75rem;border-radius:12px;border-left:4px solid var(--ink)">
+        <h3 style="color:var(--ink);font-size:1.1rem;margin-bottom:.5rem">Fondazioni</h3>
+        <p style="color:var(--charcoal);line-height:1.7;font-size:.95rem">Monitoraggio dei progetti finanziati, valutazione dei risultati, dashboard per il CdA e i comitati di indirizzo.</p>
+      </div>
+      <div style="background:linear-gradient(135deg,var(--warm-white),#eef6f8);padding:1.75rem;border-radius:12px;border-left:4px solid var(--ink)">
+        <h3 style="color:var(--ink);font-size:1.1rem;margin-bottom:.5rem">Enti pubblici</h3>
+        <p style="color:var(--charcoal);line-height:1.7;font-size:.95rem">Valutazione delle politiche, VIG (Legge 167/2025), accountability verso i cittadini. Dati strutturati per decisioni informate.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Differenza -->
+  <div class="r" style="background:var(--teal-wash);padding:2.5rem;border-radius:12px;margin-bottom:4rem;border-left:4px solid var(--ink)">
+    <h3 style="color:var(--ink);margin-bottom:1rem;font-size:1.3rem">Non è solo un software</h3>
+    <p style="color:var(--charcoal);line-height:1.8;margin-bottom:1rem">Valutapp non è una piattaforma che vi lasciamo in mano e poi sparire. Ogni implementazione è accompagnata dalla consulenza di POST: vi aiutiamo a costruire il disegno valutativo, a scegliere gli indicatori giusti, a leggere i risultati.</p>
+    <p style="color:var(--slate);line-height:1.8">Lo strumento è al servizio del metodo, non il contrario. Se domani decideste di non usare più la piattaforma, le competenze valutative restano dentro la vostra organizzazione.</p>
+  </div>
+
+  <!-- CTA -->
+  <div class="r" style="text-align:center;padding:3rem 0">
+    <h3 style="color:var(--ink);font-size:1.5rem;margin-bottom:1rem">Volete vedere Valutapp in azione?</h3>
+    <p style="color:var(--slate);margin-bottom:2rem;max-width:500px;margin-left:auto;margin-right:auto">Vi mostriamo come funziona con i dati del vostro territorio. Nessun impegno.</p>
+    <a href="./index.html#contatti" style="display:inline-flex;align-items:center;gap:.4rem;background:var(--ink);color:white;padding:.9rem 2rem;border-radius:8px;font-weight:700;font-size:1rem;transition:background .2s" onmouseover="this.style.background='var(--ink-deep)'" onmouseout="this.style.background='var(--ink)'">Richiedi una demo <span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span></a>
+  </div>
+</main>
+
+<footer style="background:var(--charcoal);padding:2.5rem 2rem"><div style="max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem"><span style="font-size:.8rem;color:rgba(255,255,255,.4)">&copy; 2025 POST Società Benefit S.r.l. — Milano</span><div style="display:flex;gap:1.5rem;font-size:.8rem"><a href="./index.html" style="color:rgba(255,255,255,.4)">Home</a><a href="https://www.linkedin.com/company/105770276" target="_blank" style="color:rgba(255,255,255,.4)">LinkedIn</a></div></div></footer>
+<script>const o=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');o.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.r,.rl,.rr').forEach(el=>o.observe(el));</script>
+</body>
+</html>
