@@ -1,5 +1,20 @@
 [
   {
+    "title": "L'AI entra nel welfare italiano. E risparmia 12 ore a settimana.",
+    "excerpt": "Prova",
+    "body": "Ottobre 2025. Un consorzio di servizi sociali in provincia di Avellino firma il primo accordo italiano tra un ambito territoriale e una piattaforma AI dedicata agli assistenti sociali. Cinque settimane dopo: 50 operatori, oltre 600 registrazioni completate, soddisfazione media 4,3 su 5. Risparmio stimato: più di 12 ore a settimana per operatore.\nNon è un caso della Silicon Valley. È l'Irpinia.\n\nChi ha fatto cosa\nBeam è un'impresa sociale britannica attiva nel 65% dei servizi sociali del Regno Unito. Non è un vendor generalista: nasce nel welfare e progetta strumenti pensati specificamente per gli operatori sociali. Ha portato in Italia due funzioni:\n\nMagic Notes — trascrizione automatica dei colloqui, con output già strutturato secondo i campi della documentazione professionale\nMagic Reports — generazione delle relazioni complesse: quelle per il tribunale, per l'Ufficio di Piano, per la direzione\n\nIl Consorzio A/5 di Atripalda coordina i servizi sociali di oltre 100.000 cittadini nella Valle del Sabato. Un ambito di medie dimensioni, risorse limitate, carico crescente. La condizione normale del welfare pubblico italiano.\n\nIl dato. E la domanda che non si fa abbastanza.\n12 ore a settimana per operatore non è un risparmio astratto. In molti contesti, la documentazione assorbe il 30-40% del tempo lavorativo degli assistenti sociali: note di colloquio, relazioni, aggiornamenti di cartella, verbali d'équipe.\nLiberare quel tempo è reale. Ma la domanda che conta — e che raramente si pone — è: a cosa viene destinato?\nSe a più colloqui, la presa in carico migliora. Se a lavoro relazionale con le famiglie, cambia la qualità dell'intervento. Se rimane nel vuoto organizzativo, il beneficio si disperde.\nUno strumento non produce valore da solo. Lo produce se l'organizzazione ha già pensato a cosa farne.\n\nPerché il dato di soddisfazione è quello più interessante\n4,3 su 5 viene dagli operatori, non dall'organizzazione che ha deciso l'adozione. In un settore storicamente diffidente verso tecnologie che rischiano di burocratizzare ulteriormente il lavoro, un punteggio del genere è significativo.\nSignifica che lo strumento è percepito come un aiuto, non come un controllo. Non come qualcosa che sostituisce il giudizio professionale — ma come qualcosa che sottrae il lavoro meccanico per lasciare spazio a quello relazionale.\nQuesta distinzione è cruciale. Ed è esattamente la distinzione che separa un'adozione responsabile da un'adozione frettolosa.\n\nLe domande aperte (quelle che bisogna farsi prima)\nUn pilota è un punto di partenza. Le questioni irrisolte sono le stesse che qualsiasi organizzazione dovrebbe porre a se stessa prima di adottare strumenti simili:\n\nCome viene gestita la riservatezza delle registrazioni audio in colloqui ad alta delicatezza?\nLo strumento è calibrato sulle specificità normative italiane, o adattato dal modello britannico?\nCosa succede con gli utenti che non danno il consenso?\nCome si gestisce l'errore di trascrizione in un documento destinato al tribunale?\n\nNon sono obiezioni pregiudiziali. Sono le domande di chi introduce tecnologia con metodo.\n\nCosa significa per il welfare italiano\nLa vera questione non è se l'AI entrerà nei servizi sociali italiani. Ci sta già entrando.\nLa questione è come: con valutazioni d'impatto, con coinvolgimento degli operatori, con attenzione alle implicazioni etiche — oppure per imitazione e urgenza.\nIl fatto che il primo pilota sia avvenuto in un ambito del Sud Italia, non in una grande città metropolitana, dice qualcosa di preciso: la pressione sul lavoro degli assistenti sociali è ovunque. E ovunque si cercano risposte.\nLa differenza non la fa la tecnologia. La fa chi la introduce, e con quale consapevolezza.\n\nFonti: Corriere dell'Irpinia (ottobre 2025); Il Sole 24 Ore, \"Welfare: artificial intelligence allied with social workers\"\nPOST si occupa di valutazione d'impatto, governance collaborativa e formazione sull'AI per organizzazioni del Terzo Settore e pubblica amministrazione.",
+    "cat": "case-study",
+    "catLabel": "Case study",
+    "date": "2026-04-06",
+    "author": "Nicola Basile",
+    "img": "https://unsplash.com/it/foto/priorita-bassa-astratta-di-tecnologia-di-codice-di-programmazione-dello-sviluppatore-di-software-e-script-del-calcolatore-ltpb_WinC3Y",
+    "tags": [
+      "Welfare",
+      "AI"
+    ],
+    "highlight": false
+  },
+  {
     "title": "Dati e progettazione: da intuizione a metodo",
     "excerpt": "Come i dati trasformano la coprogettazione sociale. Dai profili di comunità ai cruscotti condivisi, dall'analisi AI dei contributi partecipativi alla valutazione d'impatto: un approccio che rende i processi più trasparenti, verificabili e democratici.",
     "cat": "metodo",
@@ -7,7 +22,10 @@
     "date": "2026-04-05",
     "author": "Nicola Basile",
     "img": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80",
-    "tags": ["Data-driven", "Progettazione sociale"],
+    "tags": [
+      "Data-driven",
+      "Progettazione sociale"
+    ],
     "highlight": true,
     "url": "./articolo-dati-progettazione.html"
   },
@@ -19,7 +37,10 @@
     "date": "2024-11-15",
     "author": "Nicola Basile",
     "img": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80",
-    "tags": ["Amministrazione condivisa", "Terzo Settore"]
+    "tags": [
+      "Amministrazione condivisa",
+      "Terzo Settore"
+    ]
   },
   {
     "title": "Piano di Zona — Ambito di Crema",
@@ -29,7 +50,10 @@
     "date": "2024-09-20",
     "author": "Nicola Basile",
     "img": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80",
-    "tags": ["Politiche pubbliche", "Welfare territoriale"]
+    "tags": [
+      "Politiche pubbliche",
+      "Welfare territoriale"
+    ]
   },
   {
     "title": "Cooperativa Il Torpedone",
@@ -39,7 +63,10 @@
     "date": "2024-06-10",
     "author": "Pierluca Borali",
     "img": "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=600&q=80",
-    "tags": ["Organizzazione", "Cooperazione"]
+    "tags": [
+      "Organizzazione",
+      "Cooperazione"
+    ]
   },
   {
     "title": "Regolamento Co-Programmazione — USL Verona",
@@ -49,7 +76,10 @@
     "date": "2024-03-05",
     "author": "Giuseppe Imbrogno",
     "img": "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&q=80",
-    "tags": ["Sanità", "Amministrazione condivisa"]
+    "tags": [
+      "Sanità",
+      "Amministrazione condivisa"
+    ]
   },
   {
     "title": "Progetto Legami — Ricerca-azione",
@@ -59,7 +89,10 @@
     "date": "2024-01-18",
     "author": "Nicol Mondin",
     "img": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80",
-    "tags": ["Ricerca sociale", "Terzo Settore"],
+    "tags": [
+      "Ricerca sociale",
+      "Terzo Settore"
+    ],
     "highlight": true
   },
   {
@@ -70,7 +103,10 @@
     "date": "2025-03-28",
     "author": "Nicola Basile",
     "img": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&q=80",
-    "tags": ["VIG", "Legge 167/2025"]
+    "tags": [
+      "VIG",
+      "Legge 167/2025"
+    ]
   },
   {
     "title": "AI e coprogrammazione: un primo bilancio",
@@ -80,7 +116,10 @@
     "date": "2025-02-10",
     "author": "Nicola Basile",
     "img": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80",
-    "tags": ["Intelligenza Artificiale", "Coprogrammazione"]
+    "tags": [
+      "Intelligenza Artificiale",
+      "Coprogrammazione"
+    ]
   },
   {
     "title": "Governance Area Omogenea Crema",
@@ -90,6 +129,9 @@
     "date": "2024-07-12",
     "author": "Daniele Restelli",
     "img": "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=600&q=80",
-    "tags": ["Governance", "Organizzazione"]
+    "tags": [
+      "Governance",
+      "Organizzazione"
+    ]
   }
 ]
