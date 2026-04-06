@@ -262,7 +262,7 @@ function bodyToHTML(body){
 async function loadArticle(){
   const slug=new URLSearchParams(location.search).get('slug');
   if(!slug)return;
-  const posts=await fetch('/blog.json').then(r=>r.json());
+  const posts=await fetch('/data/blog.json').then(r=>r.json());
   const art=posts.find(p=>makeSlug(p.title)===slug);
   if(!art)return;
   // Update page

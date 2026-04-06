@@ -114,7 +114,7 @@ async function loadPerson() {
   if (!id) { location.href = './index.html#chi-siamo'; return; }
 
   let team;
-  try { const r = await fetch('/team.json'); team = await r.json(); } catch(e) { return; }
+  try { const r = await fetch('/data/team.json'); team = await r.json(); } catch(e) { return; }
 
   const person = team.find(p => p.id === id);
   if (!person) { location.href = './index.html#chi-siamo'; return; }

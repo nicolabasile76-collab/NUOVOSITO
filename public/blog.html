@@ -105,7 +105,7 @@ let currentView='grid';
 let currentCat='all';
 
 async function init(){
-  try{const r=await fetch('/blog.json');allPosts=await r.json()}catch(e){return}
+  try{const r=await fetch('/data/blog.json');allPosts=await r.json()}catch(e){return}
   allPosts.sort((a,b)=>new Date(b.date)-new Date(a.date));
   render();
 

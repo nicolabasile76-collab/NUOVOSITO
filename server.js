@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
+const { put, list, del } = require('@vercel/blob');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -67,6 +68,25 @@ app.get('/api/images', (req, res) => {
 // Parse JSON bodies
 app.use(express.json());
 
+// ═══ PUBLIC DATA API: serve JSON from Blob (if available) or static file ═══
+app.get('/data/:file', async (req, res) => {
+  const allowed = ['blog.json', 'team.json', 'chatbot.json'];
+  const file = req.params.file;
+  if (!allowed.includes(file)) return res.status(404).end();
+  try {
+    const { blobs } = await list({ prefix: file });
+    if (blobs.length > 0) {
+      const r = await fetch(blobs[0].url);
+      const data = await r.text();
+      res.setHeader('Content-Type', 'application/json');
+      return res.send(data);
+    }
+  } catch (e) { /* fallback to static */ }
+  const filePath = path.join(__dirname, 'public', file);
+  if (fs.existsSync(filePath)) return res.sendFile(filePath);
+  res.json([]);
+});
+
 // ═══ ADMIN AUTH ═══
 const ADMIN_PASS = process.env.ADMIN_PASSWORD || 'post2025';
 function authAdmin(req, res, next) {
@@ -75,74 +95,68 @@ function authAdmin(req, res, next) {
   next();
 }
 
-// ═══ ADMIN API: Read/Write data files via GitHub ═══
+// ═══ ADMIN API: Read/Write data files via Vercel Blob ═══
 const PUBLIC_DIR = path.join(__dirname, 'public');
-const GITHUB_REPO = 'nicolabasile76-collab/NUOVOSITO';
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 
-async function githubGetFile(filePath) {
-  const url = `https://api.github.com/repos/${GITHUB_REPO}/contents/public/${filePath}`;
-  const r = await fetch(url, { headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json' } });
-  if (!r.ok) return null;
-  return await r.json();
+// Helper: read data — first try Blob, then fallback to local file
+async function readData(file) {
+  try {
+    const { blobs } = await list({ prefix: file });
+    if (blobs.length > 0) {
+      const r = await fetch(blobs[0].url);
+      return await r.text();
+    }
+  } catch (e) { /* blob not available, use local */ }
+  const filePath = path.join(PUBLIC_DIR, file);
+  if (fs.existsSync(filePath)) return fs.readFileSync(filePath, 'utf8');
+  return null;
 }
 
-async function githubSaveFile(filePath, content, message) {
-  const url = `https://api.github.com/repos/${GITHUB_REPO}/contents/public/${filePath}`;
-  const existing = await githubGetFile(filePath);
-  const body = {
-    message: message || `Aggiornamento ${filePath} da admin`,
-    content: Buffer.from(content).toString('base64'),
-    committer: { name: 'POST Admin', email: 'admin@postsb.it' }
-  };
-  if (existing && existing.sha) body.sha = existing.sha;
-  const r = await fetch(url, {
-    method: 'PUT',
-    headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Content-Type': 'application/json', 'Accept': 'application/vnd.github.v3+json' },
-    body: JSON.stringify(body)
-  });
-  if (!r.ok) { const err = await r.text(); throw new Error(err); }
-  return await r.json();
+// Helper: save data to Blob
+async function saveData(file, content) {
+  // Delete old blob if exists
+  try {
+    const { blobs } = await list({ prefix: file });
+    for (const b of blobs) await del(b.url);
+  } catch (e) { /* ok */ }
+  // Save new
+  await put(file, content, { access: 'public', addRandomSuffix: false });
 }
 
-// GET any JSON file (from local fs — works on Vercel read-only)
-app.get('/api/admin/data/:file', authAdmin, (req, res) => {
+// GET any JSON file
+app.get('/api/admin/data/:file', authAdmin, async (req, res) => {
   const allowed = ['blog.json', 'team.json', 'chatbot.json'];
   const file = req.params.file;
   if (!allowed.includes(file)) return res.status(400).json({ error: 'File non consentito' });
-  const filePath = path.join(PUBLIC_DIR, file);
-  if (!fs.existsSync(filePath)) return res.json([]);
   try {
-    const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-    res.json(data);
+    const raw = await readData(file);
+    res.json(raw ? JSON.parse(raw) : []);
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
-// SAVE any JSON file (via GitHub API → triggers Vercel redeploy)
+// SAVE any JSON file (to Vercel Blob)
 app.post('/api/admin/data/:file', authAdmin, async (req, res) => {
   const allowed = ['blog.json', 'team.json', 'chatbot.json'];
   const file = req.params.file;
   if (!allowed.includes(file)) return res.status(400).json({ error: 'File non consentito' });
-  if (!GITHUB_TOKEN) return res.status(500).json({ error: 'GITHUB_TOKEN non configurato su Vercel. Vai su Settings → Environment Variables.' });
   try {
-    const content = JSON.stringify(req.body, null, 2);
-    await githubSaveFile(file, content, `Admin: aggiornamento ${file}`);
-    res.json({ success: true, message: 'Salvato! Il sito si aggiorna in ~30 secondi.' });
-  } catch (e) { res.status(500).json({ error: 'Errore GitHub: ' + e.message }); }
+    await saveData(file, JSON.stringify(req.body, null, 2));
+    res.json({ success: true });
+  } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
 // GET contesto-post.txt
-app.get('/api/admin/contesto', authAdmin, (req, res) => {
-  const filePath = path.join(PUBLIC_DIR, 'contesto-post.txt');
-  if (!fs.existsSync(filePath)) return res.json({ text: '' });
-  res.json({ text: fs.readFileSync(filePath, 'utf8') });
+app.get('/api/admin/contesto', authAdmin, async (req, res) => {
+  try {
+    const raw = await readData('contesto-post.txt');
+    res.json({ text: raw || '' });
+  } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
-// SAVE contesto-post.txt (via GitHub API)
+// SAVE contesto-post.txt
 app.post('/api/admin/contesto', authAdmin, async (req, res) => {
   try {
-    await githubSaveFile('contesto-post.txt', req.body.text, 'Admin: aggiornamento contesto chatbot');
-    if (typeof loadSiteContext === 'function') loadSiteContext();
+    await saveData('contesto-post.txt', req.body.text);
     res.json({ success: true });
   } catch (e) { res.status(500).json({ error: e.message }); }
 });

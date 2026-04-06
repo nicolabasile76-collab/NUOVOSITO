@@ -533,7 +533,7 @@ async function handleContactSubmit(e){
 // === Rivista (compact: cover + 3 titles) ===
 async function loadRivista(){
   let posts;
-  try{const r=await fetch('/blog.json');posts=await r.json()}catch(e){return}
+  try{const r=await fetch('/data/blog.json');posts=await r.json()}catch(e){return}
   posts.sort((a,b)=>new Date(b.date)-new Date(a.date));
   function sl(p){return p.url||`./articolo.html?slug=${p.title.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/-+$/,'')}`}
   function fd(d){return new Date(d).toLocaleDateString('it-IT',{day:'numeric',month:'long',year:'numeric'})}
@@ -577,7 +577,7 @@ loadRivista();
 // === Team ===
 async function loadTeam(){
   let team;
-  try{const r=await fetch('/team.json');team=await r.json()}catch(e){return}
+  try{const r=await fetch('/data/team.json');team=await r.json()}catch(e){return}
   const g=document.getElementById('team-grid');
   team.forEach((p,i)=>{
     const card=document.createElement('a');
