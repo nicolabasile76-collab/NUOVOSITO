@@ -131,6 +131,13 @@ app.post('/api/admin/data/:file', authAdmin, async (req, res) => {
   } catch (e) { res.status(500).json({ error: 'Errore GitHub: ' + e.message }); }
 });
 
+// GET contesto-post.txt
+app.get('/api/admin/contesto', authAdmin, (req, res) => {
+  const filePath = path.join(PUBLIC_DIR, 'contesto-post.txt');
+  if (!fs.existsSync(filePath)) return res.json({ text: '' });
+  res.json({ text: fs.readFileSync(filePath, 'utf8') });
+});
+
 // SAVE contesto-post.txt (via GitHub API)
 app.post('/api/admin/contesto', authAdmin, async (req, res) => {
   try {
