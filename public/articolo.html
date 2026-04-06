@@ -243,31 +243,58 @@ tailwind.config = {
 </footer>
 
 <script>
-// Load related posts from blog.json
-async function loadRelated() {
-  try {
-    const r = await fetch('/blog.json');
-    const posts = await r.json();
-    const related = posts.filter(p => p.title !== 'Palazzo Bocca Trezza').slice(0, 3);
-    const grid = document.getElementById('related-posts');
-    related.forEach(p => {
-      const slug = p.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+$/,'');
-      const d = new Date(p.date).toLocaleDateString('it-IT', {day:'numeric',month:'short',year:'numeric'});
-      const card = document.createElement('a');
-      card.href = `./articolo.html?slug=${slug}`;
-      card.className = 'flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden hover:shadow-lg transition-all';
-      card.innerHTML = `
-        <div class="h-36 w-full"><img src="${p.img}" alt="" class="w-full h-full object-cover"/></div>
-        <div class="p-5">
-          <span class="text-xs text-on-surface-variant">${d} &middot; ${p.author}</span>
-          <h4 class="text-lg font-bold text-primary mt-2 mb-1">${p.title}</h4>
-          <p class="text-sm text-on-surface-variant line-clamp-2">${p.excerpt}</p>
-        </div>`;
-      grid.appendChild(card);
-    });
-  } catch(e) {}
+function makeSlug(t){return t.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/-+$/,'')}
+function bodyToHTML(body){
+  if(!body)return '';
+  return body.split(/\n\n+/).map(p=>{
+    p=p.trim();
+    if(!p)return '';
+    if(p.startsWith('## '))return `<h2>${p.slice(3)}</h2>`;
+    if(p.startsWith('### '))return `<h3>${p.slice(4)}</h3>`;
+    if(p.startsWith('> '))return `<blockquote><p>${p.slice(2)}</p></blockquote>`;
+    if(p.includes('\n- ')||p.startsWith('- ')){
+      const items=p.split('\n').filter(l=>l.startsWith('- ')).map(l=>`<li>${l.slice(2)}</li>`).join('');
+      return `<ul>${items}</ul>`;
+    }
+    return `<p>${p}</p>`;
+  }).join('\n');
 }
-loadRelated();
+async function loadArticle(){
+  const slug=new URLSearchParams(location.search).get('slug');
+  if(!slug)return;
+  const posts=await fetch('/blog.json').then(r=>r.json());
+  const art=posts.find(p=>makeSlug(p.title)===slug);
+  if(!art)return;
+  // Update page
+  document.getElementById('page-title').textContent='POST — '+art.title;
+  document.getElementById('breadcrumb-title').textContent=art.title;
+  document.querySelector('article h1').innerHTML=art.title+'.<br/><span class="text-on-surface-variant text-2xl md:text-3xl font-bold">'+art.excerpt+'</span>';
+  if(art.img)document.getElementById('article-hero').src=art.img;
+  // Author
+  const initials=art.author?art.author.split(' ').map(w=>w[0]).join(''):'';
+  const d=art.date?new Date(art.date).toLocaleDateString('it-IT',{day:'numeric',month:'long',year:'numeric'}):'';
+  document.querySelector('.prose').innerHTML=art.body?bodyToHTML(art.body):`<p class="text-xl leading-relaxed text-on-surface-variant">${art.excerpt||''}</p>`;
+  // Tags
+  const tagsEl=document.querySelector('.flex.flex-wrap.items-center.gap-3.mb-6');
+  if(tagsEl&&art.tags){
+    tagsEl.innerHTML=`<span class="px-3 py-1 bg-secondary-fixed text-on-secondary-fixed-variant rounded-full text-xs font-bold uppercase">${art.catLabel||art.cat}</span>`+
+      art.tags.map(t=>`<span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant rounded-full text-xs font-bold">${t}</span>`).join('');
+  }
+  // Related
+  const related=posts.filter(p=>makeSlug(p.title)!==slug).slice(0,3);
+  const grid=document.getElementById('related-posts');
+  related.forEach(p=>{
+    const card=document.createElement('a');
+    card.href=`./articolo.html?slug=${makeSlug(p.title)}`;
+    card.className='flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden hover:shadow-lg transition-all';
+    card.innerHTML=`<div class="h-36 w-full"><img src="${p.img}" alt="" class="w-full h-full object-cover"/></div>
+      <div class="p-5"><span class="text-xs text-on-surface-variant">${new Date(p.date).toLocaleDateString('it-IT',{day:'numeric',month:'short',year:'numeric'})} &middot; ${p.author}</span>
+      <h4 class="text-lg font-bold text-primary mt-2 mb-1">${p.title}</h4>
+      <p class="text-sm text-on-surface-variant line-clamp-2">${p.excerpt}</p></div>`;
+    grid.appendChild(card);
+  });
+}
+loadArticle();
 </script>
 </body>
 </html>

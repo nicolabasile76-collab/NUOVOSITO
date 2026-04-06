@@ -106,6 +106,7 @@ label{display:block;font-size:.8rem;font-weight:700;color:var(--slate);text-tran
           <div class="field"><label>Autore</label><input type="text" id="art-author" value="Nicola Basile"/></div>
         </div>
         <div class="field"><label>Descrizione breve</label><textarea id="art-excerpt" rows="3"></textarea></div>
+        <div class="field"><label>Testo articolo</label><textarea id="art-body" rows="12" placeholder="Scrivi il testo completo dell'articolo. Puoi usare paragrafi separati da righe vuote."></textarea></div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
           <div class="field"><label>URL immagine</label><input type="text" id="art-img" placeholder="https://..."/></div>
           <div class="field"><label>Data (YYYY-MM-DD)</label><input type="date" id="art-date"/></div>
@@ -253,7 +254,7 @@ function renderArticles(){
       </div>
     </div>`).join('');
 }
-function showArticleForm(){editIdx=-1;document.getElementById('article-form-title').textContent='Nuovo articolo';['art-title','art-excerpt','art-img','art-tags','art-url'].forEach(id=>document.getElementById(id).value='');document.getElementById('art-cat').value='case-study';document.getElementById('art-author').value='Nicola Basile';document.getElementById('art-date').value=new Date().toISOString().split('T')[0];document.getElementById('art-highlight').checked=false;document.getElementById('article-form').classList.remove('hidden')}
+function showArticleForm(){editIdx=-1;document.getElementById('article-form-title').textContent='Nuovo articolo';['art-title','art-excerpt','art-body','art-img','art-tags','art-url'].forEach(id=>document.getElementById(id).value='');document.getElementById('art-cat').value='case-study';document.getElementById('art-author').value='Nicola Basile';document.getElementById('art-date').value=new Date().toISOString().split('T')[0];document.getElementById('art-highlight').checked=false;document.getElementById('article-form').classList.remove('hidden')}
 function hideArticleForm(){document.getElementById('article-form').classList.add('hidden')}
 function editArticle(i){
   editIdx=i;const a=blogData[i];
@@ -262,6 +263,7 @@ function editArticle(i){
   document.getElementById('art-cat').value=a.cat||'case-study';
   document.getElementById('art-author').value=a.author||'';
   document.getElementById('art-excerpt').value=a.excerpt||'';
+  document.getElementById('art-body').value=a.body||'';
   document.getElementById('art-img').value=a.img||'';
   document.getElementById('art-date').value=a.date||'';
   document.getElementById('art-tags').value=(a.tags||[]).join(', ');
@@ -274,6 +276,7 @@ function saveArticle(){
   const obj={
     title:document.getElementById('art-title').value,
     excerpt:document.getElementById('art-excerpt').value,
+    body:document.getElementById('art-body').value,
     cat:document.getElementById('art-cat').value,
     catLabel:catLabels[document.getElementById('art-cat').value],
     date:document.getElementById('art-date').value,
