@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>POST — Consulenza per il bene comune</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Public+Sans:wght@400;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --ink: #006172;
+  --ink-deep: #003d4a;
+  --ink-light: #2b7a8c;
+  --cream: #f7f5f0;
+  --warm-white: #fefcf8;
+  --stone: #e8e4dd;
+  --slate: #6b7280;
+  --charcoal: #1a1a1a;
+  --charcoal-90: #273141;
+  --teal-glow: #88d1e5;
+  --teal-mist: #b9eafb;
+  --teal-wash: rgba(0,97,114,0.04);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:'Atkinson Hyperlegible',sans-serif;background:var(--cream);color:var(--charcoal);line-height:1.6;overflow-x:hidden}
+/* Grain overlay */
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")}
+h1,h2,.display{font-family:'Public Sans','Atkinson Hyperlegible',sans-serif}
+h3,h4,.sans{font-family:'Public Sans','Atkinson Hyperlegible',sans-serif}
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
+a{color:inherit;text-decoration:none}
+
+/* Reveal system */
+.r{opacity:0;transform:translateY(32px);transition:opacity .9s cubic-bezier(.19,1,.22,1),transform .9s cubic-bezier(.19,1,.22,1)}.r.v{opacity:1;transform:none}
+.rl{opacity:0;transform:translateX(-48px);transition:opacity .9s cubic-bezier(.19,1,.22,1),transform .9s cubic-bezier(.19,1,.22,1)}.rl.v{opacity:1;transform:none}
+.rr{opacity:0;transform:translateX(48px);transition:opacity .9s cubic-bezier(.19,1,.22,1),transform .9s cubic-bezier(.19,1,.22,1)}.rr.v{opacity:1;transform:none}
+.stag>*:nth-child(1){transition-delay:0s}.stag>*:nth-child(2){transition-delay:.12s}.stag>*:nth-child(3){transition-delay:.24s}.stag>*:nth-child(4){transition-delay:.36s}.stag>*:nth-child(5){transition-delay:.48s}.stag>*:nth-child(6){transition-delay:.6s}
+
+/* Carousel */
+.carousel{position:relative;width:100%;height:100%}
+.carousel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.4s ease}
+.carousel img.on{opacity:1}
+.dots{position:absolute;bottom:20px;right:20px;display:flex;gap:6px;z-index:5}
+.dots button{width:8px;height:8px;border-radius:50%;border:1.5px solid rgba(255,255,255,.8);background:transparent;cursor:pointer;transition:.3s}
+.dots button.on{background:white;transform:scale(1.3)}
+
+/* Counter */
+.num{font-family:'Instrument Serif',serif;font-size:clamp(2.5rem,5vw,4rem);color:var(--warm-white);line-height:1}
+
+/* Pillar cards */
+.pillar{position:relative;padding:2.5rem;border-radius:12px;transition:transform .4s cubic-bezier(.19,1,.22,1),box-shadow .4s ease;overflow:hidden}
+.pillar:hover{transform:translateY(-6px);box-shadow:0 24px 48px rgba(0,61,74,.08)}
+.pillar::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--ink);border-radius:4px 0 0 4px}
+
+/* Blog card */
+.blog-card{border-radius:12px;overflow:hidden;transition:transform .35s cubic-bezier(.19,1,.22,1),box-shadow .35s ease;cursor:pointer}
+.blog-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.06)}
+.blog-card img{transition:transform .6s ease}.blog-card:hover img{transform:scale(1.04)}
+
+/* Editorial marker */
+.marker{display:inline-flex;align-items:center;gap:.5rem;font-family:'DM Sans',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);padding:.35rem .75rem;border:1.5px solid var(--ink);border-radius:100px}
+
+/* Horizontal rule */
+.rule{border:none;border-top:1px solid var(--stone);margin:0}
+
+/* Team card */
+.team-card{transition:transform .35s cubic-bezier(.19,1,.22,1)}.team-card:hover{transform:translateY(-3px)}
+.team-card .photo{border:3px solid var(--stone);transition:border-color .3s}.team-card:hover .photo{border-color:var(--ink)}
+
+/* Responsive */
+@media(max-width:768px){
+  .hide-sm{display:none!important}
+  .col-sm{grid-template-columns:1fr!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<header style="position:fixed;top:0;width:100%;z-index:100;background:rgba(247,245,240,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--stone)">
+  <nav style="max-width:1200px;margin:0 auto;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center">
+    <a href="#hero" style="display:block">
+      <img src="./logo-post.png" alt="POST" style="height:60px;width:auto" onerror="this.outerHTML='<span style=\'font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-size:2rem;color:var(--ink)\'>POST</span>'"/>
+    </a>
+    <div class="hide-sm" style="display:flex;align-items:center;gap:2rem;font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-size:.9rem;font-weight:500">
+      <div style="position:relative" onmouseover="this.querySelector('.dd').style.opacity='1';this.querySelector('.dd').style.pointerEvents='auto';this.querySelector('.dd').style.transform='translateY(0)'" onmouseout="this.querySelector('.dd').style.opacity='0';this.querySelector('.dd').style.pointerEvents='none';this.querySelector('.dd').style.transform='translateY(-8px)'">
+        <a href="#pilastri" style="color:var(--slate);transition:color .2s;display:flex;align-items:center;gap:.3rem" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--slate)'">Cosa facciamo <span class="material-symbols-outlined" style="font-size:16px">expand_more</span></a>
+        <div class="dd" style="position:absolute;top:100%;left:-1rem;padding-top:.75rem;opacity:0;pointer-events:none;transform:translateY(-8px);transition:opacity .25s,transform .25s;z-index:200">
+          <div style="background:var(--warm-white);border:1px solid var(--stone);border-radius:12px;padding:.75rem;min-width:260px;box-shadow:0 16px 40px rgba(0,0,0,.08)">
+            <a href="./valutazione-impatto.html" style="display:flex;align-items:center;gap:.75rem;padding:.65rem .75rem;border-radius:8px;color:var(--charcoal);transition:background .15s;font-size:.85rem" onmouseover="this.style.background='var(--teal-wash)'" onmouseout="this.style.background='transparent'"><span class="material-symbols-outlined" style="font-size:18px;color:var(--ink);font-variation-settings:'FILL' 1">monitoring</span>Valutazione d'Impatto</a>
+            <a href="./amministrazione-condivisa.html" style="display:flex;align-items:center;gap:.75rem;padding:.65rem .75rem;border-radius:8px;color:var(--charcoal);transition:background .15s;font-size:.85rem" onmouseover="this.style.background='var(--teal-wash)'" onmouseout="this.style.background='transparent'"><span class="material-symbols-outlined" style="font-size:18px;color:var(--ink)">handshake</span>Amministrazione Condivisa</a>
+            <a href="./consulenza-organizzativa.html" style="display:flex;align-items:center;gap:.75rem;padding:.65rem .75rem;border-radius:8px;color:var(--charcoal);transition:background .15s;font-size:.85rem" onmouseover="this.style.background='var(--teal-wash)'" onmouseout="this.style.background='transparent'"><span class="material-symbols-outlined" style="font-size:18px;color:var(--ink)">hub</span>Consulenza Organizzativa</a>
+            <a href="./dati-intelligenza-artificiale.html" style="display:flex;align-items:center;gap:.75rem;padding:.65rem .75rem;border-radius:8px;color:var(--charcoal);transition:background .15s;font-size:.85rem" onmouseover="this.style.background='var(--teal-wash)'" onmouseout="this.style.background='transparent'"><span class="material-symbols-outlined" style="font-size:18px;color:var(--ink)">neurology</span>Uso dei dati e AI</a>
+            <hr style="border:none;border-top:1px solid var(--stone);margin:.5rem 0"/>
+            <a href="./piani-di-zona.html" style="display:flex;align-items:center;gap:.75rem;padding:.65rem .75rem;border-radius:8px;color:var(--ink);font-weight:700;transition:background .15s;font-size:.85rem" onmouseover="this.style.background='var(--teal-wash)'" onmouseout="this.style.background='transparent'"><span class="material-symbols-outlined" style="font-size:18px">description</span>Piani di Zona</a>
+          </div>
+        </div>
+      </div>
+      <a href="#blog" style="color:var(--slate);transition:all .2s;border-bottom:2px solid transparent;padding-bottom:2px" onmouseover="this.style.color='var(--ink)';this.style.fontWeight='700';this.style.borderBottomColor='var(--ink)'" onmouseout="this.style.color='var(--slate)';this.style.fontWeight='500';this.style.borderBottomColor='transparent'">Dal campo</a>
+      <a href="./piani-di-zona.html" style="color:var(--slate);transition:all .2s;border-bottom:2px solid transparent;padding-bottom:2px" onmouseover="this.style.color='var(--ink)';this.style.fontWeight='700';this.style.borderBottomColor='var(--ink)'" onmouseout="this.style.color='var(--slate)';this.style.fontWeight='500';this.style.borderBottomColor='transparent'">Piani di Zona</a>
+      <a href="./dati-intelligenza-artificiale.html" style="color:var(--slate);transition:all .2s;display:flex;align-items:center;gap:.3rem;border-bottom:2px solid transparent;padding-bottom:2px" onmouseover="this.style.color='var(--ink)';this.style.fontWeight='700';this.style.borderBottomColor='var(--ink)'" onmouseout="this.style.color='var(--slate)';this.style.fontWeight='500';this.style.borderBottomColor='transparent'"><span class="material-symbols-outlined" style="font-size:18px">neurology</span>AI per il Bene Comune</a>
+      <a href="#chi-siamo" style="color:var(--slate);transition:all .2s;border-bottom:2px solid transparent;padding-bottom:2px" onmouseover="this.style.color='var(--ink)';this.style.fontWeight='700';this.style.borderBottomColor='var(--ink)'" onmouseout="this.style.color='var(--slate)';this.style.fontWeight='500';this.style.borderBottomColor='transparent'">Chi siamo</a>
+    </div>
+    <a href="#contatti" style="background:var(--ink);color:white;padding:.6rem 1.5rem;border-radius:8px;font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-weight:700;font-size:.85rem;transition:opacity .2s" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">Contatti</a>
+  </nav>
+</header>
+
+<!-- ═══ 1. HERO ═══ -->
+<section id="hero" style="padding:8rem 2rem 4rem;max-width:1200px;margin:0 auto">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center" class="col-sm">
+    <div class="rl">
+      <div class="marker" style="margin-bottom:1.5rem">Società Benefit</div>
+      <h1 style="font-size:clamp(3rem,6vw,5.5rem);color:var(--ink);line-height:1.05;letter-spacing:-.03em;margin-bottom:1.5rem">
+        Lavoriamo con chi costruisce il bene comune.
+      </h1>
+      <p style="font-size:1.25rem;color:var(--charcoal);line-height:1.7;max-width:520px;margin-bottom:1rem">
+        Consulenza per il welfare, le politiche pubbliche e lo sviluppo territoriale. Integriamo l'intelligenza artificiale nei processi sociali e collaborativi.
+      </p>
+      <p style="font-size:1.05rem;color:var(--slate);line-height:1.7;max-width:480px;margin-bottom:2.5rem">
+        Un gruppo di professionisti con un approccio artigianale: fianco a fianco con enti pubblici, cooperative e Terzo Settore.
+      </p>
+      <!-- CTA principale -->
+      <a href="#pilastri" style="background:var(--ink);color:white;padding:.95rem 2.5rem;border-radius:8px;font-weight:700;display:inline-flex;align-items:center;gap:.5rem;transition:all .2s;font-size:1.05rem;margin-bottom:1.5rem" onmouseover="this.style.background='var(--ink-deep)'" onmouseout="this.style.background='var(--ink)'">Cosa facciamo <span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span></a>
+      <!-- Oggi in evidenza -->
+      <p style="font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:.75rem">Oggi in evidenza</p>
+      <div style="display:flex;gap:.75rem;flex-wrap:wrap">
+        <a href="./piani-di-zona.html" style="background:transparent;color:var(--ink);padding:.75rem 1.5rem;border-radius:8px;border:1.5px solid var(--ink);font-weight:700;display:inline-flex;align-items:center;gap:.5rem;transition:all .2s;font-size:.9rem" onmouseover="this.style.background='var(--teal-wash)'" onmouseout="this.style.background='transparent'"><span class="material-symbols-outlined" style="font-size:16px">description</span>Piani di Zona</a>
+        <a href="./dati-intelligenza-artificiale.html" style="background:var(--charcoal-90);color:var(--teal-glow);padding:.75rem 1.5rem;border-radius:8px;font-weight:700;display:inline-flex;align-items:center;gap:.5rem;transition:all .2s;font-size:.9rem" onmouseover="this.style.background='var(--charcoal)'" onmouseout="this.style.background='var(--charcoal-90)'"><span class="material-symbols-outlined" style="font-size:16px">neurology</span>AI per il Bene Comune</a>
+      </div>
+    </div>
+    <div class="rr" style="position:relative">
+      <div style="aspect-ratio:4/5;border-radius:16px;overflow:hidden;box-shadow:0 32px 64px rgba(0,61,74,.12)">
+        <div id="hero-carousel" class="carousel">
+          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80" alt="" class="on"/>
+          <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&q=80" alt=""/>
+          <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80" alt=""/>
+          <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&q=80" alt=""/>
+        </div>
+        <div class="dots" id="hero-dots"></div>
+      </div>
+      <!-- Decorative offset block -->
+      <div style="position:absolute;top:-16px;right:-16px;width:100%;height:100%;border:2px solid var(--ink);border-radius:16px;z-index:-1;opacity:.15"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 2. COUNTERS ═══ -->
+<section style="background:var(--charcoal-90);padding:3.5rem 2rem" class="r">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(6,1fr);gap:2rem;text-align:center" class="col-sm stag" style="grid-template-columns:repeat(3,1fr)">
+    <div><p class="num"><span class="counter" data-target="4">0</span></p><p style="font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-size:.75rem;color:var(--teal-glow);letter-spacing:.1em;text-transform:uppercase;font-weight:700;margin-top:.25rem">Regioni</p></div>
+    <div><p class="num"><span class="counter" data-target="12">0</span></p><p style="font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-size:.75rem;color:var(--teal-glow);letter-spacing:.1em;text-transform:uppercase;font-weight:700;margin-top:.25rem">Territori</p></div>
+    <div><p class="num"><span class="counter" data-target="35">0</span>+</p><p style="font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-size:.75rem;color:var(--teal-glow);letter-spacing:.1em;text-transform:uppercase;font-weight:700;margin-top:.25rem">Enti Terzo Settore</p></div>
+    <div><p class="num"><span class="counter" data-target="20">0</span>+</p><p style="font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-size:.75rem;color:var(--teal-glow);letter-spacing:.1em;text-transform:uppercase;font-weight:700;margin-top:.25rem">Pubbliche Amm.</p></div>
+    <div><p class="num"><span class="counter" data-target="40">0</span>+</p><p style="font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-size:.75rem;color:var(--teal-glow);letter-spacing:.1em;text-transform:uppercase;font-weight:700;margin-top:.25rem">Processi collaborativi</p></div>
+    <div><p class="num"><span class="counter" data-target="15">0</span>+</p><p style="font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-size:.75rem;color:var(--teal-glow);letter-spacing:.1em;text-transform:uppercase;font-weight:700;margin-top:.25rem">Valutazioni d'impatto</p></div>
+  </div>
+</section>
+
+<!-- ═══ 3. INTRO + PILLARS ═══ -->
+<section style="padding:6rem 2rem 2rem;max-width:1200px;margin:0 auto">
+  <div class="r" style="max-width:700px;margin-bottom:4rem">
+    <h2 style="font-size:clamp(2rem,4vw,3.2rem);color:var(--ink);line-height:1.15;margin-bottom:1.5rem;letter-spacing:-.02em">Non vendiamo soluzioni preconfezionate.</h2>
+    <p style="font-size:1.15rem;color:var(--charcoal);line-height:1.8">POST è una piccola società benefit che lavora nel campo della consulenza per il welfare, le politiche pubbliche e lo sviluppo territoriale.</p>
+    <p style="font-size:1.15rem;color:var(--slate);line-height:1.8;margin-top:.75rem">Non siamo una grande società di consulenza: siamo professionisti che si sporcano le mani, fianco a fianco con chi opera ogni giorno nei servizi e nelle comunità.</p>
+  </div>
+</section>
+
+<section id="pilastri" style="padding:0 2rem 6rem;max-width:1200px;margin:0 auto">
+  <div class="r" style="margin-bottom:3rem">
+    <hr class="rule" style="margin-bottom:1.5rem"/>
+    <h3 style="font-size:1.6rem;color:var(--ink);font-weight:700">Quattro pilastri. Un metodo.</h3>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem" class="col-sm stag">
+
+    <!-- Valutazione -->
+    <a href="./valutazione-impatto.html" class="pillar r" style="background:linear-gradient(135deg, var(--warm-white) 0%, #eef6f8 100%);display:block;text-decoration:none;cursor:pointer;border:1px solid rgba(0,97,114,.1)">
+      <span class="material-symbols-outlined" style="font-size:2rem;color:var(--ink);margin-bottom:1rem;font-variation-settings:'FILL' 1">monitoring</span>
+      <h3 style="font-size:1.5rem;color:var(--ink);margin-bottom:.75rem">Valutazione d'Impatto</h3>
+      <p style="font-size:1.05rem;color:var(--charcoal);line-height:1.7">Dati in conoscenza utile. Indicatori di esito e processo, ricerca sociale, accountability.</p>
+      <div style="margin-top:1.5rem;padding:1rem 1.25rem;background:var(--teal-wash);border-radius:8px;border-left:3px solid var(--ink)">
+        <p style="font-size:.85rem;color:var(--charcoal)"><strong style="color:var(--ink)">Novità 2025</strong> — Valutazione d'Impatto Generazionale (Legge 167/2025)</p>
+      </div>
+      <div style="display:flex;gap:.75rem;margin-top:1.5rem;flex-wrap:wrap">
+        <span style="display:inline-flex;align-items:center;gap:.4rem;color:var(--ink);font-weight:700;font-size:.9rem">Scopri di più <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span></span>
+        <span onclick="event.preventDefault();event.stopPropagation();location.href='./valutapp.html'" style="display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1.25rem;background:var(--ink);color:white;border-radius:8px;font-weight:700;font-size:.85rem;cursor:pointer">Valutapp <span class="material-symbols-outlined" style="font-size:16px">assessment</span></span>
+      </div>
+    </a>
+
+    <!-- Amministrazione Condivisa -->
+    <a href="./amministrazione-condivisa.html" class="pillar r" style="background:var(--ink);color:white;display:block;text-decoration:none;cursor:pointer" onmouseover="this.style.background='var(--ink-deep)'" onmouseout="this.style.background='var(--ink)'">
+      <div style="position:absolute;top:0;left:0;width:4px;height:100%;background:var(--teal-glow);border-radius:4px 0 0 4px"></div>
+      <span class="material-symbols-outlined" style="font-size:2rem;color:var(--teal-glow);margin-bottom:1rem">handshake</span>
+      <h3 style="font-size:1.5rem;margin-bottom:.75rem">Amministrazione Condivisa</h3>
+      <p style="font-size:1.05rem;line-height:1.7;opacity:.9">Coprogrammazione e coprogettazione tra PA e Terzo Settore. Facilitazione tavoli, governance, progettazione partecipata.</p>
+      <div style="display:flex;gap:.75rem;margin-top:1.5rem;flex-wrap:wrap">
+        <span style="display:inline-flex;align-items:center;gap:.4rem;padding:.7rem 1.5rem;background:rgba(255,255,255,.15);border-radius:8px;font-weight:700;font-size:.9rem;color:white">Scopri di più <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span></span>
+        <span onclick="event.preventDefault();event.stopPropagation();location.href='./piani-di-zona.html'" style="display:inline-flex;align-items:center;gap:.4rem;padding:.7rem 1.5rem;background:var(--teal-glow);border-radius:8px;font-weight:700;font-size:.9rem;color:var(--charcoal-90);cursor:pointer">Piani di Zona <span class="material-symbols-outlined" style="font-size:16px">description</span></span>
+      </div>
+    </a>
+
+    <!-- Consulenza Organizzativa -->
+    <a href="./consulenza-organizzativa.html" class="pillar r" style="background:linear-gradient(135deg, var(--warm-white) 0%, #f0eee8 100%);display:block;text-decoration:none;cursor:pointer;border:1px solid rgba(0,97,114,.08)">
+      <span class="material-symbols-outlined" style="font-size:2rem;color:var(--ink);margin-bottom:1rem">hub</span>
+      <h3 style="font-size:1.5rem;color:var(--ink);margin-bottom:.75rem">Consulenza Organizzativa</h3>
+      <p style="font-size:1.05rem;color:var(--charcoal);line-height:1.7">Piani di impresa, passaggio intergenerazionale, sviluppo competenze, riorganizzazione dei processi.</p>
+      <span style="display:inline-flex;align-items:center;gap:.4rem;margin-top:1.5rem;color:var(--ink);font-weight:700;font-size:.9rem">Scopri di più <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span></span>
+    </a>
+
+    <!-- AI — bottone WAIT più evidente -->
+    <a href="./dati-intelligenza-artificiale.html" class="pillar r" style="background:var(--charcoal-90);color:white;display:block;text-decoration:none;cursor:pointer">
+      <div style="position:absolute;top:0;left:0;width:4px;height:100%;background:var(--teal-glow);border-radius:4px 0 0 4px"></div>
+      <span class="material-symbols-outlined" style="font-size:2rem;color:var(--teal-glow);margin-bottom:1rem">neurology</span>
+      <h3 style="font-size:1.5rem;color:var(--teal-glow);margin-bottom:.75rem">Uso dei dati e Intelligenza Artificiale</h3>
+      <p style="font-size:1.05rem;line-height:1.7;opacity:.9">Programmazione e progettazione data driven, analisi dati sociali, AI nei processi collaborativi.</p>
+      <div style="display:flex;gap:.75rem;margin-top:1.5rem;flex-wrap:wrap">
+        <span style="display:inline-flex;align-items:center;gap:.4rem;padding:.7rem 1.5rem;background:rgba(255,255,255,.15);border-radius:8px;font-weight:700;font-size:.9rem;color:white">Scopri di più <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span></span>
+        <span onclick="event.preventDefault();event.stopPropagation();location.href='./wait.html'" style="display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.5rem;background:var(--teal-glow);color:var(--charcoal-90);border-radius:8px;font-weight:800;font-size:.9rem;cursor:pointer">w<strong>AI</strong>t</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ═══ 4. TEAM ═══ -->
+<section id="chi-siamo" style="padding:6rem 2rem;max-width:1200px;margin:0 auto">
+  <div class="r" style="margin-bottom:3rem">
+    <hr class="rule" style="margin-bottom:1.5rem"/>
+    <h2 style="font-size:clamp(2rem,3.5vw,2.8rem);color:var(--ink);letter-spacing:-.02em;margin-bottom:.75rem">Le persone di POST.</h2>
+    <p style="font-size:1.1rem;color:var(--slate);max-width:500px">Competenze diverse unite dalla voglia di fare bene il proprio lavoro.</p>
+  </div>
+  <div id="team-grid" style="display:grid;grid-template-columns:repeat(5,1fr);gap:1.25rem" class="col-sm stag"></div>
+</section>
+
+<!-- ═══ 5. RIVISTA ═══ -->
+<section id="blog" style="background:var(--warm-white);padding:6rem 2rem;border-top:1px solid var(--stone);border-bottom:1px solid var(--stone)">
+  <div style="max-width:1200px;margin:0 auto">
+    <!-- Testata -->
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:3.5rem" class="r">
+      <div>
+        <div style="font-family:Public Sans,sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--slate);margin-bottom:.5rem">Rivista di pratiche</div>
+        <h2 style="font-size:clamp(2.5rem,4vw,3.5rem);color:var(--ink);letter-spacing:-.03em;line-height:1;font-style:italic">Dal campo</h2>
+      </div>
+      <a href="./blog.html" style="font-family:Public Sans,sans-serif;font-size:.85rem;font-weight:700;color:var(--ink);display:flex;align-items:center;gap:.3rem;margin-top:1.5rem;padding:.5rem 1.25rem;border:1.5px solid var(--ink);border-radius:100px;transition:all .2s" onmouseover="this.style.background='var(--ink)';this.style.color='white'" onmouseout="this.style.background='transparent';this.style.color='var(--ink)'">Tutti i numeri <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span></a>
+    </div>
+    <hr style="border:none;border-top:2px solid var(--ink);margin-bottom:3rem"/>
+    <!-- Copertina: ultimo articolo highlight -->
+    <div id="cover-article" style="margin-bottom:3rem"></div>
+    <!-- Sommario: altri articoli -->
+    <div id="sommario" style="margin-bottom:2rem"></div>
+  </div>
+</section>
+
+<!-- ═══ 6. CONTATTI ═══ -->
+<section id="contatti" style="background:var(--charcoal-90);color:white;padding:6rem 2rem">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1.5fr;gap:4rem;align-items:start" class="col-sm">
+    <div class="rl">
+      <h2 style="font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-size:clamp(2.5rem,4vw,3.5rem);line-height:1.1;margin-bottom:1.5rem;letter-spacing:-.02em">Parliamone.</h2>
+      <p style="font-size:1.1rem;line-height:1.7;opacity:.8;margin-bottom:2rem">Se avete un progetto, un'idea o anche solo una domanda, scriveteci. Rispondiamo noi, non un chatbot.</p>
+      <div style="display:flex;flex-direction:column;gap:.75rem;margin-bottom:2rem">
+        <div style="display:flex;align-items:center;gap:.75rem"><span class="material-symbols-outlined" style="color:var(--teal-glow)">mail</span><span style="font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-weight:700">info@postsb.it</span></div>
+        <div style="display:flex;align-items:center;gap:.75rem"><span class="material-symbols-outlined" style="color:var(--teal-glow)">call</span><span style="font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-weight:700">+39 3939993731</span></div>
+        <div style="display:flex;align-items:center;gap:.75rem"><span class="material-symbols-outlined" style="color:var(--teal-glow)">location_on</span><span style="opacity:.7">Milano</span></div>
+      </div>
+      <a href="https://www.linkedin.com/company/105770276" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.5rem;background:#0077b5;color:white;border-radius:8px;font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-weight:700;font-size:.9rem;transition:opacity .2s" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        Seguici su LinkedIn
+      </a>
+    </div>
+    <div class="rr" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:2.5rem">
+      <h3 style="font-size:1.3rem;color:var(--teal-glow);margin-bottom:2rem;font-weight:700">Scriveteci.</h3>
+      <form onsubmit="event.preventDefault();alert('Messaggio inviato! (demo)');" style="display:flex;flex-direction:column;gap:1.5rem">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem" class="col-sm">
+          <div><label style="font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5);display:block;margin-bottom:.5rem">Nome</label><input type="text" placeholder="Il vostro nome" style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:.75rem 1rem;color:white;font-family:Atkinson Hyperlegible;font-size:1rem;outline:none;transition:border-color .2s" onfocus="this.style.borderColor='var(--teal-glow)'" onblur="this.style.borderColor='rgba(255,255,255,.15)'"/></div>
+          <div><label style="font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5);display:block;margin-bottom:.5rem">Email</label><input type="email" placeholder="email@org.it" style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:.75rem 1rem;color:white;font-family:Atkinson Hyperlegible;font-size:1rem;outline:none;transition:border-color .2s" onfocus="this.style.borderColor='var(--teal-glow)'" onblur="this.style.borderColor='rgba(255,255,255,.15)'"/></div>
+        </div>
+        <div><label style="font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5);display:block;margin-bottom:.5rem">Organizzazione</label><input type="text" placeholder="Ente, cooperativa, associazione..." style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:.75rem 1rem;color:white;font-family:Atkinson Hyperlegible;font-size:1rem;outline:none;transition:border-color .2s" onfocus="this.style.borderColor='var(--teal-glow)'" onblur="this.style.borderColor='rgba(255,255,255,.15)'"/></div>
+        <div><label style="font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5);display:block;margin-bottom:.5rem">Messaggio</label><textarea rows="4" placeholder="Raccontateci il vostro progetto..." style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:.75rem 1rem;color:white;font-family:Atkinson Hyperlegible;font-size:1rem;outline:none;resize:vertical;transition:border-color .2s" onfocus="this.style.borderColor='var(--teal-glow)'" onblur="this.style.borderColor='rgba(255,255,255,.15)'"></textarea></div>
+        <button type="submit" style="align-self:flex-start;background:var(--ink-light);color:white;border:none;padding:.85rem 2.5rem;border-radius:8px;font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-weight:700;font-size:1rem;cursor:pointer;display:flex;align-items:center;gap:.5rem;transition:background .2s" onmouseover="this.style.background='var(--ink)'" onmouseout="this.style.background='var(--ink-light)'">Invia <span class="material-symbols-outlined" style="font-size:18px">send</span></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer style="background:var(--charcoal);padding:3rem 2rem;border-top:1px solid rgba(255,255,255,.08)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem">
+    <div style="display:flex;align-items:center;gap:2rem">
+      <img src="./logo-post.png" alt="POST" style="height:40px;width:auto;filter:brightness(0) invert(1);opacity:.6" onerror="this.outerHTML='<span style=\'font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-size:1.5rem;color:rgba(255,255,255,.6)\'>POST</span>'"/>
+      <span style="font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-size:.8rem;color:rgba(255,255,255,.4)">&copy; 2025 POST Società Benefit S.r.l. — Milano</span>
+    </div>
+    <div style="display:flex;gap:2rem;font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-size:.8rem">
+      <a href="#" style="color:rgba(255,255,255,.4);transition:color .2s" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,.4)'">Privacy</a>
+      <a href="#" style="color:rgba(255,255,255,.4);transition:color .2s" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,.4)'">Cookie</a>
+      <a href="https://www.linkedin.com/company/105770276" target="_blank" style="color:rgba(255,255,255,.4);transition:color .2s" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,.4)'">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ SCRIPTS ═══ -->
+<script>
+// Carousel
+(function(){const c=document.getElementById('hero-carousel'),d=document.getElementById('hero-dots');if(!c)return;const imgs=[...c.querySelectorAll('img')];let cur=0,iv;imgs.forEach((_,i)=>{const b=document.createElement('button');if(!i)b.classList.add('on');b.onclick=()=>go(i);d.appendChild(b)});const dots=[...d.querySelectorAll('button')];function go(n){imgs[cur].classList.remove('on');dots[cur].classList.remove('on');cur=n;imgs[cur].classList.add('on');dots[cur].classList.add('on');clearInterval(iv);run()}function run(){iv=setInterval(()=>go((cur+1)%imgs.length),5000)}run()})();
+
+// Counter
+const cO=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){const el=e.target,t=+el.dataset.target;let c=0;const s=Math.max(1,Math.floor(t/35));const tm=setInterval(()=>{c+=s;if(c>=t){c=t;clearInterval(tm)}el.textContent=c},35);cO.unobserve(el)}})},{threshold:.5});
+document.querySelectorAll('.counter').forEach(el=>cO.observe(el));
+
+// Reveal
+const rO=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');rO.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.r,.rl,.rr').forEach(el=>rO.observe(el));
+
+// Rivista
+async function loadRivista(){
+  let posts;
+  try{const r=await fetch('/blog.json');posts=await r.json()}catch(e){return}
+  posts.sort((a,b)=>new Date(b.date)-new Date(a.date));
+  function sl(p){return p.url||`./articolo.html?slug=${p.title.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/-+$/,'')}`}
+  function fd(d){return new Date(d).toLocaleDateString('it-IT',{day:'numeric',month:'long',year:'numeric'})}
+
+  // Copertina: primo articolo
+  const c=posts[0];
+  const ce=document.getElementById('cover-article');
+  if(c){
+    ce.innerHTML=`<a href="${sl(c)}" style="display:grid;grid-template-columns:1.2fr 1fr;gap:0;border-radius:16px;overflow:hidden;text-decoration:none;transition:transform .4s cubic-bezier(.19,1,.22,1),box-shadow .4s" class="col-sm" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 24px 48px rgba(0,0,0,.08)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+      <div style="position:relative;min-height:380px;overflow:hidden"><img src="${c.img}" alt="" style="width:100%;height:100%;object-fit:cover;transition:transform .6s" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='none'"/><div style="position:absolute;top:1.5rem;left:1.5rem"><span class="marker" style="background:white;border:none">${c.catLabel}</span></div></div>
+      <div style="background:var(--ink);color:white;padding:3rem;display:flex;flex-direction:column;justify-content:center">
+        <div style="font-size:.75rem;color:var(--teal-glow);margin-bottom:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase">In evidenza</div>
+        <h3 style="font-size:clamp(1.4rem,2.5vw,2rem);line-height:1.15;margin-bottom:1rem;letter-spacing:-.02em">${c.title}</h3>
+        <p style="font-size:.95rem;line-height:1.7;opacity:.85;margin-bottom:1.5rem">${c.excerpt}</p>
+        <div style="border-top:1px solid rgba(255,255,255,.15);padding-top:1rem;display:flex;justify-content:space-between;align-items:center">
+          <div><span style="font-size:.85rem;opacity:.6">${c.author}</span><br/><span style="font-size:.75rem;opacity:.4">${fd(c.date)}</span></div>
+          <span style="font-weight:700;font-size:.85rem;color:var(--teal-glow);display:flex;align-items:center;gap:.3rem">Leggi <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span></span>
+        </div>
+      </div>
+    </a>`;
+  }
+
+  // Sommario editoriale
+  const rest=posts.slice(1,7);
+  const se=document.getElementById('sommario');
+  if(rest.length){
+    let h='<div style="font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin-bottom:1rem">Sommario</div>';
+    rest.forEach((p,i)=>{
+      h+=`<a href="${sl(p)}" style="display:grid;grid-template-columns:40px 90px 1fr auto;gap:1.5rem;align-items:center;padding:1.25rem 0;border-bottom:1px solid var(--stone);text-decoration:none;transition:background .2s" class="col-sm" onmouseover="this.style.background='var(--teal-wash)'" onmouseout="this.style.background='transparent'">
+        <span style="font-size:1.8rem;font-weight:800;color:var(--stone);line-height:1">${String(i+2).padStart(2,'0')}</span>
+        <span class="marker" style="font-size:.65rem;padding:.2rem .6rem;justify-self:start">${p.catLabel}</span>
+        <div><h4 style="font-size:1.05rem;color:var(--ink);font-weight:700;line-height:1.3;margin-bottom:.15rem">${p.title}</h4><span style="font-size:.8rem;color:var(--slate)">${p.author} — ${fd(p.date)}</span></div>
+        <span class="material-symbols-outlined hide-sm" style="font-size:18px;color:var(--ink)">arrow_forward</span>
+      </a>`;
+    });
+    // 3 card visive dopo il sommario
+    const cards=posts.slice(1,4);
+    if(cards.length){
+      h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem" class="col-sm">`;
+      cards.forEach(p=>{
+        h+=`<a href="${sl(p)}" style="border-radius:12px;overflow:hidden;background:var(--cream);border:1px solid var(--stone);text-decoration:none;transition:transform .35s cubic-bezier(.19,1,.22,1),box-shadow .35s ease;display:block" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,.06)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+          <div style="height:180px;overflow:hidden"><img src="${p.img}" alt="" style="width:100%;height:100%;object-fit:cover;transition:transform .6s" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='none'"/></div>
+          <div style="padding:1.25rem">
+            <div style="display:flex;gap:.5rem;align-items:center;margin-bottom:.5rem"><span class="marker" style="font-size:.65rem;padding:.2rem .5rem">${p.catLabel}</span><span style="font-size:.75rem;color:var(--slate)">${fd(p.date)}</span></div>
+            <h4 style="font-size:1.05rem;color:var(--ink);font-weight:700;line-height:1.3;margin-bottom:.3rem">${p.title}</h4>
+            <span style="font-size:.8rem;color:var(--slate)">${p.author}</span>
+          </div>
+        </a>`;
+      });
+      h+=`</div>`;
+    }
+    h+=`<div style="margin-top:2.5rem;text-align:center"><a href="./blog.html" style="display:inline-flex;align-items:center;gap:.4rem;font-size:.9rem;font-weight:700;color:var(--ink);padding:.7rem 2rem;border:1.5px solid var(--ink);border-radius:100px;transition:all .2s" onmouseover="this.style.background='var(--ink)';this.style.color='white'" onmouseout="this.style.background='transparent';this.style.color='var(--ink)'">Tutti i numeri <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span></a></div>`;
+    se.innerHTML=h;
+  }
+}
+loadRivista();
+
+// Team
+async function loadTeam(){
+  let team;
+  try{const r=await fetch('/team.json');team=await r.json()}catch(e){return}
+  const g=document.getElementById('team-grid');
+  team.forEach((p,i)=>{
+    const card=document.createElement('a');
+    card.href=`./persona.html?id=${p.id}`;
+    card.className='team-card';card.style.opacity='0';card.style.transform='translateY(20px)';setTimeout(()=>{card.style.transition='opacity .6s ease, transform .6s ease';card.style.transitionDelay=(i*120)+'ms';card.style.opacity='1';card.style.transform='none'},100);
+    card.style.cssText='text-align:center;text-decoration:none;display:block';
+    card.innerHTML=`
+      <div class="photo" style="width:80px;height:80px;border-radius:50%;overflow:hidden;margin:0 auto 1rem">
+        <img src="${p.photo}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover"/>
+      </div>
+      <h4 style="font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:.15rem">${p.name}</h4>
+      <span style="font-family:Public Sans,Atkinson Hyperlegible,sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-light)">${p.role}</span>
+      <p style="font-size:.8rem;color:var(--slate);margin-top:.5rem;line-height:1.5">${p.intro}</p>`;
+    g.appendChild(card);
+  });
+}
+loadTeam();
+</script>
+</body>
+</html>
