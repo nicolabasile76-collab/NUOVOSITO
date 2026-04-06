@@ -603,6 +603,8 @@ fetch('/chatbot.json').then(r=>r.json()).then(d=>{chatbotData=d}).catch(()=>{});
 function formatBotMsg(text){
   // Sanitize HTML
   text=text.replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  // Convert **bold** to <strong>
+  text=text.replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>');
   // Convert bullet lines (• or - at start of line) into <ul><li>
   const lines=text.split('\n');
   let html='';let inList=false;
