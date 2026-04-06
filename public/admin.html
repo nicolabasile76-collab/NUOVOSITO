@@ -222,7 +222,10 @@ document.querySelectorAll('.sidebar a[data-section]').forEach(a=>{
 // ═══ API helpers ═══
 function api(url,opts={}){
   opts.headers={...opts.headers,'x-admin-token':TOKEN,'Content-Type':'application/json'};
-  return fetch(url,opts).then(r=>r.json());
+  return fetch(url,opts).then(r=>{
+    if(!r.ok) return r.text().then(t=>{toast('Errore: '+t,'error');throw new Error(t)});
+    return r.json();
+  }).catch(e=>{toast('Errore di rete: '+e.message,'error');throw e});
 }
 
 function loadAll(){

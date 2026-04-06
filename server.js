@@ -123,11 +123,12 @@ app.post('/api/admin/data/:file', authAdmin, async (req, res) => {
   const allowed = ['blog.json', 'team.json', 'chatbot.json'];
   const file = req.params.file;
   if (!allowed.includes(file)) return res.status(400).json({ error: 'File non consentito' });
+  if (!GITHUB_TOKEN) return res.status(500).json({ error: 'GITHUB_TOKEN non configurato su Vercel. Vai su Settings → Environment Variables.' });
   try {
     const content = JSON.stringify(req.body, null, 2);
     await githubSaveFile(file, content, `Admin: aggiornamento ${file}`);
-    res.json({ success: true, message: 'Salvato su GitHub. Il sito si aggiorna in ~30 secondi.' });
-  } catch (e) { res.status(500).json({ error: e.message }); }
+    res.json({ success: true, message: 'Salvato! Il sito si aggiorna in ~30 secondi.' });
+  } catch (e) { res.status(500).json({ error: 'Errore GitHub: ' + e.message }); }
 });
 
 // SAVE contesto-post.txt (via GitHub API)
