@@ -52,6 +52,16 @@ a{color:inherit;text-decoration:none}
 .pillar{position:relative;padding:2.5rem;border-radius:12px;transition:transform .4s cubic-bezier(.19,1,.22,1),box-shadow .4s ease;overflow:hidden}
 .pillar:hover{transform:translateY(-6px);box-shadow:0 24px 48px rgba(0,61,74,.08)}
 .pillar::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--ink);border-radius:4px 0 0 4px}
+/* Pillar buttons — subtle by default, pop on hover */
+.pbtn{display:inline-flex;align-items:center;gap:.4rem;padding:.6rem 1.4rem;border-radius:8px;font-weight:700;font-size:.85rem;cursor:pointer;transition:all .25s ease;opacity:.7;transform:scale(.97)}
+.pillar:hover .pbtn{opacity:1;transform:scale(1)}
+.pbtn:hover{transform:scale(1.05)!important;box-shadow:0 4px 16px rgba(0,0,0,.12)}
+/* Light pillar buttons */
+.pbtn-light{background:var(--ink);color:white}.pbtn-light:hover{background:var(--ink-deep)}
+.pbtn-outline{background:transparent;border:1.5px solid var(--ink);color:var(--ink)}.pbtn-outline:hover{background:var(--ink);color:white}
+/* Dark pillar buttons */
+.pbtn-dark{background:rgba(255,255,255,.15);color:white}.pbtn-dark:hover{background:rgba(255,255,255,.3)}
+.pbtn-glow{background:var(--teal-glow);color:var(--charcoal-90);font-weight:800}.pbtn-glow:hover{background:white;color:var(--ink)}
 
 /* Blog card */
 .blog-card{border-radius:12px;overflow:hidden;transition:transform .35s cubic-bezier(.19,1,.22,1),box-shadow .35s ease;cursor:pointer}
@@ -183,8 +193,8 @@ a{color:inherit;text-decoration:none}
         <p style="font-size:.85rem;color:var(--charcoal)"><strong style="color:var(--ink)">Novità 2025</strong> — Valutazione d'Impatto Generazionale (Legge 167/2025)</p>
       </div>
       <div style="display:flex;gap:.75rem;margin-top:1.5rem;flex-wrap:wrap">
-        <span style="display:inline-flex;align-items:center;gap:.4rem;color:var(--ink);font-weight:700;font-size:.9rem">Approfondisci</span>
-        <span onclick="event.preventDefault();event.stopPropagation();location.href='./valutapp.html'" style="display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1.25rem;background:var(--ink);color:white;border-radius:8px;font-weight:700;font-size:.85rem;cursor:pointer">Valutapp <span class="material-symbols-outlined" style="font-size:16px">assessment</span></span>
+        <span class="pbtn pbtn-outline">Approfondisci</span>
+        <span class="pbtn pbtn-light" onclick="event.preventDefault();event.stopPropagation();location.href='./valutapp.html'">Valutapp <span class="material-symbols-outlined" style="font-size:16px">assessment</span></span>
       </div>
     </a>
 
@@ -195,8 +205,8 @@ a{color:inherit;text-decoration:none}
       <h3 style="font-size:1.5rem;margin-bottom:.75rem">Amministrazione Condivisa</h3>
       <p style="font-size:1.05rem;line-height:1.7;opacity:.9">Coprogrammazione e coprogettazione tra PA e Terzo Settore. Facilitazione tavoli, governance, progettazione partecipata.</p>
       <div style="display:flex;gap:.75rem;margin-top:1.5rem;flex-wrap:wrap">
-        <span style="display:inline-flex;align-items:center;gap:.4rem;padding:.7rem 1.5rem;background:rgba(255,255,255,.15);border-radius:8px;font-weight:700;font-size:.9rem;color:white">Approfondisci</span>
-        <span onclick="event.preventDefault();event.stopPropagation();location.href='./piani-di-zona.html'" style="display:inline-flex;align-items:center;gap:.4rem;padding:.7rem 1.5rem;background:var(--teal-glow);border-radius:8px;font-weight:700;font-size:.9rem;color:var(--charcoal-90);cursor:pointer">Piani di Zona <span class="material-symbols-outlined" style="font-size:16px">description</span></span>
+        <span class="pbtn pbtn-dark">Approfondisci</span>
+        <span class="pbtn pbtn-glow" onclick="event.preventDefault();event.stopPropagation();location.href='./piani-di-zona.html'"><span class="material-symbols-outlined" style="font-size:16px">description</span> Piani di Zona</span>
       </div>
     </a>
 
@@ -205,7 +215,7 @@ a{color:inherit;text-decoration:none}
       <span class="material-symbols-outlined" style="font-size:2rem;color:var(--ink);margin-bottom:1rem">hub</span>
       <h3 style="font-size:1.5rem;color:var(--ink);margin-bottom:.75rem">Consulenza Organizzativa</h3>
       <p style="font-size:1.05rem;color:var(--charcoal);line-height:1.7">Piani di impresa, passaggio intergenerazionale, sviluppo competenze, riorganizzazione dei processi.</p>
-      <span style="display:inline-flex;align-items:center;gap:.4rem;margin-top:1.5rem;color:var(--ink);font-weight:700;font-size:.9rem">Approfondisci</span>
+      <span class="pbtn pbtn-outline" style="margin-top:1.5rem">Approfondisci</span>
     </a>
 
     <!-- AI — bottone WAIT più evidente -->
@@ -215,8 +225,8 @@ a{color:inherit;text-decoration:none}
       <h3 style="font-size:1.5rem;color:var(--teal-glow);margin-bottom:.75rem">Uso dei dati e Intelligenza Artificiale</h3>
       <p style="font-size:1.05rem;line-height:1.7;opacity:.9">Programmazione e progettazione data driven, analisi dati sociali, AI nei processi collaborativi.</p>
       <div style="display:flex;gap:.75rem;margin-top:1.5rem;flex-wrap:wrap">
-        <span style="display:inline-flex;align-items:center;gap:.4rem;padding:.7rem 1.5rem;background:rgba(255,255,255,.15);border-radius:8px;font-weight:700;font-size:.9rem;color:white">Approfondisci</span>
-        <span onclick="event.preventDefault();event.stopPropagation();location.href='./wait.html'" style="display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.5rem;background:var(--teal-glow);color:var(--charcoal-90);border-radius:8px;font-weight:800;font-size:.9rem;cursor:pointer">w<strong>AI</strong>t</span>
+        <span class="pbtn pbtn-dark">Approfondisci</span>
+        <span class="pbtn pbtn-glow" onclick="event.preventDefault();event.stopPropagation();location.href='./wait.html'">w<strong>AI</strong>t</span>
       </div>
     </a>
 
