@@ -167,6 +167,17 @@ function loadSiteContext() {
     } catch(e) {}
   }
 
+  // Load extra context file (contesto-post.txt)
+  const extraPath = path.join(publicDir, 'contesto-post.txt');
+  if (fs.existsSync(extraPath)) {
+    const extra = fs.readFileSync(extraPath, 'utf8');
+    // Strip comment lines starting with #
+    const cleanExtra = extra.split('\n').filter(l => !l.startsWith('#')).join('\n').trim();
+    if (cleanExtra.length > 10) {
+      context += '\n\n--- INFORMAZIONI AGGIUNTIVE (non presenti nel sito) ---\n' + cleanExtra;
+    }
+  }
+
   siteContext = context;
   console.log(`  Contesto sito caricato: ${Math.round(context.length / 1024)}KB di testo\n`);
 }

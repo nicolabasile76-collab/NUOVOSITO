@@ -1,0 +1,22 @@
+# Contesto POST — Informazioni aggiuntive per il chatbot
+# Tutto quello che scrivi qui il chatbot lo sa e può usarlo per rispondere.
+# Aggiungi liberamente: progetti, storie, dettagli, filosofia, FAQ.
+# Il formato è libero — scrivi come parleresti a un collega.
+
+---
+
+## Esperienze non ancora pubblicate sul sito
+
+Abbiamo gestito la Riorganizzazione di Crema, un processo complesso di ridefinizione della governance territoriale che ha coinvolto tutti gli attori del welfare locale.
+
+Abbiamo accompagnato la Coprogrammazione di Fondazione Perugia, facilitando il dialogo tra la Fondazione e gli enti del Terzo Settore del territorio per definire insieme le priorità di intervento.
+
+## Lezioni apprese
+
+Da queste esperienze abbiamo imparato che è necessario sviluppare processi semplici e ordinati. La complessità del welfare non si affronta con processi complicati — al contrario, più il contesto è complesso, più il metodo deve essere chiaro, lineare e comprensibile per tutti gli attori coinvolti.
+
+---
+
+## Aggiungi qui sotto altre informazioni
+
+[Scrivi qui tutto quello che vuoi che il chatbot sappia: progetti in corso, dettagli su clienti, filosofia di lavoro, FAQ che ricevete spesso, informazioni che non sono nel sito ma che un utente potrebbe chiedere]
