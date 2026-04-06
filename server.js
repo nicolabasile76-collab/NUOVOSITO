@@ -106,7 +106,75 @@ app.post('/api/contact', async (req, res) => {
   }
 });
 
-// ═══ API: CHAT (Claude) ═══
+// ═══ CONTEXT INJECTION: Load all site content at startup ═══
+let siteContext = '';
+
+function loadSiteContext() {
+  const publicDir = path.join(__dirname, 'public');
+  const pages = [
+    'index.html', 'valutazione-impatto.html', 'amministrazione-condivisa.html',
+    'consulenza-organizzativa.html', 'dati-intelligenza-artificiale.html',
+    'piani-di-zona.html', 'valutapp.html', 'wait.html', 'articolo.html'
+  ];
+
+  let context = '';
+
+  // Extract text from HTML pages
+  pages.forEach(page => {
+    const filePath = path.join(publicDir, page);
+    if (fs.existsSync(filePath)) {
+      const html = fs.readFileSync(filePath, 'utf8');
+      // Strip HTML tags, scripts, styles — keep only text content
+      const text = html
+        .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
+        .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
+        .replace(/<[^>]+>/g, ' ')
+        .replace(/&[a-z]+;/gi, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+      if (text.length > 50) {
+        const pageName = page.replace('.html', '').replace(/-/g, ' ').toUpperCase();
+        context += `\n\n--- PAGINA: ${pageName} ---\n${text.substring(0, 3000)}`;
+      }
+    }
+  });
+
+  // Load team.json
+  const teamPath = path.join(publicDir, 'team.json');
+  if (fs.existsSync(teamPath)) {
+    try {
+      const team = JSON.parse(fs.readFileSync(teamPath, 'utf8'));
+      context += '\n\n--- TEAM COMPLETO ---\n';
+      team.forEach(p => {
+        context += `\n${p.name} (${p.role}): ${p.intro}`;
+        if (p.bio) context += '\n' + p.bio.join(' ');
+        if (p.tags) context += '\nCompetenze: ' + p.tags.join(', ');
+        if (p.linkedin) context += '\nLinkedIn: ' + p.linkedin;
+      });
+    } catch(e) {}
+  }
+
+  // Load blog.json
+  const blogPath = path.join(publicDir, 'blog.json');
+  if (fs.existsSync(blogPath)) {
+    try {
+      const posts = JSON.parse(fs.readFileSync(blogPath, 'utf8'));
+      context += '\n\n--- ARTICOLI E ESPERIENZE ---\n';
+      posts.forEach(p => {
+        context += `\n- "${p.title}" (${p.catLabel}, ${p.date}, ${p.author}): ${p.excerpt}`;
+        if (p.tags) context += ' [' + p.tags.join(', ') + ']';
+      });
+    } catch(e) {}
+  }
+
+  siteContext = context;
+  console.log(`  Contesto sito caricato: ${Math.round(context.length / 1024)}KB di testo\n`);
+}
+
+// Load context at startup
+loadSiteContext();
+
+// ═══ API: CHAT (Claude with full site context) ═══
 app.post('/api/chat', async (req, res) => {
   const ANTHROPIC_KEY = process.env.ANTHROPIC_API_KEY;
   if (!ANTHROPIC_KEY) return res.status(500).json({ error: 'Anthropic API key not configured' });
@@ -114,22 +182,20 @@ app.post('/api/chat', async (req, res) => {
   const { message } = req.body;
   if (!message) return res.status(400).json({ error: 'Messaggio obbligatorio' });
 
-  // Load site context for the AI
   const systemPrompt = `Sei l'assistente del sito di POST Società Benefit, una piccola società di consulenza per il welfare, le politiche pubbliche e lo sviluppo territoriale, con sede a Milano.
 
-I QUATTRO PILASTRI di POST:
-1. VALUTAZIONE D'IMPATTO — Indicatori di esito e processo, ricerca sociale, accountability. Novità 2025: Valutazione d'Impatto Generazionale (Legge 167/2025). POST ha anche Valutapp, una piattaforma per gestire l'intero processo di valutazione.
-2. AMMINISTRAZIONE CONDIVISA — Coprogrammazione e coprogettazione tra PA e Terzo Settore. Facilitazione tavoli tematici, innovazione istituzionale, governance partecipata. Include il servizio dedicato Piani di Zona.
-3. CONSULENZA ORGANIZZATIVA — Piani di impresa, passaggio intergenerazionale, sviluppo competenze, riorganizzazione dei processi. Per cooperative, consorzi, fondazioni, enti del Terzo Settore.
-4. USO DEI DATI E INTELLIGENZA ARTIFICIALE — Programmazione data driven, analisi dati sociali, AI nei processi collaborativi. Include wAIt (Welfare & Artificial Intelligence Toolkit): formazione, sperimentazione e consulenza sull'AI per PA e Terzo Settore.
+ISTRUZIONI:
+- Rispondi SOLO in italiano
+- Tono: artigianale, concreto, diretto, anti-corporate — come parlerebbe un consulente esperto a un collega
+- Risposte brevi: 2-5 frasi massimo, a meno che la domanda non richieda più dettaglio
+- Basa le tue risposte ESCLUSIVAMENTE sui contenuti del sito riportati sotto
+- NON inventare servizi, progetti, numeri o informazioni che non trovi nel contesto
+- Se non trovi la risposta nel contesto, suggerisci di contattare info@postsb.it o +39 3939993731
+- Quando parli dei servizi, sii specifico: cita nomi di progetti, strumenti (Valutapp, wAIt), normative (Legge 167/2025, CdTS)
+- Se l'utente chiede qualcosa fuori dall'ambito di POST (es. meteo, politica), rispondi gentilmente che puoi aiutare solo su temi legati ai servizi di POST
 
-PIANI DI ZONA: POST offre assistenza tecnica per ambiti territoriali. Il percorso: 1) Valutazione e Monitoraggio, 2) Programmazione e Redazione, 3) Coprogrammazione, 4) Supporto Normativo (L.R. 3/2008, Codice Terzo Settore, DGR).
-
-IL TEAM (tutti co-founder): Nicola Basile (fondatore, amministrazione condivisa, docente Cattolica Milano), Pierluca Borali (30+ anni consulenza organizzativa), Giuseppe Imbrogno (progettista sociale, coordina OVeR), Nicol Mondin (psicologa, welfare e comunità), Daniele Restelli (economista, gestione servizi).
-
-CONTATTI: info@postsb.it, +39 3939993731, Milano. LinkedIn: linkedin.com/company/105770276
-
-Rispondi in italiano, in modo conciso e diretto. Usa il tono di POST: artigianale, concreto, anti-corporate. Se non sai qualcosa, suggerisci di contattare info@postsb.it. Non inventare servizi che POST non offre. Risposte brevi (2-4 frasi massimo).`;
+CONTENUTI DEL SITO POST:
+${siteContext}`;
 
   try {
     const response = await fetch('https://api.anthropic.com/v1/messages', {
@@ -141,7 +207,7 @@ Rispondi in italiano, in modo conciso e diretto. Usa il tono di POST: artigianal
       },
       body: JSON.stringify({
         model: 'claude-haiku-4-5-20251001',
-        max_tokens: 300,
+        max_tokens: 500,
         system: systemPrompt,
         messages: [{ role: 'user', content: message }]
       })
@@ -152,10 +218,12 @@ Rispondi in italiano, in modo conciso e diretto. Usa il tono di POST: artigianal
       const reply = data.content?.[0]?.text || 'Mi dispiace, non sono riuscito a generare una risposta.';
       res.json({ reply });
     } else {
-      // Fallback to chatbot.json
+      const err = await response.text();
+      console.error('Claude API error:', err);
       res.json({ reply: 'Non ho una risposta pronta. Scrivi a info@postsb.it o usa il form contatti.', fallback: true });
     }
   } catch (e) {
+    console.error('Chat error:', e.message);
     res.json({ reply: 'Non ho una risposta pronta. Scrivi a info@postsb.it o usa il form contatti.', fallback: true });
   }
 });
