@@ -1,7 +1,8 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
-const { put, list, del, getDownloadUrl } = require('@vercel/blob');
+// In-memory data cache for admin edits (persists until next cold start)
+const dataCache = {};
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -68,21 +69,16 @@ app.get('/api/images', (req, res) => {
 // Parse JSON bodies
 app.use(express.json());
 
-// ═══ PUBLIC DATA API: serve JSON from Blob (if available) or static file ═══
-app.get('/data/:file', async (req, res) => {
+// ═══ PUBLIC DATA API: serve JSON from cache or static file ═══
+app.get('/data/:file', (req, res) => {
   const allowed = ['blog.json', 'team.json', 'chatbot.json'];
   const file = req.params.file;
   if (!allowed.includes(file)) return res.status(404).end();
-  try {
-    const { blobs } = await list({ prefix: file });
-    if (blobs.length > 0) {
-      const dlUrl = await getDownloadUrl(blobs[0].url);
-      const r = await fetch(dlUrl);
-      const data = await r.text();
-      res.setHeader('Content-Type', 'application/json');
-      return res.send(data);
-    }
-  } catch (e) { /* fallback to static */ }
+  // Serve from cache if admin has saved, otherwise from static file
+  if (dataCache[file]) {
+    res.setHeader('Content-Type', 'application/json');
+    return res.send(dataCache[file]);
+  }
   const filePath = path.join(__dirname, 'public', file);
   if (fs.existsSync(filePath)) return res.sendFile(filePath);
   res.json([]);
@@ -96,69 +92,48 @@ function authAdmin(req, res, next) {
   next();
 }
 
-// ═══ ADMIN API: Read/Write data files via Vercel Blob ═══
+// ═══ ADMIN API: Read/Write data files (in-memory cache) ═══
 const PUBLIC_DIR = path.join(__dirname, 'public');
 
-// Helper: read data — first try Blob, then fallback to local file
-async function readData(file) {
-  try {
-    const { blobs } = await list({ prefix: file });
-    if (blobs.length > 0) {
-      const dlUrl = await getDownloadUrl(blobs[0].url);
-      const r = await fetch(dlUrl);
-      return await r.text();
-    }
-  } catch (e) { /* blob not available, use local */ }
-  const filePath = path.join(PUBLIC_DIR, file);
-  if (fs.existsSync(filePath)) return fs.readFileSync(filePath, 'utf8');
-  return null;
-}
-
-// Helper: save data to Blob
-async function saveData(file, content) {
-  // Delete old blob if exists
-  try {
-    const { blobs } = await list({ prefix: file });
-    for (const b of blobs) await del(b.url);
-  } catch (e) { /* ok */ }
-  // Save new
-  await put(file, content, { access: 'private', addRandomSuffix: false });
-}
-
 // GET any JSON file
-app.get('/api/admin/data/:file', authAdmin, async (req, res) => {
+app.get('/api/admin/data/:file', authAdmin, (req, res) => {
   const allowed = ['blog.json', 'team.json', 'chatbot.json'];
   const file = req.params.file;
   if (!allowed.includes(file)) return res.status(400).json({ error: 'File non consentito' });
-  try {
-    const raw = await readData(file);
-    res.json(raw ? JSON.parse(raw) : []);
-  } catch (e) { res.status(500).json({ error: e.message }); }
+  if (dataCache[file]) return res.json(JSON.parse(dataCache[file]));
+  const filePath = path.join(PUBLIC_DIR, file);
+  if (!fs.existsSync(filePath)) return res.json([]);
+  try { res.json(JSON.parse(fs.readFileSync(filePath, 'utf8'))); }
+  catch (e) { res.status(500).json({ error: e.message }); }
 });
 
-// SAVE any JSON file (to Vercel Blob)
-app.post('/api/admin/data/:file', authAdmin, async (req, res) => {
+// SAVE any JSON file
+app.post('/api/admin/data/:file', authAdmin, (req, res) => {
   const allowed = ['blog.json', 'team.json', 'chatbot.json'];
   const file = req.params.file;
   if (!allowed.includes(file)) return res.status(400).json({ error: 'File non consentito' });
   try {
-    await saveData(file, JSON.stringify(req.body, null, 2));
+    const content = JSON.stringify(req.body, null, 2);
+    dataCache[file] = content;
+    // Try to write to filesystem (works locally, may fail on Vercel)
+    try { fs.writeFileSync(path.join(PUBLIC_DIR, file), content, 'utf8'); } catch(e) {}
     res.json({ success: true });
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
 // GET contesto-post.txt
-app.get('/api/admin/contesto', authAdmin, async (req, res) => {
-  try {
-    const raw = await readData('contesto-post.txt');
-    res.json({ text: raw || '' });
-  } catch (e) { res.status(500).json({ error: e.message }); }
+app.get('/api/admin/contesto', authAdmin, (req, res) => {
+  if (dataCache['contesto-post.txt']) return res.json({ text: dataCache['contesto-post.txt'] });
+  const filePath = path.join(PUBLIC_DIR, 'contesto-post.txt');
+  if (!fs.existsSync(filePath)) return res.json({ text: '' });
+  res.json({ text: fs.readFileSync(filePath, 'utf8') });
 });
 
 // SAVE contesto-post.txt
-app.post('/api/admin/contesto', authAdmin, async (req, res) => {
+app.post('/api/admin/contesto', authAdmin, (req, res) => {
   try {
-    await saveData('contesto-post.txt', req.body.text);
+    dataCache['contesto-post.txt'] = req.body.text;
+    try { fs.writeFileSync(path.join(PUBLIC_DIR, 'contesto-post.txt'), req.body.text, 'utf8'); } catch(e) {}
     res.json({ success: true });
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
