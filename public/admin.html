@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>POST — Pannello Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+:root{--ink:#006172;--ink-deep:#003d4a;--cream:#f7f5f0;--warm-white:#fefcf8;--stone:#e8e4dd;--slate:#6b7280;--charcoal:#1a1a1a;--teal-glow:#88d1e5;--red:#dc2626;--green:#16a34a}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Atkinson Hyperlegible',sans-serif;background:var(--cream);color:var(--charcoal);line-height:1.6}
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
+
+/* Login */
+#login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh}
+.login-box{background:white;padding:3rem;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.08);max-width:400px;width:100%}
+
+/* Layout */
+#admin-app{display:none;min-height:100vh}
+.sidebar{position:fixed;left:0;top:0;width:240px;height:100vh;background:var(--charcoal);padding:1.5rem 0;overflow-y:auto}
+.sidebar h2{color:white;font-size:1.1rem;padding:0 1.5rem;margin-bottom:2rem}
+.sidebar a{display:flex;align-items:center;gap:.75rem;padding:.75rem 1.5rem;color:rgba(255,255,255,.6);font-size:.9rem;cursor:pointer;transition:all .15s;text-decoration:none}
+.sidebar a:hover,.sidebar a.active{background:rgba(255,255,255,.08);color:white}
+.sidebar a .material-symbols-outlined{font-size:20px}
+.main{margin-left:240px;padding:2rem 3rem}
+
+/* Components */
+.card{background:white;border-radius:12px;padding:2rem;margin-bottom:1.5rem;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.6rem 1.5rem;border-radius:8px;font-weight:700;font-size:.85rem;cursor:pointer;border:none;transition:all .15s}
+.btn-primary{background:var(--ink);color:white}.btn-primary:hover{background:var(--ink-deep)}
+.btn-danger{background:var(--red);color:white}.btn-danger:hover{opacity:.8}
+.btn-outline{background:transparent;border:1.5px solid var(--ink);color:var(--ink)}.btn-outline:hover{background:var(--ink);color:white}
+.btn-small{padding:.4rem 1rem;font-size:.8rem}
+input,textarea,select{width:100%;padding:.65rem .75rem;border:1.5px solid var(--stone);border-radius:8px;font-family:'Atkinson Hyperlegible';font-size:.95rem;outline:none;transition:border-color .2s;background:var(--cream)}
+input:focus,textarea:focus,select:focus{border-color:var(--ink)}
+label{display:block;font-size:.8rem;font-weight:700;color:var(--slate);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.4rem}
+.field{margin-bottom:1.25rem}
+.toast{position:fixed;top:1.5rem;right:1.5rem;padding:1rem 1.5rem;border-radius:8px;color:white;font-weight:700;z-index:1000;opacity:0;transform:translateY(-10px);transition:all .3s}
+.toast.show{opacity:1;transform:translateY(0)}
+.toast.success{background:var(--green)}.toast.error{background:var(--red)}
+.tag{display:inline-block;padding:.2rem .6rem;background:var(--cream);border:1px solid var(--stone);border-radius:100px;font-size:.75rem;margin:.15rem}
+.item-row{display:flex;justify-content:space-between;align-items:center;padding:1rem;border-bottom:1px solid var(--stone);gap:1rem}
+.item-row:last-child{border-bottom:none}
+.item-row h4{color:var(--ink);font-size:1rem}
+.item-row p{color:var(--slate);font-size:.85rem}
+.hidden{display:none}
+
+@media(max-width:768px){
+  .sidebar{width:100%;height:auto;position:relative;display:flex;overflow-x:auto;padding:.5rem}
+  .sidebar a{white-space:nowrap;padding:.5rem 1rem}
+  .main{margin-left:0}
+}
+</style>
+</head>
+<body>
+
+<!-- Toast -->
+<div id="toast" class="toast"></div>
+
+<!-- Login Screen -->
+<div id="login-screen">
+  <div class="login-box">
+    <h1 style="color:var(--ink);font-size:1.5rem;margin-bottom:.5rem">POST Admin</h1>
+    <p style="color:var(--slate);margin-bottom:2rem;font-size:.95rem">Accedi al pannello di gestione del sito</p>
+    <div class="field">
+      <label>Password</label>
+      <input type="password" id="login-pass" placeholder="Inserisci la password" onkeydown="if(event.key==='Enter')doLogin()"/>
+    </div>
+    <button class="btn btn-primary" style="width:100%" onclick="doLogin()">Accedi</button>
+  </div>
+</div>
+
+<!-- Admin App -->
+<div id="admin-app">
+  <nav class="sidebar">
+    <h2 style="display:flex;align-items:center;gap:.5rem"><span class="material-symbols-outlined">admin_panel_settings</span> POST Admin</h2>
+    <a href="#" class="active" data-section="articoli"><span class="material-symbols-outlined">article</span>Articoli</a>
+    <a href="#" data-section="team"><span class="material-symbols-outlined">group</span>Team</a>
+    <a href="#" data-section="contesto"><span class="material-symbols-outlined">psychology</span>Contesto Chatbot</a>
+    <a href="#" data-section="chatbot"><span class="material-symbols-outlined">smart_toy</span>Risposte Chatbot</a>
+    <hr style="border:none;border-top:1px solid rgba(255,255,255,.1);margin:1rem 1.5rem"/>
+    <a href="./index.html" target="_blank"><span class="material-symbols-outlined">open_in_new</span>Vai al sito</a>
+  </nav>
+
+  <div class="main">
+    <!-- ARTICOLI -->
+    <div id="sec-articoli">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem">
+        <h1 style="color:var(--ink);font-size:1.8rem">Articoli e Esperienze</h1>
+        <button class="btn btn-primary" onclick="showArticleForm()"><span class="material-symbols-outlined" style="font-size:18px">add</span>Nuovo articolo</button>
+      </div>
+      <div id="articles-list"></div>
+      <!-- Article form (hidden by default) -->
+      <div id="article-form" class="card hidden">
+        <h3 style="color:var(--ink);margin-bottom:1.5rem" id="article-form-title">Nuovo articolo</h3>
+        <div class="field"><label>Titolo</label><input type="text" id="art-title"/></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+          <div class="field"><label>Categoria</label>
+            <select id="art-cat">
+              <option value="case-study">Case study</option>
+              <option value="normativa">Normativa</option>
+              <option value="metodo">Metodo</option>
+              <option value="ai">AI</option>
+            </select>
+          </div>
+          <div class="field"><label>Autore</label><input type="text" id="art-author" value="Nicola Basile"/></div>
+        </div>
+        <div class="field"><label>Descrizione breve</label><textarea id="art-excerpt" rows="3"></textarea></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+          <div class="field"><label>URL immagine</label><input type="text" id="art-img" placeholder="https://..."/></div>
+          <div class="field"><label>Data (YYYY-MM-DD)</label><input type="date" id="art-date"/></div>
+        </div>
+        <div class="field"><label>Tags (separati da virgola)</label><input type="text" id="art-tags" placeholder="Welfare, Terzo Settore"/></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+          <div class="field"><label>URL pagina articolo (opzionale)</label><input type="text" id="art-url" placeholder="./articolo-nome.html"/></div>
+          <div class="field" style="display:flex;align-items:end;gap:1rem">
+            <label style="display:flex;align-items:center;gap:.5rem;cursor:pointer"><input type="checkbox" id="art-highlight" style="width:auto"/> In evidenza (copertina)</label>
+          </div>
+        </div>
+        <div style="display:flex;gap:1rem;margin-top:1rem">
+          <button class="btn btn-primary" onclick="saveArticle()">Salva</button>
+          <button class="btn btn-outline" onclick="hideArticleForm()">Annulla</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TEAM -->
+    <div id="sec-team" class="hidden">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem">
+        <h1 style="color:var(--ink);font-size:1.8rem">Team</h1>
+        <button class="btn btn-primary" onclick="showTeamForm()"><span class="material-symbols-outlined" style="font-size:18px">add</span>Nuovo membro</button>
+      </div>
+      <div id="team-list"></div>
+      <div id="team-form" class="card hidden">
+        <h3 style="color:var(--ink);margin-bottom:1.5rem" id="team-form-title">Nuovo membro</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+          <div class="field"><label>Nome completo</label><input type="text" id="tm-name"/></div>
+          <div class="field"><label>ID (slug, es: nicola-basile)</label><input type="text" id="tm-id"/></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+          <div class="field"><label>Ruolo</label><input type="text" id="tm-role" value="Co-founder"/></div>
+          <div class="field"><label>URL foto</label><input type="text" id="tm-photo" placeholder="https://..."/></div>
+        </div>
+        <div class="field"><label>Intro (una riga)</label><input type="text" id="tm-intro"/></div>
+        <div class="field"><label>Bio (un paragrafo per riga, vai a capo per separare)</label><textarea id="tm-bio" rows="8"></textarea></div>
+        <div class="field"><label>Tags competenze (separati da virgola)</label><input type="text" id="tm-tags"/></div>
+        <div class="field"><label>LinkedIn (opzionale)</label><input type="text" id="tm-linkedin"/></div>
+        <div style="display:flex;gap:1rem;margin-top:1rem">
+          <button class="btn btn-primary" onclick="saveTeamMember()">Salva</button>
+          <button class="btn btn-outline" onclick="hideTeamForm()">Annulla</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTESTO CHATBOT -->
+    <div id="sec-contesto" class="hidden">
+      <h1 style="color:var(--ink);font-size:1.8rem;margin-bottom:.5rem">Contesto Chatbot</h1>
+      <p style="color:var(--slate);margin-bottom:2rem">Tutto quello che scrivi qui il chatbot lo sa. Aggiungi esperienze, dettagli, FAQ, informazioni non presenti nel sito.</p>
+      <div class="card">
+        <textarea id="contesto-text" rows="20" style="font-size:.95rem;line-height:1.7"></textarea>
+        <button class="btn btn-primary" style="margin-top:1rem" onclick="saveContesto()">Salva contesto</button>
+      </div>
+    </div>
+
+    <!-- RISPOSTE CHATBOT -->
+    <div id="sec-chatbot" class="hidden">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem">
+        <div>
+          <h1 style="color:var(--ink);font-size:1.8rem">Risposte Chatbot (fallback)</h1>
+          <p style="color:var(--slate);font-size:.9rem">Usate quando Claude API non è disponibile</p>
+        </div>
+        <button class="btn btn-primary" onclick="showChatbotForm()"><span class="material-symbols-outlined" style="font-size:18px">add</span>Nuova risposta</button>
+      </div>
+      <div id="chatbot-list"></div>
+      <div id="chatbot-form" class="card hidden">
+        <h3 style="color:var(--ink);margin-bottom:1.5rem" id="chatbot-form-title">Nuova risposta</h3>
+        <div class="field"><label>Keywords (separati da virgola)</label><input type="text" id="cb-keywords" placeholder="piano di zona, pdz, ambito"/></div>
+        <div class="field"><label>Risposta</label><textarea id="cb-answer" rows="4"></textarea></div>
+        <div style="display:flex;gap:1rem;margin-top:1rem">
+          <button class="btn btn-primary" onclick="saveChatbotEntry()">Salva</button>
+          <button class="btn btn-outline" onclick="hideChatbotForm()">Annulla</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+let TOKEN='';
+let blogData=[], teamData=[], chatbotData=[];
+let editIdx=-1; // -1 = new, >= 0 = editing index
+
+// ═══ Auth ═══
+function doLogin(){
+  TOKEN=document.getElementById('login-pass').value;
+  // Test auth
+  fetch('/api/admin/data/blog.json',{headers:{'x-admin-token':TOKEN}})
+    .then(r=>{if(!r.ok)throw new Error();return r.json()})
+    .then(()=>{document.getElementById('login-screen').style.display='none';document.getElementById('admin-app').style.display='block';loadAll()})
+    .catch(()=>toast('Password errata','error'));
+}
+
+// ═══ Toast ═══
+function toast(msg,type='success'){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.className='toast '+type+' show';
+  setTimeout(()=>t.classList.remove('show'),3000);
+}
+
+// ═══ Navigation ═══
+document.querySelectorAll('.sidebar a[data-section]').forEach(a=>{
+  a.onclick=e=>{
+    e.preventDefault();
+    document.querySelectorAll('.sidebar a').forEach(x=>x.classList.remove('active'));
+    a.classList.add('active');
+    document.querySelectorAll('[id^="sec-"]').forEach(s=>s.classList.add('hidden'));
+    document.getElementById('sec-'+a.dataset.section).classList.remove('hidden');
+  };
+});
+
+// ═══ API helpers ═══
+function api(url,opts={}){
+  opts.headers={...opts.headers,'x-admin-token':TOKEN,'Content-Type':'application/json'};
+  return fetch(url,opts).then(r=>r.json());
+}
+
+function loadAll(){
+  api('/api/admin/data/blog.json').then(d=>{blogData=d;renderArticles()});
+  api('/api/admin/data/team.json').then(d=>{teamData=d;renderTeam()});
+  api('/api/admin/data/chatbot.json').then(d=>{chatbotData=d;renderChatbot()});
+  api('/api/admin/contesto').then(d=>{document.getElementById('contesto-text').value=d.text||''});
+}
+
+// ═══ ARTICOLI ═══
+const catLabels={['case-study']:'Case study',normativa:'Normativa',metodo:'Metodo',ai:'AI'};
+function renderArticles(){
+  const el=document.getElementById('articles-list');
+  if(!blogData.length){el.innerHTML='<div class="card"><p style="color:var(--slate)">Nessun articolo</p></div>';return}
+  el.innerHTML=blogData.map((a,i)=>`
+    <div class="item-row">
+      <div style="flex:1">
+        <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.25rem">
+          <span class="tag">${catLabels[a.cat]||a.cat}</span>
+          ${a.highlight?'<span class="tag" style="background:var(--ink);color:white;border-color:var(--ink)">In evidenza</span>':''}
+          <span style="font-size:.8rem;color:var(--slate)">${a.date}</span>
+        </div>
+        <h4>${a.title}</h4>
+        <p>${a.excerpt?.substring(0,100)}${a.excerpt?.length>100?'...':''}</p>
+      </div>
+      <div style="display:flex;gap:.5rem">
+        <button class="btn btn-outline btn-small" onclick="editArticle(${i})"><span class="material-symbols-outlined" style="font-size:16px">edit</span></button>
+        <button class="btn btn-danger btn-small" onclick="deleteArticle(${i})"><span class="material-symbols-outlined" style="font-size:16px">delete</span></button>
+      </div>
+    </div>`).join('');
+}
+function showArticleForm(){editIdx=-1;document.getElementById('article-form-title').textContent='Nuovo articolo';['art-title','art-excerpt','art-img','art-tags','art-url'].forEach(id=>document.getElementById(id).value='');document.getElementById('art-cat').value='case-study';document.getElementById('art-author').value='Nicola Basile';document.getElementById('art-date').value=new Date().toISOString().split('T')[0];document.getElementById('art-highlight').checked=false;document.getElementById('article-form').classList.remove('hidden')}
+function hideArticleForm(){document.getElementById('article-form').classList.add('hidden')}
+function editArticle(i){
+  editIdx=i;const a=blogData[i];
+  document.getElementById('article-form-title').textContent='Modifica articolo';
+  document.getElementById('art-title').value=a.title||'';
+  document.getElementById('art-cat').value=a.cat||'case-study';
+  document.getElementById('art-author').value=a.author||'';
+  document.getElementById('art-excerpt').value=a.excerpt||'';
+  document.getElementById('art-img').value=a.img||'';
+  document.getElementById('art-date').value=a.date||'';
+  document.getElementById('art-tags').value=(a.tags||[]).join(', ');
+  document.getElementById('art-url').value=a.url||'';
+  document.getElementById('art-highlight').checked=!!a.highlight;
+  document.getElementById('article-form').classList.remove('hidden');
+}
+function deleteArticle(i){if(!confirm('Eliminare "'+blogData[i].title+'"?'))return;blogData.splice(i,1);api('/api/admin/data/blog.json',{method:'POST',body:JSON.stringify(blogData)}).then(()=>{toast('Articolo eliminato');renderArticles()})}
+function saveArticle(){
+  const obj={
+    title:document.getElementById('art-title').value,
+    excerpt:document.getElementById('art-excerpt').value,
+    cat:document.getElementById('art-cat').value,
+    catLabel:catLabels[document.getElementById('art-cat').value],
+    date:document.getElementById('art-date').value,
+    author:document.getElementById('art-author').value,
+    img:document.getElementById('art-img').value,
+    tags:document.getElementById('art-tags').value.split(',').map(t=>t.trim()).filter(Boolean),
+    highlight:document.getElementById('art-highlight').checked
+  };
+  const url=document.getElementById('art-url').value.trim();
+  if(url)obj.url=url;
+  if(!obj.title){toast('Titolo obbligatorio','error');return}
+  if(editIdx>=0){blogData[editIdx]=obj}else{blogData.unshift(obj)}
+  api('/api/admin/data/blog.json',{method:'POST',body:JSON.stringify(blogData)}).then(()=>{toast('Articolo salvato');renderArticles();hideArticleForm()});
+}
+
+// ═══ TEAM ═══
+function renderTeam(){
+  const el=document.getElementById('team-list');
+  if(!teamData.length){el.innerHTML='<div class="card"><p style="color:var(--slate)">Nessun membro</p></div>';return}
+  el.innerHTML=teamData.map((m,i)=>`
+    <div class="item-row">
+      <div style="display:flex;align-items:center;gap:1rem;flex:1">
+        <img src="${m.photo}" alt="" style="width:48px;height:48px;border-radius:50%;object-fit:cover"/>
+        <div>
+          <h4>${m.name}</h4>
+          <p>${m.role} — ${m.intro}</p>
+        </div>
+      </div>
+      <div style="display:flex;gap:.5rem">
+        <button class="btn btn-outline btn-small" onclick="editTeam(${i})"><span class="material-symbols-outlined" style="font-size:16px">edit</span></button>
+        <button class="btn btn-danger btn-small" onclick="deleteTeam(${i})"><span class="material-symbols-outlined" style="font-size:16px">delete</span></button>
+      </div>
+    </div>`).join('');
+}
+function showTeamForm(){editIdx=-1;document.getElementById('team-form-title').textContent='Nuovo membro';['tm-name','tm-id','tm-photo','tm-intro','tm-bio','tm-tags','tm-linkedin'].forEach(id=>document.getElementById(id).value='');document.getElementById('tm-role').value='Co-founder';document.getElementById('team-form').classList.remove('hidden')}
+function hideTeamForm(){document.getElementById('team-form').classList.add('hidden')}
+function editTeam(i){
+  editIdx=i;const m=teamData[i];
+  document.getElementById('team-form-title').textContent='Modifica membro';
+  document.getElementById('tm-name').value=m.name||'';
+  document.getElementById('tm-id').value=m.id||'';
+  document.getElementById('tm-role').value=m.role||'';
+  document.getElementById('tm-photo').value=m.photo||'';
+  document.getElementById('tm-intro').value=m.intro||'';
+  document.getElementById('tm-bio').value=(m.bio||[]).join('\n\n');
+  document.getElementById('tm-tags').value=(m.tags||[]).join(', ');
+  document.getElementById('tm-linkedin').value=m.linkedin||'';
+  document.getElementById('team-form').classList.remove('hidden');
+}
+function deleteTeam(i){if(!confirm('Eliminare '+teamData[i].name+'?'))return;teamData.splice(i,1);api('/api/admin/data/team.json',{method:'POST',body:JSON.stringify(teamData)}).then(()=>{toast('Membro eliminato');renderTeam()})}
+function saveTeamMember(){
+  const obj={
+    id:document.getElementById('tm-id').value.trim(),
+    name:document.getElementById('tm-name').value,
+    role:document.getElementById('tm-role').value,
+    photo:document.getElementById('tm-photo').value,
+    intro:document.getElementById('tm-intro').value,
+    bio:document.getElementById('tm-bio').value.split('\n\n').filter(Boolean),
+    tags:document.getElementById('tm-tags').value.split(',').map(t=>t.trim()).filter(Boolean)
+  };
+  const li=document.getElementById('tm-linkedin').value.trim();
+  if(li)obj.linkedin=li;
+  if(!obj.name||!obj.id){toast('Nome e ID obbligatori','error');return}
+  if(editIdx>=0){teamData[editIdx]=obj}else{teamData.push(obj)}
+  api('/api/admin/data/team.json',{method:'POST',body:JSON.stringify(teamData)}).then(()=>{toast('Membro salvato');renderTeam();hideTeamForm()});
+}
+
+// ═══ CONTESTO ═══
+function saveContesto(){
+  const text=document.getElementById('contesto-text').value;
+  api('/api/admin/contesto',{method:'POST',body:JSON.stringify({text})}).then(()=>toast('Contesto salvato'));
+}
+
+// ═══ CHATBOT RISPOSTE ═══
+function renderChatbot(){
+  const el=document.getElementById('chatbot-list');
+  if(!chatbotData.length){el.innerHTML='<div class="card"><p style="color:var(--slate)">Nessuna risposta</p></div>';return}
+  el.innerHTML=chatbotData.map((c,i)=>`
+    <div class="item-row">
+      <div style="flex:1">
+        <div style="margin-bottom:.25rem">${(c.keywords||[]).map(k=>'<span class="tag">'+k+'</span>').join(' ')}</div>
+        <p>${c.answer?.substring(0,120)}${c.answer?.length>120?'...':''}</p>
+      </div>
+      <div style="display:flex;gap:.5rem">
+        <button class="btn btn-outline btn-small" onclick="editChatbot(${i})"><span class="material-symbols-outlined" style="font-size:16px">edit</span></button>
+        <button class="btn btn-danger btn-small" onclick="deleteChatbot(${i})"><span class="material-symbols-outlined" style="font-size:16px">delete</span></button>
+      </div>
+    </div>`).join('');
+}
+function showChatbotForm(){editIdx=-1;document.getElementById('chatbot-form-title').textContent='Nuova risposta';document.getElementById('cb-keywords').value='';document.getElementById('cb-answer').value='';document.getElementById('chatbot-form').classList.remove('hidden')}
+function hideChatbotForm(){document.getElementById('chatbot-form').classList.add('hidden')}
+function editChatbot(i){
+  editIdx=i;const c=chatbotData[i];
+  document.getElementById('chatbot-form-title').textContent='Modifica risposta';
+  document.getElementById('cb-keywords').value=(c.keywords||[]).join(', ');
+  document.getElementById('cb-answer').value=c.answer||'';
+  document.getElementById('chatbot-form').classList.remove('hidden');
+}
+function deleteChatbot(i){if(!confirm('Eliminare questa risposta?'))return;chatbotData.splice(i,1);api('/api/admin/data/chatbot.json',{method:'POST',body:JSON.stringify(chatbotData)}).then(()=>{toast('Risposta eliminata');renderChatbot()})}
+function saveChatbotEntry(){
+  const obj={
+    keywords:document.getElementById('cb-keywords').value.split(',').map(t=>t.trim()).filter(Boolean),
+    answer:document.getElementById('cb-answer').value
+  };
+  if(!obj.keywords.length||!obj.answer){toast('Keywords e risposta obbligatorie','error');return}
+  if(editIdx>=0){chatbotData[editIdx]=obj}else{chatbotData.push(obj)}
+  api('/api/admin/data/chatbot.json',{method:'POST',body:JSON.stringify(chatbotData)}).then(()=>{toast('Risposta salvata');renderChatbot();hideChatbotForm()});
+}
+</script>
+</body>
+</html>

@@ -67,6 +67,61 @@ app.get('/api/images', (req, res) => {
 // Parse JSON bodies
 app.use(express.json());
 
+// ═══ ADMIN AUTH ═══
+const ADMIN_PASS = process.env.ADMIN_PASSWORD || 'post2025';
+function authAdmin(req, res, next) {
+  const token = req.headers['x-admin-token'];
+  if (token !== ADMIN_PASS) return res.status(401).json({ error: 'Non autorizzato' });
+  next();
+}
+
+// ═══ ADMIN API: Read/Write data files ═══
+const PUBLIC_DIR = path.join(__dirname, 'public');
+
+// GET any JSON file
+app.get('/api/admin/data/:file', authAdmin, (req, res) => {
+  const allowed = ['blog.json', 'team.json', 'chatbot.json'];
+  const file = req.params.file;
+  if (!allowed.includes(file)) return res.status(400).json({ error: 'File non consentito' });
+  const filePath = path.join(PUBLIC_DIR, file);
+  if (!fs.existsSync(filePath)) return res.json([]);
+  try {
+    const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    res.json(data);
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// SAVE any JSON file
+app.post('/api/admin/data/:file', authAdmin, (req, res) => {
+  const allowed = ['blog.json', 'team.json', 'chatbot.json'];
+  const file = req.params.file;
+  if (!allowed.includes(file)) return res.status(400).json({ error: 'File non consentito' });
+  const filePath = path.join(PUBLIC_DIR, file);
+  try {
+    fs.writeFileSync(filePath, JSON.stringify(req.body, null, 2), 'utf8');
+    // Reload site context for chatbot
+    if (typeof loadSiteContext === 'function') loadSiteContext();
+    res.json({ success: true });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// GET contesto-post.txt
+app.get('/api/admin/contesto', authAdmin, (req, res) => {
+  const filePath = path.join(PUBLIC_DIR, 'contesto-post.txt');
+  if (!fs.existsSync(filePath)) return res.json({ text: '' });
+  res.json({ text: fs.readFileSync(filePath, 'utf8') });
+});
+
+// SAVE contesto-post.txt
+app.post('/api/admin/contesto', authAdmin, (req, res) => {
+  const filePath = path.join(PUBLIC_DIR, 'contesto-post.txt');
+  try {
+    fs.writeFileSync(filePath, req.body.text, 'utf8');
+    if (typeof loadSiteContext === 'function') loadSiteContext();
+    res.json({ success: true });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
 // ═══ API: CONTACT (Brevo) ═══
 app.post('/api/contact', async (req, res) => {
   const BREVO_KEY = process.env.BREVO_API_KEY;
