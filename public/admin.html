@@ -76,6 +76,7 @@ label{display:block;font-size:.8rem;font-weight:700;color:var(--slate);text-tran
     <h2 style="display:flex;align-items:center;gap:.5rem"><span class="material-symbols-outlined">admin_panel_settings</span> POST Admin</h2>
     <a href="#" class="active" data-section="articoli"><span class="material-symbols-outlined">article</span>Articoli</a>
     <a href="#" data-section="team"><span class="material-symbols-outlined">group</span>Team</a>
+    <a href="#" data-section="esperienze"><span class="material-symbols-outlined">work_history</span>Esperienze</a>
     <a href="#" data-section="contesto"><span class="material-symbols-outlined">psychology</span>Contesto Chatbot</a>
     <a href="#" data-section="chatbot"><span class="material-symbols-outlined">smart_toy</span>Risposte Chatbot</a>
     <hr style="border:none;border-top:1px solid rgba(255,255,255,.1);margin:1rem 1.5rem"/>
@@ -159,6 +160,41 @@ label{display:block;font-size:.8rem;font-weight:700;color:var(--slate);text-tran
       </div>
     </div>
 
+    <!-- ESPERIENZE -->
+    <div id="sec-esperienze" class="hidden">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem">
+        <h1 style="color:var(--ink);font-size:1.8rem">Esperienze</h1>
+        <button class="btn btn-primary" onclick="showExpForm()"><span class="material-symbols-outlined" style="font-size:18px">add</span>Nuova esperienza</button>
+      </div>
+      <div id="exp-list"></div>
+      <div id="exp-form" class="card hidden">
+        <h3 style="color:var(--ink);margin-bottom:1.5rem" id="exp-form-title">Nuova esperienza</h3>
+        <div class="field"><label>Titolo</label><input type="text" id="exp-titolo"/></div>
+        <div class="field"><label>Committente</label><input type="text" id="exp-committente" placeholder="Es. Comune di Verona"/></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+          <div class="field"><label>Tipologia di processo</label>
+            <select id="exp-processo">
+              <option value="Coprogrammazione">Coprogrammazione</option>
+              <option value="Coprogettazione">Coprogettazione</option>
+              <option value="Coprogrammazione e coprogettazione">Coprogrammazione e coprogettazione</option>
+              <option value="Valutazione d'impatto">Valutazione d'impatto</option>
+              <option value="Valutazione d'impatto sociale">Valutazione d'impatto sociale</option>
+              <option value="Consulenza organizzativa">Consulenza organizzativa</option>
+              <option value="Formazione">Formazione</option>
+              <option value="Supporto tecnico">Supporto tecnico</option>
+            </select>
+          </div>
+          <div class="field"><label>Tipologia di incarico</label><input type="text" id="exp-incarico" placeholder="Es. Facilitazione, mappatura stakeholder"/></div>
+        </div>
+        <div class="field"><label>Cosa abbiamo imparato</label><textarea id="exp-imparato" rows="4" placeholder="La lezione principale di questa esperienza..."></textarea></div>
+        <div class="field"><label>URL immagine (piccola)</label><input type="text" id="exp-img" placeholder="https://..."/></div>
+        <div style="display:flex;gap:1rem;margin-top:1rem">
+          <button class="btn btn-primary" onclick="saveExp()">Salva</button>
+          <button class="btn btn-outline" onclick="hideExpForm()">Annulla</button>
+        </div>
+      </div>
+    </div>
+
     <!-- CONTESTO CHATBOT -->
     <div id="sec-contesto" class="hidden">
       <h1 style="color:var(--ink);font-size:1.8rem;margin-bottom:.5rem">Contesto Chatbot</h1>
@@ -194,7 +230,7 @@ label{display:block;font-size:.8rem;font-weight:700;color:var(--slate);text-tran
 
 <script>
 let TOKEN='';
-let blogData=[], teamData=[], chatbotData=[];
+let blogData=[], teamData=[], chatbotData=[], expData=[];
 let editIdx=-1; // -1 = new, >= 0 = editing index
 
 // ═══ Auth ═══
@@ -238,6 +274,7 @@ function loadAll(){
   api('/api/admin/data/blog.json').then(d=>{blogData=d;renderArticles()});
   api('/api/admin/data/team.json').then(d=>{teamData=d;renderTeam()});
   api('/api/admin/data/chatbot.json').then(d=>{chatbotData=d;renderChatbot()});
+  api('/api/admin/data/esperienze.json').then(d=>{expData=d;renderExpList()});
   api('/api/admin/contesto').then(d=>{document.getElementById('contesto-text').value=d.text||''});
 }
 
@@ -381,6 +418,57 @@ function saveTeamMember(){
   if(!obj.name||!obj.id){toast('Nome e ID obbligatori','error');return}
   if(editIdx>=0){teamData[editIdx]=obj}else{teamData.push(obj)}
   api('/api/admin/data/team.json',{method:'POST',body:JSON.stringify(teamData)}).then(()=>{toast('Membro salvato');renderTeam();hideTeamForm()});
+}
+
+// ═══ ESPERIENZE ═══
+let expEditIdx=-1;
+function renderExpList(){
+  const el=document.getElementById('exp-list');
+  if(!expData.length){el.innerHTML='<div class="card"><p style="color:var(--slate)">Nessuna esperienza</p></div>';return}
+  el.innerHTML=expData.map((e,i)=>`
+    <div class="item-row">
+      <div style="display:flex;gap:1rem;align-items:center;flex:1">
+        ${e.img?`<img src="${e.img}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;flex-shrink:0"/>`:''}
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.25rem">
+            <span class="tag">${e.tipologiaProcesso||''}</span>
+          </div>
+          <h4>${e.titolo}</h4>
+          <p style="font-size:.85rem;color:var(--slate)">${e.committente||''}</p>
+        </div>
+      </div>
+      <div style="display:flex;gap:.5rem">
+        <button class="btn btn-outline btn-small" onclick="editExp(${i})"><span class="material-symbols-outlined" style="font-size:16px">edit</span></button>
+        <button class="btn btn-danger btn-small" onclick="deleteExp(${i})"><span class="material-symbols-outlined" style="font-size:16px">delete</span></button>
+      </div>
+    </div>`).join('');
+}
+function showExpForm(){expEditIdx=-1;document.getElementById('exp-form-title').textContent='Nuova esperienza';['exp-titolo','exp-committente','exp-incarico','exp-imparato','exp-img'].forEach(id=>document.getElementById(id).value='');document.getElementById('exp-processo').value='Coprogrammazione';document.getElementById('exp-form').classList.remove('hidden')}
+function hideExpForm(){document.getElementById('exp-form').classList.add('hidden')}
+function editExp(i){
+  expEditIdx=i;const e=expData[i];
+  document.getElementById('exp-form-title').textContent='Modifica esperienza';
+  document.getElementById('exp-titolo').value=e.titolo||'';
+  document.getElementById('exp-committente').value=e.committente||'';
+  document.getElementById('exp-processo').value=e.tipologiaProcesso||'Coprogrammazione';
+  document.getElementById('exp-incarico').value=e.tipologiaIncarico||'';
+  document.getElementById('exp-imparato').value=e.imparato||'';
+  document.getElementById('exp-img').value=e.img||'';
+  document.getElementById('exp-form').classList.remove('hidden');
+}
+function deleteExp(i){if(!confirm('Eliminare "'+expData[i].titolo+'"?'))return;expData.splice(i,1);api('/api/admin/data/esperienze.json',{method:'POST',body:JSON.stringify(expData)}).then(()=>{toast('Esperienza eliminata');renderExpList()})}
+function saveExp(){
+  const obj={
+    titolo:document.getElementById('exp-titolo').value,
+    committente:document.getElementById('exp-committente').value,
+    tipologiaProcesso:document.getElementById('exp-processo').value,
+    tipologiaIncarico:document.getElementById('exp-incarico').value,
+    imparato:document.getElementById('exp-imparato').value,
+    img:document.getElementById('exp-img').value
+  };
+  if(!obj.titolo){toast('Titolo obbligatorio','error');return}
+  if(expEditIdx>=0){expData[expEditIdx]=obj}else{expData.push(obj)}
+  api('/api/admin/data/esperienze.json',{method:'POST',body:JSON.stringify(expData)}).then(()=>{toast('Esperienza salvata');renderExpList();hideExpForm()});
 }
 
 // ═══ CONTESTO ═══

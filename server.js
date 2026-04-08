@@ -97,7 +97,7 @@ async function blobWrite(file, content) {
 
 // ═══ PUBLIC DATA API: serve JSON from Blob or static file ═══
 app.get('/data/:file', async (req, res) => {
-  const allowed = ['blog.json', 'team.json', 'chatbot.json'];
+  const allowed = ['blog.json', 'team.json', 'chatbot.json', 'esperienze.json'];
   const file = req.params.file;
   if (!allowed.includes(file)) return res.status(404).end();
   try {
@@ -123,7 +123,7 @@ function authAdmin(req, res, next) {
 
 // GET any JSON file
 app.get('/api/admin/data/:file', authAdmin, async (req, res) => {
-  const allowed = ['blog.json', 'team.json', 'chatbot.json'];
+  const allowed = ['blog.json', 'team.json', 'chatbot.json', 'esperienze.json'];
   const file = req.params.file;
   if (!allowed.includes(file)) return res.status(400).json({ error: 'File non consentito' });
   try {
@@ -134,7 +134,7 @@ app.get('/api/admin/data/:file', authAdmin, async (req, res) => {
 
 // SAVE any JSON file
 app.post('/api/admin/data/:file', authAdmin, async (req, res) => {
-  const allowed = ['blog.json', 'team.json', 'chatbot.json'];
+  const allowed = ['blog.json', 'team.json', 'chatbot.json', 'esperienze.json'];
   const file = req.params.file;
   if (!allowed.includes(file)) return res.status(400).json({ error: 'File non consentito' });
   try {

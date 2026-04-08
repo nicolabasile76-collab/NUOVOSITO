@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>POST — Le nostre esperienze</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Public+Sans:wght@400;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+tailwind.config={theme:{extend:{
+  colors:{"primary":"#006172","primary-container":"#2b7a8c","on-primary":"#fff","on-primary-container":"#e7f9ff","on-surface":"#121c2c","on-surface-variant":"#3f484b","surface":"#f9f9ff","surface-container-low":"#f0f3ff","surface-container-lowest":"#fff","surface-container-high":"#dee8ff","secondary-fixed":"#b9eafb","on-secondary-fixed-variant":"#184d5b","outline-variant":"#bec8cb","inverse-surface":"#273141","inverse-on-surface":"#ebf1ff","primary-fixed-dim":"#88d1e5"},
+  fontFamily:{headline:["Public Sans"],atkinson:["Atkinson Hyperlegible"]}
+}}}
+</script>
+<style>
+  .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
+  body{font-family:'Atkinson Hyperlegible',sans-serif;background:#f9f9ff;color:#121c2c}
+  h1,h2,h3{font-family:'Public Sans',sans-serif}
+  html{scroll-behavior:smooth}
+  .reveal{opacity:0;transform:translateY(40px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body class="flex flex-col min-h-screen antialiased">
+
+<!-- NAVBAR -->
+<header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm">
+  <nav class="flex justify-between items-center px-8 py-3 max-w-7xl mx-auto text-lg">
+    <a href="./index.html" class="block flex-shrink-0">
+      <img src="./logo-post.png" alt="POST" class="h-[65px] w-auto object-contain" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'text-primary font-extrabold text-3xl\'>POST</span>')"/>
+    </a>
+    <div class="hidden md:flex items-center gap-7">
+      <a class="text-slate-600 hover:text-primary transition-colors" href="./index.html#pilastri">Cosa facciamo</a>
+      <a class="text-slate-600 hover:text-primary transition-colors" href="./piani-di-zona.html">Piani di Zona</a>
+      <a class="text-primary border-b-2 border-primary pb-0.5" href="./esperienze.html">Esperienze</a>
+      <a class="text-slate-600 hover:text-primary transition-colors" href="./wait.html"><span class="material-symbols-outlined text-base align-middle mr-1">neurology</span>AI per il Bene Comune</a>
+      <a class="text-slate-600 hover:text-primary transition-colors" href="./index.html#chi-siamo">Chi siamo</a>
+    </div>
+    <a href="./index.html#contatti" class="bg-primary-container text-on-primary-container px-6 py-2 rounded-lg font-bold hover:opacity-90 transition-all">Contatti</a>
+  </nav>
+</header>
+
+<main class="flex-grow pt-24">
+
+<!-- HERO -->
+<section class="py-20 px-8 bg-inverse-surface text-inverse-on-surface">
+  <div class="max-w-7xl mx-auto">
+    <nav class="mb-8 reveal">
+      <a href="./index.html" class="text-sm text-inverse-on-surface/60 hover:text-primary-fixed-dim transition-colors">Home</a>
+      <span class="text-sm text-inverse-on-surface/30 mx-2">/</span>
+      <span class="text-sm text-primary-fixed-dim font-bold">Esperienze</span>
+    </nav>
+    <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-[1.1] mb-6 tracking-tight reveal">Le nostre esperienze.</h1>
+    <p class="text-xl text-inverse-on-surface/70 max-w-3xl reveal" style="line-height:1.7">
+      Ogni progetto ci ha insegnato qualcosa. Qui raccogliamo i percorsi che abbiamo accompagnato — con chi, come e cosa ne abbiamo ricavato.
+    </p>
+  </div>
+</section>
+
+<!-- COUNTERS SUMMARY -->
+<section class="py-10 px-8 bg-[#1a1a1a]">
+  <div class="max-w-7xl mx-auto grid grid-cols-3 md:grid-cols-6 gap-6 text-center">
+    <div><p class="text-3xl font-extrabold text-primary-fixed-dim">4</p><p class="text-xs text-white/50 uppercase font-bold mt-1">Regioni</p></div>
+    <div><p class="text-3xl font-extrabold text-primary-fixed-dim">12</p><p class="text-xs text-white/50 uppercase font-bold mt-1">Territori</p></div>
+    <div><p class="text-3xl font-extrabold text-primary-fixed-dim">35+</p><p class="text-xs text-white/50 uppercase font-bold mt-1">Enti Terzo Settore</p></div>
+    <div><p class="text-3xl font-extrabold text-primary-fixed-dim">20+</p><p class="text-xs text-white/50 uppercase font-bold mt-1">Pubbliche Amm.</p></div>
+    <div><p class="text-3xl font-extrabold text-primary-fixed-dim">40+</p><p class="text-xs text-white/50 uppercase font-bold mt-1">Processi collaborativi</p></div>
+    <div><p class="text-3xl font-extrabold text-primary-fixed-dim">15+</p><p class="text-xs text-white/50 uppercase font-bold mt-1">Valutazioni d'impatto</p></div>
+  </div>
+</section>
+
+<!-- FILTER -->
+<section class="py-8 px-8 border-b border-outline-variant/30">
+  <div class="max-w-7xl mx-auto flex flex-wrap gap-3 items-center">
+    <span class="text-sm font-bold text-on-surface-variant mr-2">Filtra per processo:</span>
+    <button onclick="filterExp('all')" class="exp-filter active px-4 py-1.5 rounded-full text-sm font-bold border border-primary text-primary bg-primary/10 transition-all">Tutti</button>
+    <button onclick="filterExp('Coprogrammazione')" class="exp-filter px-4 py-1.5 rounded-full text-sm font-bold border border-outline-variant text-on-surface-variant hover:border-primary hover:text-primary transition-all">Coprogrammazione</button>
+    <button onclick="filterExp('Coprogettazione')" class="exp-filter px-4 py-1.5 rounded-full text-sm font-bold border border-outline-variant text-on-surface-variant hover:border-primary hover:text-primary transition-all">Coprogettazione</button>
+    <button onclick="filterExp('Valutazione')" class="exp-filter px-4 py-1.5 rounded-full text-sm font-bold border border-outline-variant text-on-surface-variant hover:border-primary hover:text-primary transition-all">Valutazione</button>
+    <button onclick="filterExp('Consulenza')" class="exp-filter px-4 py-1.5 rounded-full text-sm font-bold border border-outline-variant text-on-surface-variant hover:border-primary hover:text-primary transition-all">Consulenza</button>
+  </div>
+</section>
+
+<!-- EXPERIENCES LIST -->
+<section class="py-16 px-8">
+  <div class="max-w-7xl mx-auto" id="exp-grid">
+    <!-- loaded dynamically -->
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-16 px-8">
+  <div class="max-w-4xl mx-auto bg-primary-container rounded-2xl p-10 md:p-14 text-center text-on-primary-container reveal">
+    <h3 class="text-2xl font-bold mb-4">Avete un progetto simile?</h3>
+    <p class="text-lg opacity-90 mb-8">Se il vostro ente sta avviando un percorso partecipativo o una valutazione d'impatto, parliamone.</p>
+    <a href="./index.html#contatti" class="inline-flex items-center gap-2 px-8 py-4 bg-white/20 backdrop-blur-sm font-bold rounded-lg hover:bg-white/30 transition-all">
+      Contattaci <span class="material-symbols-outlined">arrow_forward</span>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="w-full bg-slate-50 mt-auto">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-12 py-12 max-w-7xl mx-auto">
+    <div><img src="./logo-post.png" alt="POST" class="h-[50px] w-auto object-contain self-start mb-2" onerror="this.outerHTML='<span class=\'text-primary font-extrabold text-2xl\'>POST</span>'"/><p class="text-sm text-slate-600">&copy; 2025 POST Societa Benefit S.r.l. — Milano</p></div>
+    <div class="flex flex-col gap-2"><span class="text-sm text-slate-600">info@postsb.it</span><span class="text-sm text-slate-600">+39 3939993731</span></div>
+    <div><a href="https://www.linkedin.com/company/105770276" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-[#0077b5] font-bold text-sm"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a></div>
+  </div>
+</footer>
+
+<script>
+let allExp=[];
+let currentFilter='all';
+
+async function loadExp(){
+  try{const r=await fetch('/data/esperienze.json');allExp=await r.json()}catch(e){return}
+  renderExp();
+}
+
+function filterExp(f){
+  currentFilter=f;
+  document.querySelectorAll('.exp-filter').forEach(b=>{
+    b.classList.remove('active');
+    b.style.background='';b.style.color='';b.style.borderColor='';
+  });
+  event.target.classList.add('active');
+  event.target.style.background='rgba(0,97,114,0.1)';
+  event.target.style.borderColor='#006172';
+  event.target.style.color='#006172';
+  renderExp();
+}
+
+function renderExp(){
+  const grid=document.getElementById('exp-grid');
+  let filtered=currentFilter==='all'?allExp:allExp.filter(e=>e.tipologiaProcesso.toLowerCase().includes(currentFilter.toLowerCase()));
+  if(!filtered.length){grid.innerHTML='<p class="text-center text-on-surface-variant py-12">Nessuna esperienza trovata per questo filtro.</p>';return}
+  grid.innerHTML=filtered.map((e,i)=>`
+    <div class="flex flex-col md:flex-row gap-6 p-6 bg-white rounded-xl shadow-sm border border-outline-variant/20 mb-6 reveal visible" style="animation-delay:${i*80}ms">
+      <div class="w-full md:w-48 h-36 md:h-auto flex-shrink-0 rounded-lg overflow-hidden">
+        <img src="${e.img||'https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=400&q=80'}" alt="${e.titolo}" class="w-full h-full object-cover"/>
+      </div>
+      <div class="flex-1">
+        <h3 class="text-xl font-bold text-primary mb-3">${e.titolo}</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+          <div>
+            <p class="text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-1">Committente</p>
+            <p class="text-sm text-on-surface">${e.committente}</p>
+          </div>
+          <div>
+            <p class="text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-1">Tipologia di processo</p>
+            <p class="text-sm"><span class="inline-block px-2 py-0.5 bg-secondary-fixed text-on-secondary-fixed-variant rounded-full text-xs font-bold">${e.tipologiaProcesso}</span></p>
+          </div>
+          <div class="sm:col-span-2">
+            <p class="text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-1">Tipologia di incarico</p>
+            <p class="text-sm text-on-surface">${e.tipologiaIncarico}</p>
+          </div>
+        </div>
+        <div class="bg-surface-container-low rounded-lg p-4 border-l-4 border-primary">
+          <p class="text-xs font-bold text-primary uppercase tracking-wider mb-1">Cosa abbiamo imparato</p>
+          <p class="text-sm text-on-surface italic leading-relaxed">${e.imparato}</p>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+loadExp();
+
+// Reveal observer
+const rObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');rObs.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>rObs.observe(el));
+</script>
+</body>
+</html>
