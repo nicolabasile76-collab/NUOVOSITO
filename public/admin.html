@@ -85,9 +85,14 @@ label{display:block;font-size:.8rem;font-weight:700;color:var(--slate);text-tran
   <div class="main">
     <!-- ARTICOLI -->
     <div id="sec-articoli">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
         <h1 style="color:var(--ink);font-size:1.8rem">Articoli e Esperienze</h1>
         <button class="btn btn-primary" onclick="showArticleForm()"><span class="material-symbols-outlined" style="font-size:18px">add</span>Nuovo articolo</button>
+      </div>
+      <div style="display:flex;gap:.5rem;margin-bottom:1.5rem">
+        <button class="btn btn-small" id="filter-all" onclick="setArticleFilter('all')" style="background:var(--ink);color:white">Tutti</button>
+        <button class="btn btn-small btn-outline" id="filter-bozza" onclick="setArticleFilter('bozza')">🟡 Bozze</button>
+        <button class="btn btn-small btn-outline" id="filter-pubblicato" onclick="setArticleFilter('pubblicato')">🟢 Pubblicati</button>
       </div>
       <div id="articles-list"></div>
       <!-- Article form (hidden by default) -->
@@ -118,8 +123,9 @@ label{display:block;font-size:.8rem;font-weight:700;color:var(--slate);text-tran
             <label style="display:flex;align-items:center;gap:.5rem;cursor:pointer"><input type="checkbox" id="art-highlight" style="width:auto"/> In evidenza (copertina)</label>
           </div>
         </div>
-        <div style="display:flex;gap:1rem;margin-top:1rem">
-          <button class="btn btn-primary" onclick="saveArticle()">Salva</button>
+        <div style="display:flex;gap:1rem;margin-top:1rem;align-items:center">
+          <button class="btn btn-primary" onclick="saveArticle('bozza')">Salva come bozza</button>
+          <button class="btn btn-primary" style="background:var(--green)" onclick="saveArticle('pubblicato')">Pubblica</button>
           <button class="btn btn-outline" onclick="hideArticleForm()">Annulla</button>
         </div>
       </div>
@@ -237,13 +243,35 @@ function loadAll(){
 
 // ═══ ARTICOLI ═══
 const catLabels={['case-study']:'Case study',normativa:'Normativa',metodo:'Metodo',ai:'AI'};
+let articleFilter='all';
+function setArticleFilter(f){
+  articleFilter=f;
+  document.querySelectorAll('[id^="filter-"]').forEach(b=>{b.className='btn btn-small btn-outline'});
+  const btn=document.getElementById('filter-'+f);
+  if(btn){btn.className='btn btn-small';btn.style.background='var(--ink)';btn.style.color='white'}
+  renderArticles();
+}
 function renderArticles(){
   const el=document.getElementById('articles-list');
-  if(!blogData.length){el.innerHTML='<div class="card"><p style="color:var(--slate)">Nessun articolo</p></div>';return}
-  el.innerHTML=blogData.map((a,i)=>`
-    <div class="item-row">
+  const filtered=articleFilter==='all'?blogData:blogData.filter(a=>(a.status||'pubblicato')===articleFilter);
+  const bozzeCount=blogData.filter(a=>a.status==='bozza').length;
+  const pubCount=blogData.filter(a=>(a.status||'pubblicato')==='pubblicato').length;
+  document.getElementById('filter-bozza').textContent='🟡 Bozze ('+bozzeCount+')';
+  document.getElementById('filter-pubblicato').textContent='🟢 Pubblicati ('+pubCount+')';
+  if(!filtered.length){el.innerHTML='<div class="card"><p style="color:var(--slate)">Nessun articolo</p></div>';return}
+  el.innerHTML=filtered.map((a)=>{
+    const i=blogData.indexOf(a);
+    const isBozza=(a.status||'pubblicato')==='bozza';
+    const statusBadge=isBozza
+      ?'<span class="tag" style="background:#fef3c7;color:#92400e;border-color:#fde68a">🟡 Bozza</span>'
+      :'<span class="tag" style="background:#d1fae5;color:#065f46;border-color:#a7f3d0">🟢 Pubblicato</span>';
+    const toggleBtn=isBozza
+      ?`<button class="btn btn-small" style="background:var(--green);color:white;border:none" onclick="toggleStatus(${i})" title="Pubblica"><span class="material-symbols-outlined" style="font-size:16px">publish</span></button>`
+      :`<button class="btn btn-outline btn-small" onclick="toggleStatus(${i})" title="Riporta in bozza"><span class="material-symbols-outlined" style="font-size:16px">unpublished</span></button>`;
+    return `<div class="item-row" ${isBozza?'style="background:#fffbeb"':''}>
       <div style="flex:1">
         <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.25rem">
+          ${statusBadge}
           <span class="tag">${catLabels[a.cat]||a.cat}</span>
           ${a.highlight?'<span class="tag" style="background:var(--ink);color:white;border-color:var(--ink)">In evidenza</span>':''}
           <span style="font-size:.8rem;color:var(--slate)">${a.date}</span>
@@ -252,12 +280,18 @@ function renderArticles(){
         <p>${a.excerpt?.substring(0,100)}${a.excerpt?.length>100?'...':''}</p>
       </div>
       <div style="display:flex;gap:.5rem">
+        ${toggleBtn}
         <button class="btn btn-outline btn-small" onclick="editArticle(${i})"><span class="material-symbols-outlined" style="font-size:16px">edit</span></button>
         <button class="btn btn-danger btn-small" onclick="deleteArticle(${i})"><span class="material-symbols-outlined" style="font-size:16px">delete</span></button>
       </div>
-    </div>`).join('');
+    </div>`}).join('');
 }
 function showArticleForm(){editIdx=-1;document.getElementById('article-form-title').textContent='Nuovo articolo';['art-title','art-excerpt','art-body','art-img','art-tags','art-url'].forEach(id=>document.getElementById(id).value='');document.getElementById('art-cat').value='case-study';document.getElementById('art-author').value='Nicola Basile';document.getElementById('art-date').value=new Date().toISOString().split('T')[0];document.getElementById('art-highlight').checked=false;document.getElementById('article-form').classList.remove('hidden')}
+function toggleStatus(i){
+  const a=blogData[i];
+  a.status=(a.status||'pubblicato')==='bozza'?'pubblicato':'bozza';
+  api('/api/admin/data/blog.json',{method:'POST',body:JSON.stringify(blogData)}).then(()=>{toast(a.status==='pubblicato'?'Articolo pubblicato!':'Articolo riportato in bozza');renderArticles()});
+}
 function hideArticleForm(){document.getElementById('article-form').classList.add('hidden')}
 function editArticle(i){
   editIdx=i;const a=blogData[i];
@@ -275,7 +309,7 @@ function editArticle(i){
   document.getElementById('article-form').classList.remove('hidden');
 }
 function deleteArticle(i){if(!confirm('Eliminare "'+blogData[i].title+'"?'))return;blogData.splice(i,1);api('/api/admin/data/blog.json',{method:'POST',body:JSON.stringify(blogData)}).then(()=>{toast('Articolo eliminato');renderArticles()})}
-function saveArticle(){
+function saveArticle(status){
   const obj={
     title:document.getElementById('art-title').value,
     excerpt:document.getElementById('art-excerpt').value,
@@ -286,13 +320,15 @@ function saveArticle(){
     author:document.getElementById('art-author').value,
     img:document.getElementById('art-img').value,
     tags:document.getElementById('art-tags').value.split(',').map(t=>t.trim()).filter(Boolean),
-    highlight:document.getElementById('art-highlight').checked
+    highlight:document.getElementById('art-highlight').checked,
+    status:status||'bozza'
   };
   const url=document.getElementById('art-url').value.trim();
   if(url)obj.url=url;
   if(!obj.title){toast('Titolo obbligatorio','error');return}
-  if(editIdx>=0){blogData[editIdx]=obj}else{blogData.unshift(obj)}
-  api('/api/admin/data/blog.json',{method:'POST',body:JSON.stringify(blogData)}).then(()=>{toast('Articolo salvato! Il sito si aggiorna in ~30 secondi.');renderArticles();hideArticleForm()});
+  if(editIdx>=0){obj.status=status||(blogData[editIdx].status||'bozza');blogData[editIdx]=obj}else{blogData.unshift(obj)}
+  const msg=obj.status==='bozza'?'Bozza salvata!':'Articolo pubblicato!';
+  api('/api/admin/data/blog.json',{method:'POST',body:JSON.stringify(blogData)}).then(()=>{toast(msg);renderArticles();hideArticleForm()});
 }
 
 // ═══ TEAM ═══

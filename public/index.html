@@ -534,6 +534,7 @@ async function handleContactSubmit(e){
 async function loadRivista(){
   let posts;
   try{const r=await fetch('/data/blog.json');posts=await r.json()}catch(e){return}
+  posts=posts.filter(p=>(p.status||'pubblicato')==='pubblicato');
   posts.sort((a,b)=>new Date(b.date)-new Date(a.date));
   function sl(p){return p.url||`./articolo.html?slug=${p.title.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/-+$/,'')}`}
   function fd(d){return new Date(d).toLocaleDateString('it-IT',{day:'numeric',month:'long',year:'numeric'})}
