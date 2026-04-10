@@ -7,6 +7,41 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const IMAGES_DIR = path.join(__dirname, 'images');
 
+// Serve articolo.html with dynamic Open Graph meta tags
+app.get('/articolo.html', async (req, res) => {
+  const slug = req.query.slug;
+  let html = fs.readFileSync(path.join(__dirname, 'public', 'articolo.html'), 'utf8');
+  if (slug) {
+    try {
+      // Try blob first, then local file
+      let posts;
+      try {
+        const raw = await blobRead('blog.json');
+        posts = raw ? JSON.parse(raw) : [];
+      } catch(e) {
+        const fp = path.join(__dirname, 'public', 'blog.json');
+        posts = fs.existsSync(fp) ? JSON.parse(fs.readFileSync(fp, 'utf8')) : [];
+      }
+      const art = posts.find(p => p.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+$/, '') === slug);
+      if (art) {
+        const ogTags = `
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="${(art.title||'').replace(/"/g,'&quot;')}"/>
+    <meta property="og:description" content="${(art.excerpt||'').replace(/"/g,'&quot;')}"/>
+    <meta property="og:image" content="${art.img||''}"/>
+    <meta property="og:url" content="${req.protocol}://${req.get('host')}/articolo.html?slug=${slug}"/>
+    <meta property="og:site_name" content="POST Società Benefit"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="${(art.title||'').replace(/"/g,'&quot;')}"/>
+    <meta name="twitter:description" content="${(art.excerpt||'').replace(/"/g,'&quot;')}"/>
+    <meta name="twitter:image" content="${art.img||''}"/>`;
+        html = html.replace('<title id="page-title">POST — Articolo</title>', `<title id="page-title">POST — ${art.title}</title>${ogTags}`);
+      }
+    } catch(e) { /* serve page without OG tags */ }
+  }
+  res.send(html);
+});
+
 // Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/images', express.static(IMAGES_DIR));
